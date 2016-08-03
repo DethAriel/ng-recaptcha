@@ -3,21 +3,16 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": false,
+    "sourceMap": true,
     "declaration": true,
     "removeComments": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,
-    "listFiles": false,
     "noLib": false
   },
   "exclude": [
-    "node_modules"
-  ],
-  "files": [
-    "./typings/browser.d.ts"
-  ],
-  "compileOnSave": false,
-  "buildOnSave": false
+    "node_modules",
+    "sample"
+  ]
 }
