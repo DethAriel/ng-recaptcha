@@ -1,12 +1,14 @@
 # Angular 2 + TypeScript component for Google reCAPTCHA
 
-# Installation
+A simple, configurable, easy-to-start component for handling reCAPTCHA. 
+
+## Installation
 
 ```
 npm i ng2-recaptcha --save
 ```
 
-# Usage
+## Usage
 
 ```typescript
 import { bootstrap } from '@angular/platform-browser-dynamic';
@@ -28,7 +30,7 @@ import { RecaptchaComponent } from 'ng2-recaptcha/ng2-recaptcha';
 bootstrap(MyApp);
 ```
 
-# Options
+## Options
 
 The component supports this options:
 
@@ -41,7 +43,7 @@ The component supports this options:
 They are all pretty well described in the [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/display),
 so I won't duplicate it here.
 
-# Events
+## Events
 
 * `resolved(response: string)`. Occurs when the captcha resolution value changed. 
   When user resolves captcha, use `response` parameter to send to the server for verification.
@@ -50,12 +52,12 @@ so I won't duplicate it here.
   If the captcha has expired prior to submitting its value to the server, the component
   will reset the captcha, and trigger the `resolved` event with `response === null`.
 
-# Methods
+## Methods
 
 * `reset`. Performs a manual captcha reset. This method might be useful if your form
 validation failed, and you need the user to re-enter the captcha.
 
-# Specifying a different language
+## Specifying a different language
 
 `<recaptcha>` supports various languages. But this settings is global, and cannot be set
 on a per-captcha basis. An example below shows you how can the default behavior be overridden.
@@ -78,6 +80,10 @@ bootstrap(MyApp, [
 
 ``` 
 
-# Loading the reCAPTCHA API by yourself
+## Loading the reCAPTCHA API by yourself
 
 `TBD`
+
+## License
+
+Code released under the [MIT license](./LICENSE).
