@@ -32,7 +32,6 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     @Input() type: RecaptchaType;
     @Input() size: RecaptchaSize;
     @Input() tabIndex: number;
-    @Input() language: string;
 
     @Output() resolved = new EventEmitter<string>();
     private subscription: Subscription;
@@ -60,6 +59,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     reset() {
         grecaptcha.reset(this.widget);
         this.isResolved = false;
+        this.resolved.emit(null);
     }
 
     private captchaReponseCallback(response: string) {
