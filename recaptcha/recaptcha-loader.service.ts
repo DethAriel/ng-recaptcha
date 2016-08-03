@@ -22,7 +22,7 @@ export class RecaptchaLoaderService {
         if (RecaptchaLoaderService._ready) {
             return;
         }
-        window['ng2recaptchaloaded'] = () => {
+        (<any>window).ng2recaptchaloaded = () => {
             RecaptchaLoaderService._ready.next(true);
         };
         RecaptchaLoaderService._ready = new BehaviorSubject<boolean>(false);
