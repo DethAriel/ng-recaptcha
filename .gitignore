@@ -1,6 +1,9 @@
 # Editor settings
 .vscode/
 
+# typings
+typings/
+
 # Logs
 logs
 *.log
