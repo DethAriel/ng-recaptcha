@@ -13,7 +13,7 @@ npm i ng2-recaptcha --save
 ```typescript
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { Component } from '@angular/core';
-import { RecaptchaComponent } from 'ng2-recaptcha/ng2-recaptcha';
+import { RecaptchaComponent, RecaptchaLoaderService } from 'ng2-recaptcha/ng2-recaptcha';
 
 @Component({
     selector: 'my-app',
@@ -27,7 +27,7 @@ import { RecaptchaComponent } from 'ng2-recaptcha/ng2-recaptcha';
     }
 }
 
-bootstrap(MyApp);
+bootstrap(MyApp, [RecaptchaLoaderService]);
 ```
 
 ## Options

@@ -22,7 +22,6 @@ var nextId = 0;
 @Component({
     selector: 'recaptcha',
     template: `<div [id]="id"></div>`,
-    providers: [RecaptchaLoaderService],
 })
 export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     @Input() id = `ngrecaptcha-${nextId++}`;
