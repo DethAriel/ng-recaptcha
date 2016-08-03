@@ -4,18 +4,29 @@
     <title>Angular2 ReCaptcha sample</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="https://npmcdn.com/core-js/client/shim.min.js"></script>
-    <script src="https://npmcdn.com/zone.js@0.6.12?main=browser"></script>
-    <script src="https://npmcdn.com/reflect-metadata@0.1.3"></script>
-    <script src="https://npmcdn.com/systemjs@0.19.27/dist/system.src.js"></script>
-
-    <script src="systemjs.config.js"></script>
-    <script>
-      System.import('app').catch(function(err) { console.error(err); });
-    </script>
   </head>
   <body>
-    <my-app></my-app>
+    <nav>
+      <ul>
+        <li><a href="basic.html" >Basic</a></li>
+        <li><a href="language.html">Different Language</a></li>
+        <li><a href="preloaded-api.html">Preloaded reCAPTCHA API</a></li>
+      </ul>
+    </nav>
+    <section>
+      <p>
+        You'll have to set the <code>siteKey</code> first:
+      </p>
+      <input id="sitekey" type="text" />
+      <button onclick="applySiteKey();">Apply</button>
+    </section>
+    <script>
+      var input = document.getElementById("sitekey");
+      input.value = localStorage.getItem("sitekey");
+
+      function applySiteKey() {
+        localStorage.setItem("sitekey", document.getElementById("sitekey").value);
+      }
+    </script>
   </body>
 </html>

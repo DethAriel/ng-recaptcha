@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "Angular 2 + TypeScript component for Google reCAPTCHA",
   "scripts": {
-    "showsample": "lite-server -c sample/lite-config.json"
+    "view-samples": "cd sample && lite-server"
   },
   "repository": {
     "type": "git",

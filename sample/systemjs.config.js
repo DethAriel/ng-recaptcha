@@ -42,7 +42,17 @@
     // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
     transpiler: 'ts',
     typescriptOptions: {
-      tsconfig: true
+      "target": "es5",
+      "module": "system",
+      "moduleResolution": "node",
+      "sourceMap": false,
+      "declaration": true,
+      "removeComments": false,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "noImplicitAny": true,
+      "listFiles": false,
+      "noLib": false
     },
     meta: {
       'typescript': {
