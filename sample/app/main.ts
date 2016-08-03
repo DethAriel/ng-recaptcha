@@ -3,8 +3,7 @@ import {
   Component, 
   provide,
 } from '@angular/core';
-import { RecaptchaComponent } from './recaptcha.component';
-import { RecaptchaLoaderService } from './recaptcha-loader.service';
+import { RecaptchaComponent, RecaptchaLoaderService } from 'ng2-recaptcha/ng2-recaptcha';
 
 @Component({
     selector: 'my-app',
