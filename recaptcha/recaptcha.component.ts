@@ -13,6 +13,8 @@ import {
 import { RecaptchaLoaderService } from './recaptcha-loader.service';
 import { Subscription } from 'rxjs/Subscription';
 
+declare var grecaptcha: any;
+
 export type RecaptchaTheme = "light" | "dark";
 export type RecaptchaType = "image" | "audio";
 export type RecaptchaSize = "normal" | "compact";
@@ -68,7 +70,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
     private _renderRecaptcha() {
         this.widget = grecaptcha.render(this.id, {
-            'callback': (response) => {
+            'callback': (response: string) => {
                 this._zone.run(() => this.captchaReponseCallback(response));
             },
             'expired-callback': () => {
