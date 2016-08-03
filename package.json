@@ -1,0 +1,32 @@
+{
+  "name": "ng2-recaptcha",
+  "version": "0.0.2",
+  "description": "Angular 2 + TypeScript component for Google reCAPTCHA",
+  "scripts": {
+    "showsample": "npm run copysamples && lite-server -c sample/lite-config.json",
+    "copysamples": "ncp recaptcha/ sample/app/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DethAriel/ng2-recaptcha"
+  },
+  "keywords": [
+    "angular2",
+    "recaptcha"
+  ],
+  "author": "Ruslan Arkhipau <dethariel@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "@angular/core": "^2.0.0-rc.4",
+    "lite-server": "^2.2.0",
+    "ncp": "^2.0.0",
+    "rxjs": "5.0.0-beta.6",
+    "typescript": "1.8.10",
+    "typings": "0.8.1",
+    "zone.js": "0.6.12"
+  },
+  "homepage": "https://github.com/DethAriel/ng2-recaptcha"
+}
