@@ -12,6 +12,7 @@ typings
 !*.d.ts
 /recaptcha/**/*.ts
 !/recaptcha/**/*.d.ts
+tsconfig.json
 
 # Debug files
 *.js.map
