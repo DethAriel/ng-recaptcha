@@ -4,6 +4,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
 
 ## Installation
 
+The easiest way is to install trough [npm](https://www.npmjs.com/package/ng2-recaptcha):
 ```
 npm i ng2-recaptcha --save
 ```
