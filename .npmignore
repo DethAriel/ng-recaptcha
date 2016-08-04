@@ -6,3 +6,12 @@ sample/
 
 # typings
 typings
+
+# TypeScript source files
+*.ts
+!*.d.ts
+/recaptcha/**/*.ts
+!/recaptcha/**/*.d.ts
+
+# Debug files
+*.js.map

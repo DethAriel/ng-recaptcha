@@ -9,6 +9,7 @@
     "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.+(js|d.ts|js.map)\"",
     "prepublish": "npm run clean && npm run compile"
   },
+  "main": "ng2-recaptcha.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DethAriel/ng2-recaptcha"
