@@ -9,7 +9,7 @@ The easiest way is to install trough [npm](https://www.npmjs.com/package/ng2-rec
 npm i ng2-recaptcha --save
 ```
 
-## Usage
+## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng2-recaptcha/basic)
 
 ```typescript
 import { bootstrap } from '@angular/platform-browser-dynamic';
@@ -58,7 +58,7 @@ so I won't duplicate it here.
 * `reset`. Performs a manual captcha reset. This method might be useful if your form
 validation failed, and you need the user to re-enter the captcha.
 
-## Specifying a different language
+## <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng2-recaptcha/language)
 
 `<recaptcha>` supports various languages. But this settings is global, and cannot be set
 on a per-captcha basis. An example below shows you how can the default behavior be overridden.
@@ -81,7 +81,7 @@ bootstrap(MyApp, [
 
 ``` 
 
-## Loading the reCAPTCHA API by yourself
+## <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng2-recaptcha/preload-api)
 
 By default, the component assumes that the reCHAPTCHA API loading will be handled
 by the `RecaptchaLoaderService`. However, you can override that by providing your
@@ -90,7 +90,7 @@ instance of this service to the Angular DI.
 The below code snippet is an example of how such a provider can be implemented:
 
 ```html
-<script src="https://www.google.com/recaptcha/api.js?render=explicit&onload=onloadCallback"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=explicit&amp;onload=onloadCallback"></script>
 
 <script>
     // bootstrap the application once the reCAPTCHA api has loaded 
