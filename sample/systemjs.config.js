@@ -16,7 +16,7 @@
   //packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app':                        { main: 'main.ts',  defaultExtension: 'ts' },
-    'ng2-recaptcha':              { main: 'ng2-recaptcha.ts', defaultExtension: 'ts' },
+    'ng2-recaptcha':              { main: 'ng2-recaptcha.js', defaultExtension: 'js' },
   };
 
   var ngPackageNames = [
