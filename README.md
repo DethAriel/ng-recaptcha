@@ -83,7 +83,7 @@ bootstrap(MyApp, [
 
 ## <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng2-recaptcha/preload-api)
 
-By default, the component assumes that the reCHAPTCHA API loading will be handled
+By default, the component assumes that the reCAPTCHA API loading will be handled
 by the `RecaptchaLoaderService`. However, you can override that by providing your
 instance of this service to the Angular DI.
 
