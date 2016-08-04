@@ -5,7 +5,8 @@
 sample/
 
 # typings
-typings
+typings/
+typings.json
 
 # TypeScript source files
 *.ts
