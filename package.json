@@ -5,7 +5,7 @@
   "scripts": {
     "types": "typings install",
     "transpile": "./node_modules/.bin/tsc",
-    "clean": "./node_modules/.bin/del-cli typings \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.+(js|d.ts|js.map)\"",
+    "clean": "./node_modules/.bin/del-cli typings \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.*+(js|d.ts|js.map)\"",
     "compile": "npm run clean && npm run types && npm run transpile",
     "publish.compiled": "npm run compile && npm publish"
   },

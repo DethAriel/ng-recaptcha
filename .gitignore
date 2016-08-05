@@ -8,9 +8,9 @@ typings/
 /recaptcha/**/*.js
 /recaptcha/**/*.js.map
 /recaptcha/**/*.d.ts
-ng2-recaptcha.js
-ng2-recaptcha.js.map
-ng2-recaptcha.d.ts
+ng2-recaptcha.*js
+ng2-recaptcha.*js.map
+ng2-recaptcha.*d.ts
 
 # Logs
 logs
