@@ -7,6 +7,7 @@
     "transpile": "./node_modules/.bin/tsc",
     "clean": "./node_modules/.bin/del-cli typings \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.*+(js|d.ts|js.map)\"",
     "compile": "npm run clean && npm run types && npm run transpile",
+    "compile:dev": "npm run clean && npm run types && npm run transpile -- --sourceMap",
     "publish.compiled": "npm run compile && npm publish"
   },
   "main": "ng2-recaptcha.js",
