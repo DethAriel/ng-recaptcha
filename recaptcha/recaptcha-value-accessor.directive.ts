@@ -20,7 +20,7 @@ export class RecaptchaValueAccessor implements ControlValueAccessor {
   constructor(private host: RecaptchaComponent) { }
 
   writeValue(value: string): void {
-    if (value == null) {
+    if (!value) {
         this.host.reset();
     }
   }
