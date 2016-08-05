@@ -17,3 +17,6 @@ tsconfig.json
 
 # Debug files
 *.js.map
+
+# Other
+.travis.yml
