@@ -2,6 +2,8 @@
 
 ## ng2-recaptcha [![npm version](https://badge.fury.io/js/ng2-recaptcha.svg)](http://badge.fury.io/js/ng2-recaptcha) [![npm downloads](https://img.shields.io/npm/dm/ng2-recaptcha.svg)](https://npmjs.org/ng2-recaptcha)
 
+[![Build Status](https://travis-ci.org/DethAriel/ng2-recaptcha.svg?branch=master)](https://travis-ci.org/DethAriel/ng2-recaptcha)
+
 A simple, configurable, easy-to-start component for handling reCAPTCHA. 
 
 ## Installation
