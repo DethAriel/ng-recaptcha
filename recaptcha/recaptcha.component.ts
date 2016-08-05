@@ -36,7 +36,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
     @Output() resolved = new EventEmitter<string>();
     private subscription: Subscription;
-    private widget: any;
+    private widget: number;
     private isResolved = false;
 
     constructor(
@@ -47,7 +47,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
     ngAfterViewInit() {
         this.subscription = this._loader.ready.subscribe(loaded => { 
-            if (loaded) { 
+            if (loaded) {
                 this._renderRecaptcha(); 
             }
         });
@@ -58,9 +58,11 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
 
     reset() {
-        grecaptcha.reset(this.widget);
-        this.isResolved = false;
-        this.resolved.emit(null);
+        if (this.widget != null) {
+            grecaptcha.reset(this.widget);
+            this.isResolved = false;
+            this.resolved.emit(null);
+        }
     }
 
     private captchaReponseCallback(response: string) {
