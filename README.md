@@ -141,10 +141,12 @@ bootstrap(MyApp, [
 It's very easy to put `recaptcha` in an Angular2 form and have it `require`d.
 
 * Import value accessor so that forms library known how to handle `recaptcha`:
+
   ```typescript
   import { RecaptchaValueAccessor } from 'ng2-recaptcha/ng2-recaptcha.forms';
   ```
 * Add a `RecaptchaValueAccessor` directive to the list of your form component directives:
+
   ```typescript
   @Component({
     selector: 'my-form',
