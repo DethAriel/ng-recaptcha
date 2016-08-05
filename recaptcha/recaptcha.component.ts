@@ -35,8 +35,12 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     @Input() tabIndex: number;
 
     @Output() resolved = new EventEmitter<string>();
+
+    /** @internal */
     private subscription: Subscription;
+    /** @internal */
     private widget: number;
+    /** @internal */
     private isResolved = false;
 
     constructor(
@@ -65,11 +69,13 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
         }
     }
 
+    /** @internal */
     private captchaReponseCallback(response: string) {
         this.isResolved = true;
         this.resolved.emit(response);
     }
 
+    /** @internal */
     private _renderRecaptcha() {
         this.widget = grecaptcha.render(this.id, {
             'callback': (response: string) => {

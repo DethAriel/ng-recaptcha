@@ -8,7 +8,9 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RecaptchaLoaderService {
+    /** @internal */
     private _language: string;
+    /** @internal */
     private static _ready: BehaviorSubject<boolean>;
     public ready: Observable<boolean>;
 
@@ -18,6 +20,7 @@ export class RecaptchaLoaderService {
         this.ready =  RecaptchaLoaderService._ready.asObservable();
     }
 
+    /** @internal */
     private _init() {
         if (RecaptchaLoaderService._ready) {
             return;

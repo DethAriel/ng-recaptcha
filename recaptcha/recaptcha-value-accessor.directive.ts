@@ -14,18 +14,21 @@ export const RECAPTCHA_VALUE_ACCESSOR: any = {
   providers: [RECAPTCHA_VALUE_ACCESSOR]
 })
 export class RecaptchaValueAccessor implements ControlValueAccessor {
+  /** @internal */
   onChange = (value: any) => {};
+  /** @internal */
   onTouched = () => {};
 
   constructor(private host: RecaptchaComponent) { }
 
   writeValue(value: string): void {
     if (!value) {
-        this.host.reset();
+      this.host.reset();
     }
   }
 
-  onResolve($event: any) {
+  /** @internal */
+  private onResolve($event: any) {
       this.onChange($event);
       this.onTouched();
   }
