@@ -4,9 +4,10 @@
   "description": "Angular 2 + TypeScript component for Google reCAPTCHA",
   "scripts": {
     "install.typings": "typings install",
-    "compile": "./node_modules/.bin/tsc",
-    "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.+(js|d.ts|js.map)\"",
-    "publish.compiled": "npm run clean && npm run compile && npm publish"
+    "transpile": "./node_modules/.bin/tsc",
+    "clean": "./node_modules/.bin/del-cli typings \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.+(js|d.ts|js.map)\"",
+    "compile": "npm run clean && npm run install.typings && npm run transpile",
+    "publish.compiled": "npm run compile && npm publish"
   },
   "main": "ng2-recaptcha.js",
   "typings": "ng2-recaptcha.d.ts",
