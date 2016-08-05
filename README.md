@@ -136,6 +136,38 @@ bootstrap(MyApp, [
 
 ```
 
+## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng2-recaptcha/forms)
+
+It's very easy to put `recaptcha` in an Angular2 form and have it `require`d.
+
+* Import value accessor so that forms library known how to handle `recaptcha`:
+  ```typescript
+  import { RecaptchaValueAccessor } from 'ng2-recaptcha/ng2-recaptcha.forms';
+  ```
+* Add a `RecaptchaValueAccessor` directive to the list of your form component directives:
+  ```typescript
+  @Component({
+    selector: 'my-form',
+    template: `
+    <form #captchaProtectedForm="ngForm">
+      <recaptcha
+        [(ngModel)]="formModel.captcha"
+        name="captcha"
+        required
+        siteKey="YOUR_SITE_KEY"
+        #captcha="ngModel"
+      ></recaptcha>
+      <div [hidden]="captcha.valid || captcha.pristine" class="error">Captcha must be solved</div>
+    </form>
+    `,
+    directives: [RecaptchaComponent, RecaptchaValueAccessor],
+  }) 
+  export class MyForm { 
+    formModel = new MyFormModel();
+  }
+  ``` 
+* You're done!
+
 ## License
 
 Code released under the [MIT license](./LICENSE).
