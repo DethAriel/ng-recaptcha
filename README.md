@@ -93,7 +93,10 @@ By default, the component assumes that the reCAPTCHA API loading will be handled
 by the `RecaptchaLoaderService`. However, you can override that by providing your
 instance of this service to the Angular DI.
 
-The below code snippet is an example of how such a provider can be implemented:
+The below code snippet is an example of how such a provider can be implemented.
+
+**TL;DR**: there should be an `Observable` that eventually resolves to a 
+`grecaptcha`-compatible object (e.g. `grecaptcha` itself).
 
 ```html
 <script src="https://www.google.com/recaptcha/api.js?render=explicit&amp;onload=onloadCallback"></script>
@@ -111,30 +114,39 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { Component, Injectable, provide } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { RecaptchaComponent, RecaptchaLoaderService } from 'ng2-recaptcha/ng2-recaptcha';
+import { 
+  RecaptchaComponent, 
+  RecaptchaLoaderService,
+} from 'ng2-recaptcha/ng2-recaptcha';
 
 @Injectable()
 export class PreloadedRecaptchaAPIService {
-    public ready: Observable<boolean>;
+  public ready: Observable<ReCaptchaV2.ReCaptcha>;
 
-    constructor() { 
-        let readySubject = new BehaviorSubject<boolean>(true);
-        this.ready = readySubject.asObservable();
-    }
+  constructor() { 
+    let readySubject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(grecaptcha);
+    this.ready = readySubject.asObservable();
+  }
 }
 
 @Component({
-    selector: 'my-app',
-    templateUrl: 'my-app.html',
+  selector: 'my-app',
+  template: 'my-app.html',
 }) 
-export class MyApp {}
+export class MyApp { }
 
 bootstrap(MyApp, [
-    provide(RecaptchaLoaderService, {
-        useValue: new PreloadedRecaptchaAPIService(),
-    })
+  provide(RecaptchaLoaderService, {
+    useValue: new PreloadedRecaptchaAPIService(),
+  })
 ]);
+```
 
+**Note**, that in order to take advantage of type-checking system the above code snippet references
+`ReCaptchaV2.ReCaptcha`. In order to be able to use that in your code, run the following command:
+
+```bash
+typings install dt~grecaptcha --save --global
 ```
 
 ## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng2-recaptcha/forms)
