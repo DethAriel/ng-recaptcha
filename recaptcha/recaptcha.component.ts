@@ -1,25 +1,18 @@
-import { 
+import {
     AfterViewInit,
     Component,
     ElementRef,
     EventEmitter,
-    OnDestroy,
-    Output,
     Input,
     NgZone,
-    ViewChild,
-    ViewContainerRef,
+    OnDestroy,
+    Output,
 } from '@angular/core';
-import { RecaptchaLoaderService } from './recaptcha-loader.service';
 import { Subscription } from 'rxjs/Subscription';
 
-declare var grecaptcha: any;
+import { RecaptchaLoaderService } from './recaptcha-loader.service';
 
-export type RecaptchaTheme = "light" | "dark";
-export type RecaptchaType = "image" | "audio";
-export type RecaptchaSize = "normal" | "compact";
-
-var nextId = 0;
+let nextId = 0;
 
 @Component({
     selector: 'recaptcha',
@@ -29,9 +22,9 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     @Input() id = `ngrecaptcha-${nextId++}`;
 
     @Input() siteKey: string;
-    @Input() theme: RecaptchaTheme;
-    @Input() type: RecaptchaType;
-    @Input() size: RecaptchaSize;
+    @Input() theme: ReCaptchaV2.Theme;
+    @Input() type: ReCaptchaV2.Type;
+    @Input() size: ReCaptchaV2.Size;
     @Input() tabIndex: number;
 
     @Output() resolved = new EventEmitter<string>();
@@ -41,18 +34,19 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     /** @internal */
     private widget: number;
     /** @internal */
-    private isResolved = false;
+    private _grecaptcha: ReCaptchaV2.ReCaptcha;
 
     constructor(
         private _el: ElementRef,
-        private _loader: RecaptchaLoaderService, 
+        private _loader: RecaptchaLoaderService,
         private _zone: NgZone
     ) {
     }
     ngAfterViewInit() {
-        this.subscription = this._loader.ready.subscribe(loaded => { 
-            if (loaded) {
-                this._renderRecaptcha(); 
+        this.subscription = this._loader.ready.subscribe(grecaptcha => {
+            if (grecaptcha != null) {
+                this._grecaptcha = grecaptcha;
+                this._renderRecaptcha();
             }
         });
     }
@@ -63,32 +57,30 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
     reset() {
         if (this.widget != null) {
-            grecaptcha.reset(this.widget);
-            this.isResolved = false;
+            this._grecaptcha.reset(this.widget);
             this.resolved.emit(null);
         }
     }
 
     /** @internal */
     private captchaReponseCallback(response: string) {
-        this.isResolved = true;
         this.resolved.emit(response);
     }
 
     /** @internal */
     private _renderRecaptcha() {
-        this.widget = grecaptcha.render(this.id, {
-            'callback': (response: string) => {
+        this.widget = this._grecaptcha.render(this.id, {
+            callback: (response: string) => {
                 this._zone.run(() => this.captchaReponseCallback(response));
             },
             'expired-callback': () => {
                 this._zone.run(() => this.reset());
             },
-            'sitekey': this.siteKey,
-            'theme': this.theme,
-            'type': this.type,
-            'size': this.size,
-            'tabindex': this.tabIndex,
+            sitekey: this.siteKey,
+            size: this.size,
+            tabindex: this.tabIndex,
+            theme: this.theme,
+            type: this.type,
         });
     }
 }

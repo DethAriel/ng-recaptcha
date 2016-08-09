@@ -1,23 +1,30 @@
-import { forwardRef, Directive } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import {
+    Directive,
+    forwardRef,
+    Provider,
+} from '@angular/core';
+import {
+    ControlValueAccessor,
+    NG_VALUE_ACCESSOR,
+} from '@angular/forms';
+
 import { RecaptchaComponent } from './recaptcha.component';
 
-export const RECAPTCHA_VALUE_ACCESSOR: any = {
-    provide: NG_VALUE_ACCESSOR,
+export const RECAPTCHA_VALUE_ACCESSOR = new Provider(NG_VALUE_ACCESSOR, {
+    multi: true,
     useExisting: forwardRef(() => RecaptchaValueAccessor),
-    multi: true
-};
+});
 
 @Directive({
   selector: 'recaptcha',
   host: {'(resolved)': 'onResolve($event)'},
-  providers: [RECAPTCHA_VALUE_ACCESSOR]
+  providers: [RECAPTCHA_VALUE_ACCESSOR],
 })
 export class RecaptchaValueAccessor implements ControlValueAccessor {
   /** @internal */
-  onChange = (value: any) => {};
+  onChange: (value: string) => void;
   /** @internal */
-  onTouched = () => {};
+  onTouched: () => void;
 
   constructor(private host: RecaptchaComponent) { }
 
@@ -28,11 +35,16 @@ export class RecaptchaValueAccessor implements ControlValueAccessor {
   }
 
   /** @internal */
-  private onResolve($event: any) {
-      this.onChange($event);
-      this.onTouched();
+  // tslint:disable-next-line:no-unused-variable
+  private onResolve($event: string) {
+      if (this.onChange) {
+          this.onChange($event);
+      }
+      if (this.onTouched) {
+          this.onTouched();
+      }
   }
 
-  registerOnChange(fn: (value: any) => void): void { this.onChange = fn; }
+  registerOnChange(fn: (value: string) => void): void { this.onChange = fn; }
   registerOnTouched(fn: () => void): void { this.onTouched = fn; }
 }

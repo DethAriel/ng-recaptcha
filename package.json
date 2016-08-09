@@ -5,10 +5,13 @@
   "scripts": {
     "types": "typings install",
     "transpile": "./node_modules/.bin/tsc",
-    "clean": "./node_modules/.bin/del-cli typings \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.*+(js|d.ts|js.map)\"",
-    "compile": "npm run clean && npm run types && npm run transpile",
-    "compile:dev": "npm run clean && npm run types && npm run transpile -- --sourceMap",
-    "publish.compiled": "npm run compile && npm publish"
+    "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.*+(js|d.ts|js.map)\"",
+    "cleanall": "npm run clean -- typings",
+    "lint": "./node_modules/.bin/tslint --project ./tsconfig.json --type-check",
+    "lint:force": "npm run lint -- --force",
+    "compile:prod": "npm run cleanall && npm run types && npm run lint && npm run transpile",
+    "compile": "npm run clean && npm run lint:force && npm run transpile -- --sourceMap",
+    "pub": "npm run compile:prod && npm publish"
   },
   "main": "ng2-recaptcha.js",
   "typings": "ng2-recaptcha.d.ts",
@@ -18,23 +21,25 @@
   },
   "keywords": [
     "angular2",
-    "recaptcha"
+    "recaptcha",
+    "ng2-recaptcha"
   ],
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/core": "^2.0.0-rc.4",
     "@angular/common": "^2.0.0-rc.4",
     "@angular/compiler": "^2.0.0-rc.4",
-    "@angular/forms": "0.2.0"
+    "@angular/core": "^2.0.0-rc.4",
+    "@angular/forms": "^0.2.0"
   },
   "devDependencies": {
-    "@angular/core": "^2.0.0-rc.4",
     "@angular/common": "^2.0.0-rc.4",
     "@angular/compiler": "^2.0.0-rc.4",
+    "@angular/core": "^2.0.0-rc.4",
     "@angular/forms": "^0.2.0",
     "del-cli": "0.2.0",
     "rxjs": "5.0.0-beta.6",
+    "tslint": "^3.14.0",
     "typescript": "1.8.10",
     "typings": "^1.3.2",
     "zone.js": "0.6.12"
