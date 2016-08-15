@@ -1,6 +1,6 @@
 {
   "name": "ng2-recaptcha",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Angular 2 + TypeScript component for Google reCAPTCHA",
   "scripts": {
     "types": "typings install",
@@ -27,16 +27,16 @@
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^2.0.0-rc.4",
-    "@angular/compiler": "^2.0.0-rc.4",
-    "@angular/core": "^2.0.0-rc.4",
-    "@angular/forms": "^0.2.0"
+    "@angular/common": "^2.0.0-rc.5",
+    "@angular/compiler": "^2.0.0-rc.5",
+    "@angular/core": "^2.0.0-rc.5",
+    "@angular/forms": "^0.3.0"
   },
   "devDependencies": {
-    "@angular/common": "^2.0.0-rc.4",
-    "@angular/compiler": "^2.0.0-rc.4",
-    "@angular/core": "^2.0.0-rc.4",
-    "@angular/forms": "^0.2.0",
+    "@angular/common": "^2.0.0-rc.5",
+    "@angular/compiler": "^2.0.0-rc.5",
+    "@angular/core": "^2.0.0-rc.5",
+    "@angular/forms": "^0.3.0",
     "del-cli": "0.2.0",
     "rxjs": "5.0.0-beta.6",
     "tslint": "^3.14.0",
