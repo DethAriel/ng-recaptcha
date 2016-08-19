@@ -22,13 +22,14 @@ export const RECAPTCHA_VALUE_ACCESSOR = new Provider(NG_VALUE_ACCESSOR, {
 })
 export class RecaptchaValueAccessor implements ControlValueAccessor {
   /** @internal */
-  onChange: (value: string) => void;
+  private onChange: (value: string) => void;
+
   /** @internal */
-  onTouched: () => void;
+  private onTouched: () => void;
 
   constructor(private host: RecaptchaComponent) { }
 
-  writeValue(value: string): void {
+  public writeValue(value: string): void {
     if (!value) {
       this.host.reset();
     }
@@ -45,6 +46,6 @@ export class RecaptchaValueAccessor implements ControlValueAccessor {
     }
   }
 
-  registerOnChange(fn: (value: string) => void): void { this.onChange = fn; }
-  registerOnTouched(fn: () => void): void { this.onTouched = fn; }
+  public registerOnChange(fn: (value: string) => void): void { this.onChange = fn; }
+  public registerOnTouched(fn: () => void): void { this.onTouched = fn; }
 }
