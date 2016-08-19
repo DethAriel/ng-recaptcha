@@ -19,15 +19,15 @@ let nextId = 0;
   template: `<div [id]="id"></div>`,
 })
 export class RecaptchaComponent implements AfterViewInit, OnDestroy {
-  @Input() id = `ngrecaptcha-${nextId++}`;
+  @Input() public id = `ngrecaptcha-${nextId++}`;
 
-  @Input() siteKey: string;
-  @Input() theme: ReCaptchaV2.Theme;
-  @Input() type: ReCaptchaV2.Type;
-  @Input() size: ReCaptchaV2.Size;
-  @Input() tabIndex: number;
+  @Input() public siteKey: string;
+  @Input() public theme: ReCaptchaV2.Theme;
+  @Input() public type: ReCaptchaV2.Type;
+  @Input() public size: ReCaptchaV2.Size;
+  @Input() public tabIndex: number;
 
-  @Output() resolved = new EventEmitter<string>();
+  @Output() public resolved = new EventEmitter<string>();
 
   /** @internal */
   private subscription: Subscription;
@@ -42,7 +42,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     private _zone: NgZone
   ) {
   }
-  ngAfterViewInit() {
+  public ngAfterViewInit() {
     this.subscription = this._loader.ready.subscribe(grecaptcha => {
       if (grecaptcha != null) {
         this._grecaptcha = grecaptcha;
@@ -51,11 +51,11 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  reset() {
+  public reset() {
     if (this.widget != null) {
       this._grecaptcha.reset(this.widget);
       this.resolved.emit(null);
