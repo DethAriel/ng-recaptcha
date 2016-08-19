@@ -28,8 +28,8 @@ export class RecaptchaLoaderService {
       RecaptchaLoaderService._ready.next(grecaptcha);
     };
     RecaptchaLoaderService._ready = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
-    let head = <HTMLHeadElement>document.head;
-    let script = <HTMLScriptElement>document.createElement('script');
+    let head = <HTMLHeadElement> document.head;
+    let script = <HTMLScriptElement> document.createElement('script');
     script.innerHTML = '';
     let langParam = this._language ? '&hl=' + this._language : '';
     script.src = `https://www.google.com/recaptcha/api.js?render=explicit&onload=ng2recaptchaloaded${langParam}`;
