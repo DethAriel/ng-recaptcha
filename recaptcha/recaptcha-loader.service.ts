@@ -31,7 +31,8 @@ export class RecaptchaLoaderService {
     let head = <HTMLHeadElement>document.head;
     let script = <HTMLScriptElement>document.createElement('script');
     script.innerHTML = '';
-    script.src = 'https://www.google.com/recaptcha/api.js?render=explicit&onload=ng2recaptchaloaded' + (this._language ? '&hl=' + this._language : '');
+    let langParam = this._language ? '&hl=' + this._language : '';
+    script.src = `https://www.google.com/recaptcha/api.js?render=explicit&onload=ng2recaptchaloaded${langParam}`;
     script.async = true;
     script.defer = true;
     head.appendChild(script);
