@@ -5,12 +5,14 @@
 typings/
 typings.json
 
-# TypeScript source files
+# TypeScript-related files
 *.ts
 !*.d.ts
 /recaptcha/**/*.ts
 !/recaptcha/**/*.d.ts
 tsconfig.json
+tslint.json
+ng2-lint.json
 
 # Debug files
 *.js.map
