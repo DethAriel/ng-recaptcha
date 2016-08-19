@@ -12,7 +12,7 @@ import { RecaptchaComponent } from './recaptcha.component';
 
 export const RECAPTCHA_VALUE_ACCESSOR = new Provider(NG_VALUE_ACCESSOR, {
   multi: true,
-  useExisting: forwardRef(() => RecaptchaValueAccessor),
+  useExisting: forwardRef(() => RecaptchaValueAccessorDirective),
 });
 
 @Directive({
@@ -20,7 +20,7 @@ export const RECAPTCHA_VALUE_ACCESSOR = new Provider(NG_VALUE_ACCESSOR, {
   host: { '(resolved)': 'onResolve($event)' },
   providers: [RECAPTCHA_VALUE_ACCESSOR],
 })
-export class RecaptchaValueAccessor implements ControlValueAccessor {
+export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
   private onChange: (value: string) => void;
 
