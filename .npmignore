@@ -19,3 +19,4 @@ ng2-lint.json
 
 # Other
 .travis.yml
+.editorconfig
