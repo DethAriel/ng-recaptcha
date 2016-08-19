@@ -35,6 +35,9 @@ export class RecaptchaValueAccessor implements ControlValueAccessor {
     }
   }
 
+  public registerOnChange(fn: (value: string) => void): void { this.onChange = fn; }
+  public registerOnTouched(fn: () => void): void { this.onTouched = fn; }
+
   /** @internal */
   // tslint:disable-next-line:no-unused-variable
   private onResolve($event: string) {
@@ -45,7 +48,4 @@ export class RecaptchaValueAccessor implements ControlValueAccessor {
       this.onTouched();
     }
   }
-
-  public registerOnChange(fn: (value: string) => void): void { this.onChange = fn; }
-  public registerOnTouched(fn: () => void): void { this.onTouched = fn; }
 }
