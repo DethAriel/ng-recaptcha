@@ -1,9 +1,6 @@
 # Editor settings
 .vscode/
 
-# Sample pages
-sample/
-
 # typings
 typings/
 typings.json
