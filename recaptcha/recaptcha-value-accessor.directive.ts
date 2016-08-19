@@ -1,6 +1,7 @@
 import {
   Directive,
   forwardRef,
+  HostListener,
   Provider,
 } from '@angular/core';
 import {
@@ -16,9 +17,8 @@ export const RECAPTCHA_VALUE_ACCESSOR = new Provider(NG_VALUE_ACCESSOR, {
 });
 
 @Directive({
-  selector: 'recaptcha',
-  host: { '(resolved)': 'onResolve($event)' },
   providers: [RECAPTCHA_VALUE_ACCESSOR],
+  selector: 'recaptcha',
 })
 export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
@@ -40,7 +40,7 @@ export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
 
   /** @internal */
   // tslint:disable-next-line:no-unused-variable
-  private onResolve($event: string) {
+  @HostListener('resolved', ['$event']) private onResolve($event: string) {
     if (this.onChange) {
       this.onChange($event);
     }
