@@ -8,10 +8,12 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class RecaptchaLoaderService {
   /** @internal */
-  private _language: string;
-  /** @internal */
   private static _ready: BehaviorSubject<ReCaptchaV2.ReCaptcha>;
+
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
+
+  /** @internal */
+  private _language: string;
 
   constructor( @Optional() language?: string) {
     this._language = language;
