@@ -43,7 +43,7 @@ export class MyAppModule { }
 Once you have done that, the rest is simple:
 
 ```typescript
-import { browserDynamicPlatform } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Component } from '@angular/core';
 
 @Component({
@@ -55,7 +55,7 @@ import { Component } from '@angular/core';
     }
 }
 
-browserDynamicPlatform().bootstrapModule(MyAppModule);
+platformBrowserDynamic().bootstrapModule(MyAppModule);
 ```
 
 ## <a name="modules"></a>Modules: "Forms"-ready and "No-forms"

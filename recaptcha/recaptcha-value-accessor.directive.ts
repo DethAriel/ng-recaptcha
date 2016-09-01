@@ -2,7 +2,6 @@ import {
   Directive,
   forwardRef,
   HostListener,
-  Provider,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -11,13 +10,14 @@ import {
 
 import { RecaptchaComponent } from './recaptcha.component';
 
-export const RECAPTCHA_VALUE_ACCESSOR = new Provider(NG_VALUE_ACCESSOR, {
-  multi: true,
-  useExisting: forwardRef(() => RecaptchaValueAccessorDirective),
-});
-
 @Directive({
-  providers: [RECAPTCHA_VALUE_ACCESSOR],
+  providers: [
+    {
+      multi: true,
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RecaptchaValueAccessorDirective),
+    },
+  ],
   selector: 'recaptcha',
 })
 export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
