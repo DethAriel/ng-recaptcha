@@ -1,6 +1,6 @@
 {
   "name": "ng2-recaptcha",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Angular 2 component for Google reCAPTCHA",
   "scripts": {
     "types": "typings install",
