@@ -28,16 +28,16 @@
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^2.0.0-rc.6",
-    "@angular/compiler": "^2.0.0-rc.6",
-    "@angular/core": "^2.0.0-rc.6",
-    "@angular/forms": "^2.0.0-rc.6"
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0"
   },
   "devDependencies": {
-    "@angular/common": "^2.0.0-rc.6",
-    "@angular/compiler": "^2.0.0-rc.6",
-    "@angular/core": "^2.0.0-rc.6",
-    "@angular/forms": "^2.0.0-rc.6",
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
     "codelyzer": "^0.0.28",
     "del-cli": "0.2.0",
     "husky": "^0.11.6",
