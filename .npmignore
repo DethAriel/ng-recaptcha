@@ -10,7 +10,7 @@ typings.json
 !*.d.ts
 /recaptcha/**/*.ts
 !/recaptcha/**/*.d.ts
-tsconfig.json
+tsconfig*.json
 tslint.json
 ng2-lint.json
 
@@ -20,3 +20,6 @@ ng2-lint.json
 # Other
 .travis.yml
 .editorconfig
+
+# Angular AoT output
+factories/

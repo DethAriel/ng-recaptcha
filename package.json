@@ -3,13 +3,11 @@
   "version": "1.3.2",
   "description": "Angular 2 component for Google reCAPTCHA",
   "scripts": {
-    "types": "typings install",
-    "transpile": "./node_modules/.bin/tsc",
-    "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map)\" \"./ng2-recaptcha.*+(js|d.ts|js.map)\"",
-    "cleanall": "npm run clean -- typings",
+    "transpile": "./node_modules/.bin/ngc -p ./tsconfig.json",
+    "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map|metadata.json)\" \"./ng2-recaptcha.*+(js|d.ts|js.map|metadata.json)\" factories",
     "lint:prod": "./node_modules/.bin/tslint --project ./tsconfig.json --type-check",
     "lint": "npm run lint:prod -- --force",
-    "compile:prod": "npm run cleanall && npm run types && npm run lint:prod && npm run transpile",
+    "compile:prod": "npm run clean && npm run lint:prod && npm run transpile",
     "compile": "npm run clean && npm run lint && npm run transpile -- --sourceMap",
     "pub": "npm run compile:prod && npm publish",
     "prepush": "npm run lint:prod"
@@ -28,24 +26,26 @@
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "2.0.0",
-    "@angular/compiler": "2.0.0",
-    "@angular/core": "2.0.0",
-    "@angular/forms": "2.0.0"
+    "@angular/common": "^2.0.0",
+    "@angular/core": "^2.0.0",
+    "@angular/forms": "^2.0.0",
+    "rxjs": "^5.0.0-beta.12"
   },
   "devDependencies": {
-    "@angular/common": "2.0.0",
-    "@angular/compiler": "2.0.0",
-    "@angular/core": "2.0.0",
-    "@angular/forms": "2.0.0",
-    "codelyzer": "^0.0.28",
-    "del-cli": "0.2.0",
-    "husky": "^0.11.6",
-    "rxjs": "^5.0.0-beta.11",
-    "tslint": "^3.14.0",
-    "typescript": "1.8.10",
-    "typings": "^1.3.2",
-    "zone.js": "^0.6.17"
+    "@angular/common": "^2.0.0",
+    "@angular/compiler": "^2.0.0",
+    "@angular/compiler-cli": "^2.0.0",
+    "@angular/core": "^2.0.0",
+    "@angular/forms": "^2.0.0",
+    "@types/core-js": "^0.9.34",
+    "@types/grecaptcha": "^2.0.30",
+    "codelyzer": "^1.0.0-beta.3",
+    "del-cli": "^0.2.0",
+    "husky": "^0.11.9",
+    "rxjs": "^5.0.0-beta.12",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.6",
+    "zone.js": "^0.6.26"
   },
   "homepage": "https://github.com/DethAriel/ng2-recaptcha#readme"
 }

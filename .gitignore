@@ -12,6 +12,11 @@ ng2-recaptcha.*js
 ng2-recaptcha.*js.map
 ng2-recaptcha.*d.ts
 
+# Angular AoT output
+/**/*.metadata.json
+*.metadata.json
+factories/
+
 # Logs
 logs
 *.log

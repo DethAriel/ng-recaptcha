@@ -1,9 +1,13 @@
 import {
+  Inject,
   Injectable,
+  OpaqueToken,
   Optional,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+
+export const RECAPTCHA_LANGUAGE = new OpaqueToken('recaptcha-language');
 
 @Injectable()
 export class RecaptchaLoaderService {
@@ -15,7 +19,7 @@ export class RecaptchaLoaderService {
   /** @internal */
   private _language: string;
 
-  constructor( @Optional() language?: string) {
+  constructor( @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string) {
     this._language = language;
     this._init();
     this.ready = RecaptchaLoaderService._ready.asObservable();

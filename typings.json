@@ -1,6 +1,0 @@
-{
-  "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160914114559",
-    "grecaptcha": "registry:dt/grecaptcha#0.0.0+20160808210619"
-  }
-}
