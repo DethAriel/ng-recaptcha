@@ -1,6 +1,6 @@
 {
   "name": "ng2-recaptcha",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Angular 2 component for Google reCAPTCHA",
   "scripts": {
     "transpile": "./node_modules/.bin/ngc -p ./tsconfig.json",
