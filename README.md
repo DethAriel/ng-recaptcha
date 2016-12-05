@@ -32,8 +32,10 @@ npm install @types/grecaptcha --save-dev
 To start with, you need to add one of the `Recaptcha` modules (more on that [later](#modules)):
 
 ```typescript
+// app.module.ts
 import { RecaptchaModule } from 'ng2-recaptcha';
 import { BrowserModule }  from '@angular/platform-browser';
+import { MyApp } from './app.component.ts';
 
 @NgModule({
   bootstrap: [MyApp],
@@ -49,7 +51,7 @@ export class MyAppModule { }
 Once you have done that, the rest is simple:
 
 ```typescript
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// app.component.ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -60,6 +62,12 @@ import { Component } from '@angular/core';
         console.log(`Resolved captcha with response ${captchaResponse}:`);
     }
 }
+```
+
+```typescript
+// boot.ts
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { MyAppModule } from './app.module.ts';
 
 platformBrowserDynamic().bootstrapModule(MyAppModule);
 ```
