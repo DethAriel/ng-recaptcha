@@ -1,11 +1,11 @@
 {
   "name": "ng2-recaptcha",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Angular 2 component for Google reCAPTCHA",
   "scripts": {
     "transpile": "./node_modules/.bin/ngc -p ./tsconfig.json",
     "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map|metadata.json)\" \"./ng2-recaptcha.*+(js|d.ts|js.map|metadata.json)\" factories",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint:prod": "./node_modules/.bin/tslint --project ./tsconfig.json --type-check",
     "lint": "npm run lint:prod -- --force",
     "compile:prod": "npm run clean && npm run lint:prod && npm run transpile",
