@@ -12,35 +12,34 @@ export const RECAPTCHA_LANGUAGE = new OpaqueToken('recaptcha-language');
 @Injectable()
 export class RecaptchaLoaderService {
   /** @internal */
-  private static _ready: BehaviorSubject<ReCaptchaV2.ReCaptcha>;
+  private static ready: BehaviorSubject<ReCaptchaV2.ReCaptcha>;
 
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
 
   /** @internal */
-  private _language: string;
+  private language: string;
 
   constructor( @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string) {
-    this._language = language;
-    this._init();
-    this.ready = RecaptchaLoaderService._ready.asObservable();
+    this.language = language;
+    this.init();
+    this.ready = RecaptchaLoaderService.ready.asObservable();
   }
 
   /** @internal */
-  private _init() {
-    if (RecaptchaLoaderService._ready) {
+  private init() {
+    if (RecaptchaLoaderService.ready) {
       return;
     }
     window.ng2recaptchaloaded = () => {
-      RecaptchaLoaderService._ready.next(grecaptcha);
+      RecaptchaLoaderService.ready.next(grecaptcha);
     };
-    RecaptchaLoaderService._ready = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
-    let head = <HTMLHeadElement> document.head;
-    let script = <HTMLScriptElement> document.createElement('script');
+    RecaptchaLoaderService.ready = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
+    const script = document.createElement('script') as HTMLScriptElement;
     script.innerHTML = '';
-    let langParam = this._language ? '&hl=' + this._language : '';
+    const langParam = this.language ? '&hl=' + this.language : '';
     script.src = `https://www.google.com/recaptcha/api.js?render=explicit&onload=ng2recaptchaloaded${langParam}`;
     script.async = true;
     script.defer = true;
-    head.appendChild(script);
+    document.head.appendChild(script);
   }
 }

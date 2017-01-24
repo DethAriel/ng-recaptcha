@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   NgZone,
@@ -34,19 +33,19 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   /** @internal */
   private widget: number;
   /** @internal */
-  private _grecaptcha: ReCaptchaV2.ReCaptcha;
+  private grecaptcha: ReCaptchaV2.ReCaptcha;
 
   constructor(
-    private _el: ElementRef,
-    private _loader: RecaptchaLoaderService,
-    private _zone: NgZone
+    private loader: RecaptchaLoaderService,
+    private zone: NgZone,
   ) {
   }
+
   public ngAfterViewInit() {
-    this.subscription = this._loader.ready.subscribe(grecaptcha => {
+    this.subscription = this.loader.ready.subscribe((grecaptcha: ReCaptchaV2.ReCaptcha) => {
       if (grecaptcha != null) {
-        this._grecaptcha = grecaptcha;
-        this._renderRecaptcha();
+        this.grecaptcha = grecaptcha;
+        this.renderRecaptcha();
       }
     });
   }
@@ -57,7 +56,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   public reset() {
     if (this.widget != null) {
-      this._grecaptcha.reset(this.widget);
+      this.grecaptcha.reset(this.widget);
       this.resolved.emit(null);
     }
   }
@@ -68,13 +67,13 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   /** @internal */
-  private _renderRecaptcha() {
-    this.widget = this._grecaptcha.render(this.id, {
+  private renderRecaptcha() {
+    this.widget = this.grecaptcha.render(this.id, {
       callback: (response: string) => {
-        this._zone.run(() => this.captchaReponseCallback(response));
+        this.zone.run(() => this.captchaReponseCallback(response));
       },
       'expired-callback': () => {
-        this._zone.run(() => this.reset());
+        this.zone.run(() => this.reset());
       },
       sitekey: this.siteKey,
       size: this.size,

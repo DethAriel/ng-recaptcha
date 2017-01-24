@@ -18,7 +18,9 @@
       true,
       "as-needed"
     ],
-    "ordered-imports": true,
+    "ordered-imports": [
+      true
+    ],
     "quotemark": [
       true,
       "single"
