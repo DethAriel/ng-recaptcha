@@ -5,6 +5,7 @@
   "scripts": {
     "transpile": "./node_modules/.bin/ngc -p ./tsconfig.json",
     "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map|metadata.json)\" \"./ng2-recaptcha.*+(js|d.ts|js.map|metadata.json)\" factories",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "lint:prod": "./node_modules/.bin/tslint --project ./tsconfig.json --type-check",
     "lint": "npm run lint:prod -- --force",
     "compile:prod": "npm run clean && npm run lint:prod && npm run transpile",
@@ -40,12 +41,15 @@
     "@angular/forms": "^2.2.0",
     "@types/core-js": "^0.9.35",
     "@types/grecaptcha": "^2.0.31",
+    "angular-precommit": "^1.0.3",
     "codelyzer": "^2.0.0-beta.4",
+    "conventional-changelog-cli": "^1.2.0",
     "del-cli": "^0.2.1",
     "husky": "^0.13.1",
     "rxjs": "^5.0.0-beta.12",
     "tslint": "^4.3.1",
-    "typescript": "^2.1.5"
+    "typescript": "^2.1.5",
+    "zone.js": "^0.6.26"
   },
   "homepage": "https://github.com/DethAriel/ng2-recaptcha#readme"
 }
