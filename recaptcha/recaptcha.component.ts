@@ -56,8 +56,13 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   public reset() {
     if (this.widget != null) {
-      this.grecaptcha.reset(this.widget);
-      this.resolved.emit(null);
+      if (this.grecaptcha.getResponse(this.widget)) {
+        // Only reset the captcha and emit an event in case if something would actually change.
+        // That way we do not trigger "touching" of the control if someone does a "reset"
+        // on a non-resolved captcha.
+        this.grecaptcha.reset(this.widget);
+        this.resolved.emit(null);
+      }
     }
   }
 
