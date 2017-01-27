@@ -20,25 +20,24 @@
     "url": "git+https://github.com/DethAriel/ng2-recaptcha"
   },
   "keywords": [
+    "angular",
     "angular2",
     "recaptcha",
+    "angular-recaptcha",
+    "angular2-recaptcha",
     "ng2-recaptcha"
   ],
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^2.2.0",
-    "@angular/core": "^2.2.0",
-    "@angular/forms": "^2.2.0",
-    "rxjs": "^5.0.0-beta.12",
-    "zone.js": "^0.6.26"
+    "@angular/core": "^2.0.0"
   },
   "devDependencies": {
-    "@angular/common": "^2.2.0",
-    "@angular/compiler": "^2.2.0",
-    "@angular/compiler-cli": "^2.2.0",
-    "@angular/core": "^2.2.0",
-    "@angular/forms": "^2.2.0",
+    "@angular/common": "^2.4.5",
+    "@angular/compiler": "^2.4.5",
+    "@angular/compiler-cli": "^2.4.5",
+    "@angular/core": "^2.4.5",
+    "@angular/forms": "^2.4.5",
     "@types/core-js": "^0.9.35",
     "@types/grecaptcha": "^2.0.31",
     "angular-precommit": "^1.0.3",
@@ -46,10 +45,10 @@
     "conventional-changelog-cli": "^1.2.0",
     "del-cli": "^0.2.1",
     "husky": "^0.13.1",
-    "rxjs": "^5.0.0-beta.12",
-    "tslint": "^4.3.1",
+    "rxjs": "^5.0.3",
+    "tslint": "^4.4.2",
     "typescript": "^2.1.5",
-    "zone.js": "^0.6.26"
+    "zone.js": "^0.7.6"
   },
   "homepage": "https://github.com/DethAriel/ng2-recaptcha#readme"
 }
