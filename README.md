@@ -4,7 +4,6 @@
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng2-recaptcha/master/LICENSE)
 [![Build Status](https://travis-ci.org/DethAriel/ng2-recaptcha.svg?branch=master)](https://travis-ci.org/DethAriel/ng2-recaptcha)
-[![devDependency Status](https://david-dm.org/dethariel/ng2-recaptcha/dev-status.svg)](https://david-dm.org/dethariel/ng2-recaptcha?type=dev)
 
 A simple, configurable, easy-to-start component for handling reCAPTCHA.
 
