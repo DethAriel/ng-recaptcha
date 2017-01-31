@@ -1,3 +1,13 @@
+<a name="1.5.2"></a>
+## [1.5.2](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.1...v1.5.2) (2017-01-31)
+
+
+### Bug Fixes
+
+* **component:** reset the captcha when the component is destroyed ([e1441c8](https://github.com/DethAriel/ng2-recaptcha/commit/e1441c8)), closes [#10](https://github.com/DethAriel/ng2-recaptcha/issues/10)
+
+
+
 <a name="1.5.1"></a>
 ## [1.5.1](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.0...v1.5.1) (2017-01-27)
 
