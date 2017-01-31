@@ -51,16 +51,20 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy() {
+    // reset the captcha to ensure it does not leave anything behind
+    // after the component is no longer needed
+    this.reset();
     this.subscription.unsubscribe();
   }
 
   public reset() {
     if (this.widget != null) {
+      this.grecaptcha.reset(this.widget);
+
       if (this.grecaptcha.getResponse(this.widget)) {
-        // Only reset the captcha and emit an event in case if something would actually change.
+        // Only emit an event in case if something would actually change.
         // That way we do not trigger "touching" of the control if someone does a "reset"
         // on a non-resolved captcha.
-        this.grecaptcha.reset(this.widget);
         this.resolved.emit(null);
       }
     }
