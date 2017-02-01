@@ -59,15 +59,20 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   public reset() {
     if (this.widget != null) {
-      this.grecaptcha.reset(this.widget);
-
       if (this.grecaptcha.getResponse(this.widget)) {
         // Only emit an event in case if something would actually change.
         // That way we do not trigger "touching" of the control if someone does a "reset"
         // on a non-resolved captcha.
         this.resolved.emit(null);
       }
+
+      this.grecaptcha.reset(this.widget);
     }
+  }
+
+  /** @internal */
+  private expired() {
+    this.resolved.emit(null);
   }
 
   /** @internal */
@@ -82,7 +87,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
         this.zone.run(() => this.captchaReponseCallback(response));
       },
       'expired-callback': () => {
-        this.zone.run(() => this.reset());
+        this.zone.run(() => this.expired());
       },
       sitekey: this.siteKey,
       size: this.size,
