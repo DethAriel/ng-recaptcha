@@ -1,3 +1,13 @@
+<a name="1.5.3"></a>
+## [1.5.3](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.2...v1.5.3) (2017-02-01)
+
+
+### Bug Fixes
+
+* **component:** emit `resolved(null)` event when recaptcha expires ([491d99a](https://github.com/DethAriel/ng2-recaptcha/commit/491d99a)), closes [#11](https://github.com/DethAriel/ng2-recaptcha/issues/11)
+
+
+
 <a name="1.5.2"></a>
 ## [1.5.2](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.1...v1.5.2) (2017-01-31)
 
