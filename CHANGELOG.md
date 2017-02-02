@@ -1,3 +1,13 @@
+<a name="1.5.4"></a>
+## [1.5.4](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.3...v1.5.4) (2017-02-02)
+
+
+### Bug Fixes
+
+* **component:** correctly reset captcha during `ngOnDestroy` ([b31d57f](https://github.com/DethAriel/ng2-recaptcha/commit/b31d57f)), closes [#12](https://github.com/DethAriel/ng2-recaptcha/issues/12)
+
+
+
 <a name="1.5.3"></a>
 ## [1.5.3](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.2...v1.5.3) (2017-02-01)
 
