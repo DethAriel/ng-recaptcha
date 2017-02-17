@@ -29,6 +29,9 @@
   ],
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
+  "optionalDependencies": {
+    "@types/grecaptcha": "^2.0.30"
+  },
   "peerDependencies": {
     "@angular/core": "^2.0.0"
   },

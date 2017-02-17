@@ -14,18 +14,6 @@ The easiest way is to install trough [npm](https://www.npmjs.com/package/ng2-rec
 npm i ng2-recaptcha --save
 ```
 
-In order to take advantage of type-checking system you should also install `grecaptcha` typings:
-
-```
-typings install dt~grecaptcha --save --global
-```
-
-Or, if you're using TypeScript 2 or `angular-cli`:
-
-```
-npm install @types/grecaptcha --save-dev
-```
-
 ## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng2-recaptcha/basic)
 
 To start with, you need to add one of the `Recaptcha` modules (more on that [later](#modules)):
