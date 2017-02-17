@@ -8,8 +8,6 @@ typings.json
 # TypeScript-related files
 *.ts
 !*.d.ts
-/recaptcha/**/*.ts
-!/recaptcha/**/*.d.ts
 tsconfig*.json
 tslint.json
 ng2-lint.json
@@ -18,6 +16,7 @@ ng2-lint.json
 *.js.map
 
 # Other
+CHANGELOG.md
 .travis.yml
 .editorconfig
 
