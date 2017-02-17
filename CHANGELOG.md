@@ -1,3 +1,13 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.4...v1.6.0) (2017-02-17)
+
+
+### Features
+
+* **package management:** add `[@types](https://github.com/types)/grecaptcha` as optional dependency ([85fbfba](https://github.com/DethAriel/ng2-recaptcha/commit/85fbfba))
+
+
+
 <a name="1.5.4"></a>
 ## [1.5.4](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.3...v1.5.4) (2017-02-02)
 
