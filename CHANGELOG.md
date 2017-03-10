@@ -1,3 +1,11 @@
+<a name="1.6.1"></a>
+## [1.6.1](https://github.com/DethAriel/ng2-recaptcha/compare/v1.6.0...v1.6.1) (2017-03-10)
+
+
+### Enhancements
+
+* **package:** expand wildcard exports to better support Google Closure Compiler ([8dd1a59](https://github.com/DethAriel/ng2-recaptcha/commit/8dd1a59))
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/DethAriel/ng2-recaptcha/compare/v1.5.4...v1.6.0) (2017-02-17)
 

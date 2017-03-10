@@ -3,6 +3,7 @@
 
 # compiled sources
 *.js
+*.d.ts
 
 # Angular AoT output
 *.metadata.json
