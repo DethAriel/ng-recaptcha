@@ -1,4 +1,4 @@
-# Angular 2 component for Google reCAPTCHA
+# Angular component for Google reCAPTCHA
 
 ## ng2-recaptcha [![npm version](https://badge.fury.io/js/ng2-recaptcha.svg)](http://badge.fury.io/js/ng2-recaptcha)
 
@@ -16,7 +16,7 @@ npm i ng2-recaptcha --save
 
 ## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/basic)
 
-To start with, you need to add one of the `Recaptcha` modules (more on that [later](#modules)):
+To start with, you need to import the `RecaptchaModule` (more on that [later](#modules)):
 
 ```typescript
 // app.module.ts
@@ -65,12 +65,15 @@ There are two modules available for you:
 
 ```typescript
 import { RecaptchaModule } from 'ng2-recaptcha';
-import { RecaptchaNoFormsModule } from 'ng2-recaptcha/ng2-recaptcha.noforms';
+import { RecaptchaFormsModule } from 'ng2-recaptcha/forms';
 ```
 
-The difference between them consists in dependencies - `RecaptchaModule` depends on
-`@angular/forms`, while `RecaptchaNoFormsModule` does not. If you do not rely on
-Angular 2 forms in your project, you should use the "no-forms" module version, as
+If you want your `<recaptcha>` element to work correctly with `[(ngModel)]` directive,
+you need to import the `RecaptchaFormsModule` into your application module (pretty much
+like with Angular own `'@angular/forms'` module).
+
+If you do not rely on
+Angular forms in your project, you should use the "no-forms" module version, as
 it does not require the `@angular/forms` package to be bundled with your code.
 
 ## Options
@@ -102,18 +105,20 @@ validation failed, and you need the user to re-enter the captcha.
 
 ## <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/language)
 
-`<recaptcha>` supports various languages. But this settings is global, and cannot be set
-on a per-captcha basis. This can be overridden by providing your own instance of
-`RecaptchaLoaderService` for a particular module:
+`<recaptcha>` supports various languages. By default recaptcha will guess the user's language itself
+(which is beyond the scope of this lib).
+But you can override this behavior and provide a specific language to use.
+The language setting is global, though, and cannot be set on a per-captcha basis.
+It can be provided like this:
 
 ```typescript
-import { RecaptchaLoaderService } from 'ng2-recaptcha';
+import { RECAPTCHA_LANGUAGE } from 'ng2-recaptcha';
 
 @NgModule({
   providers: [
     {
-      provide: RecaptchaLoaderService,
-      useValue: new RecaptchaLoaderService("fr"), // use French language
+      provide: RECAPTCHA_LANGUAGE,
+      useValue: 'fr', // use French language
     },
   ],
 }) export class MyModule { }
@@ -168,8 +173,8 @@ export class PreloadedRecaptchaAPIService {
 
 ## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
 
-It's very easy to put `recaptcha` in an Angular2 form and have it `require`d - just
-add the `required` attribute to the `<recaptcha>` element
+It's very easy to put `recaptcha` in an Angular form and have it `require`d - just
+add the `required` attribute to the `<recaptcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng2-recaptcha/forms'`!
 
 ```typescript
 @Component({

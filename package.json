@@ -4,7 +4,7 @@
   "description": "Angular 2 component for Google reCAPTCHA",
   "scripts": {
     "transpile": "./node_modules/.bin/ngc -p ./tsconfig.json",
-    "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map|metadata.json)\" \"./ng2-recaptcha.*+(js|d.ts|js.map|metadata.json)\" factories",
+    "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map|metadata.json)\" \"./index.*+(js|d.ts|js.map|metadata.json)\" \"./forms.*+(js|d.ts|js.map|metadata.json)\" factories",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint:prod": "./node_modules/.bin/tslint --project ./tsconfig.json --type-check",
     "lint": "npm run lint:prod -- --force",
@@ -13,8 +13,8 @@
     "pub": "npm run compile:prod && npm publish",
     "prepush": "npm run lint:prod"
   },
-  "main": "ng2-recaptcha.js",
-  "typings": "ng2-recaptcha.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DethAriel/ng2-recaptcha"
