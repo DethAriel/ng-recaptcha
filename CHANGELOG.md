@@ -1,3 +1,19 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/DethAriel/ng2-recaptcha/compare/v1.6.1...v1.7.0) (2017-03-13)
+
+
+### Bug Fixes
+
+* **component:** handle id input parameter correctly ([b578fe5](https://github.com/DethAriel/ng2-recaptcha/commit/b578fe5))
+
+
+### Features
+
+* **component:** add `exportAs` annotation ([3e2e217](https://github.com/DethAriel/ng2-recaptcha/commit/3e2e217))
+* **component:** add support for invisible reCAPTCHA ([c19489d](https://github.com/DethAriel/ng2-recaptcha/commit/c19489d)), closes [#18](https://github.com/DethAriel/ng2-recaptcha/issues/18)
+
+
+
 <a name="1.6.1"></a>
 ## [1.6.1](https://github.com/DethAriel/ng2-recaptcha/compare/v1.6.0...v1.6.1) (2017-03-10)
 
