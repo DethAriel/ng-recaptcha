@@ -15,6 +15,7 @@ import { RecaptchaLoaderService } from './recaptcha-loader.service';
 let nextId = 0;
 
 @Component({
+  exportAs: 'reCaptcha',
   selector: 'recaptcha',
   template: ``,
 })
