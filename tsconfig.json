@@ -10,7 +10,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "noLib": false,
+    "lib": [ "es2015", "dom" ],
     "stripInternal": true
   },
   "exclude": [
