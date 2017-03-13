@@ -16,7 +16,7 @@ let nextId = 0;
 
 @Component({
   exportAs: 'reCaptcha',
-  selector: 'recaptcha',
+  selector: 're-captcha',
   template: ``,
 })
 export class RecaptchaComponent implements AfterViewInit, OnDestroy {

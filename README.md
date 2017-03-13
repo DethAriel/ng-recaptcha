@@ -43,7 +43,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `<recaptcha (resolved)="resolved($event)" siteKey="YOUR_SITE_KEY"></recaptcha>`,
+    template: `<re-captcha (resolved)="resolved($event)" siteKey="YOUR_SITE_KEY"></re-captcha>`,
 }) export class MyApp {
     resolved(captchaResponse: string) {
         console.log(`Resolved captcha with response ${captchaResponse}:`);
@@ -105,7 +105,7 @@ validation failed, and you need the user to re-enter the captcha.
 
 ## <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/language)
 
-`<recaptcha>` supports various languages. By default recaptcha will guess the user's language itself
+`<re-captcha>` supports various languages. By default recaptcha will guess the user's language itself
 (which is beyond the scope of this lib).
 But you can override this behavior and provide a specific language to use.
 The language setting is global, though, and cannot be set on a per-captcha basis.
@@ -173,8 +173,8 @@ export class PreloadedRecaptchaAPIService {
 
 ## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
 
-It's very easy to put `recaptcha` in an Angular form and have it `require`d - just
-add the `required` attribute to the `<recaptcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng-recaptcha/forms'`!
+It's very easy to put `<re-captcha>` in an Angular form and have it `require`d - just
+add the `required` attribute to the `<re-captcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng-recaptcha/forms'`!
 
 ```typescript
 @Component({
@@ -199,13 +199,13 @@ Working with [invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/
 First, you need to provide the right size:
 
 ```html
-<recaptcha size="invisible" ...></recaptcha>
+<re-captcha size="invisible" ...></re-captcha>
 ```
 
 You will also need to invoke the [`"execute()"`](https://developers.google.com/recaptcha/docs/invisible#programmatic_execute) method manually. This can be done by either obtaining a reference to `RecaptchaComponent` via `@ViewChild()`, or by using inline template reference:
 
 ```html
-<recaptcha #captchaRef="reCaptcha" ...></recaptcha>
+<re-captcha #captchaRef="reCaptcha" ...></re-captcha>
 ...
 <button (click)="captchaRef.execute()">Submit</button>
 ```
@@ -217,12 +217,12 @@ Normally you would only submit a form when recaptcha response has been received.
   selector: 'my-form',
   template: `
   <form>
-    <recaptcha
+    <re-captcha
       #captchaRef="reCaptcha"
       siteKey="YOUR_SITE_KEY"
       size="invisible"
       (resolved)="$event && submit($event)"
-    ></recaptcha>
+    ></re-captcha>
     <button (click)="captchaRef.execute()">Submit</button>
   </form>`,
 }) export class MyForm {

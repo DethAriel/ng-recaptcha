@@ -19,7 +19,8 @@ import { RecaptchaComponent } from './recaptcha.component';
       useExisting: forwardRef(() => RecaptchaValueAccessorDirective),
     },
   ],
-  selector: 'recaptcha',
+  // tslint:disable-next-line:directive-selector
+  selector: 're-captcha[formControlName],re-captcha[formControl],re-captcha[ngModel]',
 })
 export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
