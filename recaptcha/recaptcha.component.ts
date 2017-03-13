@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   EventEmitter,
+  HostBinding,
   Input,
   NgZone,
   OnDestroy,
@@ -15,10 +16,12 @@ let nextId = 0;
 
 @Component({
   selector: 'recaptcha',
-  template: `<div [id]="id"></div>`,
+  template: ``,
 })
 export class RecaptchaComponent implements AfterViewInit, OnDestroy {
-  @Input() public id = `ngrecaptcha-${nextId++}`;
+  @Input()
+  @HostBinding('attr.id')
+  public id = `ngrecaptcha-${nextId++}`;
 
   @Input() public siteKey: string;
   @Input() public theme: ReCaptchaV2.Theme;
