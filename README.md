@@ -14,7 +14,7 @@ The easiest way is to install trough [npm](https://www.npmjs.com/package/ng2-rec
 npm i ng2-recaptcha --save
 ```
 
-## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng2-recaptcha/basic)
+## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/basic)
 
 To start with, you need to add one of the `Recaptcha` modules (more on that [later](#modules)):
 
@@ -100,7 +100,7 @@ so I won't duplicate it here.
 * `reset`. Performs a manual captcha reset. This method might be useful if your form
 validation failed, and you need the user to re-enter the captcha.
 
-## <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng2-recaptcha/language)
+## <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/language)
 
 `<recaptcha>` supports various languages. But this settings is global, and cannot be set
 on a per-captcha basis. This can be overridden by providing your own instance of
@@ -121,7 +121,7 @@ import { RecaptchaLoaderService } from 'ng2-recaptcha';
 
 You can find the list of supported languages in [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/language).
 
-## <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng2-recaptcha/preload-api)
+## <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/preload-api)
 
 By default, the component assumes that the reCAPTCHA API loading will be handled
 by the `RecaptchaLoaderService`. However, you can override that by providing your
@@ -166,7 +166,7 @@ export class PreloadedRecaptchaAPIService {
 }) export class MyModule { }
 ```
 
-## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng2-recaptcha/forms)
+## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
 
 It's very easy to put `recaptcha` in an Angular2 form and have it `require`d - just
 add the `required` attribute to the `<recaptcha>` element
@@ -188,7 +188,7 @@ add the `required` attribute to the `<recaptcha>` element
 }
 ```
 
-## <a name="example-invisible"></a>Working with invisible reCAPTCHA [(see in action)](https://dethariel.github.io/ng2-recaptcha/invisible)
+## <a name="example-invisible"></a>Working with invisible reCAPTCHA [(see in action)](https://dethariel.github.io/ng-recaptcha/invisible)
 
 Working with [invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible) is almost the same as with regular one.
 First, you need to provide the right size:
