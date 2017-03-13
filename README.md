@@ -2,8 +2,8 @@
 
 ## ng2-recaptcha [![npm version](https://badge.fury.io/js/ng2-recaptcha.svg)](http://badge.fury.io/js/ng2-recaptcha)
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng2-recaptcha/master/LICENSE)
-[![Build Status](https://travis-ci.org/DethAriel/ng2-recaptcha.svg?branch=master)](https://travis-ci.org/DethAriel/ng2-recaptcha)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
+[![Build Status](https://travis-ci.org/DethAriel/ng-recaptcha.svg?branch=master)](https://travis-ci.org/DethAriel/ng-recaptcha)
 
 A simple, configurable, easy-to-start component for handling reCAPTCHA.
 
