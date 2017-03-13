@@ -1,6 +1,6 @@
 # Angular component for Google reCAPTCHA
 
-## ng2-recaptcha [![npm version](https://badge.fury.io/js/ng2-recaptcha.svg)](http://badge.fury.io/js/ng2-recaptcha)
+## ng-recaptcha [![npm version](https://badge.fury.io/js/ng-recaptcha.svg)](http://badge.fury.io/js/ng-recaptcha)
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
 [![Build Status](https://travis-ci.org/DethAriel/ng-recaptcha.svg?branch=master)](https://travis-ci.org/DethAriel/ng-recaptcha)
@@ -9,9 +9,9 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
 
 ## Installation
 
-The easiest way is to install trough [npm](https://www.npmjs.com/package/ng2-recaptcha):
+The easiest way is to install trough [npm](https://www.npmjs.com/package/ng-recaptcha):
 ```
-npm i ng2-recaptcha --save
+npm i ng-recaptcha --save
 ```
 
 ## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/basic)
@@ -20,7 +20,7 @@ To start with, you need to import the `RecaptchaModule` (more on that [later](#m
 
 ```typescript
 // app.module.ts
-import { RecaptchaModule } from 'ng2-recaptcha';
+import { RecaptchaModule } from 'ng-recaptcha';
 import { BrowserModule }  from '@angular/platform-browser';
 import { MyApp } from './app.component.ts';
 
@@ -64,8 +64,8 @@ platformBrowserDynamic().bootstrapModule(MyAppModule);
 There are two modules available for you:
 
 ```typescript
-import { RecaptchaModule } from 'ng2-recaptcha';
-import { RecaptchaFormsModule } from 'ng2-recaptcha/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 ```
 
 If you want your `<recaptcha>` element to work correctly with `[(ngModel)]` directive,
@@ -112,7 +112,7 @@ The language setting is global, though, and cannot be set on a per-captcha basis
 It can be provided like this:
 
 ```typescript
-import { RECAPTCHA_LANGUAGE } from 'ng2-recaptcha';
+import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 
 @NgModule({
   providers: [
@@ -149,7 +149,7 @@ The below code snippet is an example of how such a provider can be implemented.
 ```
 
 ```typescript
-import { RecaptchaLoaderService } from 'ng2-recaptcha';
+import { RecaptchaLoaderService } from 'ng-recaptcha';
 
 @Injectable()
 export class PreloadedRecaptchaAPIService {
@@ -174,7 +174,7 @@ export class PreloadedRecaptchaAPIService {
 ## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
 
 It's very easy to put `recaptcha` in an Angular form and have it `require`d - just
-add the `required` attribute to the `<recaptcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng2-recaptcha/forms'`!
+add the `required` attribute to the `<recaptcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng-recaptcha/forms'`!
 
 ```typescript
 @Component({

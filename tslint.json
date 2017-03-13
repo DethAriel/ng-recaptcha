@@ -1,7 +1,7 @@
 {
   "extends": [
     "tslint:latest",
-    "./ng2-lint.json"
+    "./ng-lint.json"
   ],
   "rules": {
     "interface-name": [

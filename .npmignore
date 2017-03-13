@@ -10,7 +10,7 @@ typings.json
 !*.d.ts
 tsconfig*.json
 tslint.json
-ng2-lint.json
+ng-lint.json
 
 # Debug files
 *.js.map

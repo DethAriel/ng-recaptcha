@@ -1,7 +1,7 @@
 {
-  "name": "ng2-recaptcha",
-  "version": "1.7.0",
-  "description": "Angular 2 component for Google reCAPTCHA",
+  "name": "ng-recaptcha",
+  "version": "2.0.0-beta1",
+  "description": "Angular component for Google reCAPTCHA",
   "scripts": {
     "transpile": "./node_modules/.bin/ngc -p ./tsconfig.json",
     "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map|metadata.json)\" \"./index.*+(js|d.ts|js.map|metadata.json)\" \"./forms.*+(js|d.ts|js.map|metadata.json)\" factories",
@@ -17,15 +17,13 @@
   "typings": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DethAriel/ng2-recaptcha"
+    "url": "git+https://github.com/DethAriel/ng-recaptcha"
   },
   "keywords": [
     "angular",
-    "angular2",
     "recaptcha",
     "angular-recaptcha",
-    "angular2-recaptcha",
-    "ng2-recaptcha"
+    "ng-recaptcha"
   ],
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
@@ -53,5 +51,5 @@
     "typescript": "^2.1.5",
     "zone.js": "^0.7.6"
   },
-  "homepage": "https://github.com/DethAriel/ng2-recaptcha#readme"
+  "homepage": "https://github.com/DethAriel/ng-recaptcha#readme"
 }
