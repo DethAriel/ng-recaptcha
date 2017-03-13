@@ -27,7 +27,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public siteKey: string;
   @Input() public theme: ReCaptchaV2.Theme;
   @Input() public type: ReCaptchaV2.Type;
-  @Input() public size: ReCaptchaV2.Size;
+  @Input() public size: ReCaptchaV2.Size | 'invisible';
   @Input() public tabIndex: number;
 
   @Output() public resolved = new EventEmitter<string>();
@@ -63,6 +63,21 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  /**
+   * Executes the invisible recaptcha.
+   * Does nothing if component's size is not set to "invisible".
+   */
+  public execute(): void {
+    if (this.size !== 'invisible') {
+      return;
+    }
+
+    if (this.widget != null) {
+      // tslint:disable-next-line:no-any
+      (this.grecaptcha as any).execute(this.widget);
+    }
+  }
+
   public reset() {
     if (this.widget != null) {
       if (this.grecaptcha.getResponse(this.widget)) {
@@ -96,7 +111,8 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
         this.zone.run(() => this.expired());
       },
       sitekey: this.siteKey,
-      size: this.size,
+      // tslint:disable-next-line:no-any
+      size: this.size as any,
       tabindex: this.tabIndex,
       theme: this.theme,
       type: this.type,

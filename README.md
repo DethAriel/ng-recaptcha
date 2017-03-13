@@ -187,3 +187,45 @@ add the `required` attribute to the `<recaptcha>` element
   formModel = new MyFormModel();
 }
 ```
+
+## <a name="example-invisible"></a>Working with invisible reCAPTCHA [(see in action)](https://dethariel.github.io/ng2-recaptcha/invisible)
+
+Working with [invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible) is almost the same as with regular one.
+First, you need to provide the right size:
+
+```html
+<recaptcha size="invisible" ...></recaptcha>
+```
+
+You will also need to invoke the [`"execute()"`](https://developers.google.com/recaptcha/docs/invisible#programmatic_execute) method manually. This can be done by either obtaining a reference to `RecaptchaComponent` via `@ViewChild()`, or by using inline template reference:
+
+```html
+<recaptcha #captchaRef="reCaptcha" ...></recaptcha>
+...
+<button (click)="captchaRef.execute()">Submit</button>
+```
+
+Normally you would only submit a form when recaptcha response has been received. This can be achieved by reacting to `(resolved)` event and invoking submit logic when the captcha response is truthy (this will not try to submit the form when recaptcha response has expired). A sample implementation would look like this:
+
+```typescript
+@Component({
+  selector: 'my-form',
+  template: `
+  <form>
+    <recaptcha
+      #captchaRef="reCaptcha"
+      siteKey="YOUR_SITE_KEY"
+      size="invisible"
+      (resolved)="$event && submit($event)"
+    ></recaptcha>
+    <button (click)="captchaRef.execute()">Submit</button>
+  </form>`,
+}) export class MyForm {
+  public submit(captchaResponse: string): void {
+    this.http.post({
+      captcha: captchaResponse,
+      /* ... */
+    });
+  }
+}
+```
