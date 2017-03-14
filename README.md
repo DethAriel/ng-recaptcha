@@ -16,7 +16,7 @@ The easiest way is to install trough [npm](https://www.npmjs.com/package/ng-reca
 npm i ng-recaptcha --save
 ```
 
-## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/basic)
+## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/)
 
 To start with, you need to import the `RecaptchaModule` (more on that [later](#modules)):
 
