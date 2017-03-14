@@ -18,7 +18,6 @@ This project was renamed from `ng2-recaptcha` to `ng-recaptcha` due to Angular n
    * [Input Options](#api-options)
    * [Events](#api-events)
    * [Methods](#api-methods)
-
 5. [Examples](#examples)
    * [Specifying a different language](#example-language)
    * [Loading the reCAPTCHA API by yourself](#example-preload-api)
