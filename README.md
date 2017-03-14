@@ -1,5 +1,7 @@
 # Angular component for Google reCAPTCHA
 
+**NOTICE** This project was renamed from `ng2-recaptcha` to `ng-recaptcha` due to Angular naming guidelines. Same happened to the `npm` package (old [ng2-recaptcha](https://www.npmjs.com/package/ng2-recaptcha) was deprecated in favor of new [ng-recaptcha](https://www.npmjs.com/package/ng-recaptcha))
+
 ## ng-recaptcha [![npm version](https://badge.fury.io/js/ng-recaptcha.svg)](http://badge.fury.io/js/ng-recaptcha)
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
