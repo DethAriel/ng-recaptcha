@@ -70,7 +70,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 ```
 
-If you want your `<recaptcha>` element to work correctly with `[(ngModel)]` directive,
+If you want your `<re-captcha>` element to work correctly with `[(ngModel)]` directive,
 you need to import the `RecaptchaFormsModule` into your application module (pretty much
 like with Angular own `'@angular/forms'` module).
 
@@ -183,12 +183,12 @@ add the `required` attribute to the `<re-captcha>` element. Do not forget to imp
   selector: 'my-form',
   template: `
   <form>
-    <recaptcha
+    <re-captcha
       [(ngModel)]="formModel.captcha"
       name="captcha"
       required
       siteKey="YOUR_SITE_KEY"
-    ></recaptcha>
+    ></re-captcha>
   </form>`,
 }) export class MyForm {
   formModel = new MyFormModel();
