@@ -1,3 +1,21 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v1.7.0...v2.0.0) (2017-03-14)
+
+
+### Features
+
+* **component:** change component and directive selectors ([58a01b4](https://github.com/DethAriel/ng-recaptcha/commit/58a01b4))
+* **module:** change the way recaptcha modules work ([6e13389](https://github.com/DethAriel/ng-recaptcha/commit/6e13389))
+
+
+### BREAKING CHANGES
+
+* component: component selector changed from `recaptcha` to `re-captcha`
+* module: module handling has changed.
+Users of `RecaptchaNoFormsModule` should instead use `import { RecaptchaModule } from 'ng-recaptcha'`. Users of v1 `RecaptchaModule` should also `import { RecaptchaFormsModule } from 'ng-recaptcha/forms'`. SystemJS users must also re-setup module "main" file to `index.js`
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/DethAriel/ng2-recaptcha/compare/v1.6.1...v1.7.0) (2017-03-13)
 
