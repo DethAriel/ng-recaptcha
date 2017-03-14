@@ -1,7 +1,5 @@
 # Angular component for Google reCAPTCHA
 
-**NOTICE** This project was renamed from `ng2-recaptcha` to `ng-recaptcha` due to Angular naming guidelines. Same happened to the `npm` package (old [ng2-recaptcha](https://www.npmjs.com/package/ng2-recaptcha) was deprecated in favor of new [ng-recaptcha](https://www.npmjs.com/package/ng-recaptcha))
-
 ## ng-recaptcha [![npm version](https://badge.fury.io/js/ng-recaptcha.svg)](http://badge.fury.io/js/ng-recaptcha)
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
@@ -9,14 +7,32 @@
 
 A simple, configurable, easy-to-start component for handling reCAPTCHA.
 
-## Installation
+## RENAME NOTICE
+This project was renamed from `ng2-recaptcha` to `ng-recaptcha` due to Angular naming guidelines. Same happened to the `npm` package (old [ng2-recaptcha](https://www.npmjs.com/package/ng2-recaptcha) was deprecated in favor of new [ng-recaptcha](https://www.npmjs.com/package/ng-recaptcha))
+
+## Table of contents
+1. [Installation](#installation)
+2. [Basic Usage](#example-basic)
+3. [Working with `@angular/forms`](#forms-ready)
+4. [API](#api)
+   * [Input Options](#api-options)
+   * [Events](#api-events)
+   * [Methods](#api-methods)
+
+5. [Examples](#examples)
+   * [Specifying a different language](#example-language)
+   * [Loading the reCAPTCHA API by yourself](#example-preload-api)
+   * [Usage with `required` in forms](#example-forms)
+   * [Working with invisible reCAPTCHA](#example-invisible)
+
+## <a name="installation"></a>Installation
 
 The easiest way is to install trough [npm](https://www.npmjs.com/package/ng-recaptcha):
 ```
 npm i ng-recaptcha --save
 ```
 
-## <a name="example-basic"></a>Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/)
+## <a name="example-basic"></a>Basic Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/)
 
 To start with, you need to import the `RecaptchaModule` (more on that [later](#modules)):
 
@@ -61,7 +77,7 @@ import { MyAppModule } from './app.module.ts';
 platformBrowserDynamic().bootstrapModule(MyAppModule);
 ```
 
-## <a name="modules"></a>Modules: "Forms"-ready and "No-forms"
+## <a name="forms-ready"></a>Working with `@angular/forms`
 
 There are two modules available for you:
 
@@ -78,7 +94,9 @@ If you do not rely on
 Angular forms in your project, you should use the "no-forms" module version, as
 it does not require the `@angular/forms` package to be bundled with your code.
 
-## Options
+## <a name="api"></a>API
+
+### <a name="api-options"></a>Input Options
 
 The component supports this options:
 
@@ -91,7 +109,7 @@ The component supports this options:
 They are all pretty well described in the [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/display),
 so I won't duplicate it here.
 
-## Events
+### <a name="api-events"></a>Events
 
 * `resolved(response: string)`. Occurs when the captcha resolution value changed.
   When user resolves captcha, use `response` parameter to send to the server for verification.
@@ -100,12 +118,14 @@ so I won't duplicate it here.
   If the captcha has expired prior to submitting its value to the server, the component
   will reset the captcha, and trigger the `resolved` event with `response === null`.
 
-## Methods
+### <a name="api-methods"></a>Methods
 
-* `reset`. Performs a manual captcha reset. This method might be useful if your form
+* `reset()`. Performs a manual captcha reset. This method might be useful if your form
 validation failed, and you need the user to re-enter the captcha.
+* `execute()`. Executes the invisible recaptcha. Does nothing if component's size is not set to "invisible". See [Invisible reCAPTCHA developers guide](https://developers.google.com/recaptcha/docs/invisible#js_api) for more information.
 
-## <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/language)
+## <a name="examples"></a>Examples
+### <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/language)
 
 `<re-captcha>` supports various languages. By default recaptcha will guess the user's language itself
 (which is beyond the scope of this lib).
@@ -128,7 +148,7 @@ import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 
 You can find the list of supported languages in [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/language).
 
-## <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/preload-api)
+### <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/preload-api)
 
 By default, the component assumes that the reCAPTCHA API loading will be handled
 by the `RecaptchaLoaderService`. However, you can override that by providing your
@@ -173,7 +193,7 @@ export class PreloadedRecaptchaAPIService {
 }) export class MyModule { }
 ```
 
-## <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
+### <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
 
 It's very easy to put `<re-captcha>` in an Angular form and have it `require`d - just
 add the `required` attribute to the `<re-captcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng-recaptcha/forms'`!
@@ -195,7 +215,7 @@ add the `required` attribute to the `<re-captcha>` element. Do not forget to imp
 }
 ```
 
-## <a name="example-invisible"></a>Working with invisible reCAPTCHA [(see in action)](https://dethariel.github.io/ng-recaptcha/invisible)
+### <a name="example-invisible"></a>Working with invisible reCAPTCHA [(see in action)](https://dethariel.github.io/ng-recaptcha/invisible)
 
 Working with [invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible) is almost the same as with regular one.
 First, you need to provide the right size:
