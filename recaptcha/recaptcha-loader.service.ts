@@ -11,7 +11,10 @@ export const RECAPTCHA_LANGUAGE = new OpaqueToken('recaptcha-language');
 
 @Injectable()
 export class RecaptchaLoaderService {
-  /** @internal */
+  /**
+   * @internal
+   * @nocollapse
+   */
   private static ready: BehaviorSubject<ReCaptchaV2.ReCaptcha>;
 
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
