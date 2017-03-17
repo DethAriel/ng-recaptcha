@@ -1,3 +1,18 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v2.0.0...v2.0.1) (2017-03-17)
+
+
+### Bug Fixes
+
+* **module:** Adding the value accessor directive to the forms barrel, which was missing. ([ad73e2e](https://github.com/DethAriel/ng-recaptcha/commit/ad73e2e))
+
+
+### Features
+
+* **misc:** Annotating a static field with `@nocollapse` to avoid issues with closure compiler in advanced mode. ([55e5932](https://github.com/DethAriel/ng-recaptcha/commit/55e5932))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v1.7.0...v2.0.0) (2017-03-14)
 
