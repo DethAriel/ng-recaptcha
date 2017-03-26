@@ -3,4 +3,4 @@ node_js:
   - "6"
 
 script:
-  - npm run compile:prod
+  - npm run build

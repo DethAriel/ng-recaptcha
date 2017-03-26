@@ -3,14 +3,13 @@
   "version": "2.0.1",
   "description": "Angular component for Google reCAPTCHA",
   "scripts": {
-    "transpile": "./node_modules/.bin/ngc -p ./tsconfig.json",
-    "clean": "./node_modules/.bin/del-cli \"./recaptcha/**/*.+(js|d.ts|js.map|metadata.json)\" \"./index.*+(js|d.ts|js.map|metadata.json)\" \"./forms.*+(js|d.ts|js.map|metadata.json)\" factories",
+    "transpile": "ngc -p ./tsconfig.json",
+    "clean": "del-cli '{recaptcha/,index,forms}*.{js,d.ts,js.map,metadata.json}' factories",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "lint:prod": "./node_modules/.bin/tslint --project ./tsconfig.json --type-check",
+    "lint:prod": "tslint --project ./tsconfig.json --type-check",
     "lint": "npm run lint:prod -- --force",
-    "compile:prod": "npm run clean && npm run lint:prod && npm run transpile",
-    "compile": "npm run clean && npm run lint && npm run transpile -- --sourceMap",
-    "pub": "npm run compile:prod && npm publish",
+    "build": "npm run clean && npm run lint:prod && npm run transpile",
+    "pub": "npm run build && npm publish",
     "prepush": "npm run lint:prod"
   },
   "main": "index.js",
@@ -28,7 +27,7 @@
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
   "optionalDependencies": {
-    "@types/grecaptcha": "^2.0.30"
+    "@types/grecaptcha": "^2.0.31"
   },
   "peerDependencies": {
     "@angular/core": "^2.0.0"
@@ -39,17 +38,17 @@
     "@angular/compiler-cli": "^2.4.5",
     "@angular/core": "^2.4.5",
     "@angular/forms": "^2.4.5",
-    "@types/core-js": "^0.9.35",
+    "@types/core-js": "^0.9.39",
     "@types/grecaptcha": "^2.0.31",
     "angular-precommit": "^1.0.3",
     "codelyzer": "^2.0.0-beta.4",
-    "conventional-changelog-cli": "^1.2.0",
+    "conventional-changelog-cli": "^1.3.1",
     "del-cli": "^0.2.1",
-    "husky": "^0.13.1",
     "rxjs": "^5.0.3",
-    "tslint": "^4.4.2",
-    "typescript": "^2.1.5",
     "zone.js": "^0.7.6"
+    "husky": "^0.13.3",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1",
   },
   "homepage": "https://github.com/DethAriel/ng-recaptcha#readme"
 }
