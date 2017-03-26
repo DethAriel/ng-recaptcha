@@ -1,0 +1,85 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+$example-border-color: rgb(63,81,181); 
+
+.example-container {
+    min-height: 100px;
+    margin: 20px 0 40px;
+    padding: 20px; 
+    border-radius: 20px; 
+    border: 5px dashed $example-border-color; 
+
+    .is-small-screen & {
+        padding: 10px;
+        border-radius: 5px;
+        border-width: 2px;
+    }
+}
+
+.button-dropdown.mdl-button {
+    height: auto;
+    text-transform: none;
+}
+
+.mdl-menu__item.menu-link-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+pre.prettyprint {
+    overflow: auto;
+}
+
+.mdl-tabs__tab code {
+    text-transform: none;
+}
+
+
+.mdl-tabs .mdl-tabs__tab-bar {
+    justify-content: flex-start;
+}
+
+.code-samples {
+    &.mdl-tabs .mdl-tabs__tab-bar {
+        padding: 8px;
+        flex-wrap: wrap;
+        height: auto;
+        background: rgb(63,81,181);
+
+        .mdl-tabs__tab {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 5px;
+            margin: 2px 5px;
+
+            // button-like styles
+            background: rgb(68,138,255);
+            color: rgb(255,255,255);
+
+            &.is-active {
+                background: #fff;
+
+                &:after {
+                    height: 0;
+                }
+            }
+        }
+    }
+}
+
+.is-small-screen {
+    .mdl-layout__tab-bar-button {
+        width: 30px;
+    }
+    
+    .mdl-layout__tab-bar {
+        padding: 0 30px;
+    }
+
+    .mdl-layout__header-row {
+        padding-left: 16px;
+    }
+}

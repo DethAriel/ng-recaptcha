@@ -10,14 +10,10 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "lib": [ "es2015", "dom" ],
+    "noLib": false,
     "stripInternal": true
   },
   "exclude": [
-    "node_modules",
-    "demo"
-  ],
-  "angularCompilerOptions": {
-    "genDir": "factories"
-  }
+    "node_modules"
+  ]
 }

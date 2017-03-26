@@ -1,9 +1,8 @@
 # Editor settings
 .vscode/
 
-# typings
-typings/
-typings.json
+# demo sources
+demo/
 
 # TypeScript-related files
 *.ts
