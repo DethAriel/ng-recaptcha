@@ -1,6 +1,9 @@
 # Editor settings
 .vscode/
 
+# OS files
+.DS_Store
+
 # compiled sources
 *.js
 *.d.ts
