@@ -3,9 +3,10 @@
   "version": "2.0.2",
   "description": "Angular component for Google reCAPTCHA",
   "scripts": {
-    "demo": "cd demo && bundle exec jekyll serve",
+    "demo": "npm run demo:install && npm run demo:serve",
+    "demo:serve": "cd demo && bundle exec jekyll serve",
     "demo:build": "cd demo && bundle exec jekyll build",
-    "demo:install": "npm run transpile && cd demo/examples && npm install && cd ../.. && npm run clean",
+    "demo:install": "npm run transpile && cd demo/examples && npm run latest && cd ../.. && npm run clean",
     "demo:publish": "npm run demo:build && gh-pages -d demo/_site/",
     "transpile": "ngc -p ./tsconfig.json",
     "clean": "del-cli './{recaptcha/,index,forms}*.{js,d.ts,js.map,metadata.json}' factories",

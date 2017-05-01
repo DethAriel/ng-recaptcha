@@ -29,6 +29,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public type: ReCaptchaV2.Type;
   @Input() public size: ReCaptchaV2.Size | 'invisible';
   @Input() public tabIndex: number;
+  @Input() public badge: 'bottomright' | 'bottomleft' | 'inline' = 'bottomright';
 
   @Output() public resolved = new EventEmitter<string>();
 
@@ -104,6 +105,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   /** @internal */
   private renderRecaptcha() {
     this.widget = this.grecaptcha.render(this.id, {
+      badge: this.badge,
       callback: (response: string) => {
         this.zone.run(() => this.captchaReponseCallback(response));
       },
@@ -116,6 +118,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
       tabindex: this.tabIndex,
       theme: this.theme,
       type: this.type,
-    });
+    // tslint:disable-next-line:no-any
+    } as any);
   }
 }
