@@ -20,6 +20,6 @@
     "demo"
   ],
   "angularCompilerOptions": {
-    "genDir": "factories"
+    "skipTemplateCodegen": true
   }
 }

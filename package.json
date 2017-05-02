@@ -9,7 +9,7 @@
     "demo:install": "npm run transpile && cd demo/examples && npm run latest && cd ../.. && npm run clean",
     "demo:publish": "npm run demo:build && gh-pages -d demo/_site/",
     "transpile": "ngc -p ./tsconfig.json",
-    "clean": "del-cli './{recaptcha/,index,forms}*.{js,d.ts,js.map,metadata.json}' factories",
+    "clean": "del-cli './{recaptcha/,index,forms}*.{js,d.ts,js.map,metadata.json}'",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint:prod": "tslint --project ./tsconfig.json --type-check",
     "lint": "npm run lint:prod -- --force",

@@ -18,6 +18,3 @@ ng-lint.json
 CHANGELOG.md
 .travis.yml
 .editorconfig
-
-# Angular AoT output
-factories/

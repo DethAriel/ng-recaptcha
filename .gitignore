@@ -10,7 +10,6 @@
 
 # Angular AoT output
 *.metadata.json
-factories/
 
 # Logs
 logs
