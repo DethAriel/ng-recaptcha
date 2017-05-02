@@ -27,9 +27,9 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public siteKey: string;
   @Input() public theme: ReCaptchaV2.Theme;
   @Input() public type: ReCaptchaV2.Type;
-  @Input() public size: ReCaptchaV2.Size | 'invisible';
+  @Input() public size: ReCaptchaV2.Size;
   @Input() public tabIndex: number;
-  @Input() public badge: 'bottomright' | 'bottomleft' | 'inline' = 'bottomright';
+  @Input() public badge: ReCaptchaV2.Badge;
 
   @Output() public resolved = new EventEmitter<string>();
 
@@ -72,8 +72,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
 
     if (this.widget != null) {
-      // tslint:disable-next-line:no-any
-      (this.grecaptcha as any).execute(this.widget);
+      this.grecaptcha.execute(this.widget);
     }
   }
 
@@ -118,12 +117,10 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
         this.zone.run(() => this.expired());
       },
       sitekey: this.siteKey,
-      // tslint:disable-next-line:no-any
-      size: this.size as any,
+      size: this.size,
       tabindex: this.tabIndex,
       theme: this.theme,
       type: this.type,
-    // tslint:disable-next-line:no-any
-    } as any);
+    });
   }
 }
