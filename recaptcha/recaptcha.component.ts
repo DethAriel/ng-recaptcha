@@ -58,9 +58,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   public ngOnDestroy() {
     // reset the captcha to ensure it does not leave anything behind
     // after the component is no longer needed
-    if (this.widget != null) {
-      this.grecaptcha.reset(this.widget);
-    }
+    this.grecaptchaReset();
     this.subscription.unsubscribe();
   }
 
@@ -88,7 +86,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
         this.resolved.emit(null);
       }
 
-      this.grecaptcha.reset(this.widget);
+      this.grecaptchaReset();
     }
   }
 
@@ -100,6 +98,13 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   /** @internal */
   private captchaReponseCallback(response: string) {
     this.resolved.emit(response);
+  }
+
+  /** @internal */
+  private grecaptchaReset() {
+    if (this.widget != null) {
+      this.zone.runOutsideAngular(() => this.grecaptcha.reset(this.widget));
+    }
   }
 
   /** @internal */
