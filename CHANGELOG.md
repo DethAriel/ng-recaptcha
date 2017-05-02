@@ -1,3 +1,13 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/DethAriel/ng-recaptcha/compare/v2.1.0...v2.1.1) (2017-05-02)
+
+
+### Bug Fixes
+
+* **component:** unblock protractor tests after `<re-captcha>` destruction ([a5f2fe9](https://github.com/DethAriel/ng-recaptcha/commit/a5f2fe9))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/DethAriel/ng-recaptcha/compare/v2.0.2...v2.1.0) (2017-05-01)
 
