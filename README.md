@@ -104,8 +104,9 @@ The component supports this options:
 * `type`
 * `size`
 * `tabIndex`
+* `badge`
 
-They are all pretty well described in the [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/display),
+They are all pretty well described either in the [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/display), or in the [invisible reCAPTCHA docs](https://developers.google.com/recaptcha/docs/invisible),
 so I won't duplicate it here.
 
 ### <a name="api-events"></a>Events
