@@ -59,7 +59,9 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     // reset the captcha to ensure it does not leave anything behind
     // after the component is no longer needed
     this.grecaptchaReset();
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   /**
