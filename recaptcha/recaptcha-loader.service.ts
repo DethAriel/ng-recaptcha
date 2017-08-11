@@ -22,7 +22,7 @@ export class RecaptchaLoaderService {
   /** @internal */
   private language: string;
 
-  constructor( @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string) {
+  constructor(@Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string) {
     this.language = language;
     this.init();
     this.ready = RecaptchaLoaderService.ready.asObservable();
