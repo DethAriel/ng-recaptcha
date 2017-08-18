@@ -3,14 +3,17 @@ import {
   Component,
   EventEmitter,
   HostBinding,
+  Inject,
   Input,
   NgZone,
   OnDestroy,
+  Optional,
   Output,
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { RecaptchaLoaderService } from './recaptcha-loader.service';
+import { RECAPTCHA_SETTINGS, RecaptchaSettings } from './recaptcha-settings';
 
 let nextId = 0;
 
@@ -43,7 +46,15 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   constructor(
     private loader: RecaptchaLoaderService,
     private zone: NgZone,
+    @Optional() @Inject(RECAPTCHA_SETTINGS) settings?: RecaptchaSettings,
   ) {
+    if (settings) {
+      this.siteKey = settings.siteKey;
+      this.theme = settings.theme;
+      this.type = settings.type;
+      this.size = settings.size;
+      this.badge = settings.badge;
+    }
   }
 
   public ngAfterViewInit() {
