@@ -7,9 +7,6 @@
 
 A simple, configurable, easy-to-start component for handling reCAPTCHA.
 
-## RENAME NOTICE
-This project was renamed from `ng2-recaptcha` to `ng-recaptcha` due to Angular naming guidelines. Same happened to the `npm` package (old [ng2-recaptcha](https://www.npmjs.com/package/ng2-recaptcha) was deprecated in favor of new [ng-recaptcha](https://www.npmjs.com/package/ng-recaptcha))
-
 ## Table of contents
 1. [Installation](#installation)
 2. [Basic Usage](#example-basic)
