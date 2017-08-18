@@ -1,3 +1,18 @@
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/DethAriel/ng-recaptcha/compare/v2.1.1...v2.2.0) (2017-08-18)
+
+
+### Bug Fixes
+
+* **component:** ensure that component is destroyed safely ([1e51d56](https://github.com/DethAriel/ng-recaptcha/commit/1e51d56)), closes [#46](https://github.com/DethAriel/ng-recaptcha/issues/46)
+
+
+### Features
+
+* **component:** add the ability to specify component props globally ([8a7b22d](https://github.com/DethAriel/ng-recaptcha/commit/8a7b22d)), closes [#45](https://github.com/DethAriel/ng-recaptcha/issues/45)
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/DethAriel/ng-recaptcha/compare/v2.1.0...v2.1.1) (2017-05-02)
 

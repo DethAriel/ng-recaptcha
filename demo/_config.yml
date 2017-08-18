@@ -2,7 +2,7 @@
 title: ng-recaptcha
 description: "Angular component for Google reCAPTCHA"
 baseurl: "/ng-recaptcha" # the subpath of your site, e.g. /blog
-cacheBusterVer: "2.1.1"
+cacheBusterVer: "2.2.0"
 exclude: [
   'Gemfile',
   'Gemfile.lock',
@@ -15,7 +15,7 @@ exclude: [
 ]
 
 # SystemJS mapping for ng2-recaptcha component
-recaptchaMapping: "https://npmcdn.com/ng-recaptcha@2.1.1" # stick to a particular version to avoid caching confusion
+recaptchaMapping: "https://npmcdn.com/ng-recaptcha@2.2.0" # stick to a particular version to avoid caching confusion
 # <DEBUG> Uncomment next line for debugging session
 # recaptchaMapping: "./examples/node_modules/ng-recaptcha"
 
