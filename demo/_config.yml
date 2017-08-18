@@ -6,6 +6,7 @@ cacheBusterVer: "2.1.1"
 exclude: [
   'Gemfile',
   'Gemfile.lock',
+# <DEBUG> Comment next line for debugging session
   'examples/node_modules',
   'examples/package.json',
   'examples/tsconfig.json',
@@ -15,8 +16,8 @@ exclude: [
 
 # SystemJS mapping for ng2-recaptcha component
 recaptchaMapping: "https://npmcdn.com/ng-recaptcha@2.1.1" # stick to a particular version to avoid caching confusion
-# Uncomment to debug (you must run `cd examples && npm run latest` in order for that to work)
-#recaptchaMapping: "./examples/node_modules/ng-recaptcha"
+# <DEBUG> Uncomment next line for debugging session
+# recaptchaMapping: "./examples/node_modules/ng-recaptcha"
 
 # Build settings
 markdown: kramdown
