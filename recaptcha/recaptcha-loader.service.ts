@@ -1,9 +1,12 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   Inject,
   Injectable,
   OpaqueToken,
   Optional,
+  PLATFORM_ID,
 } from '@angular/core';
+import 'rxjs/add/observable/of';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
@@ -22,10 +25,13 @@ export class RecaptchaLoaderService {
   /** @internal */
   private language: string;
 
-  constructor(@Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string) {
+  constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: {},
+    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
+  ) {
     this.language = language;
     this.init();
-    this.ready = RecaptchaLoaderService.ready.asObservable();
+    this.ready = isPlatformBrowser(this.platformId) ? RecaptchaLoaderService.ready.asObservable() : Observable.of();
   }
 
   /** @internal */
@@ -33,16 +39,18 @@ export class RecaptchaLoaderService {
     if (RecaptchaLoaderService.ready) {
       return;
     }
-    window.ng2recaptchaloaded = () => {
-      RecaptchaLoaderService.ready.next(grecaptcha);
-    };
-    RecaptchaLoaderService.ready = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
-    const script = document.createElement('script') as HTMLScriptElement;
-    script.innerHTML = '';
-    const langParam = this.language ? '&hl=' + this.language : '';
-    script.src = `https://www.google.com/recaptcha/api.js?render=explicit&onload=ng2recaptchaloaded${langParam}`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
+    if (isPlatformBrowser(this.platformId)) {
+      window.ng2recaptchaloaded = () => {
+        RecaptchaLoaderService.ready.next(grecaptcha);
+      };
+      RecaptchaLoaderService.ready = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
+      const script = document.createElement('script') as HTMLScriptElement;
+      script.innerHTML = '';
+      const langParam = this.language ? '&hl=' + this.language : '';
+      script.src = `https://www.google.com/recaptcha/api.js?render=explicit&onload=ng2recaptchaloaded${langParam}`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
   }
 }
