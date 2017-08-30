@@ -1,3 +1,18 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v2.2.0...v3.0.0) (2017-08-30)
+
+
+### Bug Fixes
+
+* **component:** fix server-side rendering ([7a5bc6c](https://github.com/DethAriel/ng-recaptcha/commit/7a5bc6c)), closes [#34](https://github.com/DethAriel/ng-recaptcha/issues/34)
+
+
+### BREAKING CHANGES
+
+* **component:** Angular v2.x.x is no longer supported due to dependency on Platform capabilities that were added in [v4.0.0-rc.1](https://github.com/angular/angular/blob/master/CHANGELOG.md#features-20)
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/DethAriel/ng-recaptcha/compare/v2.1.1...v2.2.0) (2017-08-18)
 
