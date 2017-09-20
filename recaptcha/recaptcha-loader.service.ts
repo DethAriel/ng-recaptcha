@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   Inject,
   Injectable,
-  OpaqueToken,
+  InjectionToken,
   Optional,
   PLATFORM_ID,
 } from '@angular/core';
@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
-export const RECAPTCHA_LANGUAGE = new OpaqueToken('recaptcha-language');
+export const RECAPTCHA_LANGUAGE = new InjectionToken<string>('recaptcha-language');
 
 @Injectable()
 export class RecaptchaLoaderService {
