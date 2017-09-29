@@ -14,7 +14,7 @@
 
 ## Running demo
 
-Before doing this for the first time, you have to go throught prerequisites installation:
+Before doing this for the first time, you have to go through prerequisites installation:
 
 * [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 * Install bundler: `gem install bundler`
