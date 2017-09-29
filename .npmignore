@@ -18,3 +18,4 @@ ng-lint.json
 CHANGELOG.md
 .travis.yml
 .editorconfig
+bin/
