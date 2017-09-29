@@ -14,8 +14,7 @@ exclude: [
   'examples/ng-lint.json',
 ]
 
-# SystemJS mapping for ng2-recaptcha component
-recaptchaMapping: "https://npmcdn.com/ng-recaptcha@3.0.0" # stick to a particular version to avoid caching confusion
+# SystemJS mapping for ng-recaptcha component
 # <DEBUG> Uncomment next line for debugging session
 # recaptchaMapping: "./examples/node_modules/ng-recaptcha"
 

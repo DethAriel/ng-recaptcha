@@ -18,7 +18,7 @@
 
   <script src="{{ site.baseurl }}/examples/systemjs.config.js?_={{ site.cacheBusterVer }}"></script>
   <script>
-    window.initSystemJS("{{ site.recaptchaMapping }}"{% if page.includeForms %}, {{ page.includeForms }} {% endif %});
+    window.initSystemJS("{% if site.recaptchaMapping %}{{ site.recaptchaMapping }}{% else %}https://npmcdn.com/ng-recaptcha@{{site.cacheBusterVer}}{% endif %}"{% if page.includeForms %}, {{ page.includeForms }} {% endif %});
   </script>
   {{ page.headextras }}
 </head>
