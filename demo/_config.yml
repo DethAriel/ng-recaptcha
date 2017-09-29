@@ -2,7 +2,7 @@
 title: ng-recaptcha
 description: "Angular component for Google reCAPTCHA"
 baseurl: "/ng-recaptcha" # the subpath of your site, e.g. /blog
-cacheBusterVer: "3.0.0"
+cacheBusterVer: "3.0.1"
 exclude: [
   'Gemfile',
   'Gemfile.lock',
