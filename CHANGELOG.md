@@ -1,3 +1,13 @@
+<a name="3.0.2"></a>
+## [3.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.1...v3.0.2) (2017-10-18)
+
+
+### Bug Fixes
+
+* **build:** fix AoT builds ([921be50](https://github.com/DethAriel/ng-recaptcha/commit/921be50)), closes [#57](https://github.com/DethAriel/ng-recaptcha/issues/57) [#65](https://github.com/DethAriel/ng-recaptcha/issues/65)
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.0...v3.0.1) (2017-09-29)
 
