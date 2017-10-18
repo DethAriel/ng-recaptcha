@@ -15,7 +15,6 @@ ng-lint.json
 *.js.map
 
 # Other
-CHANGELOG.md
 CONTRIBUTING.md
 .travis.yml
 .editorconfig
