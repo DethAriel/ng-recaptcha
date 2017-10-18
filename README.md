@@ -240,6 +240,28 @@ add the `required` attribute to the `<re-captcha>` element. Do not forget to imp
 }
 ```
 
+A similar approach can be taken for reactive forms:
+
+```typescript
+@Component({
+  selector: 'my-reactive-form',
+  template: `
+    <form [formGroup]="reactiveForm">
+      <re-captcha formControlName="recaptchaReactive"></re-captcha>
+      <button [disabled]="reactiveForm.invalid">Submit</button>
+    </form>
+  `,
+}) export class MyReactiveForm {
+  reactiveForm: FormGroup;
+
+  ngOnInit() {
+    this.reactiveForm = new FormGroup({
+      recaptchaReactive: new FormControl(null, Validators.required)
+    });
+  }
+}
+```
+
 ### <a name="example-invisible"></a>Working with invisible reCAPTCHA [(see in action)](https://dethariel.github.io/ng-recaptcha/invisible)
 
 Working with [invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible) is almost the same as with regular one.
