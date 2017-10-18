@@ -19,3 +19,4 @@ CONTRIBUTING.md
 .travis.yml
 .editorconfig
 bin/
+.github
