@@ -26,7 +26,8 @@ export class RecaptchaLoaderService {
   private language: string;
 
   constructor(
-    @Inject(PLATFORM_ID) private readonly platformId: {},
+    // tslint:disable-next-line:no-any
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
   ) {
     this.language = language;
