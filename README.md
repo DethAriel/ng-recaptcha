@@ -10,6 +10,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
 ## Table of contents
 1. [Installation](#installation)
 2. [Basic Usage](#example-basic)
+   * [Playground](#playground)
 3. [Working with `@angular/forms`](#forms-ready)
 4. [API](#api)
    * [Input Options](#api-options)
@@ -73,6 +74,10 @@ import { MyAppModule } from './app.module.ts';
 
 platformBrowserDynamic().bootstrapModule(MyAppModule);
 ```
+
+### <a name="playground"></a>Playground
+
+You can also play with [this demo plunk](https://plnkr.co/edit/JNVNl0WJl3bFuWtt2O9i?p=preview) to get a feel of how this component can be used.
 
 ## <a name="forms-ready"></a>Working with `@angular/forms`
 
