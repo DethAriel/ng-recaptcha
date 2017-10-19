@@ -18,7 +18,7 @@ export class RecaptchaLoaderService {
    * @internal
    * @nocollapse
    */
-  private static ready: BehaviorSubject<ReCaptchaV2.ReCaptcha>;
+  private static ready: BehaviorSubject<ReCaptchaV2.ReCaptcha> = null;
 
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
 

@@ -18,6 +18,7 @@
       true,
       "rxjs"
     ],
+    "object-literal-sort-keys": false,
     "object-literal-key-quotes": [
       true,
       "as-needed"
