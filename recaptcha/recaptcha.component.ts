@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   HostBinding,
   Inject,
@@ -44,6 +45,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   private grecaptcha: ReCaptchaV2.ReCaptcha;
 
   constructor(
+    private elementRef: ElementRef,
     private loader: RecaptchaLoaderService,
     private zone: NgZone,
     @Optional() @Inject(RECAPTCHA_SETTINGS) settings?: RecaptchaSettings,
@@ -121,7 +123,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   /** @internal */
   private renderRecaptcha() {
-    this.widget = this.grecaptcha.render(this.id, {
+    this.widget = this.grecaptcha.render(this.elementRef.nativeElement, {
       badge: this.badge,
       callback: (response: string) => {
         this.zone.run(() => this.captchaReponseCallback(response));
