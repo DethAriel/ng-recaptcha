@@ -21,8 +21,6 @@ Before doing this for the first time, you have to go through prerequisites insta
 * Install jekyll: `gem install jekyll`
 * Install the bundle for the demo: `cd demo && bundle install`
 
-Now you have the prerequisites. In order to actually run the demo:
+Now you have the prerequisites. In order to actually run the demo you need to `npm run demo`. Then the demo site will be available at http://localhost:4000/ng-recaptcha/.
 
-* Open `demo/_config.yml` file and follow the instructions within `<DEBUG>` comments. This is a one-time only operation for the whole debug session. **Do not forget to revert this before submitting a PR!**
-
-Now you just have to run `npm run demo` and browse to http://127.0.0.1:4000/ng-recaptcha/
+If you want to debug things using the demo, open `demo/_config.yml` file and follow the instructions within `<DEBUG>` comments. This is a one-time only operation for the whole debug session. **Do not forget to revert this before submitting a PR!**
