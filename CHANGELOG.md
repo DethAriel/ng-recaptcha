@@ -1,3 +1,13 @@
+<a name="3.0.3"></a>
+## [3.0.3](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.2...v3.0.3) (2017-12-26)
+
+
+### Bug Fixes
+
+* **component:** use ElementRef to access component's native element ([d3a8409](https://github.com/DethAriel/ng-recaptcha/commit/d3a8409)), closes [#48](https://github.com/DethAriel/ng-recaptcha/issues/48) [#68](https://github.com/DethAriel/ng-recaptcha/issues/68)
+
+
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.1...v3.0.2) (2017-10-18)
 
