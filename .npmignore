@@ -15,6 +15,8 @@ ng-lint.json
 *.js.map
 
 # Other
+yarn.lock
+yarn-error.log
 CONTRIBUTING.md
 .travis.yml
 .editorconfig
