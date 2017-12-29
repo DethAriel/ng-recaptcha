@@ -3,4 +3,4 @@ node_js:
   - "6"
 
 script:
-  - npm run build
+  - yarn build && yarn demo:build
