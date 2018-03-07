@@ -7,9 +7,11 @@ import {
   Inject,
   Input,
   NgZone,
+  OnChanges,
   OnDestroy,
   Optional,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -23,7 +25,7 @@ let nextId = 0;
   selector: 're-captcha',
   template: ``,
 })
-export class RecaptchaComponent implements AfterViewInit, OnDestroy {
+export class RecaptchaComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Input()
   @HostBinding('attr.id')
   public id = `ngrecaptcha-${nextId++}`;
@@ -34,6 +36,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public size: ReCaptchaV2.Size;
   @Input() public tabIndex: number;
   @Input() public badge: ReCaptchaV2.Badge;
+  @Input() public lang: string;
 
   @Output() public resolved = new EventEmitter<string>();
 
@@ -43,6 +46,13 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   private widget: number;
   /** @internal */
   private grecaptcha: ReCaptchaV2.ReCaptcha;
+
+  private allowedLangs = [
+    'ar', 'af', 'am', 'hy', 'az', 'eu', 'bn', 'bg', 'ca', 'zh-HK', 'zh-CN', 'zh-TW', 'hr', 'cs', 'da', 'nl', 'en-GB',
+    'en', 'et', 'fil', 'fi', 'fr', 'fr-CA', 'gl', 'ka', 'de', 'de-AT', 'de-CH', 'el', 'gu', 'iw', 'hi', 'hu', 'is',
+    'id', 'it', 'ja', 'kn', 'ko', 'lo', 'lv', 'lt', 'ms', 'ml', 'mr', 'mn', 'no', 'fa', 'pl', 'pt', 'pt-BR', 'pt-PT',
+    'ro', 'ru', 'sr', 'si', 'sk', 'sl', 'es', 'es-419', 'sw', 'sv', 'ta', 'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zu',
+  ];
 
   constructor(
     private elementRef: ElementRef,
@@ -56,6 +66,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
       this.type = settings.type;
       this.size = settings.size;
       this.badge = settings.badge;
+      this.lang = settings.lang;
     }
   }
 
@@ -74,6 +85,13 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     this.grecaptchaReset();
     if (this.subscription) {
       this.subscription.unsubscribe();
+    }
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    const prop: string = 'lang';
+    if (changes != null && changes[prop] != null && changes[prop].currentValue !== changes[prop].previousValue) {
+      this.useLang(changes[prop].currentValue);
     }
   }
 
@@ -101,6 +119,29 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
       }
 
       this.grecaptchaReset();
+    }
+  }
+
+  /**
+   * Change the widget language
+   *
+   * @internal
+   */
+  private useLang(lang: string): void {
+    if (this.widget != null && this.elementRef != null && lang != null && this.allowedLangs.indexOf(lang) !== -1) {
+      if (this.grecaptcha.getResponse(this.widget)) {
+        this.resolved.emit(null);
+      }
+      const iframe = this.elementRef.nativeElement.querySelector('iframe');
+      if (iframe && iframe.src) {
+        let s = iframe.src;
+        if (/[?&]hl=/.test(s)) {
+            s = s.replace(/([?&]hl=)[\w-_]+(&.*)?$/, '$1' + lang + '$2');
+        } else {
+            s += ((s.indexOf('?') === -1) ? '?' : '&') + 'hl=' + lang;
+        }
+        iframe.src = s;
+      }
     }
   }
 
@@ -137,5 +178,6 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
       theme: this.theme,
       type: this.type,
     });
+    this.useLang(this.lang);
   }
 }
