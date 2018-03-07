@@ -8,4 +8,5 @@ export interface RecaptchaSettings {
   type?: ReCaptchaV2.Type;
   size?: ReCaptchaV2.Size;
   badge?: ReCaptchaV2.Badge;
+  lang?: string;
 }

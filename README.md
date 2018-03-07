@@ -108,6 +108,7 @@ The component supports this options:
 * `size`
 * `tabIndex`
 * `badge`
+* `lang`
 
 They are all pretty well described either in the [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/display), or in the [invisible reCAPTCHA docs](https://developers.google.com/recaptcha/docs/invisible),
 so I won't duplicate it here.
@@ -152,25 +153,26 @@ Global properties can be overridden on a case-by-case basis - the values on the 
 
 ### <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/language)
 
-`<re-captcha>` supports various languages. By default recaptcha will guess the user's language itself
-(which is beyond the scope of this lib).
-But you can override this behavior and provide a specific language to use.
-The language setting is global, though, and cannot be set on a per-captcha basis.
-It can be provided like this:
+`<re-captcha>` supports various languages. By default recaptcha will guess the user's language itself (which is beyond the scope of this lib).
+But you can override this behavior and provide a specific language to use. When the binding change the component update the recaptcha language.
 
 ```typescript
-import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
-
-@NgModule({
-  providers: [
-    {
-      provide: RECAPTCHA_LANGUAGE,
-      useValue: 'fr', // use French language
-    },
-  ],
-}) export class MyModule { }
+@Component({
+  selector: 'my-form',
+  template: `
+  <form>
+    <re-captcha
+      [(ngModel)]="formModel.captcha"
+      name="captcha"
+      [lang]="lang"
+      siteKey="YOUR_SITE_KEY"
+    ></re-captcha>
+  </form>`,
+}) export class MyForm {
+  lang: string = 'fr';
+  formModel = new MyFormModel();
+}
 ```
-
 You can find the list of supported languages in [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/language).
 
 ### <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/preload-api)

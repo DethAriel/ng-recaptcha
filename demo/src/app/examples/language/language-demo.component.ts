@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './language-demo.component.html',
 })
 export class LanguageDemoComponent {
+  public lang: string;
+
+  constructor() {
+    this.lang = 'fr';
+  }
   public resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response ${captchaResponse}:`);
   }
