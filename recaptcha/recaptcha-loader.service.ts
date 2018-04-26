@@ -6,9 +6,9 @@ import {
   Optional,
   PLATFORM_ID,
 } from '@angular/core';
-import 'rxjs/add/observable/of';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 export const RECAPTCHA_LANGUAGE = new InjectionToken<string>('recaptcha-language');
 
@@ -32,7 +32,7 @@ export class RecaptchaLoaderService {
   ) {
     this.language = language;
     this.init();
-    this.ready = isPlatformBrowser(this.platformId) ? RecaptchaLoaderService.ready.asObservable() : Observable.of();
+    this.ready = isPlatformBrowser(this.platformId) ? RecaptchaLoaderService.ready.asObservable() : of();
   }
 
   /** @internal */
