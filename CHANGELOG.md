@@ -1,3 +1,13 @@
+<a name="3.0.5"></a>
+## [3.0.5](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.3...v3.0.5) (2018-04-27)
+
+
+### Bug Fixes
+
+* **rxjs:** change import of `of` operator ([3e0bda6](https://github.com/DethAriel/ng-recaptcha/commit/3e0bda6)), closes [#95](https://github.com/DethAriel/ng-recaptcha/issues/95)
+
+
+
 <a name="3.0.3"></a>
 ## [3.0.3](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.2...v3.0.3) (2017-12-26)
 
