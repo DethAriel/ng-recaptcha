@@ -18,6 +18,7 @@
     "lint": "yarn lint:prod --force",
     "build": "run-s clean lint:prod transpile",
     "pub": "run-s build publish demo:publish",
+    "publish": "npm publish",
     "prepush": "yarn lint:prod"
   },
   "main": "index.js",

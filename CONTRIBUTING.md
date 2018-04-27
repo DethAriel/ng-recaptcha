@@ -1,7 +1,7 @@
 ## Getting started
 
-* Simply running `npm install` should get you started for development purposes
-* Use `npm run lint` during local development to ensure that your code will pass linting (which is also done during CI phase)
+* Simply running `yarn` should get you started for development purposes
+* Use `yarn lint` during local development to ensure that your code will pass linting (which is also done during CI phase)
 
 ## PR guidelines
 
@@ -14,4 +14,8 @@
 
 ## Running demo
 
-In order to run the demo you need to `npm run demo`. Then the demo site will be available at http://localhost:9000/ng-recaptcha/.
+In order to run the demo you need to `yarn demo`. Then the demo site will be available at http://localhost:9000/ng-recaptcha/.
+
+## Maintainer notes
+
+To release a package, run `npm version <MAJOR>.<MINOR>.<PATCH>`
