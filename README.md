@@ -38,6 +38,8 @@ To start with, you need to import the `RecaptchaModule` (more on that [later](#m
 ```typescript
 // app.module.ts
 import { RecaptchaModule } from 'ng-recaptcha';
+// if you need forms support:
+// import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { BrowserModule }  from '@angular/platform-browser';
 import { MyApp } from './app.component.ts';
 
@@ -47,6 +49,7 @@ import { MyApp } from './app.component.ts';
   imports: [
     BrowserModule,
     RecaptchaModule.forRoot(), // Keep in mind the "forRoot"-magic nuances!
+    // RecaptchaFormsModule, // if you need forms support
   ],
 })
 export class MyAppModule { }
