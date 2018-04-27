@@ -22,6 +22,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
    * [Loading the reCAPTCHA API by yourself](#example-preload-api)
    * [Usage with `required` in forms](#example-forms)
    * [Working with invisible reCAPTCHA](#example-invisible)
+   * [SystemJS configuration](#example-systemjs)
 
 ## <a name="installation"></a>Installation
 
@@ -302,4 +303,25 @@ Normally you would only submit a form when recaptcha response has been received.
     });
   }
 }
+```
+
+### <a name="example-systemjs"></a>SystemJS configuration
+
+To configure the package to work with SystemJS, you would configure it approximately like that (assuming you've installed `ng-recaptcha` using `npm`):
+
+```javascript
+// SystemJS config file
+(function () {
+  System.config({
+    paths: {
+      'npm:': '/node_modules/',
+    },
+    map: {
+      'ng-recaptcha': 'npm:ng-recaptcha',
+    },
+    packages: {
+      'ng-recaptcha': { main: './index.js' },
+    },
+  });
+})();
 ```
