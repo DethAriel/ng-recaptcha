@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "file-gen": "ts-node ./bin/file-gen.ts",
-    "latest": "yarn install && npm uninstall ng-recaptcha && cd .. && yarn transpile && cd demo && npm install ng-recaptcha@.. && cd .. && yarn clean",
+    "prelatest": "cd .. && yarn pack-latest",
+    "latest": "yarn install --update-checksums; yarn cache clean ng-recaptcha; yarn upgrade ../ng-recaptcha-latest.tgz --update-checksums",
+    "postlatest": "cd .. && yarn clean",
     "clean:build": "rimraf src/**/*.{js,js.map,ngsummary.json,d.ts,metadata.json,auto-gen.ts} src/app/examples/**/*{-demo.main.ts,-demo.main.dev.ts,-demo.data.ts}",
     "clean:dist": "rimraf dist",
     "clean": "run-s clean:build clean:dist",
@@ -29,6 +31,7 @@
     "@angular/platform-browser-dynamic": "^5.1.2",
     "@angular/platform-server": "^5.1.2",
     "core-js": "^2.5.1",
+    "ng-recaptcha": "../ng-recaptcha-latest.tgz",
     "rxjs": "^5.2.0",
     "zone.js": "^0.8.5"
   },

@@ -24,3 +24,6 @@ ng-lint.json
 CONTRIBUTING.md
 yarn-error.log
 yarn.lock
+
+# Build files
+ng-recaptcha-*.tgz
