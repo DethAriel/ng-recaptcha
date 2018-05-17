@@ -18,4 +18,8 @@ In order to run the demo you need to `yarn demo`. Then the demo site will be ava
 
 ## Maintainer notes
 
-To release a package, run `npm version <MAJOR>.<MINOR>.<PATCH>`
+### Release
+
+To release a package, run `yarn release <MAJOR>.<MINOR>.<PATCH>`
+
+Releasing beta package version requires a different command: `yarn release-beta <MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`.
