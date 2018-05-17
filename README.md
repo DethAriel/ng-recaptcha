@@ -81,7 +81,7 @@ platformBrowserDynamic().bootstrapModule(MyAppModule);
 
 ### <a name="playground"></a>Playground
 
-You can also play with [this demo plunk](https://plnkr.co/edit/JNVNl0WJl3bFuWtt2O9i?p=preview) to get a feel of how this component can be used.
+You can also play with [this Stackblitz demo](https://stackblitz.com/edit/ng-recaptcha-example) to get a feel of how this component can be used.
 
 ## <a name="forms-ready"></a>Working with `@angular/forms`
 
