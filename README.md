@@ -251,7 +251,10 @@ A similar approach can be taken for reactive forms:
   selector: 'my-reactive-form',
   template: `
     <form [formGroup]="reactiveForm">
-      <re-captcha formControlName="recaptchaReactive"></re-captcha>
+      <re-captcha
+        formControlName="recaptchaReactive"
+        siteKey="YOUR_SITE_KEY"
+      ></re-captcha>
       <button [disabled]="reactiveForm.invalid">Submit</button>
     </form>
   `,
