@@ -1,3 +1,18 @@
+<a name="4.0.0-beta.1"></a>
+# [4.0.0-beta.1](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.5...v4.0.0-beta.1) (2018-05-17)
+
+
+### Features
+
+* **component:** adjust dependencies for Angular 6 support ([736c7ae](https://github.com/DethAriel/ng-recaptcha/commit/736c7ae))
+
+
+### BREAKING CHANGES
+
+* **component:** The peer dependency for `@angular/core` has been bumped to `^6.0.0`
+
+
+
 <a name="3.0.5"></a>
 ## [3.0.5](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.3...v3.0.5) (2018-04-27)
 

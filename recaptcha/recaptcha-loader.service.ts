@@ -6,9 +6,7 @@ import {
   Optional,
   PLATFORM_ID,
 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 export const RECAPTCHA_LANGUAGE = new InjectionToken<string>('recaptcha-language');
 

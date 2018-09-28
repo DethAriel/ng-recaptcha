@@ -20,3 +20,6 @@ npm-debug.log*
 
 # Dependency directories
 node_modules
+
+# Build files
+ng-recaptcha-*.tgz
