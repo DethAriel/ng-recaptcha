@@ -12,7 +12,7 @@ import { settings } from './basic-demo.data';
   bootstrap: [BasicDemoComponent],
   declarations: [BasicDemoComponent],
   imports: [
-    RecaptchaModule.forRoot(),
+    RecaptchaModule,
     BrowserModule,
     DemoWrapperModule,
   ],

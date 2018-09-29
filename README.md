@@ -48,7 +48,7 @@ import { MyApp } from './app.component.ts';
   declarations: [MyApp],
   imports: [
     BrowserModule,
-    RecaptchaModule.forRoot(), // Keep in mind the "forRoot"-magic nuances!
+    RecaptchaModule,
     // RecaptchaFormsModule, // if you need forms support
   ],
 })

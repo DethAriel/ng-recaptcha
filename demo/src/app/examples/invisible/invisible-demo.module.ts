@@ -13,7 +13,7 @@ import { settings } from './invisible-demo.data';
   declarations: [InvisibleDemoComponent],
   imports: [
     BrowserModule,
-    RecaptchaModule.forRoot(),
+    RecaptchaModule,
     DemoWrapperModule,
   ],
   providers: [

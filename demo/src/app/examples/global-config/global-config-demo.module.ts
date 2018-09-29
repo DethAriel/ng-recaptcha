@@ -20,7 +20,7 @@ const globalSettings: RecaptchaSettings = { siteKey: '6LcOuyYTAAAAAHTjFuqhA52fmf
   declarations: [GlobalConfigDemoComponent],
   imports: [
     BrowserModule,
-    RecaptchaModule.forRoot(),
+    RecaptchaModule,
     DemoWrapperModule,
   ],
   providers: [

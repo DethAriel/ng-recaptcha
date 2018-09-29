@@ -1,6 +1,5 @@
 import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -37,7 +36,7 @@ export const service = new PreloadedRecaptchaAPIService();
   declarations: [PreloadApiDemoComponent],
   imports: [
     BrowserModule,
-    RecaptchaModule.forRoot(),
+    RecaptchaModule,
     DemoWrapperModule,
   ],
   providers: [
