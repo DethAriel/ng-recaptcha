@@ -1,3 +1,8 @@
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.0.0-beta.1...v4.0.0) (2018-09-29)
+
+
+
 <a name="4.0.0-beta.1"></a>
 # [4.0.0-beta.1](https://github.com/DethAriel/ng-recaptcha/compare/v3.0.5...v4.0.0-beta.1) (2018-05-17)
 
