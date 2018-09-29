@@ -11,7 +11,7 @@ I'm submitting a: <!-- insert 'x' where appropriate -->
 
 <!--
 Un-comment and fill out the following section if you're submitting a bug (unless the cause is obvious). Try to come up with a reproduction example which demonstrates the bug you're reporting. This will make it easier to reproduce and fix the problem, which makes it more likely to get fixed.
-You can use this plunk as a starting point: https://plnkr.co/edit/JNVNl0WJl3bFuWtt2O9i?p=preview
+You can use this Stackblitz demo as a starting point: https://stackblitz.com/edit/ng-recaptcha-example
 -->
 
 <!--
