@@ -61,7 +61,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   public ngAfterViewInit() {
     this.subscription = this.loader.ready.subscribe((grecaptcha: ReCaptchaV2.ReCaptcha) => {
-      if (grecaptcha != null) {
+      if (grecaptcha != null && grecaptcha.render instanceof Function) {
         this.grecaptcha = grecaptcha;
         this.renderRecaptcha();
       }
