@@ -43,6 +43,8 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   private widget: number;
   /** @internal */
   private grecaptcha: ReCaptchaV2.ReCaptcha;
+  /** @internal */
+  private executeRequested: boolean;
 
   constructor(
     private elementRef: ElementRef,
@@ -88,6 +90,9 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
     if (this.widget != null) {
       this.grecaptcha.execute(this.widget);
+    } else {
+      // delay execution of recaptcha until it actually renders
+      this.executeRequested = true;
     }
   }
 
@@ -137,5 +142,10 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
       theme: this.theme,
       type: this.type,
     });
+
+    if (this.executeRequested === true) {
+      this.executeRequested = false;
+      this.execute();
+    }
   }
 }
