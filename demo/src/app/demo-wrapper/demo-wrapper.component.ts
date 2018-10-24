@@ -2,6 +2,11 @@ import { MediaMatcher } from '@angular/cdk/layout'; // tslint:disable-line:no-su
 import { ChangeDetectorRef, Component, Inject, InjectionToken, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
+// `mini-css-extract-plugin` does not place nice with AngularCompilerPlugin,
+// see https://github.com/webpack-contrib/mini-css-extract-plugin/issues/186.
+// We'll need to refactor that when the issue gets fixed
+import './recaptcha-demo-wrapper.component.css';
+
 export interface PageSettings {
   title: string;
   feature: string;
@@ -26,9 +31,6 @@ export const NAV_LINKS = new InjectionToken<NavLink[]>('NAV_LINKS');
 
 @Component({
   selector: 'recaptcha-demo-wrapper',
-  styleUrls: [
-    './recaptcha-demo-wrapper.component.css',
-  ],
   templateUrl: './recaptcha-demo-wrapper.component.html',
 })
 export class DemoWrapperComponent implements OnInit, OnDestroy {
