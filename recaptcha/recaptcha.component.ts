@@ -115,7 +115,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   /** @internal */
-  private captchaReponseCallback(response: string) {
+  private captchaResponseCallback(response: string) {
     this.resolved.emit(response);
   }
 
@@ -131,7 +131,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     this.widget = this.grecaptcha.render(this.elementRef.nativeElement, {
       badge: this.badge,
       callback: (response: string) => {
-        this.zone.run(() => this.captchaReponseCallback(response));
+        this.zone.run(() => this.captchaResponseCallback(response));
       },
       'expired-callback': () => {
         this.zone.run(() => this.expired());
