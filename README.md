@@ -25,6 +25,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
    * [Resizing](#example-resizing)
    * [SystemJS configuration](#example-systemjs)
    * [Loading from a different location](#example-different-url)
+   * [Specifying nonce for Content-Security-Policy](#example-csp-nonce)
 
 ## <a name="installation"></a>Installation
 
@@ -353,6 +354,23 @@ import { RECAPTCHA_BASE_URL } from 'ng-recaptcha';
     {
       provide: RECAPTCHA_BASE_URL,
       useValue: 'https://recaptcha.net/recaptcha/api.js', // use recaptcha.net script source for some of our users
+    },
+  ],
+}) export class MyModule { }
+```
+
+### <a name="example-csp-nonce"></a>Specifying nonce for Content-Security-Policy
+
+Per [reCAPTCHA FAQ on CSP](https://developers.google.com/recaptcha/docs/faq#im-using-content-security-policy-csp-on-my-website-how-can-i-configure-it-to-work-with-recaptcha), the recommended approach for that is to supply nonce to the script tag. This is possible by providing the `RECAPTCHA_NONCE` token, for example:
+
+```javascript
+import { RECAPTCHA_NONCE } from 'ng-recaptcha';
+
+@NgModule({
+  providers: [
+    {
+      provide: RECAPTCHA_NONCE,
+      useValue: '<YOUR_NONCE_VALUE>',
     },
   ],
 }) export class MyModule { }
