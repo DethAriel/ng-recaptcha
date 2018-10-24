@@ -19,7 +19,7 @@ export class PreloadedRecaptchaAPIService {
     this.ready = readySubject.asObservable();
 
     const interval = setInterval(() => {
-      if (typeof grecaptcha === 'undefined') {
+      if (typeof grecaptcha === 'undefined' || !(grecaptcha.render instanceof Function)) {
         return;
       }
 
