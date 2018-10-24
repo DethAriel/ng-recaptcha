@@ -1,3 +1,13 @@
+<a name="4.1.1"></a>
+## [4.1.1](https://github.com/DethAriel/ng-recaptcha/compare/v4.1.0...v4.1.1) (2018-10-24)
+
+
+### Bug Fixes
+
+* **component:** delay invisible recaptcha execution until it's rendered ([99292b7](https://github.com/DethAriel/ng-recaptcha/commit/99292b7)), closes [#127](https://github.com/DethAriel/ng-recaptcha/issues/127)
+
+
+
 <a name="4.1.0"></a>
 # [4.1.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.0.0...v4.1.0) (2018-10-24)
 
