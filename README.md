@@ -22,6 +22,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
    * [Loading the reCAPTCHA API by yourself](#example-preload-api)
    * [Usage with `required` in forms](#example-forms)
    * [Working with invisible reCAPTCHA](#example-invisible)
+   * [Resizing](#example-resizing)
    * [SystemJS configuration](#example-systemjs)
 
 ## <a name="installation"></a>Installation
@@ -306,6 +307,16 @@ Normally you would only submit a form when recaptcha response has been received.
     });
   }
 }
+```
+
+### <a name="example-resizing"></a>Resizing
+
+Making reCAPTCHA responsive is sometimes necessary, especially when working with mobile devices. You can use css-transforms to achieve that as in [this StackOverflow answer](https://stackoverflow.com/a/29521983/2645305), which is also ell-described in [this blog post](https://geekgoddess.com/how-to-resize-the-google-nocaptcha-recaptcha/). You can also take a look at a [live example](https://stackblitz.com/edit/ng-recaptcha-example-uncvxq?file=src/app/app.component.html) of how this might be implemented. This boils down to
+
+```html
+<div style="transform:scale(0.7);transform-origin:0;">
+  <re-captcha></re-captcha>
+</div>
 ```
 
 ### <a name="example-systemjs"></a>SystemJS configuration
