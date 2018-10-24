@@ -5,7 +5,6 @@
     "file-gen": "ts-node ./bin/file-gen.ts",
     "prelatest": "cd .. && yarn pack-latest",
     "latest": "yarn install --update-checksums; yarn cache clean ng-recaptcha; yarn upgrade ../ng-recaptcha-latest.tgz --update-checksums",
-    "postlatest": "cd .. && yarn clean",
     "clean:build": "rimraf src/**/*.{js,js.map,ngsummary.json,d.ts,metadata.json,auto-gen.ts} src/app/examples/**/*{-demo.main.ts,-demo.main.dev.ts,-demo.data.ts}",
     "clean:dist": "rimraf dist",
     "clean": "run-s clean:build clean:dist",
