@@ -20,6 +20,7 @@ In order to run the demo you need to `yarn demo`. Then the demo site will be ava
 
 ### Release
 
-To release a package, run `npm run release <MAJOR>.<MINOR>.<PATCH>`. Use `npm`, not `yarn`!
 
-Releasing beta package version requires a different command: `npm run release-beta <MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`.
+* First, you need to prepare a release. Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
+  * Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
+* After that, verify the latest commit, changelog file, and if everything looks fine, run either `yarn release` or `yarn release-beta` depending on the tag you want to publish.
