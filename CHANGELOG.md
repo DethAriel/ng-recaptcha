@@ -1,3 +1,19 @@
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.0.0...v4.1.0) (2018-10-24)
+
+
+### Bug Fixes
+
+* **component:** fix a potential error during recaptcha rendering ([1c395b5](https://github.com/DethAriel/ng-recaptcha/commit/1c395b5))
+
+
+### Features
+
+* **module:** skip `forRoot()` when importing `RecaptchaModule` ([7fb97fb](https://github.com/DethAriel/ng-recaptcha/commit/7fb97fb)), closes [#113](https://github.com/DethAriel/ng-recaptcha/issues/113) [#116](https://github.com/DethAriel/ng-recaptcha/issues/116)
+* **package:** update peer dependencies to include Angular 7 ([929ef7a](https://github.com/DethAriel/ng-recaptcha/commit/929ef7a))
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.0.0-beta.1...v4.0.0) (2018-09-29)
 
