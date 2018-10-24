@@ -24,6 +24,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
    * [Working with invisible reCAPTCHA](#example-invisible)
    * [Resizing](#example-resizing)
    * [SystemJS configuration](#example-systemjs)
+   * [Loading from a different location](#example-different-url)
 
 ## <a name="installation"></a>Installation
 
@@ -338,4 +339,21 @@ To configure the package to work with SystemJS, you would configure it approxima
     },
   });
 })();
+```
+
+### <a name="example-different-url"></a>Loading from a different location
+
+Since `"google.com"` domain might be unavailable in some countries, reCAPTCHA core team has a solution for that - using `"recaptcha.net"` domain. You can configure the component to use that by providing the `RECAPTCHA_BASE_URL` token, for example:
+
+```javascript
+import { RECAPTCHA_BASE_URL } from 'ng-recaptcha';
+
+@NgModule({
+  providers: [
+    {
+      provide: RECAPTCHA_BASE_URL,
+      useValue: 'https://recaptcha.net/recaptcha/api.js', // use recaptcha.net script source for some of our users
+    },
+  ],
+}) export class MyModule { }
 ```
