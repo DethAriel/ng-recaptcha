@@ -1,3 +1,14 @@
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.1.1...v4.2.0) (2018-10-24)
+
+
+### Features
+
+* **component:** add the ability to provide `nonce` to the script tag ([8f55b19](https://github.com/DethAriel/ng-recaptcha/commit/8f55b19)), closes [#100](https://github.com/DethAriel/ng-recaptcha/issues/100)
+* **component:** allow to specify a base url for loading recaptcha ([df505fd](https://github.com/DethAriel/ng-recaptcha/commit/df505fd)), closes [#101](https://github.com/DethAriel/ng-recaptcha/issues/101)
+
+
+
 <a name="4.1.1"></a>
 ## [4.1.1](https://github.com/DethAriel/ng-recaptcha/compare/v4.1.0...v4.1.1) (2018-10-24)
 
