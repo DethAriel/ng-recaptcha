@@ -23,4 +23,7 @@ In order to run the demo you need to `yarn demo`. Then the demo site will be ava
 
 * First, you need to prepare a release. Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
   * Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
-* After that, verify the latest commit, changelog file, and if everything looks fine, run either `yarn release` or `yarn release-beta` depending on the tag you want to publish.
+* Verify the latest commit, and run `git push && git push --tag` to push the changes to the origin
+* Wait for the build to succeed
+* Publish the package to npm: `npm publish` (or `npm publish --tag beta`)
+* Create a GitHub release and update the demo site by running `yarn github-release && yarn demo:publish`
