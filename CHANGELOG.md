@@ -1,3 +1,13 @@
+<a name="4.3.0-beta.1"></a>
+# [4.3.0-beta.1](https://github.com/DethAriel/ng-recaptcha/compare/v4.2.1...v4.3.0-beta.1) (2019-02-08)
+
+
+### Features
+
+* **component:** add support for reCAPTCHA v3 ([4a083c6](https://github.com/DethAriel/ng-recaptcha/commit/4a083c6)), closes [#129](https://github.com/DethAriel/ng-recaptcha/issues/129)
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/DethAriel/ng-recaptcha/compare/v4.2.0...v4.2.1) (2018-10-24)
 
