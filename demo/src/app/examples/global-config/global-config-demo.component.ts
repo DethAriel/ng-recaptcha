@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
 })
 export class GlobalConfigDemoComponent {
   public resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 }

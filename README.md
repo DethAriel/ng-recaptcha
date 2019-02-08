@@ -69,7 +69,7 @@ import { Component } from '@angular/core';
     template: `<re-captcha (resolved)="resolved($event)" siteKey="YOUR_SITE_KEY"></re-captcha>`,
 }) export class MyApp {
     resolved(captchaResponse: string) {
-        console.log(`Resolved captcha with response ${captchaResponse}:`);
+        console.log(`Resolved captcha with response: ${captchaResponse}`);
     }
 }
 ```

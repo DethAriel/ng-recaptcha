@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
 })
 export class BasicDemoComponent {
   public resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 }
