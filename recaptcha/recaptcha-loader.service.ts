@@ -12,6 +12,30 @@ export const RECAPTCHA_LANGUAGE = new InjectionToken<string>('recaptcha-language
 export const RECAPTCHA_BASE_URL = new InjectionToken<string>('recaptcha-base-url');
 export const RECAPTCHA_NONCE = new InjectionToken<string>('recaptcha-nonce-tag');
 
+export function loadScript(
+  renderMode: 'explicit' | string,
+  onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
+  urlParams: string,
+  url?: string,
+  nonce?: string,
+) {
+  window.ng2recaptchaloaded = () => {
+    onLoaded(grecaptcha);
+  };
+  const script = document.createElement('script');
+  script.innerHTML = '';
+  const baseUrl = url || 'https://www.google.com/recaptcha/api.js';
+
+  script.src = `${baseUrl}?render=${renderMode}&onload=ng2recaptchaloaded${urlParams}`;
+  if (nonce) {
+    // tslint:disable-next-line:no-any Remove "any" cast once we upgrade Angular to 7 and TypeScript along with it
+    (script as any).nonce = nonce;
+  }
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
+}
+
 @Injectable()
 export class RecaptchaLoaderService {
   /**
@@ -49,22 +73,10 @@ export class RecaptchaLoaderService {
       return;
     }
     if (isPlatformBrowser(this.platformId)) {
-      window.ng2recaptchaloaded = () => {
-        RecaptchaLoaderService.ready.next(grecaptcha);
-      };
-      RecaptchaLoaderService.ready = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
-      const script = document.createElement('script') as HTMLScriptElement;
-      script.innerHTML = '';
+      const subject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
+      RecaptchaLoaderService.ready = subject;
       const langParam = this.language ? '&hl=' + this.language : '';
-      const baseUrl = this.baseUrl || 'https://www.google.com/recaptcha/api.js';
-      script.src = `${baseUrl}?render=explicit&onload=ng2recaptchaloaded${langParam}`;
-      if (this.nonce) {
-        // tslint:disable-next-line:no-any Remove "any" cast once we upgrade Angular to 7 and TypeScript along with it
-        (script as any).nonce = this.nonce;
-      }
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
+      loadScript('explicit', (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
     }
   }
 }
