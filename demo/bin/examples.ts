@@ -44,6 +44,13 @@ export const examples: Example[] = [
     title: 'Invisible reCAPTCHA API Example',
   },
   {
+    entry: 'demo-v3',
+    name: 'v3',
+    path: '/v3',
+    label: 'reCAPTCHA v3',
+    title: 'reCAPTCHA v3 Example',
+  },
+  {
     entry: 'demo-language',
     name: 'language',
     path: '/language',
