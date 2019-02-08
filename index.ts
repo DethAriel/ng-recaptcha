@@ -7,3 +7,6 @@ export {
 } from './recaptcha/recaptcha-loader.service';
 export { RecaptchaModule } from './recaptcha/recaptcha.module';
 export { RECAPTCHA_SETTINGS, RecaptchaSettings } from './recaptcha/recaptcha-settings';
+
+export { RecaptchaV3Module } from './recaptcha/recaptcha-v3.module';
+export { OnExecuteData, ReCaptchaV3Service, RECAPTCHA_V3_SITE_KEY } from './recaptcha/recaptcha-v3.service';
