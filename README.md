@@ -5,7 +5,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
 [![Build Status](https://travis-ci.org/DethAriel/ng-recaptcha.svg?branch=master)](https://travis-ci.org/DethAriel/ng-recaptcha)
 
-A simple, configurable, easy-to-start component for handling reCAPTCHA.
+A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3.
 
 ## Table of contents
 1. [Installation](#installation)
@@ -26,15 +26,20 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA.
    * [SystemJS configuration](#example-systemjs)
    * [Loading from a different location](#example-different-url)
    * [Specifying nonce for Content-Security-Policy](#example-csp-nonce)
+   * [Listening for all actions with reCAPTCHA v3](#example-v3-all-actions)
 
 ## <a name="installation"></a>Installation
 
-The easiest way is to install trough [npm](https://www.npmjs.com/package/ng-recaptcha):
-```
+The easiest way is to install through [yarn](https://yarnpkg.com/package/ng-recaptcha) or [npm](https://www.npmjs.com/package/ng-recaptcha):
+
+```sh
+yarn add ng-recaptcha
 npm i ng-recaptcha --save
 ```
 
 ## <a name="example-basic"></a>Basic Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/)
+
+The below applies to reCAPTCHA v2, for basic usage with reCAPTCHA v3 scroll down to [here](#example-basic-v3).
 
 To start with, you need to import the `RecaptchaModule` (more on that [later](#modules)):
 
@@ -81,6 +86,58 @@ import { MyAppModule } from './app.module.ts';
 
 platformBrowserDynamic().bootstrapModule(MyAppModule);
 ```
+
+### <a name="example-basic-v3"></a>reCAPTCHA v3 Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/v3)
+
+[reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3) introduces a different way of bot protection. To work with v3 APIs, `ng-recaptcha` provides a service (as opposed to a component). To start with, you need to import the `RecaptchaV3Module` and provide your reCAPTCHA v3 site key using `RECAPTCHA_V3_SITE_KEY` injection token:
+
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+
+import { MyApp } from './app.component.ts';
+
+@NgModule({
+  bootstrap: [MyApp],
+  declarations: [MyApp],
+  imports: [
+    BrowserModule,
+    RecaptchaV3Module,
+  ],
+  providers: [
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '<YOUR_SITE_KEY>' },
+  ],
+})
+export class MyAppModule { }
+
+```
+
+In order to execute a reCAPTCHA v3 action, import the `ReCaptchaV3Service` into your desired component:
+
+```ts
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+
+@Component({
+  selector: 'recaptcha-demo',
+  template: `
+    <button (click)="executeImportantAction()">Important action</button>
+  `,
+})
+export class RecaptchaV3DemoComponent {
+  constructor(
+    private recaptchaV3Service: ReCaptchaV3Service,
+  ) {
+  }
+
+  public executeImportantAction(): void {
+    this.recaptchaV3Service.execute('importantAction')
+      .subscribe((token) => this.handleToken(token));
+  }
+```
+
+As always with subscriptions, please don't forget to **unsubscribe**.
+
+A more advanced v3 usage scenario includes listening to all actions and their respectively emitted tokens. This is covered [later on this page](#example-v3-all-actions).
 
 ### <a name="playground"></a>Playground
 
@@ -375,3 +432,55 @@ import { RECAPTCHA_NONCE } from 'ng-recaptcha';
   ],
 }) export class MyModule { }
 ```
+
+### <a name="example-v3-all-actions"></a>Listening for all actions with reCAPTCHA v3
+
+More often than not you will need to only get a reCAPTCHA token with the action the user is currently taking, and submit it to the backend at that time. However, having a single listener for all events will be desirable.
+
+There is an `Observable` exactly for that purpose: `ReCaptchaV3Service.onExecute`. It emits a value every time a token is received from reCAPTCHA. The shape of payload it operates on is defined via `OnExecuteData` interface:
+
+```ts
+interface OnExecuteData {
+  action: string;
+  token: string;
+}
+```
+
+where `action` is the name of the action that has been executed, and `token` is what reCAPTCHA v3 provided when executing that action.
+
+Here's how you would potentially set this up:
+
+```ts
+import { OnExecuteData, ReCaptchaV3Service } from 'ng-recaptcha';
+
+@Component({
+  selector: 'my-component',
+  templateUrl: './v3-demo.component.html',
+})
+export class MyComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+
+  constructor(
+    private recaptchaV3Service: ReCaptchaV3Service,
+  ) {
+  }
+
+  public ngOnInit() {
+    this.subscription = this.recaptchaV3Service.onExecute
+      .subscribe((data: OnExecuteData) => {
+        this.handleRecaptchaExecute(data.action, data.token);
+      });
+  }
+
+  public ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+}
+```
+
+There are a couple things to keep in mind:
+
+* `onExecute` will trigger for **all** actions. If you only need to bulk-process some actions, and not others - you will have to apply filtering yourself.
+* `onExecute` observable will provide you with all the events emitted **after** you have subscribed to it - it doesn't keep references to the previously emitted actions. So make sure you add such a subscription as early in your code as you feel is necessary.
