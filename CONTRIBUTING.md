@@ -20,6 +20,12 @@ In order to run the demo you need to `yarn demo`. Then the demo site will be ava
 
 ### Release
 
+In order for everything to go smooth, you'll need to check prerequisites first:
+
+* Check if you're logged in to npm: `npm whoami`. If it errs out - log in via `npm adduser`.
+* In order for [`conventional-github-releaser`](https://github.com/ckeditor/conventional-github-releaser) to work, you need to set the `CONVENTIONAL_GITHUB_RELEASER_TOKEN` environment variable. Follow the instructions from the project's [README](https://github.com/ckeditor/conventional-github-releaser#setup-token-for-cli) to do that.
+
+After you did that, follow the below process:
 
 * First, you need to prepare a release. Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
   * Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
