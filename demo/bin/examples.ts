@@ -5,7 +5,6 @@ export interface Example {
   label: string;
   title: string;
   index?: boolean;
-  forms?: boolean;
   additional?: {
     filename: string,
     entry: string,
@@ -29,7 +28,6 @@ export const examples: Example[] = [
     path: '/forms',
     label: 'Forms',
     title: 'Forms Example',
-    forms: true,
   },
   {
     entry: 'demo-global-config',
