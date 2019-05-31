@@ -39,7 +39,7 @@
     "@types/grecaptcha": "^2.0.33"
   },
   "peerDependencies": {
-    "@angular/core": "^6.0.0 || ^7.0.0"
+    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
     "@angular/common": "^6.0.0",
