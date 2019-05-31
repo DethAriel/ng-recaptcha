@@ -4,6 +4,7 @@
 # demo sources
 demo/
 demo-v7/
+demo-v6/
 
 # TypeScript-related files
 *.ts
