@@ -8,7 +8,7 @@
     "demo:build": "cd demo && yarn build",
     "demo:publish": "yarn demo:publish-gh-pages",
     "demo:publish-gh-pages": "gh-pages -d demo/dist/ng-recaptcha",
-    "pack-latest": "yarn transpile && mv \"$(npm pack)\" ng-recaptcha-latest.tgz",
+    "pack-latest": "yarn clean && yarn transpile && mv \"$(npm pack)\" ng-recaptcha-latest.tgz",
     "transpile": "ngc -p ./tsconfig.json",
     "clean": "del-cli './{recaptcha/,index,forms}*.{js,d.ts,js.map,metadata.json}' 'ng-recaptcha-*.tgz'",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file",
