@@ -12,6 +12,12 @@ export const RECAPTCHA_LANGUAGE = new InjectionToken<string>('recaptcha-language
 export const RECAPTCHA_BASE_URL = new InjectionToken<string>('recaptcha-base-url');
 export const RECAPTCHA_NONCE = new InjectionToken<string>('recaptcha-nonce-tag');
 
+declare global {
+  interface Window {
+    ng2recaptchaloaded: () => void;
+  }
+}
+
 export function loadScript(
   renderMode: 'explicit' | string,
   onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
