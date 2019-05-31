@@ -2,6 +2,7 @@
   "extends": "./tsconfig.base.json",
   "exclude": [
     "node_modules",
+    "demo-all",
     "demo",
     "demo-v7",
     "demo-v6",

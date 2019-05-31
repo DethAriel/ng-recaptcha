@@ -1,0 +1,40 @@
+{
+  "name": "ng-recaptcha-demo",
+  "private": true,
+  "scripts": {
+    "file-gen": "ts-node ./bin/file-gen.ts",
+    "prelatest": "cd ../.. && yarn pack-latest",
+    "latest": "yarn install --update-checksums; yarn cache clean ng-recaptcha; yarn upgrade ../../ng-recaptcha-latest.tgz --update-checksums",
+    "clean:build": "rimraf src/**/*.{js,js.map,ngsummary.json,d.ts,metadata.json,auto-gen.ts} src/app/examples/**/*{-demo.main.ts,-demo.main.dev.ts,-demo.data.ts}",
+    "clean:dist": "rimraf dist",
+    "clean": "run-s clean:build clean:dist",
+    "ngc": "ngc",
+    "serve": "http-server ./dist -a localhost -p 9000 -c-1",
+    "start": "run-s build-dev serve",
+    "start-dev": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server",
+    "build": "run-s latest clean file-gen ngc webpack:prod",
+    "build-dev": "run-s latest clean file-gen ngc webpack:dev",
+    "webpack:prod": "NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack -p",
+    "webpack:dev": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack"
+  },
+  "dependencies": {
+    "core-js": "^2.5.1",
+    "ng-recaptcha": "../../ng-recaptcha-latest.tgz"
+  },
+  "devDependencies": {
+    "@types/webpack": "^3.8.1",
+    "angular2-template-loader": "^0.6.2",
+    "copy-webpack-plugin": "^4.1.1",
+    "css-loader": "^0.28.7",
+    "highlight-loader": "^0.7.2",
+    "html-loader": "^0.5.1",
+    "http-server": "^0.10.0",
+    "npm-run-all": "^4.1.2",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
+    "source-map-explorer": "^1.5.0",
+    "style-loader": "^0.19.0",
+    "to-string-loader": "^1.1.5",
+    "ts-node": "^4.1.0"
+  }
+}

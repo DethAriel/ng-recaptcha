@@ -1,0 +1,15 @@
+<recaptcha-demo-wrapper>
+  <button (click)="executeAction('homepage')">Execute "homepage" action</button>
+  <button (click)="executeAction('shoppingCart')">Execute "shoppingCart" action</button>
+
+  <h3>Most recent token</h3>
+  <pre>{{ formatToken(recentToken) }}</pre>
+
+  <h3>reCAPTCHA execution log</h3>
+  <pre *ngIf="executionLog.length === 0">(empty)</pre>
+  <ol *ngIf="executionLog.length > 0">
+    <li *ngFor="let entry of executionLog">
+      Action: <code>{{ entry.action }}</code>. Token: <code>{{ formatToken(entry.token) }}</code>
+    </li>
+  </ol>
+</recaptcha-demo-wrapper>
