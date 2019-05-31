@@ -50,7 +50,8 @@ export class ReCaptchaV3Service {
   constructor(
     zone: NgZone,
     @Inject(RECAPTCHA_V3_SITE_KEY) siteKey: string,
-    @Inject(PLATFORM_ID) platformId: {},
+    // tslint:disable-next-line:no-any
+    @Inject(PLATFORM_ID) platformId: any,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
   ) {
