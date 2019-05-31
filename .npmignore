@@ -3,6 +3,7 @@
 
 # demo sources
 demo/
+demo-v7/
 
 # TypeScript-related files
 *.ts

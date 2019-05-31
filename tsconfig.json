@@ -2,7 +2,8 @@
   "extends": "./tsconfig.base.json",
   "exclude": [
     "node_modules",
-    "demo"
+    "demo",
+    "demo-v7"
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true
