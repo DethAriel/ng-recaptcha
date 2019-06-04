@@ -1,3 +1,13 @@
+<a name="4.3.0"></a>
+# [4.3.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.3.0-beta.1...v4.3.0) (2019-06-04)
+
+
+### Bug Fixes
+
+* **component-v3:** fix a potential metadata error in v3 service ([ed885b5](https://github.com/DethAriel/ng-recaptcha/commit/ed885b5))
+
+
+
 <a name="4.3.0-beta.1"></a>
 # [4.3.0-beta.1](https://github.com/DethAriel/ng-recaptcha/compare/v4.2.1...v4.3.0-beta.1) (2019-02-08)
 

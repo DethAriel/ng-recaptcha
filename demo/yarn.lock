@@ -4138,9 +4138,9 @@ neo-async@^2.5.0:
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
 ng-recaptcha@../ng-recaptcha-latest.tgz:
-  version "4.3.0-beta.1"
+  version "4.3.0"
   resolved "../ng-recaptcha-latest.tgz#ec1bf64ac675688613031efd9453edd256a69f27"
-  integrity sha1-a/tx4qoQIJeHn1oDFKJrKWu80Zc=
+  integrity sha1-9c48HqlO2/MIlnzBcEPrNuweWjQ=
   optionalDependencies:
     "@types/grecaptcha" "^2.0.33"
 
