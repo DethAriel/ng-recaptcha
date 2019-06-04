@@ -1,3 +1,20 @@
+<a name="5.0.0-beta.1"></a>
+# [5.0.0-beta.1](https://github.com/DethAriel/ng-recaptcha/compare/v4.3.0...v5.0.0-beta.1) (2019-06-04)
+
+
+### Features
+
+* **component:** make Angular 8.0.0 a supported peer dependency ([f003ff2](https://github.com/DethAriel/ng-recaptcha/commit/f003ff2))
+* **package:** implement Angular Package format ([71340c4](https://github.com/DethAriel/ng-recaptcha/commit/71340c4))
+
+
+### BREAKING CHANGES
+
+* **package:** * `ng-recaptcha/forms` entry point has been removed. `RecaptchaFormsModule` and `RecaptchaValueAccessorDirective` should now be imported directly from `ng-recaptcha`
+* `tslib` is now a package dependency to ensure minimum possible bundle size. If your project doesn't yet have a dependency on `tslib`, run `npm install -D tslib@^1.9.0` (or `yarn add -D tslib@^1.9.0` if you use yarn)
+
+
+
 <a name="4.3.0"></a>
 # [4.3.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.3.0-beta.1...v4.3.0) (2019-06-04)
 
