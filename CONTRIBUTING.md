@@ -27,6 +27,8 @@ In order for everything to go smooth, you'll need to check prerequisites first:
 
 After you did that, follow the below process:
 
+* Pushed the latest changes to upstream: `git push`
+* Ensure that the build succeeds
 * To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean && yarn demo:install`
 * Then you need to prepare a release. Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
   * Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
