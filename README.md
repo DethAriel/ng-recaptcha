@@ -47,7 +47,7 @@ To start with, you need to import the `RecaptchaModule` (more on that [later](#m
 // app.module.ts
 import { RecaptchaModule } from 'ng-recaptcha';
 // if you need forms support:
-// import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+// import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { BrowserModule }  from '@angular/platform-browser';
 import { MyApp } from './app.component.ts';
 
@@ -148,17 +148,12 @@ You can also play with [this Stackblitz demo](https://stackblitz.com/edit/ng-rec
 There are two modules available for you:
 
 ```typescript
-import { RecaptchaModule } from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 ```
 
 If you want your `<re-captcha>` element to work correctly with `[(ngModel)]` directive,
 you need to import the `RecaptchaFormsModule` into your application module (pretty much
 like with Angular own `'@angular/forms'` module).
-
-If you do not rely on
-Angular forms in your project, you should use the "no-forms" module version, as
-it does not require the `@angular/forms` package to be bundled with your code.
 
 ## <a name="api"></a>API
 
@@ -285,7 +280,7 @@ export class PreloadedRecaptchaAPIService {
 ### <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
 
 It's very easy to put `<re-captcha>` in an Angular form and have it `require`d - just
-add the `required` attribute to the `<re-captcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng-recaptcha/forms'`!
+add the `required` attribute to the `<re-captcha>` element. Do not forget to import `RecaptchaFormsModule` from `'ng-recaptcha'`!
 
 ```typescript
 @Component({
