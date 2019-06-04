@@ -4,6 +4,7 @@
   "description": "Angular component for Google reCAPTCHA",
   "scripts": {
     "demo": "cd demo && yarn serve",
+    "demo:install": "cd demo && yarn install",
     "demo:clean": "cd demo && yarn clean:all",
     "demo:build": "cd demo && yarn build",
     "demo:publish": "yarn demo:publish-gh-pages",
@@ -15,7 +16,7 @@
     "github-release": "conventional-github-releaser --preset angular",
     "prepare-release": "npm whoami && yarn build && npm version $1",
     "push-release": "git push && git push --tags",
-    "version": "yarn changelog && git add CHANGELOG.md && yarn demo:build && git add demo/yarn.lock",
+    "version": "yarn changelog && git add CHANGELOG.md && yarn demo:build && git add demo/*/yarn.lock",
     "lint:prod": "tslint --project ./tsconfig.json --type-check",
     "lint": "yarn lint:prod --force",
     "build": "run-s clean lint:prod transpile",
