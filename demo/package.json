@@ -8,16 +8,15 @@
     "clean:v6": "cd v6 && yarn clean",
     "clean:v7": "cd v7 && yarn clean",
     "clean:v8": "cd v8 && yarn clean",
-    "clean:all": "yarn clean:v6 && yarn clean:v7 && yarn clean:v8",
-    "install:v6": "cd v6 && yarn latest",
-    "install:v7": "cd v7 && yarn latest",
-    "install:v8": "cd v8 && yarn latest",
-    "preinstall:all": "check-node-version --node $(cat .nvmrc)",
+    "clean:all": "rimraf dist && yarn clean:v6 && yarn clean:v7 && yarn clean:v8",
     "install:all": "yarn install:v6 && yarn install:v7 && yarn install:v8",
     "build:v6": "cd v6 && yarn build",
     "build:v7": "cd v7 && yarn build",
     "build:v8": "cd v8 && yarn build",
-    "build:all": "rimraf dist && yarn build:v6 && yarn build:v7 && yarn build:v8"
+    "prebuild:all": "check-node-version --node $(cat .nvmrc)",
+    "build:all": "yarn clean:all && yarn build:v6 && yarn build:v7 && yarn build:v8",
+    "build": "yarn install && yarn generate && yarn pack-latest && yarn build:all",
+    "pack-latest": "cd .. && yarn pack-latest"
   },
   "engines": {
     "node": ">=10.9.0"
