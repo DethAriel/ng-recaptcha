@@ -1,16 +1,2 @@
-build/
+# build files
 dist/
-*.ngfactory.ts
-*.ngstyle.ts
-*.ngsummary.json
-
-# auto-generated files
-*-demo.main.ts
-*-demo.main.dev.ts
-*-demo.data.ts
-*.auto-gen.ts
-
-# ngc-generated files
-src/**/*.d.ts
-src/**/*.js
-src/**/*.js.map

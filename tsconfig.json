@@ -3,10 +3,7 @@
   "exclude": [
     "node_modules",
     "dist",
-    "demo-all",
     "demo",
-    "demo-v7",
-    "demo-v6",
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true

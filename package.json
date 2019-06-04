@@ -4,7 +4,7 @@
   "description": "Angular component for Google reCAPTCHA",
   "scripts": {
     "demo": "yarn demo:serve",
-    "demo:clean": "cd demo-all && yarn clean:all",
+    "demo:clean": "cd demo && yarn clean:all",
     "demo:serve": "cd demo && yarn start",
     "demo:build": "cd demo && yarn build",
     "demo:publish": "yarn demo:publish-gh-pages",
