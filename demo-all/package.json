@@ -5,6 +5,10 @@
   "scripts": {
     "serve": "http-server ./dist -a localhost -p 9000 -c-1",
     "generate": "ts-node index.ts",
+    "clean:v6": "cd v6 && yarn clean",
+    "clean:v7": "cd v7 && yarn clean",
+    "clean:v8": "cd v8 && yarn clean",
+    "clean:all": "yarn clean:v6 && yarn clean:v7 && yarn clean:v8",
     "install:v6": "cd v6 && yarn latest",
     "install:v7": "cd v7 && yarn latest",
     "install:v8": "cd v8 && yarn latest",

@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { RecaptchaModule } from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 import { PAGE_SETTINGS } from '../../demo-wrapper/demo-wrapper.component';
 import { DemoWrapperModule } from '../../demo-wrapper/demo-wrapper.module';

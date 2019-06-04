@@ -5,6 +5,7 @@
 .DS_Store
 
 # compiled sources
+/dist
 /*.js
 /*.d.ts
 /recaptcha/**/*.js

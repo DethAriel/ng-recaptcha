@@ -4,13 +4,14 @@
   "description": "Angular component for Google reCAPTCHA",
   "scripts": {
     "demo": "yarn demo:serve",
+    "demo:clean": "cd demo-all && yarn clean:all",
     "demo:serve": "cd demo && yarn start",
     "demo:build": "cd demo && yarn build",
     "demo:publish": "yarn demo:publish-gh-pages",
     "demo:publish-gh-pages": "gh-pages -d demo/dist/ng-recaptcha",
-    "pack-latest": "yarn clean && yarn transpile && mv \"$(npm pack)\" ng-recaptcha-latest.tgz",
-    "transpile": "ngc -p ./tsconfig.json",
-    "clean": "del-cli './{recaptcha/,index,forms}*.{js,d.ts,js.map,metadata.json}' 'ng-recaptcha-*.tgz'",
+    "pack-latest": "yarn clean && yarn transpile && cd dist && mv \"$(npm pack)\" ../ng-recaptcha-latest.tgz",
+    "transpile": "ng-packagr -p ./tsconfig.json",
+    "clean": "del-cli 'ng-recaptcha-*.tgz' && yarn demo:clean",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file",
     "github-release": "conventional-github-releaser --preset angular",
     "prepare-release": "npm whoami && yarn build && npm version $1",
@@ -35,8 +36,16 @@
   ],
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts"
+    }
+  },
   "optionalDependencies": {
     "@types/grecaptcha": "^2.0.33"
+  },
+  "dependencies": {
+    "tslib": "^1.9.0"
   },
   "peerDependencies": {
     "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0"
@@ -56,6 +65,7 @@
     "del-cli": "^0.2.1",
     "gh-pages": "^0.12.0",
     "husky": "^0.13.3",
+    "ng-packagr": "^5.2.0",
     "npm-run-all": "^4.1.2",
     "rxjs": "^6.1.0",
     "tslint": "~5.7.0",
