@@ -34,5 +34,5 @@ After you did that, follow the below process:
   * Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
 * Verify the latest commit, and run `git push && git push --tag` to push the changes to the origin
 * Wait for the build to succeed
-* Publish the package to npm: `npm publish` (or `npm publish --tag beta`)
+* Publish the package to npm *from the "/dist" directory*: `cd dist && npm publish` (or `cd dist && npm publish --tag beta`)
 * Create a GitHub release and update the demo site by running `yarn github-release && yarn demo:publish`
