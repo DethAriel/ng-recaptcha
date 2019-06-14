@@ -3994,9 +3994,9 @@ next-tick@^1.0.0:
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
 ng-recaptcha@../../ng-recaptcha-latest.tgz:
-  version "5.0.0-beta.1"
+  version "5.0.0-beta.2"
   resolved "../../ng-recaptcha-latest.tgz#ea657bc417100a8f8a4161cdc9ac8fac5d06dfbb79582231dc49406580197289dc83f2466e8dd5845ade0b41842124be6c9c87a9a912dace5d7be69f622e6011"
-  integrity sha1-tjQeimdVeZgGDyC8jz+5eGbwaAk=
+  integrity sha1-obOhZWVJ0j/8XiQPRS5rrvqGGHY=
   dependencies:
     tslib "^1.9.0"
   optionalDependencies:

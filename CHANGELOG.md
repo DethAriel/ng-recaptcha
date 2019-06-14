@@ -1,3 +1,13 @@
+<a name="5.0.0-beta.2"></a>
+# [5.0.0-beta.2](https://github.com/DethAriel/ng-recaptcha/compare/v5.0.0-beta.1...v5.0.0-beta.2) (2019-06-14)
+
+
+### Bug Fixes
+
+* **package:** fix the package publishing ([e28ca37](https://github.com/DethAriel/ng-recaptcha/commit/e28ca37))
+
+
+
 <a name="5.0.0-beta.1"></a>
 # [5.0.0-beta.1](https://github.com/DethAriel/ng-recaptcha/compare/v4.3.0...v5.0.0-beta.1) (2019-06-04)
 
