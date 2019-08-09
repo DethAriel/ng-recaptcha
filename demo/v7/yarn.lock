@@ -3810,9 +3810,9 @@ neo-async@^2.5.0:
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
 ng-recaptcha@../../ng-recaptcha-latest.tgz:
-  version "4.3.0-beta.1"
+  version "5.0.0"
   resolved "../../ng-recaptcha-latest.tgz#ea657bc417100a8f8a4161cdc9ac8fac5d06dfbb79582231dc49406580197289dc83f2466e8dd5845ade0b41842124be6c9c87a9a912dace5d7be69f622e6011"
-  integrity sha1-i7fxsPv9o+OBxFS4EPPgzDQpepg=
+  integrity sha1-OqM0SxfilUug6w4n2vl+IWwAa08=
   dependencies:
     tslib "^1.9.0"
   optionalDependencies:
