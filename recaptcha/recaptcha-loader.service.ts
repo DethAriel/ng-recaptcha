@@ -1,16 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
-import {
-  Inject,
-  Injectable,
-  InjectionToken,
-  Optional,
-  PLATFORM_ID,
-} from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-
-export const RECAPTCHA_LANGUAGE = new InjectionToken<string>('recaptcha-language');
-export const RECAPTCHA_BASE_URL = new InjectionToken<string>('recaptcha-base-url');
-export const RECAPTCHA_NONCE = new InjectionToken<string>('recaptcha-nonce-tag');
+import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE } from './recaptcha-settings';
 
 declare global {
   interface Window {
