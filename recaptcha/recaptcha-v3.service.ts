@@ -117,6 +117,14 @@ export class ReCaptchaV3Service {
             this.onExecuteSubject.next({ action, token });
           }
         });
+      // tslint:disable-next-line:no-any
+      }, (err: any) => {
+        this.zone.run(() => {
+          subject.error(err);
+          if (this.onExecuteSubject) {
+            this.onExecuteSubject.error(err);
+          }
+        });
       });
     });
   }
