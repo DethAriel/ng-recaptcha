@@ -17,6 +17,18 @@ export interface OnExecuteData {
   token: string;
 }
 
+export interface OnExecuteErrorData {
+  /**
+   * The name of the action that has been executed.
+   */
+  action: string;
+  /**
+   * The error which was encountered
+   */
+  // tslint:disable-next-line:no-any
+  error: any;
+}
+
 type ActionBacklogEntry = [string, Subject<string>];
 
 /**
@@ -45,7 +57,11 @@ export class ReCaptchaV3Service {
   /** @internal */
   private onExecuteSubject: Subject<OnExecuteData>;
   /** @internal */
+  private onExecuteErrorSubject: Subject<OnExecuteErrorData>;
+  /** @internal */
   private onExecuteObservable: Observable<OnExecuteData>;
+  /** @internal */
+  private onExecuteErrorObservable: Observable<OnExecuteErrorData>;
 
   constructor(
     zone: NgZone,
@@ -71,6 +87,15 @@ export class ReCaptchaV3Service {
     }
 
     return this.onExecuteObservable;
+  }
+
+  public get onExecuteError(): Observable<OnExecuteErrorData> {
+    if (!this.onExecuteErrorSubject) {
+      this.onExecuteErrorSubject = new Subject<OnExecuteErrorData>();
+      this.onExecuteErrorObservable = this.onExecuteErrorSubject.asObservable();
+    }
+
+    return this.onExecuteErrorObservable;
   }
 
   /**
@@ -115,6 +140,14 @@ export class ReCaptchaV3Service {
           subject.complete();
           if (this.onExecuteSubject) {
             this.onExecuteSubject.next({ action, token });
+          }
+        });
+      // tslint:disable-next-line:no-any
+      }, (error: any) => {
+        this.zone.run(() => {
+          subject.error(error);
+          if (this.onExecuteErrorSubject) {
+            this.onExecuteErrorSubject.next({ action, error });
           }
         });
       });
