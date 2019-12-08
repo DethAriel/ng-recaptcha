@@ -69,20 +69,22 @@ export class RecaptchaLoaderService {
     this.language = language;
     this.baseUrl = baseUrl;
     this.nonce = nonce;
-    this.init();
-    this.ready = isPlatformBrowser(this.platformId) ? RecaptchaLoaderService.ready.asObservable() : of();
+    const ready = this.initReady();
+    this.ready = ready ? ready.asObservable() : of();
   }
 
   /** @internal */
-  private init() {
+  private initReady(): BehaviorSubject<ReCaptchaV2.ReCaptcha> {
     if (RecaptchaLoaderService.ready) {
-      return;
+      return RecaptchaLoaderService.ready;
     }
     if (isPlatformBrowser(this.platformId)) {
       const subject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
       RecaptchaLoaderService.ready = subject;
       const langParam = this.language ? '&hl=' + this.language : '';
       loadScript('explicit', (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
+      return subject;
     }
+    return null;
   }
 }

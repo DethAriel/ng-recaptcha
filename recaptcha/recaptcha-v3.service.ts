@@ -61,7 +61,7 @@ export class ReCaptchaV3Service {
     this.nonce = nonce;
     this.baseUrl = baseUrl;
 
-    this.init();
+    this.grecaptcha = this.initGrecaptcha();
   }
 
   public get onExecute(): Observable<OnExecuteData> {
@@ -122,14 +122,15 @@ export class ReCaptchaV3Service {
   }
 
   /** @internal */
-  private init() {
+  private initGrecaptcha(): ReCaptchaV2.ReCaptcha {
     if (this.isBrowser) {
       if ('grecaptcha' in window) {
-        this.grecaptcha = grecaptcha;
+        return grecaptcha;
       } else {
         loadScript(this.siteKey, this.onLoadComplete, '', this.baseUrl, this.nonce);
       }
     }
+    return null;
   }
 
   /** @internal */
