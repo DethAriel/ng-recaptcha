@@ -5,20 +5,22 @@
   "scripts": {
     "serve": "http-server ./dist -a localhost -p 9000 -c-1",
     "generate": "ts-node index.ts",
-    "clean:v6": "cd v6 && yarn clean",
     "clean:v7": "cd v7 && yarn clean",
     "clean:v8": "cd v8 && yarn clean",
-    "clean:all": "yarn generate && rimraf dist && yarn clean:v6 && yarn clean:v7 && yarn clean:v8",
-    "build:v6": "cd v6 && yarn build",
+    "clean:v9": "cd v9 && yarn clean",
+    "clean:v10": "cd v10 && yarn clean",
+    "clean:all": "yarn generate && rimraf dist && yarn clean:v7 && yarn clean:v8 && yarn clean:v9 && yarn clean:v10",
     "build:v7": "cd v7 && yarn build",
     "build:v8": "cd v8 && yarn build",
+    "build:v9": "cd v9 && yarn build",
+    "build:v10": "cd v10 && yarn build",
     "prebuild:all": "check-node-version --node $(cat .nvmrc)",
-    "build:all": "yarn clean:all && yarn build:v6 && yarn build:v7 && yarn build:v8",
+    "build:all": "yarn clean:all && yarn build:v7 && yarn build:v8 && yarn build:v9 && yarn build:v10",
     "build": "yarn install && yarn generate && yarn pack-latest && yarn build:all",
     "pack-latest": "cd .. && yarn pack-latest"
   },
   "engines": {
-    "node": ">=10.9.0"
+    "node": ">=12.0.0"
   },
   "dependencies": {
     "lodash.merge": "^4.6.1"
@@ -29,7 +31,8 @@
     "check-node-version": "^4.0.1",
     "http-server": "^0.11.1",
     "rimraf": "^2.6.3",
+    "npm-run-all": "^4.1.5",
     "ts-node": "^8.2.0",
-    "typescript": "^3.5.1"
+    "typescript": "^3.9.7"
   }
 }

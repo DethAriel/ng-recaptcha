@@ -3,7 +3,7 @@ import fs from 'fs';
 import merge from 'lodash.merge';
 import path from 'path';
 
-const supportedVersions = ['v6', 'v7', 'v8'];
+const supportedVersions = ['v7', 'v8', 'v9', 'v10'];
 
 readDirRecursively('v-all').forEach(processFile);
 
