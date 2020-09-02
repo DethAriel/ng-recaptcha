@@ -6,10 +6,10 @@
     "directive-selector": [true, "attribute", ["re"], "camelCase"],
     "component-selector": [true, "element", ["re"], "kebab-case"],
 
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
-    "use-host-property-decorator": true,
-    "no-attribute-parameter-decorator": true,
+    "no-inputs-metadata-property": true,
+    "no-outputs-metadata-property": true,
+    "no-host-metadata-property": true,
+    "no-attribute-decorator": true,
     "no-input-rename": true,
     "no-output-rename": true,
     "no-forward-ref": true,
@@ -17,9 +17,6 @@
     "use-pipe-transform-interface": true,
 
     "component-class-suffix": [true, "Component"],
-    "directive-class-suffix": [true, "Directive"],
-    "templates-use-public": true,
-    "no-access-missing-member": true,
-    "invoke-injectable": true
+    "directive-class-suffix": [true, "Directive"]
   }
 }

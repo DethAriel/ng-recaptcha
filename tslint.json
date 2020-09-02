@@ -13,7 +13,6 @@
     "no-invalid-this": true,
     "no-require-imports": true,
     "no-switch-case-fall-through": true,
-    "no-use-before-declare": true,
     "no-submodule-imports": [
       true,
       "rxjs"

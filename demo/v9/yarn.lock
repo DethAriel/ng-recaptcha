@@ -4179,9 +4179,9 @@ neo-async@^2.5.0:
 ng-recaptcha@../../ng-recaptcha-latest.tgz:
   version "5.0.0"
   resolved "../../ng-recaptcha-latest.tgz#ea657bc417100a8f8a4161cdc9ac8fac5d06dfbb79582231dc49406580197289dc83f2466e8dd5845ade0b41842124be6c9c87a9a912dace5d7be69f622e6011"
-  integrity "sha1-Lsc8UAAk1SKbJnAZBrzx8u4TC8g= sha512-LMOEXkhAjvSQDgMIWjYBDb/qLva/iYc1yIlVBSWDrQm4DKj2hBeTzjFhR2UvOLDhhOF1pvPE0DpKkwIKNXvyQA=="
+  integrity "sha1-4zfgO6QTk5rWSPR77h3dgI9A2u8= sha512-Tyu0iyMnw0bhiDok8bG8hVQwd+2zSKzOw4ulHgVo3O2kYd0q4YPgRbSYAO2tthCjZbnLH83RiiiMz38qNqpyaQ=="
   dependencies:
-    tslib "^1.9.0"
+    tslib "^2.0.0"
   optionalDependencies:
     "@types/grecaptcha" "^2.0.33"
 
@@ -6576,10 +6576,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@~3.4.0:
-  version "3.4.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
-  integrity sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==
+typescript@~3.9.0:
+  version "3.9.7"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
+  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 uglify-js@3.4.x:
   version "3.4.10"
