@@ -21,7 +21,7 @@
     "node": ">=10.9.0"
   },
   "dependencies": {
-    "lodash.merge": "^4.6.1"
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.6",
