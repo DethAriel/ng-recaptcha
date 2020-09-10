@@ -7,10 +7,16 @@ const supportedOlderVersions = ['v6', 'v7', 'v8'];
 
 generateSourcesForOlderVersions();
 generateSourcesForV9();
+generateSourcesForV10();
 
 function generateSourcesForV9() {
-  readDirRecursively('v9-template').forEach(processFileForV9);
-  readDirRecursively('v-all/bin').forEach(processFileForV9);
+  readDirRecursively('v9-template').forEach((file) => processFileForVersions(file, ['v9']));
+  readDirRecursively('v-all/bin').forEach((file) => processFileForVersions(file, ['v9']));
+}
+
+function generateSourcesForV10() {
+  readDirRecursively('v10-template').forEach((file) => processFileForVersions(file, ['v10']));
+  readDirRecursively('v-all/bin').forEach((file) => processFileForVersions(file, ['v10']));
 }
 
 function generateSourcesForOlderVersions() {
@@ -70,10 +76,6 @@ function copyToDestination(filePath: string, from: string): void {
 
 function processFileForOlderVersions(file: string): void {
   processFileForVersions(file, supportedOlderVersions);
-}
-
-function processFileForV9(file: string): void {
-  processFileForVersions(file, ['v9']);
 }
 
 function processFileForVersions(file: string, versions: string[]): void {

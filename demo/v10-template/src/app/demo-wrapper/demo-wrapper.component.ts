@@ -37,7 +37,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   public site = {
     title: 'ng-recaptcha',
     description: 'Angular component for Google reCAPTCHA',
-    baseurl: '/ng-recaptcha/v9',
+    baseurl: '/ng-recaptcha',
   };
   public mobileQuery: MediaQueryList;
   public sidebarOpened: boolean = false;

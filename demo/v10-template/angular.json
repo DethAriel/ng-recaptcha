@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "v9": {
+    "v10": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../dist/ng-recaptcha/v9",
+            "outputPath": "../dist/ng-recaptcha",
             "index": "src/index.html",
             "main": "src/app/examples/basic/basic-demo.main.ts",
             "polyfills": "src/polyfills.ts",
@@ -57,5 +57,5 @@
         }
       }
     }},
-  "defaultProject": "v9"
+  "defaultProject": "v10"
 }

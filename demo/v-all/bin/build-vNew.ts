@@ -2,8 +2,10 @@ import { examples, Example } from './examples';
 import { execSync } from "child_process";
 import * as fs from 'fs';
 
+const angularVersion = process.argv[2];
+const isLatest = process.argv[3] === "--latest";
+
 examples.forEach(buildExample)
-execSync('rm -rf ../dist/ng-recaptcha/v9-temp', { stdio: 'inherit' })
 
 function buildExample(example: Example) {
   if (example.additional) {
@@ -20,9 +22,9 @@ function buildExample(example: Example) {
   }
 
   const angularSettings = JSON.parse(fs.readFileSync('./angular.json', { encoding: 'utf-8' }));
-  angularSettings.projects.v9.architect.build.options.outputPath = `../dist/ng-recaptcha/v9-temp`;
-  angularSettings.projects.v9.architect.build.options.index = `src/${indexFileName}`;
-  angularSettings.projects.v9.architect.build.options.main = `src/app/examples/${example.name}/${example.name}-demo.main.ts`;
+  angularSettings.projects[angularVersion].architect.build.options.outputPath = `../dist/ng-recaptcha/${angularVersion}-temp`;
+  angularSettings.projects[angularVersion].architect.build.options.index = `src/${indexFileName}`;
+  angularSettings.projects[angularVersion].architect.build.options.main = `src/app/examples/${example.name}/${example.name}-demo.main.ts`;
   fs.writeFileSync('./angular.json', JSON.stringify(angularSettings, null, 2), { encoding: 'utf-8' });
 
   const tsConfig = JSON.parse(fs.readFileSync('./tsconfig.app.json', { encoding: 'utf-8' }));
@@ -34,5 +36,6 @@ function buildExample(example: Example) {
 
 
   execSync('yarn ng-build', { stdio: 'inherit' });
-  execSync('cp -R ../dist/ng-recaptcha/v9-temp/ ../dist/ng-recaptcha', { stdio: 'inherit' });
+  const targetDir = `../dist/ng-recaptcha${isLatest ? '' : `/${angularVersion}`}`;
+  execSync(`cp -R ../dist/ng-recaptcha/${angularVersion}-temp/ ${targetDir}`, { stdio: 'inherit' });
 }
