@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-  - "10.9.0"
+  - "12.17.0"
 
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.5
   - export PATH="$HOME/.yarn/bin:$PATH"
 script:
   - yarn install && yarn demo:install && yarn build && yarn demo:build
