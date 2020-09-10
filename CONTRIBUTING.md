@@ -7,9 +7,10 @@
 
 * Every PR should have an associated issue
 * Use [Angular commit message conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
-  * Allowed scopes: `component`, `package`, `build`. If you feel like these do not fit your use-case, consult with maintainer in PR comments section
-  * Use `docs(readme|demo|contrib)` for corresponding changes.
+  * Allowed scopes: `component`, `package`, `build`, `docs`. If you feel like these do not fit your use-case, consult with maintainer in PR comments section
+  * Use `chore(docs)` instead of `docs(<scope>)`
 * Use `closes #<Issue>` statement in commit <Description> section
+* Keep PRs focused on your changes. That is, don't go on a wild hunt to update code styles without consulting to maintainer first
 * If there are changes required for your PR (or if there are merge conflicts with the target branch) - rebase and force-push instead of merging
 
 ## Running demo
@@ -30,6 +31,7 @@ After you did that, follow the below process:
 * Pushed the latest changes to upstream: `git push`
 * Ensure that the build succeeds
 * To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean && yarn demo:install`
+* Build the demo site by running `yarn demo:build`, and test the release on demo site by running `yarn demo`
 * Then you need to prepare a release. Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
   * Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
 * Verify the latest commit, and run `git push && git push --tag` to push the changes to the origin
