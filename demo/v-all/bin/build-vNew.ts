@@ -8,6 +8,8 @@ const isLatest = process.argv[3] === "--latest";
 examples.forEach(buildExample)
 
 function buildExample(example: Example) {
+  const sourceDir = `../dist/ng-recaptcha/${angularVersion}-temp/`;
+  const targetDir = `../dist/ng-recaptcha${isLatest ? '' : `/${angularVersion}`}`;
   if (example.additional) {
     // FIXME "ng build" supports multiple entry points out of the box.
     // However, that should be possible. And once we figure out how to do this properly,
@@ -22,7 +24,7 @@ function buildExample(example: Example) {
   }
 
   const angularSettings = JSON.parse(fs.readFileSync('./angular.json', { encoding: 'utf-8' }));
-  angularSettings.projects[angularVersion].architect.build.options.outputPath = `../dist/ng-recaptcha/${angularVersion}-temp`;
+  angularSettings.projects[angularVersion].architect.build.options.outputPath = sourceDir;
   angularSettings.projects[angularVersion].architect.build.options.index = `src/${indexFileName}`;
   angularSettings.projects[angularVersion].architect.build.options.main = `src/app/examples/${example.name}/${example.name}-demo.main.ts`;
   fs.writeFileSync('./angular.json', JSON.stringify(angularSettings, null, 2), { encoding: 'utf-8' });
@@ -36,6 +38,7 @@ function buildExample(example: Example) {
 
 
   execSync('yarn ng-build', { stdio: 'inherit' });
-  const targetDir = `../dist/ng-recaptcha${isLatest ? '' : `/${angularVersion}`}`;
-  execSync(`cp -R ../dist/ng-recaptcha/${angularVersion}-temp/ ${targetDir}`, { stdio: 'inherit' });
+  console.log(`Copying contents of "${sourceDir}" dir into "${targetDir}"`)
+  execSync(`cp -R ${sourceDir} ${targetDir}`, { stdio: 'inherit' });
+  execSync(`yarn rimraf ${sourceDir}`, { stdio: 'inherit' });
 }
