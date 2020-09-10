@@ -26,7 +26,7 @@ function generateSourcesForOlderVersions() {
 function readDirRecursively(dir: string, filePathList: string[] = []): string[] {
   const entries = fs.readdirSync(dir);
   entries.forEach((entry) => {
-    const fileOrDirPath = dir + '/' + entry;
+    const fileOrDirPath = path.join(dir, entry);
     if (fs.statSync(fileOrDirPath).isDirectory()) {
       filePathList = readDirRecursively(fileOrDirPath, filePathList);
     } else {

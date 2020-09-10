@@ -1,6 +1,7 @@
 import { examples, Example } from './examples';
 import { execSync } from "child_process";
 import * as fs from 'fs';
+import * as path from 'path';
 
 const angularVersion = process.argv[2];
 const isLatest = process.argv[3] === "--latest";
@@ -38,7 +39,34 @@ function buildExample(example: Example) {
 
   execSync('yarn ng-build', { stdio: 'inherit' });
   const targetDir = `../dist/ng-recaptcha/${isLatest ? '' : `${angularVersion}/`}`;
-  console.log(`Copying contents of "${sourceDir}" dir into "${targetDir}"`)
-  execSync(`cp -R ${sourceDir} ${targetDir}`, { stdio: 'inherit' });
-  execSync(`yarn rimraf ${sourceDir}`, { stdio: 'inherit' });
+  console.log(`Copying contents of "${sourceDir}" dir into "${targetDir}"`);
+  copyDirRecursively(sourceDir, targetDir);
+  if (fs.existsSync(sourceDir)) {
+    execSync(`yarn rimraf ${sourceDir}`, { stdio: 'inherit' });
+  }
+}
+
+function copyDirRecursively(sourceDir: string, targetDir: string) {
+  readDirRecursively(sourceDir).forEach(file => {
+    const destinationFilePath = path.join(targetDir, path.relative(sourceDir, file));
+    const directory = path.dirname(destinationFilePath);
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+    }
+    fs.copyFileSync(file, destinationFilePath);
+  });
+}
+
+function readDirRecursively(dir: string, filePathList: string[] = []): string[] {
+  const entries = fs.readdirSync(dir);
+  entries.forEach((entry) => {
+    const fileOrDirPath = path.join(dir, entry);
+    if (fs.statSync(fileOrDirPath).isDirectory()) {
+      filePathList = readDirRecursively(fileOrDirPath, filePathList);
+    } else {
+      filePathList.push(fileOrDirPath);
+    }
+  });
+
+  return filePathList;
 }
