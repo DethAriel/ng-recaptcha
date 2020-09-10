@@ -1,3 +1,14 @@
+<a name="6.0.0"></a>
+# [6.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v5.0.0...v6.0.0) (2020-09-10)
+
+
+### Features
+
+* **component:** make Angular 10.0.0 a supported peer dependency ([3d7756b](https://github.com/DethAriel/ng-recaptcha/commit/3d7756b)), closes [#177](https://github.com/DethAriel/ng-recaptcha/issues/177)
+* **component:** make Angular 9.0.0 a supported peer dependency ([98edce6](https://github.com/DethAriel/ng-recaptcha/commit/98edce6)), closes [#168](https://github.com/DethAriel/ng-recaptcha/issues/168)
+
+
+
 <a name="5.0.0"></a>
 # [5.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v4.3.0...v5.0.0) (2019-08-09)
 
