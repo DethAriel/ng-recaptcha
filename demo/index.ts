@@ -3,9 +3,19 @@ import fs from 'fs';
 import merge from 'lodash.merge';
 import path from 'path';
 
-const supportedVersions = ['v6', 'v7', 'v8'];
+const supportedOlderVersions = ['v6', 'v7', 'v8'];
 
-readDirRecursively('v-all').forEach(processFile);
+generateSourcesForOlderVersions();
+generateSourcesForV9();
+
+function generateSourcesForV9() {
+  readDirRecursively('v9-template').forEach(processFileForV9);
+  readDirRecursively('v-all/bin').forEach(processFileForV9);
+}
+
+function generateSourcesForOlderVersions() {
+  readDirRecursively('v-all').forEach(processFileForOlderVersions);
+}
 
 function readDirRecursively(dir: string, filePathList: string[] = []): string[] {
   const entries = fs.readdirSync(dir);
@@ -58,13 +68,21 @@ function copyToDestination(filePath: string, from: string): void {
   fs.copyFileSync(from, filePath);
 }
 
-function processFile(file: string): void {
+function processFileForOlderVersions(file: string): void {
+  processFileForVersions(file, supportedOlderVersions);
+}
+
+function processFileForV9(file: string): void {
+  processFileForVersions(file, ['v9']);
+}
+
+function processFileForVersions(file: string, versions: string[]): void {
   if (file.endsWith('.template.ts')) {
     const fileExports = require('./' + file);
 
     const actualRelativePath = stripFirstDir(stripSuffix(file, '.template.ts'));
 
-    supportedVersions.forEach((version) => {
+    versions.forEach((version) => {
       if (fileExports[version]) {
         writeToDestination(`${version}/${actualRelativePath}`, fileExports[version]);
       }
@@ -73,7 +91,7 @@ function processFile(file: string): void {
     const actualRelativePath = stripFirstDir(stripSuffix(file, '.merge'));
     const commonContents = JSON.parse(fs.readFileSync(file, { encoding: 'UTF-8' }));
 
-    supportedVersions.forEach((version) => {
+    versions.forEach((version) => {
       const versionContents = JSON.parse(
         fs.readFileSync(
           `${version}/${actualRelativePath}.merge`,
@@ -92,13 +110,13 @@ function processFile(file: string): void {
   } else if (file.endsWith('.copy')) {
     const actualRelativePath = stripFirstDir(stripSuffix(file, '.copy'));
 
-    supportedVersions.forEach((version) => {
+    versions.forEach((version) => {
       copyToDestination(`${version}/${actualRelativePath}`, file);
     });
   } else {
     const actualRelativePath = stripFirstDir(file);
 
-    supportedVersions.forEach((version) => {
+    versions.forEach((version) => {
       copyToDestination(`${version}/${actualRelativePath}`, file);
     });
   }

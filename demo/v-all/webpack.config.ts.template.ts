@@ -103,4 +103,4 @@ export default {
 
 export const v6 = generate({ webpackVersion: '3', outSubdirectory: 'v6' });
 export const v7 = generate({ webpackVersion: '4', outSubdirectory: 'v7' });
-export const v8 = generate({ webpackVersion: '4' });
+export const v8 = generate({ webpackVersion: '4', outSubdirectory: 'v8' });

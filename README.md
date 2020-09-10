@@ -232,7 +232,7 @@ import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 
 You can find the list of supported languages in [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/language).
 
-### <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/preload-api)
+### <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/v8/preload-api)
 
 By default, the component assumes that the reCAPTCHA API loading will be handled
 by the `RecaptchaLoaderService`. However, you can override that by providing your
