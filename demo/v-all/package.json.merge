@@ -17,7 +17,7 @@
     "@types/webpack": "^3.8.1",
     "angular2-template-loader": "^0.6.2",
     "copy-webpack-plugin": "^4.1.1",
-    "css-loader": "^0.28.7",
+    "css-loader": "^3.6.0",
     "highlight-loader": "^0.7.2",
     "html-loader": "^0.5.1",
     "npm-run-all": "^4.1.2",
