@@ -17,9 +17,6 @@
     "use-pipe-transform-interface": true,
 
     "component-class-suffix": [true, "Component"],
-    "directive-class-suffix": [true, "Directive"],
-    "templates-use-public": true,
-    "no-access-missing-member": true,
-    "invoke-injectable": true
+    "directive-class-suffix": [true, "Directive"]
   }
 }
