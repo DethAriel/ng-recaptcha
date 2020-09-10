@@ -2,7 +2,7 @@
   "name": "ng-recaptcha-demo",
   "private": true,
   "scripts": {
-    "file-gen": "ts-node ./bin/file-gen.ts",
+    "file-gen": "ts-node ./bin/file-gen.ts --main-file=factory",
     "latest": "yarn remove ng-recaptcha; yarn install; yarn add ng-recaptcha@../../ng-recaptcha-latest.tgz --update-checksums",
     "clean": "rimraf src/**/*.{js,js.map,ngsummary.json,d.ts,metadata.json,auto-gen.ts} src/app/examples/**/*{-demo.main.ts,-demo.data.ts}",
     "build:ngc": "ngc",
@@ -18,7 +18,7 @@
     "angular2-template-loader": "^0.6.2",
     "copy-webpack-plugin": "^4.1.1",
     "css-loader": "^3.6.0",
-    "highlight-loader": "^0.7.2",
+    "highlight.js": "^10.1.1",
     "html-loader": "^0.5.1",
     "npm-run-all": "^4.1.2",
     "raw-loader": "^0.5.1",
