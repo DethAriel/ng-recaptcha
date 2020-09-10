@@ -22,16 +22,6 @@ platformBrowser().bootstrapModuleFactory(DemoModuleNgFactory);
   writeExampleFile(featureName, `${featureName}-demo.main.ts`, contents);
 }
 
-function generateMainDev(featureName) {
-  const contents = `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DemoModule } from './${featureName}-demo.module';
-
-platformBrowserDynamic().bootstrapModule(DemoModule);
-`;
-
-  writeExampleFile(featureName, `${featureName}-demo.main.dev.ts`, contents);
-}
-
 function generateData(example) {
   const featureName = example.name;
   const additionalContents = !example.additional ? '' : `
@@ -73,7 +63,6 @@ function generateLinks() {
 
 function generateFiles() {
   examples.map((e) => e.name).forEach(generateMain);
-  examples.map((e) => e.name).forEach(generateMainDev);
   examples.forEach(generateData);
   generateLinks();
 }
