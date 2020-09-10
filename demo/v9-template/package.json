@@ -2,7 +2,7 @@
   "name": "v9",
   "version": "0.0.0",
   "scripts": {
-    "file-gen": "ts-node ./bin/file-gen-vNew.ts v9",
+    "file-gen": "ts-node ./bin/file-gen.ts --main-file=dynamic",
     "latest": "yarn remove ng-recaptcha; yarn install; yarn add ng-recaptcha@../../ng-recaptcha-latest.tgz --update-checksums",
     "clean": "rimraf src/app/examples/**/*{-demo.main.ts,-demo.data.ts}",
     "serve": "http-server ./dist -a localhost -p 9000 -c-1",
