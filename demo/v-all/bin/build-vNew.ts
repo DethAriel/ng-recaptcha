@@ -9,7 +9,6 @@ examples.forEach(buildExample)
 
 function buildExample(example: Example) {
   const sourceDir = `../dist/ng-recaptcha/${angularVersion}-temp/`;
-  const targetDir = `../dist/ng-recaptcha${isLatest ? '' : `/${angularVersion}`}`;
   if (example.additional) {
     // FIXME "ng build" supports multiple entry points out of the box.
     // However, that should be possible. And once we figure out how to do this properly,
@@ -38,6 +37,7 @@ function buildExample(example: Example) {
 
 
   execSync('yarn ng-build', { stdio: 'inherit' });
+  const targetDir = `../dist/ng-recaptcha/${isLatest ? '' : `${angularVersion}/`}`;
   console.log(`Copying contents of "${sourceDir}" dir into "${targetDir}"`)
   execSync(`cp -R ${sourceDir} ${targetDir}`, { stdio: 'inherit' });
   execSync(`yarn rimraf ${sourceDir}`, { stdio: 'inherit' });
