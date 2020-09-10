@@ -19,6 +19,12 @@
     "prebuild:all": "check-node-version --node $(cat .nvmrc)",
     "build:all": "yarn clean:all && yarn build:v6 && yarn build:v7 && yarn build:v8 && yarn build:v9 && yarn build:v10",
     "build": "yarn install && yarn generate && yarn pack-latest && yarn build:all",
+    "install:v6": "cd v6 && yarn install",
+    "install:v7": "cd v7 && yarn install",
+    "install:v8": "cd v8 && yarn install",
+    "install:v9": "cd v9 && yarn install",
+    "install:v10": "cd v10 && yarn install",
+    "install:all": "yarn generate && yarn install:v6 && yarn install:v7 && yarn install:v8 && yarn install:v9 && yarn install:v10",
     "pack-latest": "cd .. && yarn pack-latest"
   },
   "engines": {
@@ -31,7 +37,7 @@
     "@types/lodash.merge": "^4.6.6",
     "@types/node": "^12.0.4",
     "check-node-version": "^4.0.1",
-    "http-server": "^0.11.1",
+    "http-server": "^0.12.3",
     "rimraf": "^2.6.3",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
