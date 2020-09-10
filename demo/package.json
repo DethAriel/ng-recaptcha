@@ -25,7 +25,7 @@
     "install:v9": "cd v9 && yarn install",
     "install:v10": "cd v10 && yarn install",
     "install:all": "yarn generate && yarn install:v6 && yarn install:v7 && yarn install:v8 && yarn install:v9 && yarn install:v10",
-    "serve-latest": "yarn generate && yarn clean:v10 && yarn build:v10 && yarn serve",
+    "serve-latest": "yarn generate && yarn pack-latest && yarn clean:v10 && yarn build:v10 && yarn serve",
     "pack-latest": "cd .. && yarn pack-latest"
   },
   "engines": {

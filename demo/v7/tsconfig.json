@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "baseUrl": "",
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "include": [
+    "src/**/*"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": false
+  }
+}

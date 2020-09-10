@@ -3,24 +3,12 @@ import fs from 'fs';
 import merge from 'lodash.merge';
 import path from 'path';
 
-const supportedOlderVersions = ['v6', 'v7', 'v8'];
+const supportedVersions = ['v6', 'v7', 'v8', 'v9', 'v10'];
 
-generateSourcesForOlderVersions();
-generateSourcesForV9();
-generateSourcesForV10();
+generateSources();
 
-function generateSourcesForV9() {
-  readDirRecursively('v9-template').forEach((file) => processFileForVersions(file, ['v9']));
-  readDirRecursively('v-all/bin').forEach((file) => processFileForVersions(file, ['v9']));
-}
-
-function generateSourcesForV10() {
-  readDirRecursively('v10-template').forEach((file) => processFileForVersions(file, ['v10']));
-  readDirRecursively('v-all/bin').forEach((file) => processFileForVersions(file, ['v10']));
-}
-
-function generateSourcesForOlderVersions() {
-  readDirRecursively('v-all').forEach(processFileForOlderVersions);
+function generateSources() {
+  readDirRecursively('v-all').forEach(processFile);
 }
 
 function readDirRecursively(dir: string, filePathList: string[] = []): string[] {
@@ -74,32 +62,23 @@ function copyToDestination(filePath: string, from: string): void {
   fs.copyFileSync(from, filePath);
 }
 
-function processFileForOlderVersions(file: string): void {
-  processFileForVersions(file, supportedOlderVersions);
-}
-
-function processFileForVersions(file: string, versions: string[]): void {
+function processFile(file: string): void {
   if (file.endsWith('.template.ts')) {
     const fileExports = require('./' + file);
 
     const actualRelativePath = stripFirstDir(stripSuffix(file, '.template.ts'));
 
-    versions.forEach((version) => {
+    supportedVersions.forEach((version) => {
       if (fileExports[version]) {
         writeToDestination(`${version}/${actualRelativePath}`, fileExports[version]);
       }
     });
   } else if (file.endsWith('.json.merge')) {
     const actualRelativePath = stripFirstDir(stripSuffix(file, '.merge'));
-    const commonContents = JSON.parse(fs.readFileSync(file, { encoding: 'UTF-8' }));
+    const commonContents = readFileAsJson(file);
 
-    versions.forEach((version) => {
-      const versionContents = JSON.parse(
-        fs.readFileSync(
-          `${version}/${actualRelativePath}.merge`,
-          { encoding: 'UTF-8' },
-        ),
-      );
+    supportedVersions.forEach((version) => {
+      const versionContents = readFileAsJson(`${version}/${actualRelativePath}.merge`);
 
       const contents = JSON.stringify(
         merge({}, commonContents, versionContents),
@@ -112,14 +91,28 @@ function processFileForVersions(file: string, versions: string[]): void {
   } else if (file.endsWith('.copy')) {
     const actualRelativePath = stripFirstDir(stripSuffix(file, '.copy'));
 
-    versions.forEach((version) => {
+    supportedVersions.forEach((version) => {
       copyToDestination(`${version}/${actualRelativePath}`, file);
     });
   } else {
     const actualRelativePath = stripFirstDir(file);
 
-    versions.forEach((version) => {
+    supportedVersions.forEach((version) => {
       copyToDestination(`${version}/${actualRelativePath}`, file);
     });
+  }
+}
+
+function readFileAsJson(file: string) {
+  try {
+    return JSON.parse(
+      fs.readFileSync(
+        file,
+        { encoding: 'UTF-8' },
+      ),
+    );
+  } catch (e) {
+    console.error(`Error while reading JSON from file ${file}`);
+    throw e;
   }
 }

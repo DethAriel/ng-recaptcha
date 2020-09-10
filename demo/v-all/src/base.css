@@ -3,7 +3,7 @@ body, html {
   height: 100%;
 }
 
-recaptcha-demo, recaptcha-demo-wrapper,  {
+recaptcha-demo, recaptcha-demo-wrapper {
   display: block;
   height: 100%;
 }

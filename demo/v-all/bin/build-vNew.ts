@@ -29,15 +29,16 @@ function buildExample(example: Example) {
   angularSettings.projects[angularVersion].architect.build.options.main = `src/app/examples/${example.name}/${example.name}-demo.main.ts`;
   fs.writeFileSync('./angular.json', JSON.stringify(angularSettings, null, 2), { encoding: 'utf-8' });
 
-  const tsConfig = JSON.parse(fs.readFileSync('./tsconfig.app.json', { encoding: 'utf-8' }));
-  tsConfig.files = [
-    `src/app/examples/${example.name}/${example.name}-demo.main.ts`,
-    "src/polyfills.ts"
-  ];
-  fs.writeFileSync('./tsconfig.app.json', JSON.stringify(tsConfig, null, 2), { encoding: 'utf-8' });
+  fs.writeFileSync('./tsconfig.app.json', JSON.stringify({
+    extends: "./tsconfig.app.base.json",
+    files: [
+      `src/app/examples/${example.name}/${example.name}-demo.main.ts`,
+      "src/polyfill.ts"
+    ]
+  }, null, 2), { encoding: 'utf-8' });
 
 
-  execSync('yarn ng-build', { stdio: 'inherit' });
+  execSync('yarn ng build', { stdio: 'inherit' });
   const targetDir = `../dist/ng-recaptcha/${isLatest ? '' : `${angularVersion}/`}`;
   console.log(`Copying contents of "${sourceDir}" dir into "${targetDir}"`);
   copyDirRecursively(sourceDir, targetDir);

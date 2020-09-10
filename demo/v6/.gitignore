@@ -2,7 +2,6 @@
 bin/
 src/
 webpack/
-tsconfig.json
 tsconfig.webpack.json
 webpack.config.ts
 package.json
@@ -23,3 +22,6 @@ build/
 src/**/*.d.ts
 src/**/*.js
 src/**/*.js.map
+
+# v9+ app config files
+tsconfig.app.json

@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { examples } from './examples';
+import { examples, Example } from './examples';
 
 const sourceDir = path.join(process.cwd(), 'src');
 const mainFileGenerationStyle = process.argv.includes("--main-file=factory")
@@ -15,7 +15,7 @@ if (!mainFileGenerationStyle) {
 
 generateFiles();
 
-function writeExampleFile(featureName, fileName, contents) {
+function writeExampleFile(featureName: string, fileName: string, contents: string) {
   const location = path.join(sourceDir, 'app', 'examples', featureName, fileName);
 
   fs.writeFileSync(location, contents, { encoding: 'UTF8' });
@@ -39,7 +39,7 @@ function highlightRequire(file: string, lang: string) {
   return data;
 }
 
-function generateMain(featureName) {
+function generateMain(featureName: string) {
   switch (mainFileGenerationStyle) {
     case "factory": {
       generateMainFactory(featureName);
@@ -55,7 +55,7 @@ function generateMain(featureName) {
   }
 }
 
-function generateMainFactory(featureName) {
+function generateMainFactory(featureName: string) {
   const contents = `import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
 import { DemoModuleNgFactory } from './${featureName}-demo.module.ngfactory';
@@ -67,7 +67,7 @@ platformBrowser().bootstrapModuleFactory(DemoModuleNgFactory);
   writeExampleFile(featureName, `${featureName}-demo.main.ts`, contents);
 }
 
-function generateMainDynamic(featureName) {
+function generateMainDynamic(featureName: string) {
   const contents = `import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DemoModule } from './${featureName}-demo.module';
@@ -79,7 +79,7 @@ platformBrowserDynamic().bootstrapModule(DemoModule);
   writeExampleFile(featureName, `${featureName}-demo.main.ts`, contents);
 }
 
-function generateData(example) {
+function generateData(example: Example) {
   const featureName = example.name;
   const additionalContents = !example.additional ? '' : `
     additional: {

@@ -3,7 +3,7 @@ function generate({
   outSubdirectory,
 }: {
   webpackVersion: '3' | '4',
-  outSubdirectory?: string,
+  outSubdirectory: string,
 }) {
   return `
 import { MediaMatcher } from '@angular/cdk/layout'; // tslint:disable-line:no-submodule-imports
@@ -97,3 +97,5 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
 export const v6 = generate({ webpackVersion: '3', outSubdirectory: 'v6' });
 export const v7 = generate({ webpackVersion: '4', outSubdirectory: 'v7' });
 export const v8 = generate({ webpackVersion: '4', outSubdirectory: 'v8'  });
+export const v9 = generate({ webpackVersion: '3', outSubdirectory: 'v9' });
+export const v10 = generate({ webpackVersion: '3', outSubdirectory: '' });
