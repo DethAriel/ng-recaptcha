@@ -479,3 +479,4 @@ There are a couple things to keep in mind:
 
 * `onExecute` will trigger for **all** actions. If you only need to bulk-process some actions, and not others - you will have to apply filtering yourself.
 * `onExecute` observable will provide you with all the events emitted **after** you have subscribed to it - it doesn't keep references to the previously emitted actions. So make sure you add such a subscription as early in your code as you feel is necessary.
+* `onExecute` does not emit anything for when a `grecaptcha` error occurs. Use `onExecuteError` Observable for that.
