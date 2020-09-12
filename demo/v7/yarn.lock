@@ -194,11 +194,6 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/grecaptcha@^2.0.33":
-  version "2.0.36"
-  resolved "https://registry.yarnpkg.com/@types/grecaptcha/-/grecaptcha-2.0.36.tgz#c5eaf271ac8a170f073f85aa2e28f2ca3b61df40"
-  integrity sha512-SfzcAJPls94/Lz1FznWe6Vm9NLkakhGmk3EO7g2QdkDDR2OU4FH63YILnDpGIU6l7gPnsf5WQ81Kr05JOYAlZw==
-
 "@types/json-schema@^7.0.5":
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
@@ -3414,14 +3409,6 @@ neo-async@^2.5.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
-
-ng-recaptcha@../../ng-recaptcha-latest.tgz:
-  version "5.0.0"
-  resolved "../../ng-recaptcha-latest.tgz#4e0da27bfd0316db523ebf7b83cef81004f9d5dfacdf5b4d12413c62329d97984ecf0d7ba5191a3dfa2c71ee0a2ba62482d193059446bc4cf7f776c782747bd8"
-  dependencies:
-    tslib "^1.9.0"
-  optionalDependencies:
-    "@types/grecaptcha" "^2.0.33"
 
 nice-try@^1.0.4:
   version "1.0.5"

@@ -4,6 +4,7 @@
   "scripts": {
     "file-gen": "ts-node ./bin/file-gen.ts --main-file=dynamic",
     "clean": "rimraf src/app/examples/**/*{-demo.main.ts,-demo.data.ts}",
+    "build:cleanup": "yarn remove ng-recaptcha && git checkout -- angular.json",
     "build:ng": "echo noop",
     "build:webpack": "ts-node ./bin/build-vNew.ts v10 --latest"
   },
@@ -19,7 +20,6 @@
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
-    "ng-recaptcha": "../../ng-recaptcha-latest.tgz",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

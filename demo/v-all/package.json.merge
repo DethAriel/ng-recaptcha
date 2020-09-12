@@ -3,15 +3,15 @@
   "private": true,
   "scripts": {
     "file-gen": "ts-node ./bin/file-gen.ts --main-file=factory",
-    "latest": "yarn install --update-checksums; yarn add file:../../ng-recaptcha-latest.tgz --force --update-checksums",
+    "latest": "yarn install; ts-node ../bin/install-latest.ts",
     "clean": "rimraf src/**/*.{js,js.map,ngsummary.json,d.ts,metadata.json,auto-gen.ts} src/app/examples/**/*{-demo.main.ts,-demo.data.ts}",
+    "build:cleanup": "yarn remove ng-recaptcha",
     "build:ng": "ngc",
     "build:webpack": "NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack -p",
-    "build": "yarn latest && run-s clean file-gen build:ng build:webpack"
+    "build": "yarn latest && run-s clean file-gen build:ng build:webpack build:cleanup"
   },
   "dependencies": {
-    "core-js": "^2.5.1",
-    "ng-recaptcha": "../../ng-recaptcha-latest.tgz"
+    "core-js": "^2.5.1"
   },
   "devDependencies": {
     "@types/webpack": "^3.8.1",
