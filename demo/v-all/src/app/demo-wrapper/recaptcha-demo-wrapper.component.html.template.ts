@@ -1,16 +1,25 @@
-<section class="recaptcha-demo-wrapper">
+function generate({
+  angularVersion,
+}: {
+  angularVersion: 'v6' | 'v7' | 'v8' | 'v9' | 'v10',
+}) {
+  const iconBasePath = ['v6', 'v7', 'v8'].indexOf(angularVersion) >= 0
+    ? '../../'
+    : '';
+
+  return `<section class="recaptcha-demo-wrapper">
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <img src="../../images/angular.svg" height="40px" />
+    <img src="${iconBasePath}images/angular.svg" height="40px" />
     <span>{{ site.title }}</span>
     <span class="filler"></span>
 
     <a *ngIf="!mobileQuery.matches" mat-button href="https://github.com/DethAriel/ng2-recaptcha">
-      <img src="../../images/octocat.svg" height="26px" />
+      <img src="${iconBasePath}images/octocat.svg" height="26px" />
       <span>GitHub</span>
     </a>
     <a *ngIf="mobileQuery.matches" aria-label="GitHub repository" mat-icon-button href="https://github.com/DethAriel/ng2-recaptcha">
-      <img src="../../images/octocat.svg" height="26px" />
+      <img src="${iconBasePath}images/octocat.svg" height="26px" />
     </a>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -78,7 +87,7 @@
       </main>
       <footer>
         <div>
-          <img src="../../images/angular.svg" height="32px" />
+          <img src="${iconBasePath}images/angular.svg" height="32px" />
         </div>
         <div>
           <h3>{{ site.title }}</h3>
@@ -89,3 +98,11 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 </section>
+`;
+}
+
+export const v6 = generate({ angularVersion: 'v6' });
+export const v7 = generate({ angularVersion: 'v7' });
+export const v8 = generate({ angularVersion: 'v8'  });
+export const v9 = generate({ angularVersion: 'v9' });
+export const v10 = generate({ angularVersion: 'v10' });
