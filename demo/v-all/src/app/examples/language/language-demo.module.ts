@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {
   RECAPTCHA_LANGUAGE,
-  RecaptchaLoaderService,
   RecaptchaModule,
 } from 'ng-recaptcha';
 
@@ -21,10 +20,7 @@ import { settings } from './language-demo.data';
     DemoWrapperModule,
   ],
   providers: [
-    {
-      provide: RECAPTCHA_LANGUAGE,
-      useValue: 'fr',
-    },
+    { provide: RECAPTCHA_LANGUAGE, useValue: 'fr' },
     { provide: PAGE_SETTINGS, useValue: settings },
   ],
 })

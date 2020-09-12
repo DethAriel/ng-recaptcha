@@ -8,6 +8,11 @@ recaptcha-demo, recaptcha-demo-wrapper {
   height: 100%;
 }
 
+.grecaptcha-badge {
+  /* ensure that v3 reCAPTCHA badge is shown, otherwise Material drawer backdrop makes it hidden */
+  z-index: 10;
+}
+
 body {
   font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
 }

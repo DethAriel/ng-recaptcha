@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, InjectionToken, NgZone, Optional, PLATFORM_ID } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { loadScript, RECAPTCHA_BASE_URL, RECAPTCHA_NONCE } from './recaptcha-loader.service';
+import { loadScript, RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE } from './recaptcha-loader.service';
 
 export const RECAPTCHA_V3_SITE_KEY = new InjectionToken<string>('recaptcha-v3-site-key');
 
@@ -50,6 +50,8 @@ export class ReCaptchaV3Service {
   /** @internal */
   private nonce: string;
   /** @internal */
+  private language?: string;
+  /** @internal */
   private baseUrl: string;
   /** @internal */
   private grecaptcha: ReCaptchaV2.ReCaptcha;
@@ -70,11 +72,13 @@ export class ReCaptchaV3Service {
     @Inject(PLATFORM_ID) platformId: any,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
+    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
   ) {
     this.zone = zone;
     this.isBrowser = isPlatformBrowser(platformId);
     this.siteKey = siteKey;
     this.nonce = nonce;
+    this.language = language;
     this.baseUrl = baseUrl;
 
     this.init();
@@ -160,7 +164,8 @@ export class ReCaptchaV3Service {
       if ('grecaptcha' in window) {
         this.grecaptcha = grecaptcha;
       } else {
-        loadScript(this.siteKey, this.onLoadComplete, '', this.baseUrl, this.nonce);
+        const langParam = this.language ? '&hl=' + this.language : '';
+        loadScript(this.siteKey, this.onLoadComplete, langParam, this.baseUrl, this.nonce);
       }
     }
   }
