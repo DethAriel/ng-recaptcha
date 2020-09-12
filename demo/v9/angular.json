@@ -18,7 +18,6 @@
             "main": "src/app/examples/language/language-demo.main.ts",
             "polyfills": "src/polyfill.ts",
             "tsConfig": "tsconfig.app.json",
-            "outputHashing": "all",
             "aot": true,
             "assets": [
               "src/favicon.ico",
