@@ -1,3 +1,13 @@
+<a name="6.0.1"></a>
+## [6.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v6.0.0...v6.0.1) (2020-09-12)
+
+
+### Bug Fixes
+
+* **component:** catch and propagate grecaptcha errors, closes [#175](https://github.com/DethAriel/ng-recaptcha/issues/175) ([075edd0](https://github.com/DethAriel/ng-recaptcha/commit/075edd0))
+
+
+
 <a name="6.0.0"></a>
 # [6.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v5.0.0...v6.0.0) (2020-09-10)
 
