@@ -10,12 +10,12 @@ function generate({
   return `<section class="recaptcha-demo-wrapper">
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <img src="${iconBasePath}images/angular.svg" height="40px" />
+    <img src="${iconBasePath}images/angular.svg" height="40px" style="margin-right: 8px" />
     <span>{{ site.title }}</span>
     <span class="filler"></span>
 
     <a *ngIf="!mobileQuery.matches" mat-button href="https://github.com/DethAriel/ng2-recaptcha">
-      <img src="${iconBasePath}images/octocat.svg" height="26px" />
+      <img src="${iconBasePath}images/octocat.svg" height="26px" style="margin-right: 8px" />
       <span>GitHub</span>
     </a>
     <a *ngIf="mobileQuery.matches" aria-label="GitHub repository" mat-icon-button href="https://github.com/DethAriel/ng2-recaptcha">
