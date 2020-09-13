@@ -1,24 +1,22 @@
-<recaptcha-demo-wrapper>
-  <button (click)="executeAction('homepage')">Execute "homepage" action</button>
-  <button (click)="executeAction('shoppingCart')">Execute "shoppingCart" action</button>
+<button (click)="executeAction('homepage')">Execute "homepage" action</button>
+<button (click)="executeAction('shoppingCart')">Execute "shoppingCart" action</button>
 
-  <h3 *ngIf="recentToken">Most recent token</h3>
-  <pre *ngIf="recentToken">{{ formatToken(recentToken) }}</pre>
+<h3 *ngIf="recentToken">Most recent token</h3>
+<pre *ngIf="recentToken">{{ formatToken(recentToken) }}</pre>
 
-  <h3 *ngIf="recentError" class="error">Most recent error</h3>
-  <pre *ngIf="recentError" class="error">{{ recentError.error || "Most recent execution resulted in error" }}</pre>
+<h3 *ngIf="recentError" class="error">Most recent error</h3>
+<pre *ngIf="recentError" class="error">{{ recentError.error || "Most recent execution resulted in error" }}</pre>
 
-  <h3>reCAPTCHA execution log</h3>
-  <pre *ngIf="executionLog.length === 0">(empty)</pre>
-  <ol *ngIf="executionLog.length > 0">
-    <li *ngFor="let entry of executionLog">
-      Action: <code>{{ entry.action }}</code>.
-      <ng-template [ngIf]="entry.token">
-        Token: <code>{{ formatToken(entry.token) }}</code>
-      </ng-template>
-      <ng-template [ngIf]="!entry.token">
-        <span class="error">Error</span>: <code>{{ entry.error || "This execution resulted in error" }}</code>
-      </ng-template>
-    </li>
-  </ol>
-</recaptcha-demo-wrapper>
+<h3>reCAPTCHA execution log</h3>
+<pre *ngIf="executionLog.length === 0">(empty)</pre>
+<ol *ngIf="executionLog.length > 0">
+  <li *ngFor="let entry of executionLog">
+    Action: <code>{{ entry.action }}</code>.
+    <ng-template [ngIf]="entry.token">
+      Token: <code>{{ formatToken(entry.token) }}</code>
+    </ng-template>
+    <ng-template [ngIf]="!entry.token">
+      <span class="error">Error</span>: <code>{{ entry.error || "This execution resulted in error" }}</code>
+    </ng-template>
+  </li>
+</ol>

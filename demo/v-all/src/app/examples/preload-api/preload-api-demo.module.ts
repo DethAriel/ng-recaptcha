@@ -1,12 +1,11 @@
 import { Injectable, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { RecaptchaLoaderService, RecaptchaModule } from 'ng-recaptcha';
 
-import { PAGE_SETTINGS } from '../../demo-wrapper/demo-wrapper.component';
-import { DemoWrapperModule } from '../../demo-wrapper/demo-wrapper.module';
 import { PreloadApiDemoComponent } from './preload-api-demo.component';
 import { settings } from './preload-api-demo.data';
 
@@ -17,6 +16,11 @@ export class PreloadedRecaptchaAPIService {
   constructor() {
     const readySubject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
     this.ready = readySubject.asObservable();
+
+    const recaptchaScript = document.createElement('script');
+    recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
+    document.head.appendChild(recaptchaScript);
+
 
     const interval = setInterval(() => {
       if (typeof grecaptcha === 'undefined' || !(grecaptcha.render instanceof Function)) {
@@ -31,20 +35,26 @@ export class PreloadedRecaptchaAPIService {
 
 export const service = new PreloadedRecaptchaAPIService();
 
+const routes: Routes = [
+  {
+    path: '',
+    component: PreloadApiDemoComponent,
+    data: { page: settings },
+  },
+];
+
 @NgModule({
-  bootstrap: [PreloadApiDemoComponent],
   declarations: [PreloadApiDemoComponent],
   imports: [
-    BrowserModule,
+    RouterModule.forChild(routes),
     RecaptchaModule,
-    DemoWrapperModule,
+    CommonModule,
   ],
   providers: [
     {
       provide: RecaptchaLoaderService,
       useValue: service,
     },
-    { provide: PAGE_SETTINGS, useValue: settings },
   ],
 })
 export class DemoModule { }

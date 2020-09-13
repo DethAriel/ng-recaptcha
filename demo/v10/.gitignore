@@ -1,10 +1,9 @@
 # auto-copied or auto-generated files
 bin/
 src/
-webpack/
-tsconfig.webpack.json
-webpack.config.ts
+tsconfig.json
 package.json
+angular.json
 
 # build files
 build/

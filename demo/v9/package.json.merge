@@ -1,14 +1,4 @@
 {
-  "name": "v9",
-  "version": "0.0.0",
-  "scripts": {
-    "file-gen": "ts-node ./bin/file-gen.ts --main-file=dynamic",
-    "clean": "rimraf src/app/examples/**/*{-demo.main.ts,-demo.data.ts}",
-    "build:cleanup": "yarn remove ng-recaptcha && git checkout -- angular.json",
-    "build:ng": "echo noop",
-    "build:webpack": "ts-node ./bin/build-vNew.ts v9"
-  },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.12",
     "@angular/cdk": "^9.0.0",
@@ -28,11 +18,6 @@
     "@angular-devkit/build-angular": "~0.901.12",
     "@angular/cli": "~9.1.12",
     "@angular/compiler-cli": "~9.1.12",
-    "@types/node": "^12.11.1",
-    "highlight.js": "^10.1.1",
-    "npm-run-all": "^4.1.2",
-    "rimraf": "^2.6.3",
-    "ts-node": "~8.3.0",
     "typescript": "~3.8.3"
   }
 }

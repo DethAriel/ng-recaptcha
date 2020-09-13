@@ -78,7 +78,8 @@ function processFile(file: string): void {
     const commonContents = readFileAsJson(file);
 
     supportedVersions.forEach((version) => {
-      const versionContents = readFileAsJson(`${version}/${actualRelativePath}.merge`);
+      const versionedPath = `${version}/${actualRelativePath}.merge`;
+      const versionContents = fs.existsSync(versionedPath) ? readFileAsJson(versionedPath) : {};
 
       const contents = JSON.stringify(
         merge({}, commonContents, versionContents),

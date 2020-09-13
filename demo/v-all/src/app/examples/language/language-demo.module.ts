@@ -1,27 +1,30 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 
-import {
-  RECAPTCHA_LANGUAGE,
-  RecaptchaModule,
-} from 'ng-recaptcha';
+import { RECAPTCHA_LANGUAGE, RecaptchaModule } from 'ng-recaptcha';
 
-import { PAGE_SETTINGS } from '../../demo-wrapper/demo-wrapper.component';
-import { DemoWrapperModule } from '../../demo-wrapper/demo-wrapper.module';
 import { LanguageDemoComponent } from './language-demo.component';
 import { settings } from './language-demo.data';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: LanguageDemoComponent,
+    data: { page: settings },
+  },
+];
+
 @NgModule({
-  bootstrap: [LanguageDemoComponent],
   declarations: [LanguageDemoComponent],
   imports: [
-    BrowserModule,
+    RouterModule.forChild(routes),
     RecaptchaModule,
-    DemoWrapperModule,
+    CommonModule,
   ],
   providers: [
     { provide: RECAPTCHA_LANGUAGE, useValue: 'fr' },
-    { provide: PAGE_SETTINGS, useValue: settings },
   ],
 })
 export class DemoModule { }
+

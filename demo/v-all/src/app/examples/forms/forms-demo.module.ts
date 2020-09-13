@@ -1,26 +1,29 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
-import { PAGE_SETTINGS } from '../../demo-wrapper/demo-wrapper.component';
-import { DemoWrapperModule } from '../../demo-wrapper/demo-wrapper.module';
 import { FormsDemoComponent } from './forms-demo.component';
 import { settings } from './forms-demo.data';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: FormsDemoComponent,
+    data: { page: settings },
+  },
+];
+
 @NgModule({
-  bootstrap: [FormsDemoComponent],
   declarations: [FormsDemoComponent],
   imports: [
+    RouterModule.forChild(routes),
     RecaptchaModule,
     RecaptchaFormsModule,
-    BrowserModule,
     FormsModule,
-    DemoWrapperModule,
-  ],
-  providers: [
-    { provide: PAGE_SETTINGS, useValue: settings },
+    CommonModule,
   ],
 })
 export class DemoModule { }

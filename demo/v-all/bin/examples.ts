@@ -5,12 +5,6 @@ export interface Example {
   label: string;
   title: string;
   index?: boolean;
-  additional?: {
-    filename: string,
-    entry: string,
-    title: string,
-    type: string,
-  };
 }
 
 export const examples: Example[] = [
@@ -70,11 +64,5 @@ export const examples: Example[] = [
     path: '/preload-api',
     label: 'Preloaded',
     title: 'Preloaded reCAPTCHA API Example',
-    additional: {
-      filename: 'preload-api-demo.head',
-      entry: 'head-preload-api',
-      title: 'script.ts',
-      type: 'ts',
-    },
   },
 ];

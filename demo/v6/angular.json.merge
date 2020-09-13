@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "v-demo": {
+      "architect": {
+        "build": {
+          "options": {
+            "outputPath": "../dist/ng-recaptcha/v6"
+          },
+          "configurations": {
+            "production": {
+              "buildOptimizer": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

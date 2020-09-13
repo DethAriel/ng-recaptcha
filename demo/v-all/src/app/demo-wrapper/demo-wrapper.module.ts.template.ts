@@ -31,8 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DemoWrapperComponent, NAV_LINKS } from './demo-wrapper.component';
 import { navLinks } from './demo-wrapper.data.auto-gen';
+import { DemoWrapperRoutingModule } from "./demo-wrapper-routing.module";
 
 @NgModule({
+  bootstrap: [DemoWrapperComponent],
   declarations: [DemoWrapperComponent],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { navLinks } from './demo-wrapper.data.auto-gen';
     MatSidenavModule,
     MatListModule,
     LayoutModule,
+    DemoWrapperRoutingModule,
   ],
   exports: [
     DemoWrapperComponent,
