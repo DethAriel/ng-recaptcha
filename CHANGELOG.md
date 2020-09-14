@@ -1,3 +1,14 @@
+<a name="6.0.2"></a>
+## [6.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v6.0.1...v6.0.2) (2020-09-14)
+
+
+### Bug Fixes
+
+* **component:** fix custom languages for reCAPTCHA v3 ([a2b145d](https://github.com/DethAriel/ng-recaptcha/commit/a2b145d)), closes [#174](https://github.com/DethAriel/ng-recaptcha/issues/174)
+* **component:** improve reCAPTCHA v2 and v3 interoperability ([79fc85b](https://github.com/DethAriel/ng-recaptcha/commit/79fc85b)), closes [#152](https://github.com/DethAriel/ng-recaptcha/issues/152)
+
+
+
 <a name="6.0.1"></a>
 ## [6.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v6.0.0...v6.0.1) (2020-09-12)
 
