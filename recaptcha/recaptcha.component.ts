@@ -14,7 +14,8 @@ import {
 import { Subscription } from 'rxjs';
 
 import { RecaptchaLoaderService } from './recaptcha-loader.service';
-import { RECAPTCHA_SETTINGS, RecaptchaSettings } from './recaptcha-settings';
+import { RecaptchaSettings } from './recaptcha-settings';
+import { RECAPTCHA_SETTINGS } from './tokens';
 
 let nextId = 0;
 

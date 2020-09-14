@@ -1,10 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, InjectionToken, NgZone, Optional, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, NgZone, Optional, PLATFORM_ID } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { loadScript, RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE } from './recaptcha-loader.service';
-
-export const RECAPTCHA_V3_SITE_KEY = new InjectionToken<string>('recaptcha-v3-site-key');
+import { loadScript } from './load-script';
+import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from './tokens';
 
 export interface OnExecuteData {
   /**

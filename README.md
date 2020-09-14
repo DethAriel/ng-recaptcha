@@ -9,14 +9,15 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3
 
 ## Table of contents
 1. [Installation](#installation)
-2. [Basic Usage](#example-basic)
+1. [Basic Usage](#example-basic)
+   * [reCAPTCHA v3 Usage](#example-basic-v3)
    * [Playground](#playground)
-3. [Working with `@angular/forms`](#forms-ready)
-4. [API](#api)
+1. [Working with `@angular/forms`](#forms-ready)
+1. [API](#api)
    * [Input Options](#api-options)
    * [Events](#api-events)
    * [Methods](#api-methods)
-5. [Examples](#examples)
+. [Examples](#examples)
    * [Configuring the component globally](#example-global-config)
    * [Specifying a different language](#example-language)
    * [Loading the reCAPTCHA API by yourself](#example-preload-api)
@@ -136,6 +137,8 @@ export class RecaptchaV3DemoComponent {
 ```
 
 As always with subscriptions, please don't forget to **unsubscribe**.
+
+❗️ **Important note**: If your site uses both v2 and v3, then you should _always_ provide `RECAPTCHA_V3_SITE_KEY` (even in modules that only rely on v2 functionality). This will prevent bugs in your code by allowing `ng-recaptcha` to follow reCAPTCHA development guidelines properly ([this one](https://developers.google.com/recaptcha/docs/faq#can-i-run-recaptcha-v2-and-v3-on-the-same-page) in particular).
 
 A more advanced v3 usage scenario includes listening to all actions and their respectively emitted tokens. This is covered [later on this page](#example-v3-all-actions).
 

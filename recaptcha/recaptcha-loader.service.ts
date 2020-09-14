@@ -2,45 +2,18 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   Inject,
   Injectable,
-  InjectionToken,
   Optional,
   PLATFORM_ID,
 } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
-export const RECAPTCHA_LANGUAGE = new InjectionToken<string>('recaptcha-language');
-export const RECAPTCHA_BASE_URL = new InjectionToken<string>('recaptcha-base-url');
-export const RECAPTCHA_NONCE = new InjectionToken<string>('recaptcha-nonce-tag');
-
-declare global {
-  interface Window {
-    ng2recaptchaloaded: () => void;
-  }
-}
-
-export function loadScript(
-  renderMode: 'explicit' | string,
-  onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
-  urlParams: string,
-  url?: string,
-  nonce?: string,
-) {
-  window.ng2recaptchaloaded = () => {
-    onLoaded(grecaptcha);
-  };
-  const script = document.createElement('script');
-  script.innerHTML = '';
-  const baseUrl = url || 'https://www.google.com/recaptcha/api.js';
-
-  script.src = `${baseUrl}?render=${renderMode}&onload=ng2recaptchaloaded${urlParams}`;
-  if (nonce) {
-    // tslint:disable-next-line:no-any Remove "any" cast once we upgrade Angular to 7 and TypeScript along with it
-    (script as any).nonce = nonce;
-  }
-  script.async = true;
-  script.defer = true;
-  document.head.appendChild(script);
-}
+import { loadScript } from './load-script';
+import {
+  RECAPTCHA_BASE_URL,
+  RECAPTCHA_LANGUAGE,
+  RECAPTCHA_NONCE,
+  RECAPTCHA_V3_SITE_KEY,
+} from './tokens';
 
 @Injectable()
 export class RecaptchaLoaderService {
@@ -58,6 +31,8 @@ export class RecaptchaLoaderService {
   private baseUrl: string;
   /** @internal */
   private nonce: string;
+  /** @internal */
+  private v3SiteKey: string;
 
   constructor(
     // tslint:disable-next-line:no-any
@@ -65,10 +40,12 @@ export class RecaptchaLoaderService {
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
+    @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string,
   ) {
     this.language = language;
     this.baseUrl = baseUrl;
     this.nonce = nonce;
+    this.v3SiteKey = v3SiteKey;
     this.init();
     this.ready = isPlatformBrowser(this.platformId) ? RecaptchaLoaderService.ready.asObservable() : of();
   }
@@ -82,7 +59,9 @@ export class RecaptchaLoaderService {
       const subject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
       RecaptchaLoaderService.ready = subject;
       const langParam = this.language ? '&hl=' + this.language : '';
-      loadScript('explicit', (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
+
+      const renderMode = this.v3SiteKey || 'explicit';
+      loadScript(renderMode, (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
     }
   }
 }
