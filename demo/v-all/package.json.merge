@@ -6,7 +6,7 @@
     "file-gen": "ts-node ./bin/file-gen.ts",
     "latest": "yarn install; ts-node ../bin/install-latest.ts",
     "clean": "rimraf src bin",
-    "serve": "yarn latest && ng serve",
+    "serve": "yarn latest && git checkout -- yarn.lock && yarn file-gen && ng serve",
     "build:cleanup": "yarn remove ng-recaptcha",
     "build:ng": "ng build --configuration=\"production\"",
     "build:copy-entrypoints": "ts-node ./bin/copy-entrypoints.ts",

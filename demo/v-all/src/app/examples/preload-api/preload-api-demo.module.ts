@@ -18,10 +18,11 @@ export class PreloadedRecaptchaAPIService {
     const readySubject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
     this.ready = readySubject.asObservable();
 
-    const recaptchaScript = document.createElement('script');
-    recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
-    document.head.appendChild(recaptchaScript);
-
+    if (typeof grecaptcha === 'undefined') {
+      const recaptchaScript = document.createElement('script');
+      recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
+      document.head.appendChild(recaptchaScript);
+    }
 
     const interval = setInterval(() => {
       if (typeof grecaptcha === 'undefined' || !(grecaptcha.render instanceof Function)) {
