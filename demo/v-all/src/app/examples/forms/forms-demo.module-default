@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RecaptchaFormsModule, RecaptchaModule, RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
-import { parseLangFromHref } from '../../parse-lang-from-href';
 import { FormsDemoComponent } from './forms-demo.component';
 import { settings } from './forms-demo.data';
 
@@ -25,9 +24,6 @@ const routes: Routes = [
     RecaptchaFormsModule,
     FormsModule,
     CommonModule,
-  ],
-  providers: [
-    { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
   ],
 })
 export class DemoModule { }

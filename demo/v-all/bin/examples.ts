@@ -45,20 +45,6 @@ export const examples: Example[] = [
     title: 'reCAPTCHA v3 Example',
   },
   {
-    entry: 'demo-v3-lang',
-    name: 'v3-lang',
-    path: '/v3-lang',
-    label: 'reCAPTCHA v3 Language',
-    title: 'reCAPTCHA v3 Language Example',
-  },
-  {
-    entry: 'demo-language',
-    name: 'language',
-    path: '/language',
-    label: 'Language',
-    title: 'Language Example',
-  },
-  {
     entry: 'demo-preload-api',
     name: 'preload-api',
     path: '/preload-api',

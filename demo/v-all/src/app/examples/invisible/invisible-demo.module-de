@@ -2,29 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RECAPTCHA_LANGUAGE, RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaModule, RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 
-import { parseLangFromHref } from '../../parse-lang-from-href';
-import { BasicDemoComponent } from './basic-demo.component';
-import { settings } from './basic-demo.data';
+import { InvisibleDemoComponent } from './invisible-demo.component';
+import { settings } from './invisible-demo.data';
 
 const routes: Routes = [
   {
     path: '',
-    component: BasicDemoComponent,
+    component: InvisibleDemoComponent,
     data: { page: settings },
   },
 ];
 
 @NgModule({
-  declarations: [BasicDemoComponent],
+  declarations: [InvisibleDemoComponent],
   imports: [
     RouterModule.forChild(routes),
     RecaptchaModule,
     CommonModule,
   ],
   providers: [
-    { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
+    { provide: RECAPTCHA_LANGUAGE, useValue: 'de' },
   ],
 })
 export class DemoModule { }

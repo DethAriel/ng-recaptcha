@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RECAPTCHA_LANGUAGE, RecaptchaModule } from 'ng-recaptcha';
 
-import { parseLangFromHref } from '../../parse-lang-from-href';
 import { BasicDemoComponent } from './basic-demo.component';
 import { settings } from './basic-demo.data';
 
@@ -24,7 +23,7 @@ const routes: Routes = [
     CommonModule,
   ],
   providers: [
-    { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
+    { provide: RECAPTCHA_LANGUAGE, useValue: 'de' },
   ],
 })
 export class DemoModule { }

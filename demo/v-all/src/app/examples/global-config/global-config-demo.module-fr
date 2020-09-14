@@ -11,7 +11,6 @@ import {
   RECAPTCHA_LANGUAGE,
 } from 'ng-recaptcha';
 
-import { parseLangFromHref } from '../../parse-lang-from-href';
 import { GlobalConfigDemoComponent } from './global-config-demo.component';
 import { settings } from './global-config-demo.data';
 
@@ -37,7 +36,7 @@ const routes: Routes = [
       provide: RECAPTCHA_SETTINGS,
       useValue: globalSettings,
     },
-    { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
+    { provide: RECAPTCHA_LANGUAGE, useValue: 'fr' },
   ],
 })
 export class DemoModule { }

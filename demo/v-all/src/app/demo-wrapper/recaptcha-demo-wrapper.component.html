@@ -5,6 +5,24 @@
     <span>{{ site.title }}</span>
     <span class="filler"></span>
 
+    <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Language settings">
+      <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #langMenu="matMenu">
+      <mat-radio-group aria-label="Select reCAPTCHA language" [value]="selectedLanguage" (change)="onLangChange($event.value)">
+        <mat-list>
+          <mat-list-item>
+            <mat-radio-button value="">Default</mat-radio-button>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-radio-button value="de">🇩🇪 Deutsche</mat-radio-button>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-radio-button value="fr">🇫🇷 Français</mat-radio-button>
+          </mat-list-item>
+        </mat-list>
+      </mat-radio-group>
+    </mat-menu>
     <a *ngIf="!mobileQuery.matches" mat-button href="https://github.com/DethAriel/ng2-recaptcha">
       <img src="images/octocat.svg" height="26px" style="margin-right: 8px" />
       <span>GitHub</span>
@@ -30,6 +48,7 @@
         mat-list-item
         *ngFor="let link of navLinks"
         [routerLink]="[link.path]"
+        queryParamsHandling="preserve"
         [class.active]="page && page.feature === link.feature"
       >
         {{ link.label }}
@@ -66,7 +85,7 @@
             <ng-template mat-tab-label>
               <code>main.ts</code>
             </ng-template>
-            <pre [innerHTML]="page.content.module"></pre>
+            <pre [innerHTML]="page.content.module[selectedLanguage]"></pre>
           </mat-tab>
           <mat-tab *ngIf="page.content.additional">
             <ng-template mat-tab-label>

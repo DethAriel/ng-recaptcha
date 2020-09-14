@@ -9,9 +9,7 @@
     "src/app/examples/forms/forms-demo.module.ts",
     "src/app/examples/global-config/global-config-demo.module.ts",
     "src/app/examples/invisible/invisible-demo.module.ts",
-    "src/app/examples/language/language-demo.module.ts",
     "src/app/examples/preload-api/preload-api-demo.module.ts",
-    "src/app/examples/v3/v3-demo.module.ts",
-    "src/app/examples/v3-lang/v3-lang-demo.module.ts"
+    "src/app/examples/v3/v3-demo.module.ts"
   ]
 }

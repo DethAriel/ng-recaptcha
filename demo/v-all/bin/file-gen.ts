@@ -39,11 +39,10 @@ export const settings: PageSettings = {
   content: {
     component: ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.component.ts`, 'ts')},
     html: ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.component.html`, 'html')},
-    module: ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.module.ts`, 'ts')},
-    module2: {
-      '': ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.module.ts`, 'ts')},
-      'fr': ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.module.ts`, 'ts')},
-      'de': ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.module.ts`, 'ts')},
+    module: {
+      '': ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.module-default`, 'ts')},
+      'fr': ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.module-fr`, 'ts')},
+      'de': ${highlightRequire(`./src/app/examples/${featureName}/${featureName}-demo.module-de`, 'ts')},
     },
   },
 };

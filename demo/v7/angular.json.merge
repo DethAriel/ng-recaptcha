@@ -4,7 +4,8 @@
       "architect": {
         "build": {
           "options": {
-            "outputPath": "../dist/ng-recaptcha/v7"
+            "outputPath": "../dist/ng-recaptcha/v7",
+            "baseHref": "/ng-recaptcha/v7/"
           },
           "configurations": {
             "production": {

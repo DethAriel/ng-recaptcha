@@ -2,6 +2,9 @@ import { MediaMatcher } from '@angular/cdk/layout'; // tslint:disable-line:no-su
 import { ChangeDetectorRef, Component, Inject, InjectionToken, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ResolveEnd } from '@angular/router';
+import { parse, stringify } from "query-string";
+
+import { parseLangFromHref } from '../parse-lang-from-href';
 
 export interface PageSettings {
   title: string;
@@ -9,11 +12,10 @@ export interface PageSettings {
   content: {
     html: string;
     component: string;
-    module: string;
-    additional?: {
-      title: string;
-      type: string;
-      content: string;
+    module: {
+      '': string;
+      'fr': string;
+      'de': string;
     }
   };
 }
@@ -40,6 +42,8 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   public mobileQuery: MediaQueryList;
   public sidebarOpened: boolean = false;
 
+  public selectedLanguage: '' | 'fr' | 'de' = '';
+
   private mobileQueryListener: () => void;
 
   constructor(
@@ -55,6 +59,8 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
+    this.selectedLanguage = parseLangFromHref();
+
     this.router.events.subscribe((data) => {
       if (data instanceof ResolveEnd) {
         const unifiedRouteData = (function gatherRecursively(children, value = {}) {
@@ -79,5 +85,25 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.mobileQuery.removeListener(this.mobileQueryListener);
+  }
+
+  public onLangChange(newLang): void {
+    const {
+      pathname,
+      search,
+    } = window.location;
+
+    const currentSearch = parse(search);
+
+    if (newLang === '') {
+      delete currentSearch.lang;
+    } else {
+      currentSearch.lang = newLang;
+    }
+
+    const newSearch = stringify(currentSearch);
+    const newLocation = pathname + (newSearch.length === 0 ? '' : `?${newSearch}`);
+
+    window.location.assign(newLocation);
   }
 }

@@ -25,7 +25,11 @@ ${examples.map(e => `  {
     path: '${e.name}',
     ${getLoadChildrenString(e)},
   }`).join(',\n')},
-  { path: '', redirectTo: '/${examples.find(e => e.index)!.name}', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: '/${examples.find(e => e.index)!.name}',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

@@ -209,7 +209,7 @@ import { RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 
 Global properties can be overridden on a case-by-case basis - the values on the `<re-captcha>` component itself take precedence over global settings.
 
-### <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/language)
+### <a name="example-language"></a>Specifying a different language [(see in action)](https://dethariel.github.io/ng-recaptcha/basic?lang-fr)
 
 `<re-captcha>` supports various languages. By default recaptcha will guess the user's language itself
 (which is beyond the scope of this lib).

@@ -18,6 +18,7 @@
             "main": "src/app/demo-wrapper/demo-wrapper.main.ts",
             "polyfills": "src/polyfill.ts",
             "tsConfig": "tsconfig.app.json",
+            "baseHref": "/ng-recaptcha/v-demo/",
             "aot": true,
             "assets": [
               "src/favicon.ico",

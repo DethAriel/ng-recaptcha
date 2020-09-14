@@ -5,15 +5,16 @@
   "scripts": {
     "file-gen": "ts-node ./bin/file-gen.ts",
     "latest": "yarn install; ts-node ../bin/install-latest.ts",
-    "clean": "rimraf dist src/app/examples/**/*{-demo.main.ts,-demo.data.ts}",
-    "serve": "ng serve",
+    "clean": "rimraf src bin",
+    "serve": "yarn latest && ng serve",
     "build:cleanup": "yarn remove ng-recaptcha",
     "build:ng": "ng build --configuration=\"production\"",
     "build:copy-entrypoints": "ts-node ./bin/copy-entrypoints.ts",
-    "build": "yarn latest && run-s clean file-gen build:ng build:cleanup build:copy-entrypoints"
+    "build": "yarn latest && run-s file-gen build:ng build:cleanup build:copy-entrypoints"
   },
   "dependencies": {
-    "core-js": "^2.5.1"
+    "core-js": "^2.5.1",
+    "query-string": "^6.13.2"
   },
   "devDependencies": {
     "@types/node": "^12.11.1",
