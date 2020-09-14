@@ -1,10 +1,10 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable, NgModule, Optional, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { RecaptchaLoaderService, RecaptchaModule, RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
+import { RecaptchaLoaderService, RecaptchaModule, RECAPTCHA_LANGUAGE, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 
 import { parseLangFromHref } from '../../parse-lang-from-href';
 import { PreloadApiDemoComponent } from './preload-api-demo.component';
@@ -14,13 +14,16 @@ import { settings } from './preload-api-demo.data';
 export class PreloadedRecaptchaAPIService {
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
 
-  constructor() {
+  constructor(
+    @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string,
+  ) {
     const readySubject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
     this.ready = readySubject.asObservable();
 
     if (typeof grecaptcha === 'undefined') {
       const recaptchaScript = document.createElement('script');
-      recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
+      const renderMode = v3SiteKey || 'explicit';
+      recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${v3SiteKey}`;
       document.head.appendChild(recaptchaScript);
     }
 
@@ -58,6 +61,7 @@ const routes: Routes = [
       useValue: service,
     },
     { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LeGCZAUAAAAADuhzcuvSB-lYDsxJBl9HUWtZkUM' },
   ],
 })
 export class DemoModule { }

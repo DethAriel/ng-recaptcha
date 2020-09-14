@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RECAPTCHA_LANGUAGE, RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaModule, RECAPTCHA_LANGUAGE, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 
 import { parseLangFromHref } from '../../parse-lang-from-href';
 import { BasicDemoComponent } from './basic-demo.component';
@@ -24,6 +24,7 @@ const routes: Routes = [
     CommonModule,
   ],
   providers: [
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LeGCZAUAAAAADuhzcuvSB-lYDsxJBl9HUWtZkUM' },
     { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
   ],
 })

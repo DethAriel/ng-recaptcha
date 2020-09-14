@@ -9,6 +9,7 @@ import {
   RecaptchaModule,
   RecaptchaSettings,
   RECAPTCHA_LANGUAGE,
+  RECAPTCHA_V3_SITE_KEY,
 } from 'ng-recaptcha';
 
 import { parseLangFromHref } from '../../parse-lang-from-href';
@@ -38,6 +39,7 @@ const routes: Routes = [
       useValue: globalSettings,
     },
     { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LeGCZAUAAAAADuhzcuvSB-lYDsxJBl9HUWtZkUM' },
   ],
 })
 export class DemoModule { }

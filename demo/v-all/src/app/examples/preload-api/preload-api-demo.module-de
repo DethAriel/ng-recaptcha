@@ -1,10 +1,10 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable, NgModule, Optional, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { RecaptchaLoaderService, RecaptchaModule, RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
+import { RecaptchaLoaderService, RecaptchaModule, RECAPTCHA_LANGUAGE, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 
 import { PreloadApiDemoComponent } from './preload-api-demo.component';
 import { settings } from './preload-api-demo.data';
@@ -13,14 +13,18 @@ import { settings } from './preload-api-demo.data';
 export class PreloadedRecaptchaAPIService {
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
 
-  constructor() {
+  constructor(
+    @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string,
+  ) {
     const readySubject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
     this.ready = readySubject.asObservable();
 
-    const recaptchaScript = document.createElement('script');
-    recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
-    document.head.appendChild(recaptchaScript);
-
+    if (typeof grecaptcha === 'undefined') {
+      const recaptchaScript = document.createElement('script');
+      const renderMode = v3SiteKey || 'explicit';
+      recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${v3SiteKey}`;
+      document.head.appendChild(recaptchaScript);
+    }
 
     const interval = setInterval(() => {
       if (typeof grecaptcha === 'undefined' || !(grecaptcha.render instanceof Function)) {
