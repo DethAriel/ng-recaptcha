@@ -20,6 +20,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3
 . [Examples](#examples)
    * [Configuring the component globally](#example-global-config)
    * [Specifying a different language](#example-language)
+   * [Handling errors](#example-error-handling)
    * [Loading the reCAPTCHA API by yourself](#example-preload-api)
    * [Usage with `required` in forms](#example-forms)
    * [Working with invisible reCAPTCHA](#example-invisible)
@@ -174,6 +175,8 @@ The component supports this options:
 They are all pretty well described either in the [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/display), or in the [invisible reCAPTCHA docs](https://developers.google.com/recaptcha/docs/invisible),
 so I won't duplicate it here.
 
+One additional option that component accepts is `errorMode`. You can learn more about it in the [Handling errors](#example-error-handling) section below.
+
 Besides specifying these options on the component itself, you can provide a global `<re-captcha>` configuration - see [Configuring the component globally](#example-global-config) section below.
 
 ### <a name="api-events"></a>Events
@@ -184,6 +187,8 @@ Besides specifying these options on the component itself, you can provide a glob
 
   If the captcha has expired prior to submitting its value to the server, the component
   will reset the captcha, and trigger the `resolved` event with `response === null`.
+* `error(errorDetails: any[])`. Occurs when reCAPTCHA encounters an error (usually a connectivity problem) **if and only if** `errorMode` input has been set to `"handled"`.
+   `errorDetails` is a simple propagation of any arguments that the original `error-callback` has provided, and is documented here for the purposes of completeness and future-proofing. This array will most often (if not always) be empty. A good strategy would be to rely on just the fact that this event got triggered, and show a message to your app's user telling them to retry.
 
 ### <a name="api-methods"></a>Methods
 
@@ -234,6 +239,37 @@ import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 ```
 
 You can find the list of supported languages in [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/language).
+
+### <a name="example-error-handling"></a>Handling errors
+
+Sometimes reCAPTCHA encounters an error, which is usually a network connectivity problem. It cannot continue until connectivity is restored. By default, reCAPTCHA lets the user know that an error has happened (it's a built-in functionality of reCAPTCHA itself, and this lib is not in control of it). The downside of such behavior is that you, as a developer, don't get notified about this in any way. Opting into such notifications is easy, but comes at a cost of assuming responsibility for informing the user that they should retry. Here's how you would do this:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  template: `<re-captcha 
+    (resolved)="resolved($event)"
+    (error)="errored($event)"
+    errorMode="handled"
+  ></re-captcha>`,
+}) export class MyApp {
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
+
+  errored() {
+    console.warn(`reCAPTCHA error encountered`);
+  }
+}
+```
+
+You can see this in action by navigating to either [basic example demo](https://dethariel.github.io/ng-recaptcha/basic) or [invisible demo](https://dethariel.github.io/ng-recaptcha/invisible) and trying to interact with reCAPTCHA after setting the network to "Offline".
+
+The `errorMode` input has two possible values -- `"handled"` and `"default"`, with latter being the default as the name suggests. Not specifying `errorMode`, or setting it to anything other than `"handled"` will not invoke your `(error)` callback, and will instead result in default reCAPTCHA functionality.
+
+The `(error)` callback will propagate all of the parameters that it receives from `grecaptcha['error-callback']` (which might be none) as an array.
 
 ### <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/v8/preload-api)
 

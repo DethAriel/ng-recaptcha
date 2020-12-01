@@ -1,6 +1,8 @@
 <re-captcha
   #captchaRef="reCaptcha"
   (resolved)="resolved($event)"
+  (error)="onError($event)"
+  errorMode="handled"
   siteKey="6Ldp0xgUAAAAAF_iIss_hpFaVrjLbPGjwyfJwebB"
   size="invisible"
 ></re-captcha>

@@ -35,8 +35,10 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public size: ReCaptchaV2.Size;
   @Input() public tabIndex: number;
   @Input() public badge: ReCaptchaV2.Badge;
+  @Input() public errorMode: 'handled' | 'default' = 'default';
 
   @Output() public resolved = new EventEmitter<string>();
+  @Output() public error = new EventEmitter<any[]>();
 
   /** @internal */
   private subscription: Subscription;
@@ -116,6 +118,11 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   /** @internal */
+  private errored(args: any[]) {
+    this.error.emit(args);
+  }
+
+  /** @internal */
   private captchaResponseCallback(response: string) {
     this.resolved.emit(response);
   }
@@ -129,7 +136,8 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   /** @internal */
   private renderRecaptcha() {
-    this.widget = this.grecaptcha.render(this.elementRef.nativeElement, {
+    // This `any` can be removed after @types/grecaptcha get updated
+    const renderOptions: any = {
       badge: this.badge,
       callback: (response: string) => {
         this.zone.run(() => this.captchaResponseCallback(response));
@@ -142,7 +150,15 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
       tabindex: this.tabIndex,
       theme: this.theme,
       type: this.type,
-    });
+    };
+
+    if (this.errorMode === 'handled') {
+      renderOptions['error-callback'] = (...args: any[]) => {
+        this.zone.run(() => this.errored(args));
+      };
+    }
+
+    this.widget = this.grecaptcha.render(this.elementRef.nativeElement, renderOptions);
 
     if (this.executeRequested === true) {
       this.executeRequested = false;

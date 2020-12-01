@@ -12,4 +12,9 @@ export class InvisibleDemoComponent {
       : captchaResponse;
     this.captchaResponse += `${JSON.stringify(newResponse)}\n`;
   }
+
+  public onError(errorDetails: any[]) {
+    this.captchaResponse += `ERROR; error details (if any) have been logged to console\n`;
+    console.log(`reCAPTCHA error encountered; details:`, errorDetails);
+  }
 }
