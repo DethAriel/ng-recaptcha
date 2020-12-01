@@ -187,7 +187,7 @@ Besides specifying these options on the component itself, you can provide a glob
 
   If the captcha has expired prior to submitting its value to the server, the component
   will reset the captcha, and trigger the `resolved` event with `response === null`.
-* `error(errorDetails: any[])`. Occurs when reCAPTCHA encounters an error (usually a connectivity problem) **if and only if** `errorMode` input has been set to `"handled"`.
+* `error(errorDetails: RecaptchaErrorParameters)`. Occurs when reCAPTCHA encounters an error (usually a connectivity problem) **if and only if** `errorMode` input has been set to `"handled"`.
    `errorDetails` is a simple propagation of any arguments that the original `error-callback` has provided, and is documented here for the purposes of completeness and future-proofing. This array will most often (if not always) be empty. A good strategy would be to rely on just the fact that this event got triggered, and show a message to your app's user telling them to retry.
 
 ### <a name="api-methods"></a>Methods

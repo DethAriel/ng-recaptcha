@@ -35,7 +35,6 @@ export class RecaptchaLoaderService {
   private v3SiteKey: string;
 
   constructor(
-    // tslint:disable-next-line:no-any
     @Inject(PLATFORM_ID) private readonly platformId: any,
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,

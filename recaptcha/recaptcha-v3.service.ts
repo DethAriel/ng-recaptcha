@@ -24,7 +24,6 @@ export interface OnExecuteErrorData {
   /**
    * The error which was encountered
    */
-  // tslint:disable-next-line:no-any
   error: any;
 }
 
@@ -67,7 +66,6 @@ export class ReCaptchaV3Service {
   constructor(
     zone: NgZone,
     @Inject(RECAPTCHA_V3_SITE_KEY) siteKey: string,
-    // tslint:disable-next-line:no-any
     @Inject(PLATFORM_ID) platformId: any,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
@@ -132,7 +130,6 @@ export class ReCaptchaV3Service {
 
   /** @internal */
   private executeActionWithSubject(action: string, subject: Subject<string>): void {
-    // tslint:disable-next-line:no-any
     const onError = (error: any) => {
       this.zone.run(() => {
         subject.error(error);
@@ -144,8 +141,7 @@ export class ReCaptchaV3Service {
 
     this.zone.runOutsideAngular(() => {
       try {
-        // tslint:disable-next-line:no-any
-        (this.grecaptcha.execute as any)(
+        this.grecaptcha.execute(
           this.siteKey,
           { action },
         ).then((token: string) => {

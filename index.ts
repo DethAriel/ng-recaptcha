@@ -1,4 +1,4 @@
-export { RecaptchaComponent } from './recaptcha/recaptcha.component';
+export { RecaptchaComponent, RecaptchaErrorParameters } from './recaptcha/recaptcha.component';
 export {
   RecaptchaLoaderService,
 } from './recaptcha/recaptcha-loader.service';

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { RecaptchaErrorParameters } from 'ng-recaptcha';
+
 @Component({
   selector: 'recaptcha-demo',
   templateUrl: './invisible-demo.component.html',
@@ -13,7 +15,7 @@ export class InvisibleDemoComponent {
     this.captchaResponse += `${JSON.stringify(newResponse)}\n`;
   }
 
-  public onError(errorDetails: any[]) {
+  public onError(errorDetails: RecaptchaErrorParameters) {
     this.captchaResponse += `ERROR; error details (if any) have been logged to console\n`;
     console.log(`reCAPTCHA error encountered; details:`, errorDetails);
   }

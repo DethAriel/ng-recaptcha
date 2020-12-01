@@ -19,6 +19,8 @@ import { RECAPTCHA_SETTINGS } from './tokens';
 
 let nextId = 0;
 
+export type RecaptchaErrorParameters = Parameters<ReCaptchaV2.Parameters['error-callback']>;
+
 @Component({
   exportAs: 'reCaptcha',
   selector: 're-captcha',
@@ -38,7 +40,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public errorMode: 'handled' | 'default' = 'default';
 
   @Output() public resolved = new EventEmitter<string>();
-  @Output() public error = new EventEmitter<any[]>();
+  @Output() public error = new EventEmitter<RecaptchaErrorParameters>();
 
   /** @internal */
   private subscription: Subscription;
@@ -118,7 +120,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   /** @internal */
-  private errored(args: any[]) {
+  private errored(args: RecaptchaErrorParameters) {
     this.error.emit(args);
   }
 
@@ -137,7 +139,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   /** @internal */
   private renderRecaptcha() {
     // This `any` can be removed after @types/grecaptcha get updated
-    const renderOptions: any = {
+    const renderOptions: ReCaptchaV2.Parameters = {
       badge: this.badge,
       callback: (response: string) => {
         this.zone.run(() => this.captchaResponseCallback(response));
@@ -153,7 +155,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     };
 
     if (this.errorMode === 'handled') {
-      renderOptions['error-callback'] = (...args: any[]) => {
+      renderOptions['error-callback'] = (...args: RecaptchaErrorParameters) => {
         this.zone.run(() => this.errored(args));
       };
     }
