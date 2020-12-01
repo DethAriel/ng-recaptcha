@@ -1,42 +1,42 @@
 module.exports = {
-  "root": true,
-  "overrides": [
+  root: true,
+  overrides: [
     {
-      "files": ["*.ts"],
-      "parserOptions": {
-        "project": [
-          "tsconfig.json",
-        ],
-        "createDefaultProgram": true
+      files: ["*.ts"],
+      parserOptions: {
+        project: ["tsconfig.json"],
+        createDefaultProgram: true,
       },
-      "extends": [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      extends: [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@angular-eslint/recommended",
         // This is required if you use inline templates in Components
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier",
+        "prettier/@typescript-eslint",
       ],
-      "rules": {
+      rules: {
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "re", "style": "camelCase" }
+          { type: "attribute", prefix: "re", style: "camelCase" },
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "re", "style": "kebab-case" }
-        ]
-      }
+          { type: "element", prefix: "re", style: "kebab-case" },
+        ],
+      },
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
-      "rules": {
+      files: ["*.html"],
+      extends: ["plugin:@angular-eslint/template/recommended"],
+      rules: {
         /**
          * Any template/HTML related rules you wish to use/reconfigure over and above the
          * recommended set provided by the @angular-eslint project would go here.
          */
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

@@ -21,6 +21,14 @@
     "build": "run-s clean lint transpile",
     "prepush": "yarn lint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "main": "src/index.js",
   "typings": "src/index.d.ts",
   "repository": {
@@ -67,13 +75,16 @@
     "conventional-github-releaser": "^3.1.5",
     "del-cli": "^0.2.1",
     "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^30.7.8",
     "eslint-plugin-prefer-arrow": "^1.2.2",
     "gh-pages": "^0.12.0",
-    "husky": "^0.13.3",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.2",
     "ng-packagr": "^11.0.3",
     "npm-run-all": "^4.1.2",
+    "prettier": "^2.2.1",
     "rxjs": "^6.5.3",
     "typescript": "~4.0.0",
     "zone.js": "~0.10.3"
