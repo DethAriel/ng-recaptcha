@@ -16,7 +16,9 @@ import { RecaptchaComponent } from './recaptcha.component';
   ],
 })
 export class RecaptchaModule {
-  // We need this to maintain backwards-compatibility with v4. Removing this will be a breaking change
+  /**
+   * @deprecated Using `forRoot()` method has not been necessary since v4.1.0. This method will be removed in `ng-recatcha@7`.
+   */
   public static forRoot() {
     return RecaptchaModule;
   }
