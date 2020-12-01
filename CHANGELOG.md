@@ -1,3 +1,19 @@
+<a name="6.1.0"></a>
+# [6.1.0](https://github.com/DethAriel/ng-recaptcha/compare/v6.0.2...v6.1.0) (2020-12-01)
+
+
+### Bug Fixes
+
+* **component:** handle top-level `execute` errors for reCAPTCHA v3 ([c7d02ce](https://github.com/DethAriel/ng-recaptcha/commit/c7d02ce)), closes [#194](https://github.com/DethAriel/ng-recaptcha/issues/194)
+* **component:** mark `forRoot()` method as deprecated ([dea31e5](https://github.com/DethAriel/ng-recaptcha/commit/dea31e5))
+
+
+### Features
+
+* **component:** add the ability to handle reCAPTCHA errors ([80c9e6e](https://github.com/DethAriel/ng-recaptcha/commit/80c9e6e)), closes [#199](https://github.com/DethAriel/ng-recaptcha/issues/199)
+
+
+
 <a name="6.0.2"></a>
 ## [6.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v6.0.1...v6.0.2) (2020-09-14)
 

@@ -1,6 +1,6 @@
 {
   "name": "ng-recaptcha",
-  "version": "6.0.2",
+  "version": "6.1.0",
   "description": "Angular component for Google reCAPTCHA",
   "scripts": {
     "demo": "cd demo && yarn serve",
