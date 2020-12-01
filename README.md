@@ -17,7 +17,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3
    * [Input Options](#api-options)
    * [Events](#api-events)
    * [Methods](#api-methods)
-. [Examples](#examples)
+1. [Examples](#examples)
    * [Configuring the component globally](#example-global-config)
    * [Specifying a different language](#example-language)
    * [Handling errors](#example-error-handling)
