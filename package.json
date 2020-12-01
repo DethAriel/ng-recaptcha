@@ -22,8 +22,8 @@
     "build": "run-s clean lint:prod transpile",
     "prepush": "yarn lint:prod"
   },
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "src/index.js",
+  "typings": "src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DethAriel/ng-recaptcha"
@@ -38,7 +38,7 @@
   "license": "MIT",
   "ngPackage": {
     "lib": {
-      "entryFile": "index.ts"
+      "entryFile": "src/index.ts"
     }
   },
   "optionalDependencies": {
