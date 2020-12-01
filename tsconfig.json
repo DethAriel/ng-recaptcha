@@ -1,9 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
-  "exclude": [
-    "node_modules",
-    "dist",
-    "demo",
+  "files": [
+    "./index.ts",
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true

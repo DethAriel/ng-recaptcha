@@ -1,2 +1,8 @@
 # build files
 dist/
+
+# auto-generated files
+*-demo.main.ts
+*-demo.main.dev.ts
+*-demo.data.ts
+*.auto-gen.ts

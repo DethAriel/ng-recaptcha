@@ -13,12 +13,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../dist/ng-recaptcha/v-demo",
+            "outputPath": "./dist/ng-recaptcha/",
             "index": "src/index.html",
             "main": "src/app/demo-wrapper/demo-wrapper.main.ts",
             "polyfills": "src/polyfill.ts",
             "tsConfig": "tsconfig.app.json",
-            "baseHref": "/ng-recaptcha/v-demo/",
+            "baseHref": "/ng-recaptcha/",
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -35,7 +35,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,

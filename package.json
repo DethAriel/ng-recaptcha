@@ -45,32 +45,32 @@
     "@types/grecaptcha": "^3.0.1"
   },
   "dependencies": {
-    "tslib": "^1.9.0 || ^2.0.0"
+    "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0"
+    "@angular/core": "^11.0.0"
   },
   "devDependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/compiler": "^6.0.0",
-    "@angular/compiler-cli": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@angular/forms": "^6.0.0",
-    "@angular/platform-browser": "^6.0.0",
+    "@angular/common": "^11.0.2",
+    "@angular/compiler": "^11.0.2",
+    "@angular/compiler-cli": "^11.0.2",
+    "@angular/core": "^11.0.2",
+    "@angular/forms": "^11.0.2",
+    "@angular/platform-browser": "^11.0.2",
     "@types/core-js": "^0.9.39",
     "angular-precommit": "^1.0.3",
-    "codelyzer": "^4.3.0",
+    "codelyzer": "^6.0.1",
     "conventional-changelog-cli": "^2.1.0",
     "conventional-github-releaser": "^3.1.5",
     "del-cli": "^0.2.1",
     "gh-pages": "^0.12.0",
     "husky": "^0.13.3",
-    "ng-packagr": "^5.7.0",
+    "ng-packagr": "^11.0.3",
     "npm-run-all": "^4.1.2",
-    "rxjs": "^6.1.0",
+    "rxjs": "^6.5.3",
     "tslint": "~5.7.0",
-    "typescript": "~2.7.2",
-    "zone.js": "^0.8.26"
+    "typescript": "~4.0.0",
+    "zone.js": "~0.10.3"
   },
   "homepage": "https://github.com/DethAriel/ng-recaptcha#readme"
 }

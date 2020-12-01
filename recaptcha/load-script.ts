@@ -20,7 +20,6 @@ export function loadScript(
 
   script.src = `${baseUrl}?render=${renderMode}&onload=ng2recaptchaloaded${urlParams}`;
   if (nonce) {
-    // TODO: Remove "any" cast once we drop Angular 6 support (and thus upgrade to a newer TypeScript version)
     (script as any).nonce = nonce;
   }
   script.async = true;
