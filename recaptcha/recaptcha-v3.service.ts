@@ -132,28 +132,34 @@ export class ReCaptchaV3Service {
 
   /** @internal */
   private executeActionWithSubject(action: string, subject: Subject<string>): void {
-    this.zone.runOutsideAngular(() => {
-      // tslint:disable-next-line:no-any
-      (this.grecaptcha.execute as any)(
-        this.siteKey,
-        { action },
-      ).then((token: string) => {
-        this.zone.run(() => {
-          subject.next(token);
-          subject.complete();
-          if (this.onExecuteSubject) {
-            this.onExecuteSubject.next({ action, token });
-          }
-        });
-      // tslint:disable-next-line:no-any
-      }, (error: any) => {
-        this.zone.run(() => {
-          subject.error(error);
-          if (this.onExecuteErrorSubject) {
-            this.onExecuteErrorSubject.next({ action, error });
-          }
-        });
+    // tslint:disable-next-line:no-any
+    const onError = (error: any) => {
+      this.zone.run(() => {
+        subject.error(error);
+        if (this.onExecuteErrorSubject) {
+          this.onExecuteErrorSubject.next({ action, error });
+        }
       });
+    };
+
+    this.zone.runOutsideAngular(() => {
+      try {
+        // tslint:disable-next-line:no-any
+        (this.grecaptcha.execute as any)(
+          this.siteKey,
+          { action },
+        ).then((token: string) => {
+          this.zone.run(() => {
+            subject.next(token);
+            subject.complete();
+            if (this.onExecuteSubject) {
+              this.onExecuteSubject.next({ action, token });
+            }
+          });
+        }, onError);
+      } catch (e) {
+        onError(e);
+      }
     });
   }
 
