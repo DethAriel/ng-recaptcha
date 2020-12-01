@@ -7,6 +7,7 @@
 # compiled sources
 /dist
 /*.js
+!.eslintrc.js
 /*.d.ts
 /recaptcha/**/*.js
 /recaptcha/**/*.d.ts

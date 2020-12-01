@@ -134,6 +134,8 @@ export class ReCaptchaV3Service {
       this.zone.run(() => {
         subject.error(error);
         if (this.onExecuteErrorSubject) {
+          // We don't know any better at this point, unfortunately, so have to resort to `any`
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           this.onExecuteErrorSubject.next({ action, error });
         }
       });

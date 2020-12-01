@@ -40,6 +40,8 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public errorMode: 'handled' | 'default' = 'default';
 
   @Output() public resolved = new EventEmitter<string>();
+  // The rename will happen a bit later
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() public error = new EventEmitter<RecaptchaErrorParameters>();
 
   /** @internal */
