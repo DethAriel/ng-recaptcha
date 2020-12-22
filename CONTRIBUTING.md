@@ -15,7 +15,7 @@
 
 ## Running demo
 
-In order to run the demo you need to `yarn demo`. Then the demo site will be available at http://localhost:9000/ng-recaptcha/.
+In order to run the demo you need to `yarn demo`. Then the demo site will be served at http://localhost:4200/ng-recaptcha/.
 
 ## Maintainer notes
 

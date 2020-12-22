@@ -19,7 +19,8 @@ import { Subscription } from "rxjs";
   templateUrl: "./v3-demo.component.html",
 })
 export class RecaptchaV3DemoComponent implements OnInit, OnDestroy {
-  public recentToken: string = "";
+  public recentToken = "";
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public recentError?: { error: any };
   public readonly executionLog: Array<OnExecuteData | OnExecuteErrorData> = [];
 
@@ -42,12 +43,13 @@ export class RecaptchaV3DemoComponent implements OnInit, OnDestroy {
         },
         (error) => {
           this.recentToken = "";
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           this.recentError = { error };
         }
       );
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.allExecutionsSubscription = this.recaptchaV3Service.onExecute.subscribe(
       (data) => this.executionLog.push(data)
     );
@@ -56,7 +58,7 @@ export class RecaptchaV3DemoComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     if (this.allExecutionsSubscription) {
       this.allExecutionsSubscription.unsubscribe();
     }

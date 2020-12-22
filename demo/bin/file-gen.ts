@@ -1,5 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
+import { highlightAuto, highlight } from "highlight.js";
+
 import { examples, Example } from "./examples";
 
 const sourceDir = path.join(process.cwd(), "src");
@@ -23,10 +25,6 @@ function writeExampleFile(
 }
 
 function highlightRequire(file: string, lang: string) {
-  var hl = require("highlight.js");
-  var highlightAuto = hl.highlightAuto;
-  var highlight = hl.highlight;
-
   return JSON.stringify(
     highlightCode(fs.readFileSync(file, { encoding: "utf-8" }), lang)
   );

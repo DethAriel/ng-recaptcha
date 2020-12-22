@@ -25,7 +25,6 @@ export class PreloadedRecaptchaAPIService {
 
     if (typeof grecaptcha === "undefined") {
       const recaptchaScript = document.createElement("script");
-      const renderMode = v3SiteKey || "explicit";
       recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${v3SiteKey}`;
       document.head.appendChild(recaptchaScript);
     }

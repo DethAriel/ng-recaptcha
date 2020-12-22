@@ -8,7 +8,12 @@ import {
   OnInit,
 } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { Router, ResolveEnd } from "@angular/router";
+import {
+  Router,
+  ResolveEnd,
+  ActivatedRouteSnapshot,
+  Data,
+} from "@angular/router";
 import { parse, stringify } from "query-string";
 
 import { parseLangFromHref } from "../parse-lang-from-href";
@@ -33,6 +38,14 @@ export interface NavLink {
 }
 export const NAV_LINKS = new InjectionToken<NavLink[]>("NAV_LINKS");
 
+function isPageSettings(value: unknown): value is PageSettings {
+  if (value == null || typeof value !== "object") {
+    return false;
+  }
+
+  return "title" in value;
+}
+
 @Component({
   selector: "recaptcha-demo-wrapper",
   styleUrls: ["./recaptcha-demo-wrapper.component.css"],
@@ -45,7 +58,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   };
   public page?: PageSettings;
   public mobileQuery: MediaQueryList;
-  public sidebarOpened: boolean = false;
+  public sidebarOpened = false;
 
   public selectedLanguage: "" | "fr" | "de" = "";
 
@@ -63,15 +76,15 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.selectedLanguage = parseLangFromHref();
 
     this.router.events.subscribe((data) => {
       if (data instanceof ResolveEnd) {
         const unifiedRouteData = (function gatherRecursively(
-          children,
-          value = {}
-        ) {
+          children: ActivatedRouteSnapshot[],
+          value: Data = {}
+        ): Data {
           if (!children || children.length === 0) {
             return value;
           }
@@ -86,9 +99,11 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
           );
         })(data.state.root.children);
 
-        this.page = unifiedRouteData.page;
-        if (this.page) {
+        if (isPageSettings(unifiedRouteData.page)) {
+          this.page = unifiedRouteData.page;
           this.titleService.setTitle(`${this.page.title} | ${this.site.title}`);
+        } else {
+          this.page = undefined;
         }
       }
     });
@@ -98,7 +113,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
-  public onLangChange(newLang): void {
+  public onLangChange(newLang: string): void {
     const { pathname, search } = window.location;
 
     const currentSearch = parse(search);

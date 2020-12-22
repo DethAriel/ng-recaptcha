@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
   templateUrl: "./preload-api-demo.component.html",
 })
 export class PreloadApiDemoComponent {
-  public resolved(captchaResponse: string) {
+  public resolved(captchaResponse: string): void {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 }

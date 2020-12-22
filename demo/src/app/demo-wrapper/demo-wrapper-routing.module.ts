@@ -8,12 +8,13 @@ const routes: Routes = [
     path: e.name,
     loadChildren: () =>
       import(`../examples/${e.name}/${e.name}-demo.module`).then(
+        // eslint-disable-next-line
         (m) => m.DemoModule
       ),
   })),
   {
     path: "",
-    redirectTo: `/${examples.find((e) => e.index)!.name}`,
+    redirectTo: `/${examples.find((e) => e.index).name}`,
     pathMatch: "full",
   },
 ];

@@ -7,11 +7,11 @@ import { RecaptchaErrorParameters } from "ng-recaptcha";
   templateUrl: "./basic-demo.component.html",
 })
 export class BasicDemoComponent {
-  public resolved(captchaResponse: string) {
+  public resolved(captchaResponse: string): void {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 
-  public onError(errorDetails: RecaptchaErrorParameters) {
+  public onError(errorDetails: RecaptchaErrorParameters): void {
     console.log(`reCAPTCHA error encountered; details:`, errorDetails);
   }
 }

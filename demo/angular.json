@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "v-demo": {
+    "demo": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -40,16 +40,16 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "v-demo:build"
+            "browserTarget": "demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "v-demo:build:production"
+              "browserTarget": "demo:build:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "v-demo"
+  "defaultProject": "demo"
 }
