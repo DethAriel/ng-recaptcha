@@ -1,3 +1,22 @@
+<a name="7.0.0"></a>
+
+# [7.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v6.1.0...v7.0.0) (2020-12-22)
+
+### Bug Fixes
+
+- **package:** make `@types/grecaptcha` a non-optional dependency ([bc5ad51](https://github.com/DethAriel/ng-recaptcha/commit/bc5ad51)), closes [#205](https://github.com/DethAriel/ng-recaptcha/issues/205)
+
+### Features
+
+- **component:** Add Angular 11 support ([918fe90](https://github.com/DethAriel/ng-recaptcha/commit/918fe90))
+- **component:** remove deprecated `forRoot` method ([514beaf](https://github.com/DethAriel/ng-recaptcha/commit/514beaf))
+- **package:** update `"@types/grecaptcha"` optional dependency version to ^3 ([e1ee7b9](https://github.com/DethAriel/ng-recaptcha/commit/e1ee7b9))
+
+### BREAKING CHANGES
+
+- **component:** Support for previous versions of Angular has been dropped. Starting from v7 only one version of Angular will be supported.
+- **component:** The `RecaptchaModule.forRoot()` method has been obsolete since v4.1.0 (since it has no longer been required). It is now removed. To migrate your code, simply use `RecaptchaModule` where you previously used `RecaptchaModule.forRoot()`
+
 <a name="6.1.0"></a>
 
 # [6.1.0](https://github.com/DethAriel/ng-recaptcha/compare/v6.0.2...v6.1.0) (2020-12-01)
