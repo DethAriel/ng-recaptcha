@@ -16,7 +16,7 @@
     "github-release": "conventional-github-releaser --preset angular",
     "prepare-release": "npm whoami && yarn build && npm version $1",
     "push-release": "git push && git push --tags",
-    "version": "yarn changelog && git add CHANGELOG.md && yarn demo:build && git add demo/*/yarn.lock",
+    "version": "yarn changelog && git add CHANGELOG.md && yarn demo:build && git add demo/yarn.lock",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx,.html",
     "lint-demo": "eslint demo --ext .js,.ts,.html",
     "build": "run-s clean lint transpile",

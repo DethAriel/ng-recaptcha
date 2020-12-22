@@ -30,7 +30,6 @@
     "@angular/platform-browser-dynamic": "^11.0.2",
     "@angular/router": "^11.0.2",
     "lodash.merge": "^4.6.1",
-    "ng-recaptcha": "../ng-recaptcha-1608669099109.tgz",
     "rxjs": "^6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
