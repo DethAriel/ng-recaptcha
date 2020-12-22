@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { RecaptchaErrorParameters } from 'ng-recaptcha';
+import { RecaptchaErrorParameters } from "ng-recaptcha";
 
 @Component({
-  selector: 'recaptcha-demo',
-  templateUrl: './invisible-demo.component.html',
+  selector: "recaptcha-demo",
+  templateUrl: "./invisible-demo.component.html",
 })
 export class InvisibleDemoComponent {
-  public captchaResponse: string = '';
+  public captchaResponse: string = "";
   public resolved(captchaResponse: string) {
     const newResponse = captchaResponse
       ? `${captchaResponse.substr(0, 7)}...${captchaResponse.substr(-7)}`

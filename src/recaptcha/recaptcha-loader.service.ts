@@ -1,19 +1,14 @@
-import { isPlatformBrowser } from '@angular/common';
-import {
-  Inject,
-  Injectable,
-  Optional,
-  PLATFORM_ID,
-} from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { isPlatformBrowser } from "@angular/common";
+import { Inject, Injectable, Optional, PLATFORM_ID } from "@angular/core";
+import { BehaviorSubject, Observable, of } from "rxjs";
 
-import { loadScript } from './load-script';
+import { loadScript } from "./load-script";
 import {
   RECAPTCHA_BASE_URL,
   RECAPTCHA_LANGUAGE,
   RECAPTCHA_NONCE,
   RECAPTCHA_V3_SITE_KEY,
-} from './tokens';
+} from "./tokens";
 
 @Injectable()
 export class RecaptchaLoaderService {
@@ -39,14 +34,16 @@ export class RecaptchaLoaderService {
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
-    @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string,
+    @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string
   ) {
     this.language = language;
     this.baseUrl = baseUrl;
     this.nonce = nonce;
     this.v3SiteKey = v3SiteKey;
     this.init();
-    this.ready = isPlatformBrowser(this.platformId) ? RecaptchaLoaderService.ready.asObservable() : of();
+    this.ready = isPlatformBrowser(this.platformId)
+      ? RecaptchaLoaderService.ready.asObservable()
+      : of();
   }
 
   /** @internal */
@@ -57,10 +54,16 @@ export class RecaptchaLoaderService {
     if (isPlatformBrowser(this.platformId)) {
       const subject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
       RecaptchaLoaderService.ready = subject;
-      const langParam = this.language ? '&hl=' + this.language : '';
+      const langParam = this.language ? "&hl=" + this.language : "";
 
-      const renderMode = this.v3SiteKey || 'explicit';
-      loadScript(renderMode, (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
+      const renderMode = this.v3SiteKey || "explicit";
+      loadScript(
+        renderMode,
+        (grecaptcha) => subject.next(grecaptcha),
+        langParam,
+        this.baseUrl,
+        this.nonce
+      );
     }
   }
 }

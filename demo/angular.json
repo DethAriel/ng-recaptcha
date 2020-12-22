@@ -20,13 +20,8 @@
             "tsConfig": "tsconfig.app.json",
             "baseHref": "/ng-recaptcha/",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/images"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/images"],
+            "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {

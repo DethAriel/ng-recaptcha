@@ -1,14 +1,7 @@
-import {
-  Directive,
-  forwardRef,
-  HostListener,
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { Directive, forwardRef, HostListener } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
-import { RecaptchaComponent } from './recaptcha.component';
+import { RecaptchaComponent } from "./recaptcha.component";
 
 @Directive({
   providers: [
@@ -20,7 +13,8 @@ import { RecaptchaComponent } from './recaptcha.component';
     },
   ],
   // tslint:disable-next-line:directive-selector
-  selector: 're-captcha[formControlName],re-captcha[formControl],re-captcha[ngModel]',
+  selector:
+    "re-captcha[formControlName],re-captcha[formControl],re-captcha[ngModel]",
 })
 export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
@@ -29,7 +23,7 @@ export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
   private onTouched: () => void;
 
-  constructor(private host: RecaptchaComponent) { }
+  constructor(private host: RecaptchaComponent) {}
 
   public writeValue(value: string): void {
     if (!value) {
@@ -37,10 +31,14 @@ export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
     }
   }
 
-  public registerOnChange(fn: (value: string) => void): void { this.onChange = fn; }
-  public registerOnTouched(fn: () => void): void { this.onTouched = fn; }
+  public registerOnChange(fn: (value: string) => void): void {
+    this.onChange = fn;
+  }
+  public registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
 
-  @HostListener('resolved', ['$event']) public onResolve($event: string) {
+  @HostListener("resolved", ["$event"]) public onResolve($event: string) {
     if (this.onChange) {
       this.onChange($event);
     }

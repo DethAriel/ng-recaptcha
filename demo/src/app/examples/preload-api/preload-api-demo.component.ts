@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'recaptcha-demo',
-  templateUrl: './preload-api-demo.component.html',
+  selector: "recaptcha-demo",
+  templateUrl: "./preload-api-demo.component.html",
 })
 export class PreloadApiDemoComponent {
   public resolved(captchaResponse: string) {

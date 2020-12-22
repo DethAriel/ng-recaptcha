@@ -1,7 +1,6 @@
 ---
 name: Generic reCAPTCHA issue
 about: Report an issue with the reCAPTCHA
-
 ---
 
 ### 🛑 Hold on for a moment

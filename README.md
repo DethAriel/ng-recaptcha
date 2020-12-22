@@ -8,27 +8,28 @@
 A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3.
 
 ## Table of contents
+
 1. [Installation](#installation)
 1. [Basic Usage](#example-basic)
-   * [reCAPTCHA v3 Usage](#example-basic-v3)
-   * [Playground](#playground)
+   - [reCAPTCHA v3 Usage](#example-basic-v3)
+   - [Playground](#playground)
 1. [Working with `@angular/forms`](#forms-ready)
 1. [API](#api)
-   * [Input Options](#api-options)
-   * [Events](#api-events)
-   * [Methods](#api-methods)
+   - [Input Options](#api-options)
+   - [Events](#api-events)
+   - [Methods](#api-methods)
 1. [Examples](#examples)
-   * [Configuring the component globally](#example-global-config)
-   * [Specifying a different language](#example-language)
-   * [Handling errors](#example-error-handling)
-   * [Loading the reCAPTCHA API by yourself](#example-preload-api)
-   * [Usage with `required` in forms](#example-forms)
-   * [Working with invisible reCAPTCHA](#example-invisible)
-   * [Resizing](#example-resizing)
-   * [SystemJS configuration](#example-systemjs)
-   * [Loading from a different location](#example-different-url)
-   * [Specifying nonce for Content-Security-Policy](#example-csp-nonce)
-   * [Listening for all actions with reCAPTCHA v3](#example-v3-all-actions)
+   - [Configuring the component globally](#example-global-config)
+   - [Specifying a different language](#example-language)
+   - [Handling errors](#example-error-handling)
+   - [Loading the reCAPTCHA API by yourself](#example-preload-api)
+   - [Usage with `required` in forms](#example-forms)
+   - [Working with invisible reCAPTCHA](#example-invisible)
+   - [Resizing](#example-resizing)
+   - [SystemJS configuration](#example-systemjs)
+   - [Loading from a different location](#example-different-url)
+   - [Specifying nonce for Content-Security-Policy](#example-csp-nonce)
+   - [Listening for all actions with reCAPTCHA v3](#example-v3-all-actions)
 
 ## <a name="installation"></a>Installation
 
@@ -47,11 +48,11 @@ To start with, you need to import the `RecaptchaModule` (more on that [later](#m
 
 ```typescript
 // app.module.ts
-import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaModule } from "ng-recaptcha";
 // if you need forms support:
 // import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
-import { BrowserModule }  from '@angular/platform-browser';
-import { MyApp } from './app.component.ts';
+import { BrowserModule } from "@angular/platform-browser";
+import { MyApp } from "./app.component.ts";
 
 @NgModule({
   bootstrap: [MyApp],
@@ -62,29 +63,33 @@ import { MyApp } from './app.component.ts';
     // RecaptchaFormsModule, // if you need forms support
   ],
 })
-export class MyAppModule { }
+export class MyAppModule {}
 ```
 
 Once you have done that, the rest is simple:
 
 ```typescript
 // app.component.ts
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-    selector: 'my-app',
-    template: `<re-captcha (resolved)="resolved($event)" siteKey="YOUR_SITE_KEY"></re-captcha>`,
-}) export class MyApp {
-    resolved(captchaResponse: string) {
-        console.log(`Resolved captcha with response: ${captchaResponse}`);
-    }
+  selector: "my-app",
+  template: `<re-captcha
+    (resolved)="resolved($event)"
+    siteKey="YOUR_SITE_KEY"
+  ></re-captcha>`,
+})
+export class MyApp {
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
 }
 ```
 
 ```typescript
 // boot.ts
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { MyAppModule } from './app.module.ts';
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { MyAppModule } from "./app.module.ts";
 
 platformBrowserDynamic().bootstrapModule(MyAppModule);
 ```
@@ -94,24 +99,18 @@ platformBrowserDynamic().bootstrapModule(MyAppModule);
 [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3) introduces a different way of bot protection. To work with v3 APIs, `ng-recaptcha` provides a service (as opposed to a component). To start with, you need to import the `RecaptchaV3Module` and provide your reCAPTCHA v3 site key using `RECAPTCHA_V3_SITE_KEY` injection token:
 
 ```ts
-import { BrowserModule } from '@angular/platform-browser';
-import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { BrowserModule } from "@angular/platform-browser";
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
 
-import { MyApp } from './app.component.ts';
+import { MyApp } from "./app.component.ts";
 
 @NgModule({
   bootstrap: [MyApp],
   declarations: [MyApp],
-  imports: [
-    BrowserModule,
-    RecaptchaV3Module,
-  ],
-  providers: [
-    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '<YOUR_SITE_KEY>' },
-  ],
+  imports: [BrowserModule, RecaptchaV3Module],
+  providers: [{ provide: RECAPTCHA_V3_SITE_KEY, useValue: "<YOUR_SITE_KEY>" }],
 })
-export class MyAppModule { }
-
+export class MyAppModule {}
 ```
 
 In order to execute a reCAPTCHA v3 action, import the `ReCaptchaV3Service` into your desired component:
@@ -152,7 +151,7 @@ You can also play with [this Stackblitz demo](https://stackblitz.com/edit/ng-rec
 There are two modules available for you:
 
 ```typescript
-import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 ```
 
 If you want your `<re-captcha>` element to work correctly with `[(ngModel)]` directive,
@@ -165,12 +164,12 @@ like with Angular own `'@angular/forms'` module).
 
 The component supports this options:
 
-* `siteKey`
-* `theme`
-* `type`
-* `size`
-* `tabIndex`
-* `badge`
+- `siteKey`
+- `theme`
+- `type`
+- `size`
+- `tabIndex`
+- `badge`
 
 They are all pretty well described either in the [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/display), or in the [invisible reCAPTCHA docs](https://developers.google.com/recaptcha/docs/invisible),
 so I won't duplicate it here.
@@ -181,20 +180,21 @@ Besides specifying these options on the component itself, you can provide a glob
 
 ### <a name="api-events"></a>Events
 
-* `resolved(response: string)`. Occurs when the captcha resolution value changed.
+- `resolved(response: string)`. Occurs when the captcha resolution value changed.
   When user resolves captcha, use `response` parameter to send to the server for verification.
   This parameter is equivalent to calling [`grecaptcha.getResponse`](https://developers.google.com/recaptcha/docs/display#js_api).
 
   If the captcha has expired prior to submitting its value to the server, the component
   will reset the captcha, and trigger the `resolved` event with `response === null`.
-* `error(errorDetails: RecaptchaErrorParameters)`. Occurs when reCAPTCHA encounters an error (usually a connectivity problem) **if and only if** `errorMode` input has been set to `"handled"`.
-   `errorDetails` is a simple propagation of any arguments that the original `error-callback` has provided, and is documented here for the purposes of completeness and future-proofing. This array will most often (if not always) be empty. A good strategy would be to rely on just the fact that this event got triggered, and show a message to your app's user telling them to retry.
+
+- `error(errorDetails: RecaptchaErrorParameters)`. Occurs when reCAPTCHA encounters an error (usually a connectivity problem) **if and only if** `errorMode` input has been set to `"handled"`.
+  `errorDetails` is a simple propagation of any arguments that the original `error-callback` has provided, and is documented here for the purposes of completeness and future-proofing. This array will most often (if not always) be empty. A good strategy would be to rely on just the fact that this event got triggered, and show a message to your app's user telling them to retry.
 
 ### <a name="api-methods"></a>Methods
 
-* `reset()`. Performs a manual captcha reset. This method might be useful if your form
-validation failed, and you need the user to re-enter the captcha.
-* `execute()`. Executes the invisible recaptcha. Does nothing if component's size is not set to "invisible". See [Invisible reCAPTCHA developers guide](https://developers.google.com/recaptcha/docs/invisible#js_api) for more information.
+- `reset()`. Performs a manual captcha reset. This method might be useful if your form
+  validation failed, and you need the user to re-enter the captcha.
+- `execute()`. Executes the invisible recaptcha. Does nothing if component's size is not set to "invisible". See [Invisible reCAPTCHA developers guide](https://developers.google.com/recaptcha/docs/invisible#js_api) for more information.
 
 ## <a name="examples"></a>Examples
 
@@ -203,16 +203,17 @@ validation failed, and you need the user to re-enter the captcha.
 Some properties are global - including `siteKey`, `size`, and others. You can provide them at the module-level using the `RECAPTCHA_SETTINGS` provider:
 
 ```typescript
-import { RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { RECAPTCHA_SETTINGS, RecaptchaSettings } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
       provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: '<YOUR_KEY>' } as RecaptchaSettings,
+      useValue: { siteKey: "<YOUR_KEY>" } as RecaptchaSettings,
     },
   ],
-}) export class MyModule { }
+})
+export class MyModule {}
 ```
 
 Global properties can be overridden on a case-by-case basis - the values on the `<re-captcha>` component itself take precedence over global settings.
@@ -226,16 +227,17 @@ The language setting is global, though, and cannot be set on a per-captcha basis
 It can be provided like this:
 
 ```typescript
-import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
+import { RECAPTCHA_LANGUAGE } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
       provide: RECAPTCHA_LANGUAGE,
-      useValue: 'fr', // use French language
+      useValue: "fr", // use French language
     },
   ],
-}) export class MyModule { }
+})
+export class MyModule {}
 ```
 
 You can find the list of supported languages in [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/language).
@@ -245,16 +247,17 @@ You can find the list of supported languages in [reCAPTCHA docs](https://develop
 Sometimes reCAPTCHA encounters an error, which is usually a network connectivity problem. It cannot continue until connectivity is restored. By default, reCAPTCHA lets the user know that an error has happened (it's a built-in functionality of reCAPTCHA itself, and this lib is not in control of it). The downside of such behavior is that you, as a developer, don't get notified about this in any way. Opting into such notifications is easy, but comes at a cost of assuming responsibility for informing the user that they should retry. Here's how you would do this:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'my-app',
-  template: `<re-captcha 
+  selector: "my-app",
+  template: `<re-captcha
     (resolved)="resolved($event)"
     (error)="errored($event)"
     errorMode="handled"
   ></re-captcha>`,
-}) export class MyApp {
+})
+export class MyApp {
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
@@ -286,15 +289,17 @@ The below code snippet is an example of how such a provider can be implemented.
 <script src="https://www.google.com/recaptcha/api.js?render=explicit&amp;onload=onloadCallback"></script>
 
 <script>
-    // bootstrap the application once the reCAPTCHA api has loaded
-    function onloadCallback() {
-        System.import('app').catch(function(err) { console.error(err); });
-    }
+  // bootstrap the application once the reCAPTCHA api has loaded
+  function onloadCallback() {
+    System.import("app").catch(function (err) {
+      console.error(err);
+    });
+  }
 </script>
 ```
 
 ```typescript
-import { RecaptchaLoaderService } from 'ng-recaptcha';
+import { RecaptchaLoaderService } from "ng-recaptcha";
 
 @Injectable()
 export class PreloadedRecaptchaAPIService {
@@ -313,7 +318,8 @@ export class PreloadedRecaptchaAPIService {
       useValue: new PreloadedRecaptchaAPIService(),
     },
   ],
-}) export class MyModule { }
+})
+export class MyModule {}
 ```
 
 ### <a name="example-forms"></a>Usage with `required` in forms [(see in action)](https://dethariel.github.io/ng-recaptcha/forms)
@@ -323,9 +329,8 @@ add the `required` attribute to the `<re-captcha>` element. Do not forget to imp
 
 ```typescript
 @Component({
-  selector: 'my-form',
-  template: `
-  <form>
+  selector: "my-form",
+  template: ` <form>
     <re-captcha
       [(ngModel)]="formModel.captcha"
       name="captcha"
@@ -333,7 +338,8 @@ add the `required` attribute to the `<re-captcha>` element. Do not forget to imp
       siteKey="YOUR_SITE_KEY"
     ></re-captcha>
   </form>`,
-}) export class MyForm {
+})
+export class MyForm {
   formModel = new MyFormModel();
 }
 ```
@@ -342,19 +348,20 @@ A similar approach can be taken for reactive forms:
 
 ```typescript
 @Component({
-  selector: 'my-reactive-form',
+  selector: "my-reactive-form",
   template: `
     <form [formGroup]="reactiveForm">
       <re-captcha formControlName="recaptchaReactive"></re-captcha>
       <button [disabled]="reactiveForm.invalid">Submit</button>
     </form>
   `,
-}) export class MyReactiveForm {
+})
+export class MyReactiveForm {
   reactiveForm: FormGroup;
 
   ngOnInit() {
     this.reactiveForm = new FormGroup({
-      recaptchaReactive: new FormControl(null, Validators.required)
+      recaptchaReactive: new FormControl(null, Validators.required),
     });
   }
 }
@@ -381,9 +388,8 @@ Normally you would only submit a form when recaptcha response has been received.
 
 ```typescript
 @Component({
-  selector: 'my-form',
-  template: `
-  <form>
+  selector: "my-form",
+  template: ` <form>
     <re-captcha
       #captchaRef="reCaptcha"
       siteKey="YOUR_SITE_KEY"
@@ -392,7 +398,8 @@ Normally you would only submit a form when recaptcha response has been received.
     ></re-captcha>
     <button (click)="captchaRef.execute()">Submit</button>
   </form>`,
-}) export class MyForm {
+})
+export class MyForm {
   public submit(captchaResponse: string): void {
     this.http.post({
       captcha: captchaResponse,
@@ -421,13 +428,13 @@ To configure the package to work with SystemJS, you would configure it approxima
 (function () {
   System.config({
     paths: {
-      'npm:': '/node_modules/',
+      "npm:": "/node_modules/",
     },
     map: {
-      'ng-recaptcha': 'npm:ng-recaptcha',
+      "ng-recaptcha": "npm:ng-recaptcha",
     },
     packages: {
-      'ng-recaptcha': { main: './index.js' },
+      "ng-recaptcha": { main: "./index.js" },
     },
   });
 })();
@@ -438,16 +445,17 @@ To configure the package to work with SystemJS, you would configure it approxima
 Since `"google.com"` domain might be unavailable in some countries, reCAPTCHA core team has a solution for that - using `"recaptcha.net"` domain. You can configure the component to use that by providing the `RECAPTCHA_BASE_URL` token, for example:
 
 ```javascript
-import { RECAPTCHA_BASE_URL } from 'ng-recaptcha';
+import { RECAPTCHA_BASE_URL } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
       provide: RECAPTCHA_BASE_URL,
-      useValue: 'https://recaptcha.net/recaptcha/api.js', // use recaptcha.net script source for some of our users
+      useValue: "https://recaptcha.net/recaptcha/api.js", // use recaptcha.net script source for some of our users
     },
   ],
-}) export class MyModule { }
+})
+export class MyModule {}
 ```
 
 ### <a name="example-csp-nonce"></a>Specifying nonce for Content-Security-Policy
@@ -455,16 +463,17 @@ import { RECAPTCHA_BASE_URL } from 'ng-recaptcha';
 Per [reCAPTCHA FAQ on CSP](https://developers.google.com/recaptcha/docs/faq#im-using-content-security-policy-csp-on-my-website-how-can-i-configure-it-to-work-with-recaptcha), the recommended approach for that is to supply nonce to the script tag. This is possible by providing the `RECAPTCHA_NONCE` token, for example:
 
 ```javascript
-import { RECAPTCHA_NONCE } from 'ng-recaptcha';
+import { RECAPTCHA_NONCE } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
       provide: RECAPTCHA_NONCE,
-      useValue: '<YOUR_NONCE_VALUE>',
+      useValue: "<YOUR_NONCE_VALUE>",
     },
   ],
-}) export class MyModule { }
+})
+export class MyModule {}
 ```
 
 ### <a name="example-v3-all-actions"></a>Listening for all actions with reCAPTCHA v3
@@ -485,25 +494,23 @@ where `action` is the name of the action that has been executed, and `token` is 
 Here's how you would potentially set this up:
 
 ```ts
-import { OnExecuteData, ReCaptchaV3Service } from 'ng-recaptcha';
+import { OnExecuteData, ReCaptchaV3Service } from "ng-recaptcha";
 
 @Component({
-  selector: 'my-component',
-  templateUrl: './v3-demo.component.html',
+  selector: "my-component",
+  templateUrl: "./v3-demo.component.html",
 })
 export class MyComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
-  constructor(
-    private recaptchaV3Service: ReCaptchaV3Service,
-  ) {
-  }
+  constructor(private recaptchaV3Service: ReCaptchaV3Service) {}
 
   public ngOnInit() {
-    this.subscription = this.recaptchaV3Service.onExecute
-      .subscribe((data: OnExecuteData) => {
+    this.subscription = this.recaptchaV3Service.onExecute.subscribe(
+      (data: OnExecuteData) => {
         this.handleRecaptchaExecute(data.action, data.token);
-      });
+      }
+    );
   }
 
   public ngOnDestroy() {
@@ -516,6 +523,6 @@ export class MyComponent implements OnInit, OnDestroy {
 
 There are a couple things to keep in mind:
 
-* `onExecute` will trigger for **all** actions. If you only need to bulk-process some actions, and not others - you will have to apply filtering yourself.
-* `onExecute` observable will provide you with all the events emitted **after** you have subscribed to it - it doesn't keep references to the previously emitted actions. So make sure you add such a subscription as early in your code as you feel is necessary.
-* `onExecute` does not emit anything for when a `grecaptcha` error occurs. Use `onExecuteError` Observable for that.
+- `onExecute` will trigger for **all** actions. If you only need to bulk-process some actions, and not others - you will have to apply filtering yourself.
+- `onExecute` observable will provide you with all the events emitted **after** you have subscribed to it - it doesn't keep references to the previously emitted actions. So make sure you add such a subscription as early in your code as you feel is necessary.
+- `onExecute` does not emit anything for when a `grecaptcha` error occurs. Use `onExecuteError` Observable for that.

@@ -1,110 +1,131 @@
 <section class="recaptcha-demo-wrapper">
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <img src="images/angular.svg" height="40px" style="margin-right: 8px" />
-    <span>{{ site.title }}</span>
-    <span class="filler"></span>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <img src="images/angular.svg" height="40px" style="margin-right: 8px" />
+      <span>{{ site.title }}</span>
+      <span class="filler"></span>
 
-    <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Language settings">
-      <mat-icon>language</mat-icon>
-    </button>
-    <mat-menu #langMenu="matMenu">
-      <mat-radio-group aria-label="Select reCAPTCHA language" [value]="selectedLanguage" (change)="onLangChange($event.value)">
-        <mat-list>
-          <mat-list-item>
-            <mat-radio-button value="">Default</mat-radio-button>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-radio-button value="de">🇩🇪 Deutsche</mat-radio-button>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-radio-button value="fr">🇫🇷 Français</mat-radio-button>
-          </mat-list-item>
-        </mat-list>
-      </mat-radio-group>
-    </mat-menu>
-    <a *ngIf="!mobileQuery.matches" mat-button href="https://github.com/DethAriel/ng2-recaptcha">
-      <img src="images/octocat.svg" height="26px" style="margin-right: 8px" />
-      <span>GitHub</span>
-    </a>
-    <a *ngIf="mobileQuery.matches" aria-label="GitHub repository" mat-icon-button href="https://github.com/DethAriel/ng2-recaptcha">
-      <img src="images/octocat.svg" height="26px" />
-    </a>
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav
-    #sidenav
-    (closed)="sidebarOpened = false"
-    [opened]="!mobileQuery.matches || sidebarOpened"
-    [mode]="mobileQuery.matches ? 'over' : 'side'"
-    [fixedInViewport]="mobileQuery.matches"
-    fixedTopGap="56"
-  >
-    <mat-nav-list>
-      <h3>Examples</h3>
-      <a
-        mat-list-item
-        *ngFor="let link of navLinks"
-        [routerLink]="[link.path]"
-        queryParamsHandling="preserve"
-        [class.active]="page && page.feature === link.feature"
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="langMenu"
+        aria-label="Language settings"
       >
-        {{ link.label }}
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <mat-radio-group
+          aria-label="Select reCAPTCHA language"
+          [value]="selectedLanguage"
+          (change)="onLangChange($event.value)"
+        >
+          <mat-list>
+            <mat-list-item>
+              <mat-radio-button value="">Default</mat-radio-button>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-radio-button value="de">🇩🇪 Deutsche</mat-radio-button>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-radio-button value="fr">🇫🇷 Français</mat-radio-button>
+            </mat-list-item>
+          </mat-list>
+        </mat-radio-group>
+      </mat-menu>
+      <a
+        *ngIf="!mobileQuery.matches"
+        mat-button
+        href="https://github.com/DethAriel/ng2-recaptcha"
+      >
+        <img src="images/octocat.svg" height="26px" style="margin-right: 8px" />
+        <span>GitHub</span>
       </a>
-   </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="layout">
-      <mat-toolbar color="primary">
-        <button mat-icon-button *ngIf="mobileQuery.matches" (click)="sidebarOpened = true">
-          <mat-icon aria-hidden="true">menu</mat-icon>
-        </button>
-        <span *ngIf="page">{{ page.title }}</span>
-      </mat-toolbar>
-      <main>
-        <div class="example-container">
-          <router-outlet></router-outlet>
-        </div>
+      <a
+        *ngIf="mobileQuery.matches"
+        aria-label="GitHub repository"
+        mat-icon-button
+        href="https://github.com/DethAriel/ng2-recaptcha"
+      >
+        <img src="images/octocat.svg" height="26px" />
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-        <mat-tab-group *ngIf="page">
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <code>{{page.feature}}.component.html</code>
-            </ng-template>
-            <pre [innerHTML]="page.content.html"></pre>
-          </mat-tab>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <code>{{page.feature}}.component.ts</code>
-            </ng-template>
-            <pre [innerHTML]="page.content.component"></pre>
-          </mat-tab>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <code>main.ts</code>
-            </ng-template>
-            <pre [innerHTML]="page.content.module[selectedLanguage]"></pre>
-          </mat-tab>
-          <mat-tab *ngIf="page.content.additional">
-            <ng-template mat-tab-label>
-              <code>{{ page.content.additional.title }}</code>
-            </ng-template>
-            <pre [innerHTML]="page.content.additional.content"></pre>
-          </mat-tab>
-        </mat-tab-group>
-      </main>
-      <footer>
-        <div>
-          <img src="images/angular.svg" height="32px" />
-        </div>
-        <div>
-          <h3>{{ site.title }}</h3>
-        </div>
-        <span>{{ site.description }}</span>
-      </footer>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container>
+    <mat-sidenav
+      #sidenav
+      (closed)="sidebarOpened = false"
+      [opened]="!mobileQuery.matches || sidebarOpened"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list>
+        <h3>Examples</h3>
+        <a
+          mat-list-item
+          *ngFor="let link of navLinks"
+          [routerLink]="[link.path]"
+          queryParamsHandling="preserve"
+          [class.active]="page && page.feature === link.feature"
+        >
+          {{ link.label }}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="layout">
+        <mat-toolbar color="primary">
+          <button
+            mat-icon-button
+            *ngIf="mobileQuery.matches"
+            (click)="sidebarOpened = true"
+          >
+            <mat-icon aria-hidden="true">menu</mat-icon>
+          </button>
+          <span *ngIf="page">{{ page.title }}</span>
+        </mat-toolbar>
+        <main>
+          <div class="example-container">
+            <router-outlet></router-outlet>
+          </div>
+
+          <mat-tab-group *ngIf="page">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <code>{{ page.feature }}.component.html</code>
+              </ng-template>
+              <pre [innerHTML]="page.content.html"></pre>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <code>{{ page.feature }}.component.ts</code>
+              </ng-template>
+              <pre [innerHTML]="page.content.component"></pre>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <code>main.ts</code>
+              </ng-template>
+              <pre [innerHTML]="page.content.module[selectedLanguage]"></pre>
+            </mat-tab>
+            <mat-tab *ngIf="page.content.additional">
+              <ng-template mat-tab-label>
+                <code>{{ page.content.additional.title }}</code>
+              </ng-template>
+              <pre [innerHTML]="page.content.additional.content"></pre>
+            </mat-tab>
+          </mat-tab-group>
+        </main>
+        <footer>
+          <div>
+            <img src="images/angular.svg" height="32px" />
+          </div>
+          <div>
+            <h3>{{ site.title }}</h3>
+          </div>
+          <span>{{ site.description }}</span>
+        </footer>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </section>

@@ -1,9 +1,20 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, NgZone, Optional, PLATFORM_ID } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { isPlatformBrowser } from "@angular/common";
+import {
+  Inject,
+  Injectable,
+  NgZone,
+  Optional,
+  PLATFORM_ID,
+} from "@angular/core";
+import { Observable, Subject } from "rxjs";
 
-import { loadScript } from './load-script';
-import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from './tokens';
+import { loadScript } from "./load-script";
+import {
+  RECAPTCHA_BASE_URL,
+  RECAPTCHA_LANGUAGE,
+  RECAPTCHA_NONCE,
+  RECAPTCHA_V3_SITE_KEY,
+} from "./tokens";
 
 export interface OnExecuteData {
   /**
@@ -69,7 +80,7 @@ export class ReCaptchaV3Service {
     @Inject(PLATFORM_ID) platformId: any,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
-    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
+    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string
   ) {
     this.zone = zone;
     this.isBrowser = isPlatformBrowser(platformId);
@@ -129,7 +140,10 @@ export class ReCaptchaV3Service {
   }
 
   /** @internal */
-  private executeActionWithSubject(action: string, subject: Subject<string>): void {
+  private executeActionWithSubject(
+    action: string,
+    subject: Subject<string>
+  ): void {
     const onError = (error: any) => {
       this.zone.run(() => {
         subject.error(error);
@@ -143,18 +157,17 @@ export class ReCaptchaV3Service {
 
     this.zone.runOutsideAngular(() => {
       try {
-        this.grecaptcha.execute(
-          this.siteKey,
-          { action },
-        ).then((token: string) => {
-          this.zone.run(() => {
-            subject.next(token);
-            subject.complete();
-            if (this.onExecuteSubject) {
-              this.onExecuteSubject.next({ action, token });
-            }
-          });
-        }, onError);
+        this.grecaptcha
+          .execute(this.siteKey, { action })
+          .then((token: string) => {
+            this.zone.run(() => {
+              subject.next(token);
+              subject.complete();
+              if (this.onExecuteSubject) {
+                this.onExecuteSubject.next({ action, token });
+              }
+            });
+          }, onError);
       } catch (e) {
         onError(e);
       }
@@ -164,11 +177,17 @@ export class ReCaptchaV3Service {
   /** @internal */
   private init() {
     if (this.isBrowser) {
-      if ('grecaptcha' in window) {
+      if ("grecaptcha" in window) {
         this.grecaptcha = grecaptcha;
       } else {
-        const langParam = this.language ? '&hl=' + this.language : '';
-        loadScript(this.siteKey, this.onLoadComplete, langParam, this.baseUrl, this.nonce);
+        const langParam = this.language ? "&hl=" + this.language : "";
+        loadScript(
+          this.siteKey,
+          this.onLoadComplete,
+          langParam,
+          this.baseUrl,
+          this.nonce
+        );
       }
     }
   }
@@ -177,8 +196,10 @@ export class ReCaptchaV3Service {
   private onLoadComplete = (grecaptcha: ReCaptchaV2.ReCaptcha) => {
     this.grecaptcha = grecaptcha;
     if (this.actionBacklog && this.actionBacklog.length > 0) {
-      this.actionBacklog.forEach(([action, subject]) => this.executeActionWithSubject(action, subject));
+      this.actionBacklog.forEach(([action, subject]) =>
+        this.executeActionWithSubject(action, subject)
+      );
       this.actionBacklog = undefined;
     }
-  }
+  };
 }

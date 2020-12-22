@@ -1,22 +1,25 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
 import { examples } from "../../../bin/examples";
 
 const routes: Routes = [
-  ...examples.map(e => ({
+  ...examples.map((e) => ({
     path: e.name,
-    loadChildren: () => import(`../examples/${e.name}/${e.name}-demo.module`).then(m => m.DemoModule),
+    loadChildren: () =>
+      import(`../examples/${e.name}/${e.name}-demo.module`).then(
+        (m) => m.DemoModule
+      ),
   })),
   {
-    path: '',
-    redirectTo: `/${examples.find(e => e.index)!.name}`,
-    pathMatch: 'full',
+    path: "",
+    redirectTo: `/${examples.find((e) => e.index)!.name}`,
+    pathMatch: "full",
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DemoWrapperRoutingModule { }
+export class DemoWrapperRoutingModule {}

@@ -15,7 +15,12 @@ updateToLatestLocalNgRecaptchaVersion();
 
 function updateToLatestLocalNgRecaptchaVersion() {
   const timestampedName = `ng-recaptcha-${Date.now()}.tgz`;
-  fs.copyFileSync(path.join(__dirname, '../../ng-recaptcha-latest.tgz'), path.join(__dirname, `../../${timestampedName}`));
+  fs.copyFileSync(
+    path.join(__dirname, "../../ng-recaptcha-latest.tgz"),
+    path.join(__dirname, `../../${timestampedName}`)
+  );
 
-  execSync(`yarn add ../${timestampedName} --force --update-checksums`, { stdio: 'inherit' });
+  execSync(`yarn add ../${timestampedName} --force --update-checksums`, {
+    stdio: "inherit",
+  });
 }

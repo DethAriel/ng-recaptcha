@@ -1,9 +1,11 @@
-body, html {
+body,
+html {
   margin: 0;
   height: 100%;
 }
 
-recaptcha-demo, recaptcha-demo-wrapper {
+recaptcha-demo,
+recaptcha-demo-wrapper {
   display: block;
   height: 100%;
 }
@@ -14,5 +16,6 @@ recaptcha-demo, recaptcha-demo-wrapper {
 }
 
 body {
-  font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
+    Lucida Grande, sans-serif;
 }

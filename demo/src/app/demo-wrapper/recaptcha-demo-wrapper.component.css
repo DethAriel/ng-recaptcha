@@ -3,7 +3,8 @@
 }
 
 .recaptcha-demo-wrapper > mat-toolbar {
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
   z-index: 2;
 }
 
@@ -19,7 +20,7 @@
 
 .recaptcha-demo-wrapper mat-sidenav {
   width: 200px;
-  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
 }
 
 .recaptcha-demo-wrapper mat-nav-list {
@@ -33,12 +34,12 @@
   text-transform: uppercase;
   margin: 0;
   padding: 0 16px;
-  background: rgba(0,0,0,.32);
-  color: hsla(0,0%,100%,.87);
+  background: rgba(0, 0, 0, 0.32);
+  color: hsla(0, 0%, 100%, 0.87);
 }
 
 .recaptcha-demo-wrapper mat-nav-list a {
-  border-bottom: 1px solid rgba(0,0,0,.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .recaptcha-demo-wrapper mat-nav-list a.active {
@@ -67,7 +68,7 @@
   font-size: 12px;
   text-align: center;
   background: #3f51b5;
-  color: hsla(0,0%,100%,.87);
+  color: hsla(0, 0%, 100%, 0.87);
 }
 
 .recaptcha-demo-wrapper footer h3 {

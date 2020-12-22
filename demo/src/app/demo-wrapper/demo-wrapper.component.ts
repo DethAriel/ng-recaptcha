@@ -1,10 +1,17 @@
-import { MediaMatcher } from '@angular/cdk/layout'; // tslint:disable-line:no-submodule-imports
-import { ChangeDetectorRef, Component, Inject, InjectionToken, OnDestroy, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Router, ResolveEnd } from '@angular/router';
+import { MediaMatcher } from "@angular/cdk/layout"; // tslint:disable-line:no-submodule-imports
+import {
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  InjectionToken,
+  OnDestroy,
+  OnInit,
+} from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { Router, ResolveEnd } from "@angular/router";
 import { parse, stringify } from "query-string";
 
-import { parseLangFromHref } from '../parse-lang-from-href';
+import { parseLangFromHref } from "../parse-lang-from-href";
 
 export interface PageSettings {
   title: string;
@@ -13,10 +20,10 @@ export interface PageSettings {
     html: string;
     component: string;
     module: {
-      '': string;
-      'fr': string;
-      'de': string;
-    }
+      "": string;
+      fr: string;
+      de: string;
+    };
   };
 }
 export interface NavLink {
@@ -24,25 +31,23 @@ export interface NavLink {
   path: string;
   feature: string;
 }
-export const NAV_LINKS = new InjectionToken<NavLink[]>('NAV_LINKS');
+export const NAV_LINKS = new InjectionToken<NavLink[]>("NAV_LINKS");
 
 @Component({
-  selector: 'recaptcha-demo-wrapper',
-  styleUrls: [
-    './recaptcha-demo-wrapper.component.css',
-  ],
-  templateUrl: './recaptcha-demo-wrapper.component.html',
+  selector: "recaptcha-demo-wrapper",
+  styleUrls: ["./recaptcha-demo-wrapper.component.css"],
+  templateUrl: "./recaptcha-demo-wrapper.component.html",
 })
 export class DemoWrapperComponent implements OnInit, OnDestroy {
   public site = {
-    title: 'ng-recaptcha',
-    description: 'Angular component for Google reCAPTCHA',
+    title: "ng-recaptcha",
+    description: "Angular component for Google reCAPTCHA",
   };
   public page?: PageSettings;
   public mobileQuery: MediaQueryList;
   public sidebarOpened: boolean = false;
 
-  public selectedLanguage: '' | 'fr' | 'de' = '';
+  public selectedLanguage: "" | "fr" | "de" = "";
 
   private mobileQueryListener: () => void;
 
@@ -51,9 +56,9 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     private titleService: Title,
     media: MediaMatcher,
     changeDetectorRef: ChangeDetectorRef,
-    private router: Router,
+    private router: Router
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia("(max-width: 600px)");
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
   }
@@ -63,16 +68,22 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
 
     this.router.events.subscribe((data) => {
       if (data instanceof ResolveEnd) {
-        const unifiedRouteData = (function gatherRecursively(children, value = {}) {
+        const unifiedRouteData = (function gatherRecursively(
+          children,
+          value = {}
+        ) {
           if (!children || children.length === 0) {
             return value;
           }
 
-          return children.reduce((acc, snapshot) => ({
-            ...acc,
-            ...snapshot.data,
-            ...gatherRecursively(snapshot.children)
-          }), value)
+          return children.reduce(
+            (acc, snapshot) => ({
+              ...acc,
+              ...snapshot.data,
+              ...gatherRecursively(snapshot.children),
+            }),
+            value
+          );
         })(data.state.root.children);
 
         this.page = unifiedRouteData.page;
@@ -88,21 +99,19 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   }
 
   public onLangChange(newLang): void {
-    const {
-      pathname,
-      search,
-    } = window.location;
+    const { pathname, search } = window.location;
 
     const currentSearch = parse(search);
 
-    if (newLang === '') {
+    if (newLang === "") {
       delete currentSearch.lang;
     } else {
       currentSearch.lang = newLang;
     }
 
     const newSearch = stringify(currentSearch);
-    const newLocation = pathname + (newSearch.length === 0 ? '' : `?${newSearch}`);
+    const newLocation =
+      pathname + (newSearch.length === 0 ? "" : `?${newSearch}`);
 
     window.location.assign(newLocation);
   }
