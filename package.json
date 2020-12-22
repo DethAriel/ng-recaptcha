@@ -47,12 +47,13 @@
   "ngPackage": {
     "lib": {
       "entryFile": "src/index.ts"
-    }
-  },
-  "optionalDependencies": {
-    "@types/grecaptcha": "^3.0.1"
+    },
+    "whitelistedNonPeerDependencies": [
+      "@types/grecaptcha"
+    ]
   },
   "dependencies": {
+    "@types/grecaptcha": "^3.0.1",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
