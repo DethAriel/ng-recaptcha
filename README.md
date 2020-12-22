@@ -3,7 +3,7 @@
 ## ng-recaptcha [![npm version](https://badge.fury.io/js/ng-recaptcha.svg)](http://badge.fury.io/js/ng-recaptcha)
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
-[![Build Status](https://travis-ci.org/DethAriel/ng-recaptcha.svg?branch=master)](https://travis-ci.org/DethAriel/ng-recaptcha)
+[![Build Status](https://travis-ci.com/DethAriel/ng-recaptcha.svg?branch=master)](https://travis-ci.com/DethAriel/ng-recaptcha)
 
 A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3.
 
