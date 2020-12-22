@@ -70,7 +70,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  public ngAfterViewInit() {
+  public ngAfterViewInit(): void {
     this.subscription = this.loader.ready.subscribe(
       (grecaptcha: ReCaptchaV2.ReCaptcha) => {
         if (grecaptcha != null && grecaptcha.render instanceof Function) {
@@ -81,7 +81,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     );
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     // reset the captcha to ensure it does not leave anything behind
     // after the component is no longer needed
     this.grecaptchaReset();
@@ -107,7 +107,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  public reset() {
+  public reset(): void {
     if (this.widget != null) {
       if (this.grecaptcha.getResponse(this.widget)) {
         // Only emit an event in case if something would actually change.

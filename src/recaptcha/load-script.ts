@@ -10,7 +10,7 @@ export function loadScript(
   urlParams: string,
   url?: string,
   nonce?: string
-) {
+): void {
   window.ng2recaptchaloaded = () => {
     onLoaded(grecaptcha);
   };

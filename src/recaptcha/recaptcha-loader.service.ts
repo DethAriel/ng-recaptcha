@@ -30,7 +30,8 @@ export class RecaptchaLoaderService {
   private v3SiteKey: string;
 
   constructor(
-    @Inject(PLATFORM_ID) private readonly platformId: any,
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    @Inject(PLATFORM_ID) private readonly platformId: Object,
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
