@@ -1,5 +1,11 @@
 module.exports = {
   root: true,
+  parserOptions: {
+    ecmaVersion: 2017,
+  },
+  env: {
+    es6: true,
+  },
   overrides: [
     {
       files: ["*.ts"],

@@ -1,0 +1,25 @@
+{
+  "name": "ng-recaptcha",
+  "description": "Angular component for Google reCAPTCHA",
+  "version": "7.0.1",
+  "author": "Ruslan Arkhipau <dethariel@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DethAriel/ng-recaptcha"
+  },
+  "homepage": "https://github.com/DethAriel/ng-recaptcha#readme",
+  "keywords": [
+    "angular",
+    "recaptcha",
+    "angular-recaptcha",
+    "ng-recaptcha"
+  ],
+  "peerDependencies": {
+    "@angular/core": "^11.0.0"
+  },
+  "dependencies": {
+    "@types/grecaptcha": "^3.0.1",
+    "tslib": "^2.0.0"
+  }
+}

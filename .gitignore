@@ -6,14 +6,7 @@
 
 # compiled sources
 /dist
-/*.js
-!.eslintrc.js
-/*.d.ts
-/recaptcha/**/*.js
-/recaptcha/**/*.d.ts
-
-# Angular AoT output
-*.metadata.json
+/coverage
 
 # Logs
 logs
@@ -22,6 +15,3 @@ npm-debug.log*
 
 # Dependency directories
 node_modules
-
-# Build files
-ng-recaptcha-*.tgz
