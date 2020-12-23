@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   overrides: [
     {
       files: ["*.ts"],
@@ -7,7 +6,7 @@ module.exports = {
         project: ["tsconfig.json"],
         createDefaultProgram: true,
       },
-      extends: ["../.eslintrc.js"],
+      extends: ["../../.eslintrc.js"],
       rules: {
         "@angular-eslint/directive-selector": [
           "error",
@@ -21,7 +20,7 @@ module.exports = {
     },
     {
       files: ["*.html"],
-      extends: ["../.eslintrc.js"],
+      extends: ["../../.eslintrc.js"],
       rules: {},
     },
   ],

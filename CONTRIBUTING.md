@@ -30,10 +30,11 @@ After you did that, follow the below process:
 
 - Pushed the latest changes to upstream: `git push`
 - Ensure that the build succeeds
-- To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean && yarn demo:install`
-- Then you need to prepare a release (demo site will be built at this stage). Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
+- To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean`
+- Then you need to prepare a release. Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
   - Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
+- Build a demo site after that: `yarn demo:build`
 - Verify the latest commit, and run `git push && git push --tag` to push the changes to the origin
 - Wait for the build to succeed
-- Publish the package to npm _from the "/dist" directory_: `cd dist && npm publish` (or `cd dist && npm publish --tag beta`)
+- Publish the package to npm _from the "/dist/ng-recaptcha" directory_: `cd dist/ng-recaptcha && npm publish` (or `cd dist/ng-recaptcha && npm publish --tag beta`)
 - Create a GitHub release and update the demo site by running `yarn github-release && yarn demo:publish`

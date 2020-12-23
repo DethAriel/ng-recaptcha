@@ -48,12 +48,16 @@ function readOutputPath(angularConfiguration: unknown): string {
 
 function copyEntryPoints() {
   const angularOptions: unknown = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../angular.json"), {
+    fs.readFileSync(path.join(__dirname, "../../../angular.json"), {
       encoding: "utf-8",
     })
   );
   const angularDistDirSetting = readOutputPath(angularOptions);
-  const angularDistDir = path.join(__dirname, "..", angularDistDirSetting);
+  const angularDistDir = path.join(
+    __dirname,
+    "../../..",
+    angularDistDirSetting
+  );
 
   const indexHtmlFile = path.join(angularDistDir, "index.html");
 

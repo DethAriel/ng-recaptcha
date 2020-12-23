@@ -4,7 +4,7 @@ import { highlightAuto, highlight } from "highlight.js";
 
 import { examples, Example } from "./examples";
 
-const sourceDir = path.join(process.cwd(), "src");
+const sourceDir = path.join(process.cwd(), "projects/demo/src");
 
 generateFiles();
 
@@ -48,24 +48,24 @@ export const settings: PageSettings = {
   title: '${example.title}',
   content: {
     component: ${highlightRequire(
-      `./src/app/examples/${featureName}/${featureName}-demo.component.ts`,
+      `${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.ts`,
       "ts"
     )},
     html: ${highlightRequire(
-      `./src/app/examples/${featureName}/${featureName}-demo.component.html`,
+      `${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.html`,
       "html"
     )},
     module: {
       '': ${highlightRequire(
-        `./src/app/examples/${featureName}/${featureName}-demo.module-default`,
+        `${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-default`,
         "ts"
       )},
       'fr': ${highlightRequire(
-        `./src/app/examples/${featureName}/${featureName}-demo.module-fr`,
+        `${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-fr`,
         "ts"
       )},
       'de': ${highlightRequire(
-        `./src/app/examples/${featureName}/${featureName}-demo.module-de`,
+        `${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-de`,
         "ts"
       )},
     },
