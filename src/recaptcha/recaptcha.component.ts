@@ -19,8 +19,10 @@ import { RECAPTCHA_SETTINGS } from "./tokens";
 
 let nextId = 0;
 
+export type NeverUndefined<T> = T extends undefined ? never : T;
+
 export type RecaptchaErrorParameters = Parameters<
-  ReCaptchaV2.Parameters["error-callback"]
+  NeverUndefined<ReCaptchaV2.Parameters["error-callback"]>
 >;
 
 @Component({
