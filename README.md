@@ -240,6 +240,15 @@ import { RECAPTCHA_LANGUAGE } from "ng-recaptcha";
 export class MyModule {}
 ```
 
+In order to use the official angular-localize value as the recaptcha language:
+```typescript
+    {
+      provide: RECAPTCHA_LANGUAGE,
+      useFactory: (locale: string) => locale,
+      deps: [LOCALE_ID]
+    }
+```
+
 You can find the list of supported languages in [reCAPTCHA docs](https://developers.google.com/recaptcha/docs/language).
 
 ### <a name="example-error-handling"></a>Handling errors
