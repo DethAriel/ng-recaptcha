@@ -1,3 +1,11 @@
+<a name="7.0.1"></a>
+
+## [7.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.0...v7.0.1) (2021-01-07)
+
+### Bug Fixes
+
+- **component:** fix component usages for Typescript strict mode ([a687d13](https://github.com/DethAriel/ng-recaptcha/commit/a687d13)), closes [#211](https://github.com/DethAriel/ng-recaptcha/issues/211)
+
 <a name="7.0.0"></a>
 
 # [7.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v6.1.0...v7.0.0) (2020-12-22)
