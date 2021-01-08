@@ -1,4 +1,4 @@
-import { LayoutModule } from "@angular/cdk/layout"; // tslint:disable-line:no-submodule-imports
+import { LayoutModule } from "@angular/cdk/layout";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
@@ -13,7 +13,6 @@ import { MatRadioModule } from "@angular/material/radio";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
-// tslint:disable-next-line:no-submodule-imports
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { DemoWrapperComponent, NAV_LINKS } from "./demo-wrapper.component";
