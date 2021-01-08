@@ -40,8 +40,7 @@ function highlightRequire(file: string, lang: string) {
 
 function generateData(example: Example) {
   const featureName = example.name;
-  const contents = `// tslint:disable no-require-imports no-submodule-imports
-import { PageSettings } from '../../demo-wrapper/demo-wrapper.component';
+  const contents = `import { PageSettings } from '../../demo-wrapper/demo-wrapper.component';
 
 export const settings: PageSettings = {
   feature: '${featureName}',

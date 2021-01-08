@@ -1,4 +1,4 @@
-import { MediaMatcher } from "@angular/cdk/layout"; // tslint:disable-line:no-submodule-imports
+import { MediaMatcher } from "@angular/cdk/layout";
 import {
   ChangeDetectorRef,
   Component,
