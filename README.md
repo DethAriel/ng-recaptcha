@@ -4,6 +4,7 @@
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
 [![Build Status](https://travis-ci.com/DethAriel/ng-recaptcha.svg?branch=master)](https://travis-ci.com/DethAriel/ng-recaptcha)
+[![Coverage Status](https://coveralls.io/repos/github/DethAriel/ng-recaptcha/badge.svg?branch=master)](https://coveralls.io/github/DethAriel/ng-recaptcha?branch=master)
 
 A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3.
 
