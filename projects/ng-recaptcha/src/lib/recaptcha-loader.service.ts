@@ -2,7 +2,7 @@ import { isPlatformBrowser } from "@angular/common";
 import { Inject, Injectable, Optional, PLATFORM_ID } from "@angular/core";
 import { BehaviorSubject, Observable, of } from "rxjs";
 
-import { loadScript } from "./load-script";
+import { loader } from "./load-script";
 import {
   RECAPTCHA_BASE_URL,
   RECAPTCHA_LANGUAGE,
@@ -58,7 +58,7 @@ export class RecaptchaLoaderService {
       const langParam = this.language ? "&hl=" + this.language : "";
 
       const renderMode = this.v3SiteKey || "explicit";
-      loadScript(
+      loader.loadScript(
         renderMode,
         (grecaptcha) => subject.next(grecaptcha),
         langParam,

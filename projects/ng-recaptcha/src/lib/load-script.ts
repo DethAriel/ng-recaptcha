@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-export function loadScript(
+function loadScript(
   renderMode: "explicit" | string,
   onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
   urlParams: string,
@@ -26,3 +26,5 @@ export function loadScript(
   script.defer = true;
   document.head.appendChild(script);
 }
+
+export const loader = { loadScript };
