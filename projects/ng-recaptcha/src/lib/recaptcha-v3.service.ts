@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 
-import { loadScript } from "./load-script";
+import { loader } from "./load-script";
 import {
   RECAPTCHA_BASE_URL,
   RECAPTCHA_LANGUAGE,
@@ -184,7 +184,7 @@ export class ReCaptchaV3Service {
         this.grecaptcha = grecaptcha;
       } else {
         const langParam = this.language ? "&hl=" + this.language : "";
-        loadScript(
+        loader.loadScript(
           this.siteKey,
           this.onLoadComplete,
           langParam,
