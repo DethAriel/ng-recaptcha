@@ -33,7 +33,6 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: false,
     browsers: ["ChromeHeadlessCI"],
     customLaunchers: {
       ChromeHeadlessCI: {
