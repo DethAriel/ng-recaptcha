@@ -15,7 +15,7 @@
 
 ## Running demo
 
-In order to run the demo you need to `yarn demo`. Then the demo site will be served at http://localhost:4200/ng-recaptcha/.
+In order to run the demo you need to `yarn demo:serve`. Then the demo site will be served at http://localhost:4200/ng-recaptcha/.
 
 ## Maintainer notes
 
@@ -31,10 +31,13 @@ After you did that, follow the below process:
 - Pushed the latest changes to upstream: `git push`
 - Ensure that the build succeeds
 - To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean`
-- Then you need to prepare a release. Run `npm run prepare-release <VERSION>`. Use `npm` , not `yarn`!
-  - Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
-- Build a demo site after that: `yarn demo:build`
+- Then you need to prepare a release.
+
+  - Export the version variable for later use by scripts: `export NGR_VERSION=<VERSION>`
+    - Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
+  - Run `npm version $NGR_VERSION`. Use `npm`, not `yarn`!
+
 - Verify the latest commit, and run `git push && git push --tag` to push the changes to the origin
 - Wait for the build to succeed
 - Publish the package to npm _from the "/dist/ng-recaptcha" directory_: `cd dist/ng-recaptcha && npm publish` (or `cd dist/ng-recaptcha && npm publish --tag beta`)
-- Create a GitHub release and update the demo site by running `yarn github-release && yarn demo:publish`
+- Create a GitHub release and update the demo site by running `yarn github-release && yarn demo:build && yarn demo:publish`
