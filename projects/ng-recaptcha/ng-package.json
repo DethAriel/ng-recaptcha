@@ -1,8 +1,10 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ng-recaptcha",
+  "assets": ["README.md", "CHANGELOG.md", "LICENSE"],
+  "deleteDestPath": true,
   "lib": {
     "entryFile": "src/index.ts"
   },
-  "whitelistedNonPeerDependencies": ["@types/grecaptcha"]
+  "allowedNonPeerDependencies": ["@types/grecaptcha"]
 }

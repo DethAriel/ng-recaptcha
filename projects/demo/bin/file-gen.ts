@@ -21,7 +21,7 @@ function writeExampleFile(
     fileName
   );
 
-  fs.writeFileSync(location, contents, { encoding: "UTF8" });
+  fs.writeFileSync(location, contents, { encoding: "utf-8" });
 }
 
 function highlightRequire(file: string, lang: string) {
@@ -95,7 +95,7 @@ function generateLinks() {
 ];
 `;
 
-  fs.writeFileSync(location, contents, { encoding: "UTF8" });
+  fs.writeFileSync(location, contents, { encoding: "utf-8" });
 }
 
 function generateFiles() {
