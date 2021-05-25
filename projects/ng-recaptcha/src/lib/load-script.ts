@@ -9,14 +9,15 @@ function loadScript(
   onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
   urlParams: string,
   url?: string,
+  isEnterprise?: boolean,
   nonce?: string
 ): void {
   window.ng2recaptchaloaded = () => {
-    onLoaded(grecaptcha);
+    onLoaded(isEnterprise ? grecaptcha.enterprise : grecaptcha);
   };
   const script = document.createElement("script");
   script.innerHTML = "";
-  const baseUrl = url || "https://www.google.com/recaptcha/api.js";
+  const baseUrl = url || `https://www.google.com/recaptcha/${isEnterprise ? 'enterprise' : 'api'}.js`;
 
   script.src = `${baseUrl}?render=${renderMode}&onload=ng2recaptchaloaded${urlParams}`;
   if (nonce) {

@@ -11,6 +11,7 @@ import { Observable, Subject } from "rxjs";
 import { loader } from "./load-script";
 import {
   RECAPTCHA_BASE_URL,
+  RECAPTCHA_ENTERPRISE,
   RECAPTCHA_LANGUAGE,
   RECAPTCHA_NONCE,
   RECAPTCHA_V3_SITE_KEY,
@@ -64,6 +65,8 @@ export class ReCaptchaV3Service {
   /** @internal */
   private baseUrl: string;
   /** @internal */
+  private isEnterprise: boolean;
+  /** @internal */
   private grecaptcha: ReCaptchaV2.ReCaptcha;
 
   /** @internal */
@@ -81,6 +84,7 @@ export class ReCaptchaV3Service {
     // eslint-disable-next-line @typescript-eslint/ban-types
     @Inject(PLATFORM_ID) platformId: Object,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
+    @Optional() @Inject(RECAPTCHA_ENTERPRISE) isEnterprise?: boolean,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string
   ) {
@@ -90,6 +94,7 @@ export class ReCaptchaV3Service {
     this.nonce = nonce;
     this.language = language;
     this.baseUrl = baseUrl;
+    this.isEnterprise = isEnterprise;
 
     this.init();
   }
@@ -189,6 +194,7 @@ export class ReCaptchaV3Service {
           this.onLoadComplete,
           langParam,
           this.baseUrl,
+          this.isEnterprise,
           this.nonce
         );
       }

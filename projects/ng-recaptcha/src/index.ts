@@ -19,6 +19,7 @@ export { RecaptchaValueAccessorDirective } from "./lib/recaptcha-value-accessor.
 export {
   RECAPTCHA_LANGUAGE,
   RECAPTCHA_BASE_URL,
+  RECAPTCHA_ENTERPRISE,
   RECAPTCHA_NONCE,
   RECAPTCHA_SETTINGS,
   RECAPTCHA_V3_SITE_KEY,

@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 import { loader } from "./load-script";
 import {
   RECAPTCHA_BASE_URL,
+  RECAPTCHA_ENTERPRISE,
   RECAPTCHA_LANGUAGE,
   RECAPTCHA_NONCE,
   RECAPTCHA_V3_SITE_KEY,
@@ -25,6 +26,8 @@ export class RecaptchaLoaderService {
   /** @internal */
   private baseUrl: string;
   /** @internal */
+  private isEnterprise: boolean;
+  /** @internal */
   private nonce: string;
   /** @internal */
   private v3SiteKey: string;
@@ -34,11 +37,13 @@ export class RecaptchaLoaderService {
     @Inject(PLATFORM_ID) private readonly platformId: Object,
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
+    @Optional() @Inject(RECAPTCHA_ENTERPRISE) isEnterprise?: boolean,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
     @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string
   ) {
     this.language = language;
     this.baseUrl = baseUrl;
+    this.isEnterprise = isEnterprise;
     this.nonce = nonce;
     this.v3SiteKey = v3SiteKey;
     this.init();
@@ -63,6 +68,7 @@ export class RecaptchaLoaderService {
         (grecaptcha) => subject.next(grecaptcha),
         langParam,
         this.baseUrl,
+        this.isEnterprise,
         this.nonce
       );
     }

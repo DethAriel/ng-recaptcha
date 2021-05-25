@@ -5,6 +5,9 @@ import { RecaptchaSettings } from "./recaptcha-settings";
 export const RECAPTCHA_LANGUAGE = new InjectionToken<string>(
   "recaptcha-language"
 );
+export const RECAPTCHA_ENTERPRISE = new InjectionToken<boolean>(
+  "recaptcha-enterprise"
+);
 export const RECAPTCHA_BASE_URL = new InjectionToken<string>(
   "recaptcha-base-url"
 );
