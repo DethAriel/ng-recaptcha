@@ -14,6 +14,14 @@
 
 - **package:** add Angular 12 support ([a212a21](https://github.com/DethAriel/ng-recaptcha/commit/a212a21))
 
+<a name="7.0.2"></a>
+
+## [7.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.1...v7.0.2) (2021-07-22)
+
+### Bug Fixes
+
+- **component:** reset form-bound captcha value after component destruction ([9e5c5e7](https://github.com/DethAriel/ng-recaptcha/commit/9e5c5e7)), closes [#201](https://github.com/DethAriel/ng-recaptcha/issues/201)
+
 <a name="7.0.1"></a>
 
 ## [7.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.0...v7.0.1) (2021-01-07)
