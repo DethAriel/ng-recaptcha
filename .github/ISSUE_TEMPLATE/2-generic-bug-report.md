@@ -1,5 +1,5 @@
 ---
-name: Generic reCAPTCHA issue
+name: Google reCAPTCHA issue
 about: Report an issue with the reCAPTCHA
 ---
 

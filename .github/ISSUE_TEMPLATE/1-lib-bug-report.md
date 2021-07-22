@@ -9,7 +9,7 @@ I'm submitting a: <!-- replace '[ ]' with '[x]' where appropriate -->
 
 - [ ] bug report
 - [ ] feature request
-- [ ] question / support request <!-- Are you sure `ng-recaptcha` isthe right place for your request? Consider submitting an issue to this project instead: https://github.com/google/recaptcha -->
+- [ ] question / support request <!-- Are you sure `ng-recaptcha` is the right place for your request? Consider submitting an issue to this project instead: https://github.com/google/recaptcha -->
 - [ ] other
 
 ### Description
