@@ -1,3 +1,11 @@
+<a name="8.0.1"></a>
+
+## [8.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v8.0.0...v8.0.1) (2021-07-22)
+
+### Bug Fixes
+
+- **component:** reset form-bound captcha value after component destruction ([0e550c4](https://github.com/DethAriel/ng-recaptcha/commit/0e550c4)), closes [#201](https://github.com/DethAriel/ng-recaptcha/issues/201)
+
 <a name="8.0.0"></a>
 
 # [8.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.1...v8.0.0) (2021-05-14)
