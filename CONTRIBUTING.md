@@ -37,10 +37,25 @@ After you did that, follow the below process:
     - Possible forms of `<VERSION>`: `<MAJOR>.<MINOR>.<PATCH>`, `<MAJOR>.<MINOR>.<PATCH>-beta.<BETA_VERSION>`
   - Run `npm version $NGR_VERSION`. Use `npm`, not `yarn`!
 
-- Verify the latest commit, and run `git push && git push --tag` to push the changes to the origin
-- Wait for the build to succeed
+- Verify the latest commit, and run `git push` to push the changes to the origin
+- Wait for the build to succeed. If the build is green, you're ready to publish.
+- First, push the git tag to the origin with `git push --tags`
 - Publish the package to npm _from the "/dist/ng-recaptcha" directory_: `cd dist/ng-recaptcha && npm publish` (or `cd dist/ng-recaptcha && npm publish --tag beta`)
 - Create a GitHub release by running `yarn github-release`
+
+### Back-porting fixes to older versions
+
+- First, fix the issue in `master` for the current version.
+- Check out the `vN.x.x` branch, and cherry-pick the fix to the desired past versions, starting with the oldest one.
+- For each of these, ensure that builds pass before starting to release
+- Starting with the oldest version, push the tags and then publish the packages to npm
+- Checkout `master`, and merge in the CHANGELOG changes from these back-ported releases. It would go something like this:
+
+  - `git merge vN.M.K`
+  - Conflicts will appear; you only need to put the `N.M.K` change log in the right place, discard the rest
+  - `git add CHANGELOG.md`
+  - Use a sensible merge message, like, `chore(docs): update CHANGELOG to account for vN.M.K release`
+  - `git push`
 
 ### Updating Travis CI secrets
 
