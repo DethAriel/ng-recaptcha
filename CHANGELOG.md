@@ -4,7 +4,7 @@
 
 ### Features
 
-- **package:** add Angular 12 support ([590114f](https://github.com/DethAriel/ng-recaptcha/commit/590114f))
+- **package:** add Angular 12 support ([a212a21](https://github.com/DethAriel/ng-recaptcha/commit/a212a21))
 
 <a name="7.0.1"></a>
 
