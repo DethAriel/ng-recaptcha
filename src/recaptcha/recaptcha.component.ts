@@ -122,6 +122,20 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  /**
+   * ⚠️ Warning! Use this property at your own risk!
+   *
+   * While this member is `public`, it is not a part of the component's public API.
+   * The semantic versioning guarantees _will not be honored_! Thus, you might find that this property behavior changes in incompatible ways in minor or even patch releases.
+   * You are **strongly advised** against using this property.
+   * Instead, use more idiomatic ways to get reCAPTCHA value, such as `resolved` EventEmitter, or form-bound methods (ngModel, formControl, and the likes).å
+   */
+  public get __unsafe_widgetValue(): string | null {
+    return this.widget != null
+      ? this.grecaptcha.getResponse(this.widget)
+      : null;
+  }
+
   /** @internal */
   private expired() {
     this.resolved.emit(null);
