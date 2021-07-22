@@ -32,6 +32,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3
    - [Loading from a different location](#example-different-url)
    - [Specifying nonce for Content-Security-Policy](#example-csp-nonce)
    - [Listening for all actions with reCAPTCHA v3](#example-v3-all-actions)
+   - [Hiding reCAPTCHA badge](#hide-recaptcha-badge)
 
 ## <a name="installation"></a>Installation
 
@@ -547,3 +548,9 @@ There are a couple things to keep in mind:
 - `onExecute` will trigger for **all** actions. If you only need to bulk-process some actions, and not others - you will have to apply filtering yourself.
 - `onExecute` observable will provide you with all the events emitted **after** you have subscribed to it - it doesn't keep references to the previously emitted actions. So make sure you add such a subscription as early in your code as you feel is necessary.
 - `onExecute` does not emit anything for when a `grecaptcha` error occurs. Use `onExecuteError` Observable for that.
+
+### <a name="hide-recaptcha-badge"></a>Hiding reCAPTCHA badge
+
+To start with, this is not strictly under `ng-recaptcha` library control.
+However, there is a way of doing so (albeit subject to certain conditions).
+Please refer to the [FAQ section of reCAPTCHA documentation](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed) to get an idea of what you're required to do.
