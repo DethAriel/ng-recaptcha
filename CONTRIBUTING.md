@@ -40,4 +40,8 @@ After you did that, follow the below process:
 - Verify the latest commit, and run `git push && git push --tag` to push the changes to the origin
 - Wait for the build to succeed
 - Publish the package to npm _from the "/dist/ng-recaptcha" directory_: `cd dist/ng-recaptcha && npm publish` (or `cd dist/ng-recaptcha && npm publish --tag beta`)
-- Create a GitHub release and update the demo site by running `yarn github-release && yarn demo:build && yarn demo:publish`
+- Create a GitHub release by running `yarn github-release`
+
+### Updating Travis CI secrets
+
+Some variables in the `.travis.yml` file are secrets 🤫 (like deployment token for `provider: pages:git`). To manipulate those, head on to [Travis CI](https://docs.travis-ci.com/user/encryption-keys/) docs.

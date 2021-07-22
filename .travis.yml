@@ -21,6 +21,15 @@ jobs:
     - name: "Build demo site"
       script:
         - yarn demo:build
+      deploy:
+        - provider: pages:git
+          token:
+            secure: "t2FzZ2mrON6ZrSy4ZguhRy8JkMq5GGIY8wx8ozD9CpthdJ0zWGktHvBi3g/a7Oh60TT16Bwu4q7yFH1nf3yyeIjxzodjJINDMRz/23MO215TkMufeyEV3tcvTWoq4SsbXneQBsjPNhM/z874jmVkjn5Ea0iiMR6wAPFNCFZxzhF/wbv/yBICc6Jt51zWzu0mth859HeYdk2VVf/qBXo//9Y4EGNuen1f2DI6lnsp/FDm7RX+pBoc1zFc9Tmk/RIISdlklKvE4QeGBqn17iOMfIQqY5RPlYHTFzrE8Cc5lkyOObio7rhNOfxrGKl5zNnscvjWpEsYAcVpEeSrT6uTI1VY2naPJnzGmCbBTkzrO7pNLTCmBe6iYV8X/UiknaVZldwrQIyj2IA4vb3dStu2NkF/aOD5/X56l3boVAShHgMVo2eh03JXH2hY6NPNXi7vr4ewP8RVH5PHjUStwo+KLOIlR8tcR9XJ2XCMXTlsQN1qgdc4h0giYLyILMcAh9AM5+ydsEx6KgyxFUV/m4uFKNkEMo0ktgOHqcjiCQtNJV9zpHglka+T4s+dqJ7hFSOOM1jy9XSLd1ANmjNkwDPUpjdsPvQj5qz9tV0tkm6XjFgHbQqGfHuVbNS72YjR9EWuya73DzBKvwXdxNNO8k4GQ2LtB38YxlBHMKWRyJOVV44="
+          edge: true # opt in to dpl v2
+          keep_history: false # since we'll be re-deploying with every commit to master, it makes sense to overwrite history
+          local_dir: dist/demo/ng-recaptcha
+          on:
+            branch: master
     - name: "Run unit tests"
       script:
         - yarn ng test ng-recaptcha --code-coverage
