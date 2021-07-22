@@ -1,5 +1,12 @@
-export class MockGrecaptcha
-  implements Record<keyof ReCaptchaV2.ReCaptcha, jasmine.Spy> {
+export type GrecaptchaMockedMethods = Record<
+  keyof ReCaptchaV2.ReCaptcha,
+  jasmine.Spy
+>;
+export type MockGrecaptchaType = GrecaptchaMockedMethods & {
+  enterprise: GrecaptchaMockedMethods;
+};
+
+export class MockGrecaptcha implements MockGrecaptchaType {
   private mockWidgetId = 0;
   private latestResponse: string | null = null;
   private executionMap = new Map<
@@ -26,6 +33,10 @@ export class MockGrecaptcha
   public reset = jasmine
     .createSpy("grecaptcha.reset")
     .and.callFake(() => (this.latestResponse = null));
+
+  public get enterprise(): GrecaptchaMockedMethods {
+    return this;
+  }
 
   public emitGrecaptchaResponse(response: string): void {
     this.latestResponse = response;

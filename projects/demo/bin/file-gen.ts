@@ -1,11 +1,10 @@
 import * as fs from "fs";
 import * as path from "path";
-import { highlightAuto, highlight } from "highlight.js";
+import highlightJs from "highlight.js";
 
 import { examples, Example } from "./examples";
 
 const sourceDir = path.join(process.cwd(), "projects/demo/src");
-
 generateFiles();
 
 function writeExampleFile(
@@ -31,10 +30,10 @@ function highlightRequire(file: string, lang: string) {
 
   function highlightCode(code: string, lang: string | undefined) {
     if (lang) {
-      return highlight(lang, code).value;
+      return highlightJs.highlight(code, { language: lang }).value;
     }
 
-    return highlightAuto(code).value;
+    return highlightJs.highlightAuto(code).value;
   }
 }
 

@@ -21,13 +21,14 @@ module.exports = {
         // This is required if you use inline templates in Components
         "plugin:@angular-eslint/template/process-inline-templates",
         "prettier",
-        "prettier/@typescript-eslint",
       ],
       rules: {
-        "@angular-eslint/directive-selector": [
-          "error",
-          { type: "attribute", prefix: "re", style: "camelCase" },
-        ],
+        // this produces false-positives on `RecaptchaValueAccessorDirective.selector` (complains about absence of prefix in re-captcha[**formControlName])
+        // "@angular-eslint/directive-selector": [
+        //   "error",
+        //   { type: "attribute", prefix: "re", style: "camelCase" },
+        // ],
+        "@angular-eslint/directive-selector": 0,
         "@angular-eslint/component-selector": [
           "error",
           { type: "element", prefix: "re", style: "kebab-case" },
