@@ -225,8 +225,27 @@ Global properties can be overridden on a case-by-case basis - the values on the 
 `<re-captcha>` supports various languages. By default recaptcha will guess the user's language itself
 (which is beyond the scope of this lib).
 But you can override this behavior and provide a specific language to use.
-The language setting is global, though, and cannot be set on a per-captcha basis.
-It can be provided like this:
+Note, that the language setting is **global**, and cannot be set on a per-captcha basis.
+
+A good way to synchronize reCAPTCHA language with the rest of your application is relying on `LOCALE_ID` value like so:
+
+```typescript
+import { LOCALE_ID } from "@angular/core";
+import { RECAPTCHA_LANGUAGE } from "ng-recaptcha";
+
+@NgModule({
+  providers: [
+    {
+      provide: RECAPTCHA_LANGUAGE,
+      useFactory: (locale: string) => locale,
+      deps: [LOCALE_ID],
+    },
+  ],
+})
+export class MyModule {}
+```
+
+Alternatively, a specific language can be provided like so:
 
 ```typescript
 import { RECAPTCHA_LANGUAGE } from "ng-recaptcha";
