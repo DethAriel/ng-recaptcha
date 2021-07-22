@@ -21,16 +21,34 @@ export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
   private onTouched: () => void;
 
+  private requiresControllerReset = false;
+
   constructor(private host: RecaptchaComponent) {}
 
   public writeValue(value: string): void {
     if (!value) {
       this.host.reset();
+    } else {
+      // In this case, it is most likely that a form controller has requested to write a specific value into the component.
+      // This isn't really a supported case - reCAPTCHA values are single-use, and, in a sense, readonly.
+      // What this means is that the form controller has recaptcha control state of X, while reCAPTCHA itself can't "restore"
+      // to that state. In order to make form controller aware of this discrepancy, and to fix the said misalignment,
+      // we'll be telling the controller to "reset" the value back to null.
+      if (
+        this.host.__unsafe_widgetValue !== value &&
+        Boolean(this.host.__unsafe_widgetValue) === false
+      ) {
+        this.requiresControllerReset = true;
+      }
     }
   }
 
   public registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
+    if (this.requiresControllerReset) {
+      this.requiresControllerReset = false;
+      this.onChange(null);
+    }
   }
   public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
