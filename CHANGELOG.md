@@ -6,14 +6,6 @@
 
 - **package:** add Angular 12 support ([590114f](https://github.com/DethAriel/ng-recaptcha/commit/590114f))
 
-<a name="8.0.0"></a>
-
-# [8.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.1...v8.0.0) (2021-05-14)
-
-### Features
-
-- **package:** add Angular 12 support ([590114f](https://github.com/DethAriel/ng-recaptcha/commit/590114f))
-
 <a name="7.0.1"></a>
 
 ## [7.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.0...v7.0.1) (2021-01-07)
