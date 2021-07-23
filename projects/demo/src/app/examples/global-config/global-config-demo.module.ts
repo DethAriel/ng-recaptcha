@@ -11,12 +11,9 @@ import {
 } from "ng-recaptcha";
 
 import { parseLangFromHref } from "../../parse-lang-from-href";
+import { VAL_RECAPTCHA_SITE_KEY_V3, VAL_RECAPTCHA_SITE_KEY_V2 } from "../site-key";
 import { GlobalConfigDemoComponent } from "./global-config-demo.component";
 import { settings } from "./global-config-demo.data";
-
-const globalSettings: RecaptchaSettings = {
-  siteKey: "6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU",
-};
 
 const routes: Routes = [
   {
@@ -31,14 +28,14 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes), RecaptchaModule, CommonModule],
   providers: [
     {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: VAL_RECAPTCHA_SITE_KEY_V3,
+    },
+    {
       provide: RECAPTCHA_SETTINGS,
-      useValue: globalSettings,
+      useValue: { siteKey: VAL_RECAPTCHA_SITE_KEY_V2 } as RecaptchaSettings,
     },
     { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
-    {
-      provide: RECAPTCHA_V3_SITE_KEY,
-      useValue: "6LeGCZAUAAAAADuhzcuvSB-lYDsxJBl9HUWtZkUM",
-    },
   ],
 })
 export class DemoModule {}

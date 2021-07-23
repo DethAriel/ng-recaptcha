@@ -5,10 +5,13 @@ import { Routes, RouterModule } from "@angular/router";
 import {
   RecaptchaModule,
   RECAPTCHA_LANGUAGE,
+  RECAPTCHA_SETTINGS,
+  RecaptchaSettings,
   RECAPTCHA_V3_SITE_KEY,
 } from "ng-recaptcha";
 
 import { parseLangFromHref } from "../../parse-lang-from-href";
+import { VAL_RECAPTCHA_SITE_KEY_V2, VAL_RECAPTCHA_SITE_KEY_V3 } from "../site-key";
 import { BasicDemoComponent } from "./basic-demo.component";
 import { settings } from "./basic-demo.data";
 
@@ -26,7 +29,11 @@ const routes: Routes = [
   providers: [
     {
       provide: RECAPTCHA_V3_SITE_KEY,
-      useValue: "6LeGCZAUAAAAADuhzcuvSB-lYDsxJBl9HUWtZkUM",
+      useValue: VAL_RECAPTCHA_SITE_KEY_V3,
+    },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: { siteKey: VAL_RECAPTCHA_SITE_KEY_V2 } as RecaptchaSettings,
     },
     { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
   ],

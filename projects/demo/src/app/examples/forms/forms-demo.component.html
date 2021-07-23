@@ -1,20 +1,8 @@
 <form #captchaProtectedForm="ngForm">
-  <re-captcha
-    [(ngModel)]="formModel.captcha"
-    name="captcha"
-    required
-    siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU"
-    #captchaControl="ngModel"
-  ></re-captcha>
-  <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error">
-    Captcha must be solved
-  </div>
+  <re-captcha [(ngModel)]="formModel.captcha" name="captcha" required #captchaControl="ngModel"></re-captcha>
+  <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error">Captcha must be solved</div>
   <div [hidden]="!captchaControl.valid" class="success">Captcha is valid</div>
-  <div [hidden]="captchaProtectedForm.form.valid" class="error">
-    The form must be filled out
-  </div>
-  <div [hidden]="!captchaProtectedForm.form.valid" class="success">
-    The form is valid
-  </div>
+  <div [hidden]="captchaProtectedForm.form.valid" class="error">The form must be filled out</div>
+  <div [hidden]="!captchaProtectedForm.form.valid" class="success">The form is valid</div>
   <button (click)="formModel.captcha = ''">Reset Captcha</button>
 </form>
