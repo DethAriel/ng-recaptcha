@@ -13,9 +13,9 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2017",
     "module": "es2020",
-    "lib": ["es2018", "dom"],
+    "lib": ["es2020", "dom"],
     "paths": {
       "ng-recaptcha": ["dist/ng-recaptcha/ng-recaptcha", "dist/ng-recaptcha"]
     }
