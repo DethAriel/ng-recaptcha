@@ -5,14 +5,9 @@ import { examples } from "./examples";
 
 copyEntryPoints();
 
-function assertHasProp<T extends string>(
-  value: unknown,
-  prop: T
-): asserts value is Record<T, unknown> {
+function assertHasProp<T extends string>(value: unknown, prop: T): asserts value is Record<T, unknown> {
   if (!value || typeof value !== "object" || !(prop in value)) {
-    throw new Error(
-      `Expected value to be an object containing property "${prop}", but it did not.`
-    );
+    throw new Error(`Expected value to be an object containing property "${prop}", but it did not.`);
   }
 }
 
@@ -27,20 +22,10 @@ function getProp<T extends string[]>(value: unknown, ...propPath: T): unknown {
 }
 
 function readOutputPath(angularConfiguration: unknown): string {
-  const outputPath = getProp(
-    angularConfiguration,
-    "projects",
-    "demo",
-    "architect",
-    "build",
-    "options",
-    "outputPath"
-  );
+  const outputPath = getProp(angularConfiguration, "projects", "demo", "architect", "build", "options", "outputPath");
 
   if (typeof outputPath !== "string") {
-    throw new Error(
-      `Expected outputPath to be of type string but got this type instead: ${typeof outputPath}`
-    );
+    throw new Error(`Expected outputPath to be of type string but got this type instead: ${typeof outputPath}`);
   }
 
   return outputPath;
@@ -53,11 +38,7 @@ function copyEntryPoints() {
     })
   );
   const angularDistDirSetting = readOutputPath(angularOptions);
-  const angularDistDir = path.join(
-    __dirname,
-    "../../..",
-    angularDistDirSetting
-  );
+  const angularDistDir = path.join(__dirname, "../../..", angularDistDirSetting);
 
   const indexHtmlFile = path.join(angularDistDir, "index.html");
 

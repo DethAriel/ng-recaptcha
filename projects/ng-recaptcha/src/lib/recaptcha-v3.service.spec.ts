@@ -29,9 +29,7 @@ describe("ReCaptchaV3Service", () => {
 
   function onGrecaptchaLoad(grecaptcha: MockGrecaptcha) {
     expect(loadScriptStub).toHaveBeenCalled();
-    const loadArgs = loadScriptStub.calls.mostRecent().args as Parameters<
-      typeof loader["loadScript"]
-    >;
+    const loadArgs = loadScriptStub.calls.mostRecent().args as Parameters<typeof loader["loadScript"]>;
     loadArgs[1](grecaptcha);
   }
 
@@ -152,9 +150,7 @@ describe("ReCaptchaV3Service", () => {
 
     // Act
     let executionResult: string;
-    service
-      .execute("test action")
-      .subscribe((value) => (executionResult = value));
+    service.execute("test action").subscribe((value) => (executionResult = value));
     mockGrecaptcha.executionFulfil("test action", "test value");
     await nextTick();
 
@@ -290,13 +286,9 @@ describe("ReCaptchaV3Service", () => {
     const service = initService();
     const mockGrecaptcha = new MockGrecaptcha();
     let executionResult1: string;
-    service
-      .execute("test action 1")
-      .subscribe((value) => (executionResult1 = value));
+    service.execute("test action 1").subscribe((value) => (executionResult1 = value));
     let executionResult2: string;
-    service
-      .execute("test action 2")
-      .subscribe((value) => (executionResult2 = value));
+    service.execute("test action 2").subscribe((value) => (executionResult2 = value));
 
     // Act
     onGrecaptchaLoad(mockGrecaptcha);

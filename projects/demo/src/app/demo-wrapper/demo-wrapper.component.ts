@@ -1,19 +1,7 @@
 import { MediaMatcher } from "@angular/cdk/layout";
-import {
-  ChangeDetectorRef,
-  Component,
-  Inject,
-  InjectionToken,
-  OnDestroy,
-  OnInit,
-} from "@angular/core";
+import { ChangeDetectorRef, Component, Inject, InjectionToken, OnDestroy, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import {
-  Router,
-  ResolveEnd,
-  ActivatedRouteSnapshot,
-  Data,
-} from "@angular/router";
+import { Router, ResolveEnd, ActivatedRouteSnapshot, Data } from "@angular/router";
 import { parse, stringify } from "query-string";
 
 import { parseLangFromHref } from "../parse-lang-from-href";
@@ -125,8 +113,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     }
 
     const newSearch = stringify(currentSearch);
-    const newLocation =
-      pathname + (newSearch.length === 0 ? "" : `?${newSearch}`);
+    const newLocation = pathname + (newSearch.length === 0 ? "" : `?${newSearch}`);
 
     window.location.assign(newLocation);
   }

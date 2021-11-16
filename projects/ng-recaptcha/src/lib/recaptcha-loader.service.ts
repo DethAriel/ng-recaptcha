@@ -3,12 +3,7 @@ import { Inject, Injectable, Optional, PLATFORM_ID } from "@angular/core";
 import { BehaviorSubject, Observable, of } from "rxjs";
 
 import { loader } from "./load-script";
-import {
-  RECAPTCHA_BASE_URL,
-  RECAPTCHA_LANGUAGE,
-  RECAPTCHA_NONCE,
-  RECAPTCHA_V3_SITE_KEY,
-} from "./tokens";
+import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from "./tokens";
 
 @Injectable()
 export class RecaptchaLoaderService {
@@ -42,9 +37,7 @@ export class RecaptchaLoaderService {
     this.nonce = nonce;
     this.v3SiteKey = v3SiteKey;
     this.init();
-    this.ready = isPlatformBrowser(this.platformId)
-      ? RecaptchaLoaderService.ready.asObservable()
-      : of();
+    this.ready = isPlatformBrowser(this.platformId) ? RecaptchaLoaderService.ready.asObservable() : of();
   }
 
   /** @internal */
@@ -58,13 +51,7 @@ export class RecaptchaLoaderService {
       const langParam = this.language ? "&hl=" + this.language : "";
 
       const renderMode = this.v3SiteKey || "explicit";
-      loader.loadScript(
-        renderMode,
-        (grecaptcha) => subject.next(grecaptcha),
-        langParam,
-        this.baseUrl,
-        this.nonce
-      );
+      loader.loadScript(renderMode, (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
     }
   }
 }

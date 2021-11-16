@@ -5,11 +5,7 @@
       <span>{{ site.title }}</span>
       <span class="filler"></span>
 
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="langMenu"
-        aria-label="Language settings"
-      >
+      <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Language settings">
         <mat-icon>language</mat-icon>
       </button>
       <mat-menu #langMenu="matMenu">
@@ -31,11 +27,7 @@
           </mat-list>
         </mat-radio-group>
       </mat-menu>
-      <a
-        *ngIf="!mobileQuery.matches"
-        mat-button
-        href="https://github.com/DethAriel/ng2-recaptcha"
-      >
+      <a *ngIf="!mobileQuery.matches" mat-button href="https://github.com/DethAriel/ng2-recaptcha">
         <img src="images/octocat.svg" height="26px" style="margin-right: 8px" />
         <span>GitHub</span>
       </a>
@@ -75,11 +67,7 @@
     <mat-sidenav-content>
       <div class="layout">
         <mat-toolbar color="primary">
-          <button
-            mat-icon-button
-            *ngIf="mobileQuery.matches"
-            (click)="sidebarOpened = true"
-          >
+          <button mat-icon-button *ngIf="mobileQuery.matches" (click)="sidebarOpened = true">
             <mat-icon aria-hidden="true">menu</mat-icon>
           </button>
           <span data-testid="page-title" *ngIf="page">{{ page.title }}</span>

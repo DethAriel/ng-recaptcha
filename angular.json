@@ -47,10 +47,7 @@
             "polyfills": "projects/demo/src/polyfills.ts",
             "tsConfig": "projects/demo/tsconfig.app.json",
             "baseHref": "/ng-recaptcha/",
-            "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/images"
-            ],
+            "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/images"],
             "styles": ["projects/demo/src/styles.css"],
             "scripts": [],
             "vendorChunk": true,

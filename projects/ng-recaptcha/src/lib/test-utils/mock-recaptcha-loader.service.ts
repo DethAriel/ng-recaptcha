@@ -5,9 +5,7 @@ import { MockGrecaptcha } from "./mock-grecaptcha";
 
 @Injectable()
 export class MockRecaptchaLoaderService {
-  private readySubject: BehaviorSubject<ReCaptchaV2.ReCaptcha> = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(
-    null
-  );
+  private readySubject: BehaviorSubject<ReCaptchaV2.ReCaptcha> = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
 
   private mockGrecaptcha = new MockGrecaptcha();
 

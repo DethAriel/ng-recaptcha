@@ -1,10 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 
-import {
-  OnExecuteData,
-  OnExecuteErrorData,
-  ReCaptchaV3Service,
-} from "ng-recaptcha";
+import { OnExecuteData, OnExecuteErrorData, ReCaptchaV3Service } from "ng-recaptcha";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -34,27 +30,25 @@ export class RecaptchaV3DemoComponent implements OnInit, OnDestroy {
     if (this.singleExecutionSubscription) {
       this.singleExecutionSubscription.unsubscribe();
     }
-    this.singleExecutionSubscription = this.recaptchaV3Service
-      .execute(action)
-      .subscribe(
-        (token) => {
-          this.recentToken = token;
-          this.recentError = undefined;
-        },
-        (error) => {
-          this.recentToken = "";
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          this.recentError = { error };
-        }
-      );
+    this.singleExecutionSubscription = this.recaptchaV3Service.execute(action).subscribe(
+      (token) => {
+        this.recentToken = token;
+        this.recentError = undefined;
+      },
+      (error) => {
+        this.recentToken = "";
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        this.recentError = { error };
+      }
+    );
   }
 
   public ngOnInit(): void {
-    this.allExecutionsSubscription = this.recaptchaV3Service.onExecute.subscribe(
-      (data) => this.executionLog.push(data)
+    this.allExecutionsSubscription = this.recaptchaV3Service.onExecute.subscribe((data) =>
+      this.executionLog.push(data)
     );
-    this.allExecutionErrorsSubscription = this.recaptchaV3Service.onExecuteError.subscribe(
-      (data) => this.executionLog.push(data)
+    this.allExecutionErrorsSubscription = this.recaptchaV3Service.onExecuteError.subscribe((data) =>
+      this.executionLog.push(data)
     );
   }
 

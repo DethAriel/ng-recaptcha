@@ -11,8 +11,7 @@ import { RecaptchaComponent } from "./recaptcha.component";
       useExisting: forwardRef(() => RecaptchaValueAccessorDirective),
     },
   ],
-  selector:
-    "re-captcha[formControlName],re-captcha[formControl],re-captcha[ngModel]",
+  selector: "re-captcha[formControlName],re-captcha[formControl],re-captcha[ngModel]",
 })
 export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
@@ -34,10 +33,7 @@ export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
       // What this means is that the form controller has recaptcha control state of X, while reCAPTCHA itself can't "restore"
       // to that state. In order to make form controller aware of this discrepancy, and to fix the said misalignment,
       // we'll be telling the controller to "reset" the value back to null.
-      if (
-        this.host.__unsafe_widgetValue !== value &&
-        Boolean(this.host.__unsafe_widgetValue) === false
-      ) {
+      if (this.host.__unsafe_widgetValue !== value && Boolean(this.host.__unsafe_widgetValue) === false) {
         this.requiresControllerReset = true;
       }
     }

@@ -7,26 +7,14 @@ import { examples, Example } from "./examples";
 const sourceDir = path.join(process.cwd(), "projects/demo/src");
 generateFiles();
 
-function writeExampleFile(
-  featureName: string,
-  fileName: string,
-  contents: string
-) {
-  const location = path.join(
-    sourceDir,
-    "app",
-    "examples",
-    featureName,
-    fileName
-  );
+function writeExampleFile(featureName: string, fileName: string, contents: string) {
+  const location = path.join(sourceDir, "app", "examples", featureName, fileName);
 
   fs.writeFileSync(location, contents, { encoding: "utf-8" });
 }
 
 function highlightRequire(file: string, lang: string) {
-  return JSON.stringify(
-    highlightCode(fs.readFileSync(file, { encoding: "utf-8" }), lang)
-  );
+  return JSON.stringify(highlightCode(fs.readFileSync(file, { encoding: "utf-8" }), lang));
 
   function highlightCode(code: string, lang: string | undefined) {
     if (lang) {
@@ -45,27 +33,12 @@ export const settings: PageSettings = {
   feature: '${featureName}',
   title: '${example.title}',
   content: {
-    component: ${highlightRequire(
-      `${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.ts`,
-      "ts"
-    )},
-    html: ${highlightRequire(
-      `${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.html`,
-      "html"
-    )},
+    component: ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.ts`, "ts")},
+    html: ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.html`, "html")},
     module: {
-      '': ${highlightRequire(
-        `${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-default`,
-        "ts"
-      )},
-      'fr': ${highlightRequire(
-        `${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-fr`,
-        "ts"
-      )},
-      'de': ${highlightRequire(
-        `${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-de`,
-        "ts"
-      )},
+      '': ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-default`, "ts")},
+      'fr': ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-fr`, "ts")},
+      'de': ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-de`, "ts")},
     },
   },
 };
@@ -75,12 +48,7 @@ export const settings: PageSettings = {
 }
 
 function generateLinks() {
-  const location = path.join(
-    sourceDir,
-    "app",
-    "demo-wrapper",
-    "demo-wrapper.data.auto-gen.ts"
-  );
+  const location = path.join(sourceDir, "app", "demo-wrapper", "demo-wrapper.data.auto-gen.ts");
   const contents = `export const navLinks = [
   ${examples
     .map(

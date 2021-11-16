@@ -94,13 +94,7 @@ describe("RecaptchaLoaderService", () => {
     // Act
 
     // Assert
-    expect(loader.loadScript).toHaveBeenCalledWith(
-      "testSiteKeyV3",
-      jasmine.any(Function),
-      "",
-      null,
-      null
-    );
+    expect(loader.loadScript).toHaveBeenCalledWith("testSiteKeyV3", jasmine.any(Function), "", null, null);
   });
 
   it("should not invoke script loader if platform is not browser", () => {
@@ -126,9 +120,7 @@ describe("RecaptchaLoaderService", () => {
     const mockGrecaptchaValue = new MockGrecaptcha();
 
     // Act
-    const callArgs = loadScriptStub.calls.mostRecent().args as Parameters<
-      typeof loader["loadScript"]
-    >;
+    const callArgs = loadScriptStub.calls.mostRecent().args as Parameters<typeof loader["loadScript"]>;
     callArgs[1](mockGrecaptchaValue);
 
     // Assert

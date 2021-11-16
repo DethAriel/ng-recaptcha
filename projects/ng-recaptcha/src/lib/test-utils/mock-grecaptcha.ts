@@ -1,7 +1,4 @@
-export type GrecaptchaMockedMethods = Record<
-  keyof ReCaptchaV2.ReCaptcha,
-  jasmine.Spy
->;
+export type GrecaptchaMockedMethods = Record<keyof ReCaptchaV2.ReCaptcha, jasmine.Spy>;
 export type MockGrecaptchaType = GrecaptchaMockedMethods & {
   enterprise: GrecaptchaMockedMethods;
 };
@@ -9,10 +6,7 @@ export type MockGrecaptchaType = GrecaptchaMockedMethods & {
 export class MockGrecaptcha implements MockGrecaptchaType {
   private mockWidgetId = 0;
   private latestResponse: string | null = null;
-  private executionMap = new Map<
-    string,
-    { resolve(value: string): void; reject(reason: unknown): void }
-  >();
+  private executionMap = new Map<string, { resolve(value: string): void; reject(reason: unknown): void }>();
 
   public execute = jasmine
     .createSpy("grecaptcha.execute")
@@ -23,16 +17,10 @@ export class MockGrecaptcha implements MockGrecaptchaType {
 
       return undefined;
     });
-  public getResponse = jasmine
-    .createSpy("grecaptcha.getResponse")
-    .and.callFake(() => this.latestResponse);
+  public getResponse = jasmine.createSpy("grecaptcha.getResponse").and.callFake(() => this.latestResponse);
   public ready = jasmine.createSpy("grecaptcha.ready");
-  public render = jasmine
-    .createSpy("grecaptcha.render")
-    .and.callFake(() => ++this.mockWidgetId);
-  public reset = jasmine
-    .createSpy("grecaptcha.reset")
-    .and.callFake(() => (this.latestResponse = null));
+  public render = jasmine.createSpy("grecaptcha.render").and.callFake(() => ++this.mockWidgetId);
+  public reset = jasmine.createSpy("grecaptcha.reset").and.callFake(() => (this.latestResponse = null));
 
   public get enterprise(): GrecaptchaMockedMethods {
     return this;
@@ -66,10 +54,7 @@ export class MockGrecaptcha implements MockGrecaptchaType {
     this.executionMap.delete(action);
   }
 
-  private grecaptchaExecute(
-    _siteKey: string,
-    { action }: ReCaptchaV2.Action
-  ): PromiseLike<string> {
+  private grecaptchaExecute(_siteKey: string, { action }: ReCaptchaV2.Action): PromiseLike<string> {
     let resolve: (value: string) => void;
     let reject: () => void;
     const promise = new Promise<string>((res, rej) => {
@@ -82,13 +67,9 @@ export class MockGrecaptcha implements MockGrecaptchaType {
     return promise;
   }
 
-  private get mostRecentRenderParams(): Parameters<
-    ReCaptchaV2.ReCaptcha["render"]
-  > {
+  private get mostRecentRenderParams(): Parameters<ReCaptchaV2.ReCaptcha["render"]> {
     expect(this.render).toHaveBeenCalledTimes(1);
-    const callArgs = this.render.calls.mostRecent().args as Parameters<
-      ReCaptchaV2.ReCaptcha["render"]
-    >;
+    const callArgs = this.render.calls.mostRecent().args as Parameters<ReCaptchaV2.ReCaptcha["render"]>;
     expect(callArgs.length).toEqual(2);
 
     return callArgs;

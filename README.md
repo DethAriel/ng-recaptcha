@@ -77,10 +77,7 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "my-app",
-  template: `<re-captcha
-    (resolved)="resolved($event)"
-    siteKey="YOUR_SITE_KEY"
-  ></re-captcha>`,
+  template: `<re-captcha (resolved)="resolved($event)" siteKey="YOUR_SITE_KEY"></re-captcha>`,
 })
 export class MyApp {
   resolved(captchaResponse: string) {
@@ -273,11 +270,7 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "my-app",
-  template: `<re-captcha
-    (resolved)="resolved($event)"
-    (error)="errored($event)"
-    errorMode="handled"
-  ></re-captcha>`,
+  template: `<re-captcha (resolved)="resolved($event)" (error)="errored($event)" errorMode="handled"></re-captcha>`,
 })
 export class MyApp {
   resolved(captchaResponse: string) {
@@ -353,12 +346,7 @@ add the `required` attribute to the `<re-captcha>` element. Do not forget to imp
 @Component({
   selector: "my-form",
   template: ` <form>
-    <re-captcha
-      [(ngModel)]="formModel.captcha"
-      name="captcha"
-      required
-      siteKey="YOUR_SITE_KEY"
-    ></re-captcha>
+    <re-captcha [(ngModel)]="formModel.captcha" name="captcha" required siteKey="YOUR_SITE_KEY"></re-captcha>
   </form>`,
 })
 export class MyForm {
@@ -528,11 +516,9 @@ export class MyComponent implements OnInit, OnDestroy {
   constructor(private recaptchaV3Service: ReCaptchaV3Service) {}
 
   public ngOnInit() {
-    this.subscription = this.recaptchaV3Service.onExecute.subscribe(
-      (data: OnExecuteData) => {
-        this.handleRecaptchaExecute(data.action, data.token);
-      }
-    );
+    this.subscription = this.recaptchaV3Service.onExecute.subscribe((data: OnExecuteData) => {
+      this.handleRecaptchaExecute(data.action, data.token);
+    });
   }
 
   public ngOnDestroy() {

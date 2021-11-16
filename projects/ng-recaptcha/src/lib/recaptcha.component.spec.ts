@@ -34,9 +34,7 @@ describe("RecaptchaComponent", () => {
 
   it("should render recaptcha once loader is done", () => {
     // Arrange
-    expect(
-      mockRecaptchaLoaderService.grecaptchaMock.render
-    ).not.toHaveBeenCalled();
+    expect(mockRecaptchaLoaderService.grecaptchaMock.render).not.toHaveBeenCalled();
     mockRecaptchaLoaderService.init();
 
     // Act
@@ -53,9 +51,7 @@ describe("RecaptchaComponent", () => {
     fixture.detectChanges();
 
     // Assert
-    expect(
-      mockRecaptchaLoaderService.grecaptchaMock.reset
-    ).not.toHaveBeenCalled();
+    expect(mockRecaptchaLoaderService.grecaptchaMock.reset).not.toHaveBeenCalled();
   });
 
   it("should reset grecaptcha if it has loaded", () => {
@@ -74,16 +70,12 @@ describe("RecaptchaComponent", () => {
   it("should emit null value upon grecaptcha reset if it has been resolved prior to that", () => {
     // Arrange
     const emittedResponses: Array<string | null> = [];
-    component.resolved.subscribe((response: string) =>
-      emittedResponses.push(response)
-    );
+    component.resolved.subscribe((response: string) => emittedResponses.push(response));
     mockRecaptchaLoaderService.init();
 
     // Act
     fixture.detectChanges();
-    mockRecaptchaLoaderService.grecaptchaMock.emitGrecaptchaResponse(
-      "test response"
-    );
+    mockRecaptchaLoaderService.grecaptchaMock.emitGrecaptchaResponse("test response");
     fixture.detectChanges();
     component.reset();
     fixture.detectChanges();
@@ -95,16 +87,12 @@ describe("RecaptchaComponent", () => {
   it("should emit grecaptcha value through resolved event emitter", () => {
     // Arrange
     const emittedResponses: Array<string | null> = [];
-    component.resolved.subscribe((response: string) =>
-      emittedResponses.push(response)
-    );
+    component.resolved.subscribe((response: string) => emittedResponses.push(response));
     mockRecaptchaLoaderService.init();
 
     // Act
     fixture.detectChanges();
-    mockRecaptchaLoaderService.grecaptchaMock.emitGrecaptchaResponse(
-      "test response"
-    );
+    mockRecaptchaLoaderService.grecaptchaMock.emitGrecaptchaResponse("test response");
 
     // Assert
     expect(emittedResponses).toEqual(["test response"]);
@@ -113,16 +101,12 @@ describe("RecaptchaComponent", () => {
   it("should emit null value through resolved event emitter once grecaptcha expires", () => {
     // Arrange
     const emittedResponses: Array<string | null> = [];
-    component.resolved.subscribe((response: string) =>
-      emittedResponses.push(response)
-    );
+    component.resolved.subscribe((response: string) => emittedResponses.push(response));
     mockRecaptchaLoaderService.init();
 
     // Act
     fixture.detectChanges();
-    mockRecaptchaLoaderService.grecaptchaMock.emitGrecaptchaResponse(
-      "test response"
-    );
+    mockRecaptchaLoaderService.grecaptchaMock.emitGrecaptchaResponse("test response");
     fixture.detectChanges();
     mockRecaptchaLoaderService.grecaptchaMock.expireGrecaptchaResponse();
 
@@ -133,9 +117,7 @@ describe("RecaptchaComponent", () => {
   it("should emit grecaptcha error if errorMode was set to 'handled'", () => {
     // Arrange
     const emittedErrors: Array<RecaptchaErrorParameters> = [];
-    component.error.subscribe((error: RecaptchaErrorParameters) =>
-      emittedErrors.push(error)
-    );
+    component.error.subscribe((error: RecaptchaErrorParameters) => emittedErrors.push(error));
     component.errorMode = "handled";
     mockRecaptchaLoaderService.init();
 
@@ -168,9 +150,7 @@ describe("RecaptchaComponent", () => {
     fixture.detectChanges();
 
     // Assert
-    expect(
-      mockRecaptchaLoaderService.grecaptchaMock.execute
-    ).not.toHaveBeenCalled();
+    expect(mockRecaptchaLoaderService.grecaptchaMock.execute).not.toHaveBeenCalled();
   });
 
   it("should invoke grecaptcha.execute if size was set to 'invisible'", () => {
@@ -184,9 +164,7 @@ describe("RecaptchaComponent", () => {
     fixture.detectChanges();
 
     // Assert
-    expect(
-      mockRecaptchaLoaderService.grecaptchaMock.execute
-    ).toHaveBeenCalled();
+    expect(mockRecaptchaLoaderService.grecaptchaMock.execute).toHaveBeenCalled();
   });
 
   it("should invoke grecaptcha.execute even if grecaptcha has not yet loaded at the time of invocation", () => {
@@ -201,9 +179,7 @@ describe("RecaptchaComponent", () => {
     fixture.detectChanges();
 
     // Assert
-    expect(
-      mockRecaptchaLoaderService.grecaptchaMock.execute
-    ).toHaveBeenCalled();
+    expect(mockRecaptchaLoaderService.grecaptchaMock.execute).toHaveBeenCalled();
   });
 
   it("should reset grecaptcha when the component is destroyed", () => {
