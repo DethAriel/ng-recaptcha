@@ -1,19 +1,3 @@
-<a name="8.0.1"></a>
-
-## [8.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v8.0.0...v8.0.1) (2021-07-22)
-
-### Bug Fixes
-
-- **component:** reset form-bound captcha value after component destruction ([0e550c4](https://github.com/DethAriel/ng-recaptcha/commit/0e550c4)), closes [#201](https://github.com/DethAriel/ng-recaptcha/issues/201)
-
-<a name="8.0.0"></a>
-
-# [8.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.1...v8.0.0) (2021-05-14)
-
-### Features
-
-- **package:** add Angular 12 support ([a212a21](https://github.com/DethAriel/ng-recaptcha/commit/a212a21))
-
 <a name="7.0.2"></a>
 
 ## [7.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.1...v7.0.2) (2021-07-22)
