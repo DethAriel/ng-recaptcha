@@ -3,7 +3,7 @@
 ## ng-recaptcha [![npm version](https://badge.fury.io/js/ng-recaptcha.svg)](https://www.npmjs.com/package/ng-recaptcha)
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dethariel/ng-recaptcha/master/LICENSE)
-[![Build Status](https://travis-ci.com/DethAriel/ng-recaptcha.svg?branch=master)](https://travis-ci.com/DethAriel/ng-recaptcha)
+[![Build Status](https://app.travis-ci.com/DethAriel/ng-recaptcha.svg?branch=master)](https://app.travis-ci.com/DethAriel/ng-recaptcha)
 [![Coverage Status](https://coveralls.io/repos/github/DethAriel/ng-recaptcha/badge.svg?branch=master)](https://coveralls.io/github/DethAriel/ng-recaptcha?branch=master)
 [![NPM downloads](https://img.shields.io/npm/dm/ng-recaptcha)](https://www.npmjs.com/package/ng-recaptcha)
 
