@@ -21,7 +21,9 @@ let nextId = 0;
 
 export type NeverUndefined<T> = T extends undefined ? never : T;
 
-export type RecaptchaErrorParameters = Parameters<NeverUndefined<ReCaptchaV2.Parameters["error-callback"]>>;
+export type RecaptchaErrorParameters = Parameters<
+  NeverUndefined<ReCaptchaV2.Parameters["error-callback"]>
+>;
 
 @Component({
   exportAs: "reCaptcha",
@@ -71,12 +73,14 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   public ngAfterViewInit(): void {
-    this.subscription = this.loader.ready.subscribe((grecaptcha: ReCaptchaV2.ReCaptcha) => {
-      if (grecaptcha != null && grecaptcha.render instanceof Function) {
-        this.grecaptcha = grecaptcha;
-        this.renderRecaptcha();
+    this.subscription = this.loader.ready.subscribe(
+      (grecaptcha: ReCaptchaV2.ReCaptcha) => {
+        if (grecaptcha != null && grecaptcha.render instanceof Function) {
+          this.grecaptcha = grecaptcha;
+          this.renderRecaptcha();
+        }
       }
-    });
+    );
   }
 
   public ngOnDestroy(): void {
@@ -127,7 +131,9 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
    * Instead, use more idiomatic ways to get reCAPTCHA value, such as `resolved` EventEmitter, or form-bound methods (ngModel, formControl, and the likes).å
    */
   public get __unsafe_widgetValue(): string | null {
-    return this.widget != null ? this.grecaptcha.getResponse(this.widget) : null;
+    return this.widget != null
+      ? this.grecaptcha.getResponse(this.widget)
+      : null;
   }
 
   /** @internal */
@@ -176,7 +182,10 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
       };
     }
 
-    this.widget = this.grecaptcha.render(this.elementRef.nativeElement, renderOptions);
+    this.widget = this.grecaptcha.render(
+      this.elementRef.nativeElement,
+      renderOptions
+    );
 
     if (this.executeRequested === true) {
       this.executeRequested = false;
