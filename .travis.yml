@@ -18,6 +18,7 @@ jobs:
     - name: "Static analysis"
       script:
         - yarn lint
+        - yarn prettier --check --ignore-unknown **/*
     - name: "Build demo site"
       script:
         - yarn demo:build
