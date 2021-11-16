@@ -58,7 +58,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   private executeRequested: boolean;
 
   constructor(
-    private elementRef: ElementRef,
+    private elementRef: ElementRef<HTMLElement>,
     private loader: RecaptchaLoaderService,
     private zone: NgZone,
     @Optional() @Inject(RECAPTCHA_SETTINGS) settings?: RecaptchaSettings
