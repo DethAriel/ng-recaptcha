@@ -1,0 +1,88 @@
+name: Build and test
+on: [push]
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
+jobs:
+  build-demo:
+    name: Build demo site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          name: Set up Node.js
+          # Should be in sync with .nvmrc
+          node-version: "14"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Generate source files for demo site
+        run: yarn demo:file-gen
+      - name: Build the lib # things like "lint" depend on the lib being built, so it's in the "setup" job
+        run: yarn lib:build
+      - name: Build the demo site
+        run: yarn demo:build
+  static-analysis:
+    name: Run static code analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          name: Set up Node.js
+          # Should be in sync with .nvmrc
+          node-version: "14"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Generate source files for demo site
+        run: yarn demo:file-gen
+      - name: Build the lib # things like "lint" depend on the lib being built, so it's in the "setup" job
+        run: yarn lib:build
+      - name: Run lint
+        run: yarn lint
+      - name: Check code styles
+        run: yarn prettier --check --ignore-unknown *
+  tests-unit:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          name: Set up Node.js
+          # Should be in sync with .nvmrc
+          node-version: "14"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Generate source files for demo site
+        run: yarn demo:file-gen
+      - name: Build the lib # things like "lint" depend on the lib being built, so it's in the "setup" job
+        run: yarn lib:build
+      - name: Test the lib
+        run: yarn ng test ng-recaptcha --code-coverage
+      # - name: Upload code coverage results to coveralls
+      #   run: yarn coveralls < coverage/ng-recaptcha/lcov.info
+  tests-e2e:
+    name: Run end-to-end tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          name: Set up Node.js
+          # Should be in sync with .nvmrc
+          node-version: "14"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Generate source files for demo site
+        run: yarn demo:file-gen
+      - name: Build the lib # things like "lint" depend on the lib being built, so it's in the "setup" job
+        run: yarn lib:build
+      - name: Run e2e tests for demo site
+        run: yarn ng e2e demo
