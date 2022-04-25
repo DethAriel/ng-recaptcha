@@ -1,9 +1,10 @@
 import { isPlatformBrowser } from "@angular/common";
 import { Inject, Injectable, Optional, PLATFORM_ID } from "@angular/core";
-import { BehaviorSubject, Observable, of } from "rxjs";
+import { BehaviorSubject, isObservable, Observable, of } from "rxjs";
 
 import { loader } from "./load-script";
 import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from "./tokens";
+import { take } from "rxjs/operators";
 
 @Injectable()
 export class RecaptchaLoaderService {
@@ -16,7 +17,7 @@ export class RecaptchaLoaderService {
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
 
   /** @internal */
-  private language: string;
+  private language: Observable<string>;
   /** @internal */
   private baseUrl: string;
   /** @internal */
@@ -27,12 +28,18 @@ export class RecaptchaLoaderService {
   constructor(
     // eslint-disable-next-line @typescript-eslint/ban-types
     @Inject(PLATFORM_ID) private readonly platformId: Object,
-    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
+    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string | Observable<string>,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
     @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string
   ) {
-    this.language = language;
+    if (isObservable(language)) {
+      this.language = language;
+    } else if (language) {
+      this.language = of(language);
+    } else {
+      this.language = of("");
+    }
     this.baseUrl = baseUrl;
     this.nonce = nonce;
     this.v3SiteKey = v3SiteKey;
@@ -48,10 +55,19 @@ export class RecaptchaLoaderService {
     if (isPlatformBrowser(this.platformId)) {
       const subject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
       RecaptchaLoaderService.ready = subject;
-      const langParam = this.language ? "&hl=" + this.language : "";
+      this.language.subscribe((lang) => {
+        const langParam = lang ? "&hl=" + lang : "";
 
-      const renderMode = this.v3SiteKey || "explicit";
-      loader.loadScript(renderMode, (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
+        const renderMode = this.v3SiteKey || "explicit";
+        loader.loadScript(
+          renderMode,
+          (grecaptcha) => subject.next(grecaptcha),
+          langParam,
+          lang,
+          this.baseUrl,
+          this.nonce
+        );
+      });
     }
   }
 }
