@@ -1,7 +1,7 @@
 {
-  "name": "ng-recaptcha-base",
+  "name": "@devolutions/ng-recaptcha-base",
   "private": true,
-  "version": "9.0.0",
+  "version": "9.1.0",
   "scripts": {
     "demo:file-gen": "ts-node --project ./tsconfig.node.json ./projects/demo/bin/file-gen.ts",
     "demo:serve": "yarn demo:file-gen && ng serve demo",
@@ -16,7 +16,8 @@
     "preversion": "yarn version:lib && yarn lib:build",
     "version": "yarn changelog && git add CHANGELOG.md",
     "lint": "eslint projects --ext .js,.ts,.html",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "publish:jfrog": "yarn lib:build && cd dist/ng-recaptcha && yarn publish --registry https://devolutions.jfrog.io/devolutions/api/npm/npm-local/"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
