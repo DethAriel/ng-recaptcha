@@ -16,7 +16,7 @@
     "ng-recaptcha"
   ],
   "peerDependencies": {
-    "@angular/core": "^13.0.0"
+    "@angular/core": "^14.0.0"
   },
   "dependencies": {
     "@types/grecaptcha": "^3.0.3",
