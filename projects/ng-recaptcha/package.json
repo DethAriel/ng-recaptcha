@@ -1,7 +1,7 @@
 {
   "name": "ng-recaptcha",
   "description": "Angular component for Google reCAPTCHA",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "author": "Ruslan Arkhipau <dethariel@gmail.com>",
   "license": "MIT",
   "repository": {
