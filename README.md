@@ -20,6 +20,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3
    - [Input Options](#api-options)
    - [Events](#api-events)
    - [Methods](#api-methods)
+1. [Angular version compatibility](#angular-versions)
 1. [Examples](#examples)
    - [Configuring the component globally](#example-global-config)
    - [Specifying a different language](#example-language)
@@ -87,7 +88,7 @@ export class MyApp {
 ```
 
 ```typescript
-// boot.ts
+// main.ts
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { MyAppModule } from "./app.module.ts";
 
@@ -195,6 +196,22 @@ Besides specifying these options on the component itself, you can provide a glob
 - `reset()`. Performs a manual captcha reset. This method might be useful if your form
   validation failed, and you need the user to re-enter the captcha.
 - `execute()`. Executes the invisible recaptcha. Does nothing if component's size is not set to "invisible". See [Invisible reCAPTCHA developers guide](https://developers.google.com/recaptcha/docs/invisible#js_api) for more information.
+
+## <a name="angular-versions"></a>Angular version compatibility
+
+| `ng-recaptcha` version                                                           | Supported Angular versions                           |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `10.x.x`                                                                         | `14.x.x`                                             |
+| `9.x.x`                                                                          | `13.x.x`                                             |
+| `8.x.x`                                                                          | `12.x.x`                                             |
+| `7.x.x`                                                                          | `11.x.x`                                             |
+| ⬆️ Starting with `ng-recaptcha@7`, only one version of Angular will be supported |
+| `6.x.x`                                                                          | `6.x.x \|\| 7.x.x \|\| 8.x.x \|\| 9.x.x \|\| 10.x.x` |
+| `5.x.x`                                                                          | `6.x.x \|\| 7.x.x \|\| 8.x.x`                        |
+| `4.x.x`                                                                          | `6.x.x \|\| 7.x.x`                                   |
+| `3.x.x`                                                                          | `4.x.x \|\| 5.x.x`                                   |
+| `2.x.x`                                                                          | `2.x.x \|\| 4.x.x`                                   |
+| `1.x.x`                                                                          | `2.x.x`                                              |
 
 ## <a name="examples"></a>Examples
 
