@@ -1,5 +1,5 @@
 import { MediaMatcher } from "@angular/cdk/layout";
-import { ChangeDetectorRef, Component, Inject, InjectionToken, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, Inject, InjectionToken, OnDestroy, OnInit, VERSION } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { Router, ResolveEnd, ActivatedRouteSnapshot, Data } from "@angular/router";
 import { parse, stringify } from "query-string";
@@ -44,6 +44,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     title: "ng-recaptcha",
     description: "Angular component for Google reCAPTCHA",
   };
+  public logoTitle = `Angular v${VERSION.full}`;
   public page?: PageSettings;
   public mobileQuery: MediaQueryList;
   public sidebarOpened = false;

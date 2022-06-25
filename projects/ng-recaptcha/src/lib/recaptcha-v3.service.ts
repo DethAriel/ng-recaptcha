@@ -116,7 +116,6 @@ export class ReCaptchaV3Service {
     const subject = new Subject<string>();
     if (this.isBrowser) {
       if (!this.grecaptcha) {
-        // todo: add to array of later executions
         if (!this.actionBacklog) {
           this.actionBacklog = [];
         }

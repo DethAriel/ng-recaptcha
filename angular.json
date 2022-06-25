@@ -119,5 +119,7 @@
       }
     }
   },
-  "defaultProject": "ng-recaptcha"
+  "cli": {
+    "analytics": false
+  }
 }

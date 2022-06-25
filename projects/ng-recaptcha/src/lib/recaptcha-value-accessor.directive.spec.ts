@@ -1,6 +1,6 @@
 import { Component, NgZone } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { By } from "@angular/platform-browser";
 import { BehaviorSubject } from "rxjs";
 
@@ -120,9 +120,9 @@ describe("RecaptchaValueAccessorDirective -> formGroup", () => {
   })
   class TestComponent {
     public loading$ = new BehaviorSubject<boolean>(false);
-    public formGroup = new FormGroup({
+    public formGroup = new UntypedFormGroup({
       // eslint-disable-next-line @typescript-eslint/unbound-method
-      captcha: new FormControl(null, [Validators.required]),
+      captcha: new UntypedFormControl(null, [Validators.required]),
     });
 
     public testHideForm(): void {

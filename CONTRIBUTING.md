@@ -1,11 +1,21 @@
 ## Getting started
 
-- Simply running `yarn` should get you started for development purposes
+You should have [`nvm`](https://github.com/nvm-sh/nvm) and [`yarn@1`](https://classic.yarnpkg.com/lang/en/docs/install/) installed.
+
+- Run `nvm use` to make sure that you're on the right version of Node.js
+- Run `yarn` should get you started for development purposes
+- Run `yarn demo:file-gen` to ensure that auto-generated code files are present (otherwise linters will complain)
+- `yarn lib:build` needs to be run in order for the demo to work correctly (as well as for the linting to pass)
+
+### Testing
+
 - Use `yarn lint` during local development to ensure that your code will pass linting (which is also done during CI phase)
+- Use `yarn ng test` to run unit tests, `yarn ng e2e demo` to run a basic end-to-end smoke test.
 
 ## PR guidelines
 
 - Every PR should have an associated issue
+- PRs with failing builds **will not be accepted**
 - Use [Angular commit message conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
   - Allowed scopes: `component`, `package`, `build`, `docs`. If you feel like these do not fit your use-case, consult with maintainer in PR comments section
   - Use `chore(docs)` instead of `docs(<scope>)`
@@ -15,7 +25,7 @@
 
 ## Running demo
 
-In order to run the demo you need to `yarn demo:serve`. Then the demo site will be served at http://localhost:4200/ng-recaptcha/.
+In order to run the demo you need to build the lib first by running `yarn lib:build`. Then use `yarn demo:serve` to see the demo site at http://localhost:4200/ng-recaptcha/.
 
 ## Maintainer notes
 
@@ -29,6 +39,7 @@ In order for everything to go smooth, you'll need to check prerequisites first:
 After you did that, follow the below process:
 
 - Pushed the latest changes to upstream: `git push`
+  - use `feat(package): add Angular X support` for commit messages that upgrade Angular version
 - Ensure that the build succeeds
 - To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean`
 - Then you need to prepare a release.
