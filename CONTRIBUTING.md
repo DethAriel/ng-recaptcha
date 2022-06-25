@@ -59,6 +59,8 @@ After you did that, follow the below process:
 - First, push the git tag to the origin with `git push --tags`
 - Publish the package to npm _from the "/dist/ng-recaptcha" directory_: `cd dist/ng-recaptcha && npm publish` (or `cd dist/ng-recaptcha && npm publish --tag beta`)
 - Create a GitHub release by running `yarn github-release`
+- Update the [StackBlitz example](https://stackblitz.com/edit/ng-recaptcha-example) to the latest version
+  - if it complains about `core-js`, try `core-js@2` as per [this comment](https://github.com/stackblitz/core/issues/930#issuecomment-482606881)
 
 ### Back-porting fixes to older versions
 
