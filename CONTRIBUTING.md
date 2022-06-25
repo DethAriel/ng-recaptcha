@@ -39,7 +39,13 @@ In order for everything to go smooth, you'll need to check prerequisites first:
 After you did that, follow the below process:
 
 - Pushed the latest changes to upstream: `git push`
-  - use `feat(package): add Angular X support` for commit messages that upgrade Angular version
+
+  - use the following commit message convension when updating Angular to a newer version:
+    > feat(package): add Angular N support
+    >
+    > BREAKING CHANGE:
+    > Angular v(N-1) is no longer supported with this version. Pin `ng-recaptcha` to `vM.x.x` to retain support for a previous Angular version
+
 - Ensure that the build succeeds
 - To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean`
 - Then you need to prepare a release.
