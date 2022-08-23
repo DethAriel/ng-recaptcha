@@ -1,3 +1,11 @@
+<a name="10.0.0"></a>
+
+# [10.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v9.0.0...v10.0.0) (2022-06-25)
+
+### Features
+
+- **package:** upgrade to Angular 14 ([eac685866a](https://github.com/DethAriel/ng-recaptcha/commit/eac685866a)), closes [#263](https://github.com/DethAriel/ng-recaptcha/pull/263)
+
 <a name="9.0.0"></a>
 
 # [9.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v7.0.2...v9.0.0) (2021-11-16)

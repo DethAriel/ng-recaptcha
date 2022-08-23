@@ -119,5 +119,8 @@
       }
     }
   },
-  "defaultProject": "ng-recaptcha"
+  "defaultProject": "ng-recaptcha",
+  "cli": {
+    "analytics": false
+  }
 }
