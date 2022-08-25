@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git+https://github.com/DethAriel/ng-recaptcha"
   },
+  "publishConfig": {
+    "registry": "https://devolutions.jfrog.io/devolutions/api/npm/npm-local/"
+  },
   "homepage": "https://github.com/DethAriel/ng-recaptcha#readme",
   "keywords": [
     "angular",
