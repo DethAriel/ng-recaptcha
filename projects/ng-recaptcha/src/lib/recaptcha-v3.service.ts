@@ -5,6 +5,8 @@ import { Observable, Subject } from "rxjs";
 import { loader } from "./load-script";
 import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from "./tokens";
 
+/**
+ */
 export interface OnExecuteData {
   /**
    * The name of the action that has been executed.
@@ -35,6 +37,8 @@ type ActionBacklogEntry = [string, Subject<string>];
  *
  * Use the `execute` method for executing a single action, and
  * `onExecute` observable for listening to all actions at once.
+ *
+ * @category Service
  */
 @Injectable()
 export class ReCaptchaV3Service {

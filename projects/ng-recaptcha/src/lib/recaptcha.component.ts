@@ -19,10 +19,18 @@ import { RECAPTCHA_SETTINGS } from "./tokens";
 
 let nextId = 0;
 
+/**
+ * @internal
+ */
 export type NeverUndefined<T> = T extends undefined ? never : T;
 
+/**
+ */
 export type RecaptchaErrorParameters = Parameters<NeverUndefined<ReCaptchaV2.Parameters["error-callback"]>>;
 
+/**
+ * @category Component
+ */
 @Component({
   exportAs: "reCaptcha",
   selector: "re-captcha",
@@ -38,11 +46,17 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public type: ReCaptchaV2.Type;
   @Input() public size: ReCaptchaV2.Size;
   @Input() public tabIndex: number;
+
+  /**
+   * Only applies to invisible reCAPTCHA (when {@link RecaptchaComponent.size} is set to `invisible`).
+   *
+   * See [`badge` parameter documentation](https://developers.google.com/recaptcha/docs/invisible#render_param) in official reCAPTCHA docs.
+   */
   @Input() public badge: ReCaptchaV2.Badge;
   @Input() public errorMode: "handled" | "default" = "default";
 
   @Output() public resolved = new EventEmitter<string>();
-  // The rename will happen a bit later
+  // TODO: perform the rename in the next major version (possibly going through a deprecation first 🤔)
   // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() public error = new EventEmitter<RecaptchaErrorParameters>();
 
@@ -55,6 +69,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   /** @internal */
   private executeRequested: boolean;
 
+  /** @internal */
   constructor(
     private elementRef: ElementRef<HTMLElement>,
     private loader: RecaptchaLoaderService,
@@ -70,6 +85,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  /** @internal */
   public ngAfterViewInit(): void {
     this.subscription = this.loader.ready.subscribe((grecaptcha: ReCaptchaV2.ReCaptcha) => {
       if (grecaptcha != null && grecaptcha.render instanceof Function) {
@@ -79,6 +95,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     });
   }
 
+  /** @internal */
   public ngOnDestroy(): void {
     // reset the captcha to ensure it does not leave anything behind
     // after the component is no longer needed
@@ -124,7 +141,9 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
    * While this member is `public`, it is not a part of the component's public API.
    * The semantic versioning guarantees _will not be honored_! Thus, you might find that this property behavior changes in incompatible ways in minor or even patch releases.
    * You are **strongly advised** against using this property.
-   * Instead, use more idiomatic ways to get reCAPTCHA value, such as `resolved` EventEmitter, or form-bound methods (ngModel, formControl, and the likes).å
+   * Instead, use more idiomatic ways to get reCAPTCHA value, such as `resolved` EventEmitter, or form-bound methods (ngModel, formControl, and the likes).
+   *
+   * @internal
    */
   public get __unsafe_widgetValue(): string | null {
     return this.widget != null ? this.grecaptcha.getResponse(this.widget) : null;
@@ -154,7 +173,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   /** @internal */
   private renderRecaptcha() {
-    // This `any` can be removed after @types/grecaptcha get updated
+    // TODO: This `any` can be removed after @types/grecaptcha get updated
     const renderOptions: ReCaptchaV2.Parameters = {
       badge: this.badge,
       callback: (response: string) => {

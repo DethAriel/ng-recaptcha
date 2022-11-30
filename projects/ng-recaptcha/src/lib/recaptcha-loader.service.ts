@@ -5,6 +5,9 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 import { loader } from "./load-script";
 import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from "./tokens";
 
+/**
+ * @category Service
+ */
 @Injectable()
 export class RecaptchaLoaderService {
   /**

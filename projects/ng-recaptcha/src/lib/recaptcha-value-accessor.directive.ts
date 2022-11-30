@@ -3,6 +3,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 import { RecaptchaComponent } from "./recaptcha.component";
 
+/**
+ * @category Directive
+ */
 @Directive({
   providers: [
     {

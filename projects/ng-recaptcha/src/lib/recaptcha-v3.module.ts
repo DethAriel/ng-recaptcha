@@ -2,6 +2,9 @@ import { NgModule } from "@angular/core";
 
 import { ReCaptchaV3Service } from "./recaptcha-v3.service";
 
+/**
+ * @category Module
+ */
 @NgModule({
   providers: [ReCaptchaV3Service],
 })

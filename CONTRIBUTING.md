@@ -29,6 +29,23 @@ In order to run the demo you need to build the lib first by running `yarn lib:bu
 
 ## Maintainer notes
 
+### Documentation
+
+The documentation for components is maintained in-code using [`typedoc`](https://typedoc.org).
+
+The following categories are defined for valid use with `@category` annotation:
+
+- `Component` - should be used for Angular components (all things that have a template defined). In other words, for `*.component.ts` files
+  - `Input` - for component inputs
+  - `Output` - for component outputs (probably event emitters)
+- `Service` - should be used for `*.service.ts` files
+- `Module` - should be used for `*.module.ts` files
+- `Directive` - should be used for `*.directive.ts` files
+- `Token` - currently, all tokens are exported from `projects/ng-recaptcha/src/lib/tokens.ts` file. All documentation for `InjectionToken<T>` items should utilize this category.
+- This package exports a number of utility types and interfaces, **don't** specify a category for those.
+
+Use `/** @internal */` JSDoc annotation to exclude the method from generated documentation. In particular, this is useful for component/service constructors that have DI arguments, or for Angular component lifecycle hooks (such as `ngOnInit` and the like).
+
 ### Release
 
 In order for everything to go smooth, you'll need to check prerequisites first:
@@ -38,9 +55,9 @@ In order for everything to go smooth, you'll need to check prerequisites first:
 
 After you did that, follow the below process:
 
-- Pushed the latest changes to upstream: `git push`
+- Push the latest changes to upstream: `git push`
 
-  - use the following commit message convension when updating Angular to a newer version:
+  - use the following commit message convention when updating Angular to a newer version:
     > feat(package): add Angular N support
     >
     > BREAKING CHANGE:
@@ -48,6 +65,7 @@ After you did that, follow the below process:
 
 - Ensure that the build succeeds
 - To start with, make sure all the dependencies are up-to-date: `yarn && yarn clean`
+- Generate and commit documentation by running `yarn typedoc`
 - Then you need to prepare a release.
 
   - Export the version variable for later use by scripts: `export NGR_VERSION=<VERSION>`

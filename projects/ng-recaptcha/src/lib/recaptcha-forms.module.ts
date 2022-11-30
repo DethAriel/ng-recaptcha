@@ -4,6 +4,9 @@ import { FormsModule } from "@angular/forms";
 import { RecaptchaCommonModule } from "./recaptcha-common.module";
 import { RecaptchaValueAccessorDirective } from "./recaptcha-value-accessor.directive";
 
+/**
+ * @category Module
+ */
 @NgModule({
   declarations: [RecaptchaValueAccessorDirective],
   exports: [RecaptchaValueAccessorDirective],

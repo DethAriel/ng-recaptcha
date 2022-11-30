@@ -4,7 +4,6 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    // "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -19,10 +18,5 @@
     "paths": {
       "ng-recaptcha": ["dist/ng-recaptcha/ng-recaptcha", "dist/ng-recaptcha"]
     }
-  },
-  "angularCompilerOptions": {
-    // "strictInjectionParameters": true,
-    // "strictInputAccessModifiers": true,
-    // "strictTemplates": true
   }
 }

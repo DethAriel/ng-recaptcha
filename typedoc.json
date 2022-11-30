@@ -1,0 +1,18 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["projects/ng-recaptcha/src/index.ts"],
+  "exclude": ["**/*+.spec.ts", "**/mock-*.ts", "**/test.ts"],
+  "categoryOrder": ["Component", "Service", "Module", "Directive", "Token", "*"],
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "readme": "none",
+  "plugin": ["typedoc-plugin-markdown"],
+  "disableSources": true,
+  "githubPages": false,
+
+  "intentionallyNotExported": ["NeverUndefined"],
+  "treatWarningsAsErrors": true,
+
+  "cleanOutputDir": true,
+  "out": "docs"
+}

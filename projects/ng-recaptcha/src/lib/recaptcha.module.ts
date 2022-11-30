@@ -4,6 +4,9 @@ import { RecaptchaCommonModule } from "./recaptcha-common.module";
 import { RecaptchaLoaderService } from "./recaptcha-loader.service";
 import { RecaptchaComponent } from "./recaptcha.component";
 
+/**
+ * @category Module
+ */
 @NgModule({
   exports: [RecaptchaComponent],
   imports: [RecaptchaCommonModule],
