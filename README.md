@@ -188,7 +188,7 @@ Besides specifying these options on the component itself, you can provide a glob
   If the captcha has expired prior to submitting its value to the server, the component
   will reset the captcha, and trigger the `resolved` event with `response === null`.
 
-- `error(errorDetails: RecaptchaErrorParameters)`. Occurs when reCAPTCHA encounters an error (usually a connectivity problem) **if and only if** `errorMode` input has been set to `"handled"`.
+- `errored(errorDetails: RecaptchaErrorParameters)`. Occurs when reCAPTCHA encounters an error (usually a connectivity problem) **if and only if** `errorMode` input has been set to `"handled"`.
   `errorDetails` is a simple propagation of any arguments that the original `error-callback` has provided, and is documented here for the purposes of completeness and future-proofing. This array will most often (if not always) be empty. A good strategy would be to rely on just the fact that this event got triggered, and show a message to your app's user telling them to retry.
 
 ### <a name="api-methods"></a>Methods
@@ -288,7 +288,7 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "my-app",
-  template: `<re-captcha (resolved)="resolved($event)" (error)="errored($event)" errorMode="handled"></re-captcha>`,
+  template: `<re-captcha (resolved)="resolved($event)" (errored)="errored($event)" errorMode="handled"></re-captcha>`,
 })
 export class MyApp {
   resolved(captchaResponse: string) {
@@ -303,9 +303,9 @@ export class MyApp {
 
 You can see this in action by navigating to either [basic example demo](https://dethariel.github.io/ng-recaptcha/basic) or [invisible demo](https://dethariel.github.io/ng-recaptcha/invisible) and trying to interact with reCAPTCHA after setting the network to "Offline".
 
-The `errorMode` input has two possible values -- `"handled"` and `"default"`, with latter being the default as the name suggests. Not specifying `errorMode`, or setting it to anything other than `"handled"` will not invoke your `(error)` callback, and will instead result in default reCAPTCHA functionality.
+The `errorMode` input has two possible values -- `"handled"` and `"default"`, with latter being the default as the name suggests. Not specifying `errorMode`, or setting it to anything other than `"handled"` will not invoke your `(errored)` callback, and will instead result in default reCAPTCHA functionality.
 
-The `(error)` callback will propagate all of the parameters that it receives from `grecaptcha['error-callback']` (which might be none) as an array.
+The `(errored)` callback will propagate all of the parameters that it receives from `grecaptcha['error-callback']` (which might be none) as an array.
 
 ### <a name="example-preload-api"></a>Loading the reCAPTCHA API by yourself [(see in action)](https://dethariel.github.io/ng-recaptcha/v8/preload-api)
 

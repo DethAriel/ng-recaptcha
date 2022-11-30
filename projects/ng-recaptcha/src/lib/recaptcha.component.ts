@@ -42,9 +42,12 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @Input() public errorMode: "handled" | "default" = "default";
 
   @Output() public resolved = new EventEmitter<string>();
-  // The rename will happen a bit later
+  /**
+   * @deprecated `(error) output will be removed in the next major version. Use (errored) instead
+   */
   // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() public error = new EventEmitter<RecaptchaErrorParameters>();
+  @Output() public errored = new EventEmitter<RecaptchaErrorParameters>();
 
   /** @internal */
   private subscription: Subscription;
@@ -136,8 +139,9 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   /** @internal */
-  private errored(args: RecaptchaErrorParameters) {
+  private onError(args: RecaptchaErrorParameters) {
     this.error.emit(args);
+    this.errored.emit(args);
   }
 
   /** @internal */
@@ -172,7 +176,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
     if (this.errorMode === "handled") {
       renderOptions["error-callback"] = (...args: RecaptchaErrorParameters) => {
-        this.zone.run(() => this.errored(args));
+        this.zone.run(() => this.onError(args));
       };
     }
 

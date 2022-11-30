@@ -117,7 +117,7 @@ describe("RecaptchaComponent", () => {
   it("should emit grecaptcha error if errorMode was set to 'handled'", () => {
     // Arrange
     const emittedErrors: Array<RecaptchaErrorParameters> = [];
-    component.error.subscribe((error: RecaptchaErrorParameters) => emittedErrors.push(error));
+    component.errored.subscribe((error: RecaptchaErrorParameters) => emittedErrors.push(error));
     component.errorMode = "handled";
     mockRecaptchaLoaderService.init();
 
