@@ -1,3 +1,12 @@
+<a name="11.0.0"></a>
+
+# [11.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v10.0.0...v11.0.0) (2022-11-30)
+
+### Features
+
+- **component:** _deprecate_ `error` output in favor of `errored` ([6b002bb](https://github.com/DethAriel/ng-recaptcha/commit/6b002bb))
+- **package:** add Angular 15 support ([6c62634](https://github.com/DethAriel/ng-recaptcha/commit/6c62634)), closes [#275](https://github.com/DethAriel/ng-recaptcha/issues/275)
+
 <a name="10.0.0"></a>
 
 # [10.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v9.0.0...v10.0.0) (2022-06-25)
