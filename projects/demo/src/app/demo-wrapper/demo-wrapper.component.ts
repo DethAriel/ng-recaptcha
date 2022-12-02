@@ -36,8 +36,8 @@ function isPageSettings(value: unknown): value is PageSettings {
 
 @Component({
   selector: "recaptcha-demo-wrapper",
-  styleUrls: ["./recaptcha-demo-wrapper.component.css"],
-  templateUrl: "./recaptcha-demo-wrapper.component.html",
+  styleUrls: ["./demo-wrapper.component.css"],
+  templateUrl: "./demo-wrapper.component.html",
 })
 export class DemoWrapperComponent implements OnInit, OnDestroy {
   public site = {
@@ -116,6 +116,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     const newSearch = stringify(currentSearch);
     const newLocation = pathname + (newSearch.length === 0 ? "" : `?${newSearch}`);
 
-    window.location.assign(newLocation);
+    // TODO: issue a preload hint to the browser and issue next URL redirect based on Material animation duration
+    setTimeout(() => window.location.assign(newLocation), 500);
   }
 }
