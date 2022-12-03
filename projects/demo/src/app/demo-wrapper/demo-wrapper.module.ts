@@ -1,5 +1,6 @@
 import { LayoutModule } from "@angular/cdk/layout";
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { MatButtonModule } from "@angular/material/button";
@@ -38,6 +39,7 @@ import { DemoWrapperRoutingModule } from "./demo-wrapper-routing.module";
     MatRadioModule,
     LayoutModule,
     DemoWrapperRoutingModule,
+    HttpClientModule,
   ],
   exports: [DemoWrapperComponent],
   providers: [{ provide: NAV_LINKS, useValue: navLinks }],

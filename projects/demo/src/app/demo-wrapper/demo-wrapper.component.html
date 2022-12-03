@@ -27,8 +27,10 @@
           </mat-list>
         </mat-radio-group>
       </mat-menu>
+
       <a *ngIf="!mobileQuery.matches" mat-button href="https://github.com/DethAriel/ng2-recaptcha">
-        <img src="images/octocat.svg" height="26px" style="margin-right: 8px" />
+        <!-- TODO: misalignment exists in Material buttons with custom icons -->
+        <mat-icon style="line-height: 1" svgIcon="octocat"></mat-icon>
         <span>GitHub</span>
       </a>
       <a
@@ -37,7 +39,7 @@
         mat-icon-button
         href="https://github.com/DethAriel/ng2-recaptcha"
       >
-        <img src="images/octocat.svg" height="26px" />
+        <mat-icon svgIcon="octocat"></mat-icon>
       </a>
     </mat-toolbar-row>
   </mat-toolbar>

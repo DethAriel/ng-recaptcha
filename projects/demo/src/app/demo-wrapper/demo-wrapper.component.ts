@@ -1,7 +1,9 @@
 import { MediaMatcher } from "@angular/cdk/layout";
 import { ChangeDetectorRef, Component, Inject, InjectionToken, OnDestroy, OnInit, VERSION } from "@angular/core";
-import { Title } from "@angular/platform-browser";
+import { Title, DomSanitizer } from "@angular/platform-browser";
 import { Router, ResolveEnd, ActivatedRouteSnapshot, Data } from "@angular/router";
+import { MatIconRegistry } from "@angular/material/icon";
+
 import { parse, stringify } from "query-string";
 
 import { parseLangFromHref } from "../parse-lang-from-href";
@@ -59,10 +61,13 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     media: MediaMatcher,
     changeDetectorRef: ChangeDetectorRef,
     private router: Router,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
   ) {
     this.mobileQuery = media.matchMedia("(max-width: 600px)");
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
+    this.matIconRegistry.addSvgIcon(`octocat`, this.domSanitizer.bypassSecurityTrustResourceUrl(`images/octocat.svg`));
   }
 
   public ngOnInit(): void {
