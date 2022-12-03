@@ -67,8 +67,13 @@
     <mat-sidenav-content>
       <div class="layout">
         <mat-toolbar color="primary">
-          <button mat-icon-button *ngIf="mobileQuery.matches" (click)="sidebarOpened = true">
-            <mat-icon aria-hidden="true">menu</mat-icon>
+          <button
+            mat-icon-button
+            *ngIf="mobileQuery.matches"
+            (click)="sidebarOpened = true"
+            aria-label="See navigation"
+          >
+            <mat-icon>menu</mat-icon>
           </button>
           <span data-testid="page-title" *ngIf="page">{{ page.title }}</span>
         </mat-toolbar>
