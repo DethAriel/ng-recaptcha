@@ -78,7 +78,7 @@ describe("RecaptchaLoaderService", () => {
       jasmine.any(Function),
       "&hl=testLang",
       "testUrl",
-      "testNonce"
+      "testNonce",
     );
   });
 

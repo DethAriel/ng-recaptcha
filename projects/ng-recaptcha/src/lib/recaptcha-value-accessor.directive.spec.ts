@@ -101,8 +101,8 @@ describe("RecaptchaValueAccessorDirective -> [(ngModel)]", () => {
         { nativeElement: document.createElement("div") },
         // @ts-expect-error this is an expected type mismatch
         new MockRecaptchaLoaderService(),
-        new NgZone({})
-      )
+        new NgZone({}),
+      ),
     );
 
     // Act + Assert

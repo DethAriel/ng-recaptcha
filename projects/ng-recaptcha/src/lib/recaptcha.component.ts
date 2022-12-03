@@ -62,7 +62,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     private elementRef: ElementRef<HTMLElement>,
     private loader: RecaptchaLoaderService,
     private zone: NgZone,
-    @Optional() @Inject(RECAPTCHA_SETTINGS) settings?: RecaptchaSettings
+    @Optional() @Inject(RECAPTCHA_SETTINGS) settings?: RecaptchaSettings,
   ) {
     if (settings) {
       this.siteKey = settings.siteKey;

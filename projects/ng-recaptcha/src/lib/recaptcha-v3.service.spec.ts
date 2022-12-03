@@ -81,7 +81,7 @@ describe("ReCaptchaV3Service", () => {
       jasmine.any(Function),
       "&hl=testLang",
       "testUrl",
-      "testNonce"
+      "testNonce",
     );
   });
 
@@ -220,7 +220,7 @@ describe("ReCaptchaV3Service", () => {
     let executionError: string;
     service.execute("test action").subscribe(
       () => void 0,
-      (error) => (executionError = error as string)
+      (error) => (executionError = error as string),
     );
     mockGrecaptcha.executionReject("test action", "test error");
     await nextTick();
@@ -240,7 +240,7 @@ describe("ReCaptchaV3Service", () => {
     let executionError: Error;
     service.execute("test action").subscribe(
       () => void 0,
-      (error) => (executionError = error as Error)
+      (error) => (executionError = error as Error),
     );
     await nextTick();
 

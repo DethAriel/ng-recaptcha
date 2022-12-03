@@ -9,7 +9,7 @@ function loadScript(
   onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
   urlParams: string,
   url?: string,
-  nonce?: string
+  nonce?: string,
 ): void {
   window.ng2recaptchaloaded = () => {
     onLoaded(grecaptcha);

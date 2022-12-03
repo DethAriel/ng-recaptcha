@@ -56,7 +56,7 @@ function generateLinks() {
     label: '${e.label}',
     path: '${e.name}',
     feature: '${e.name}',
-  },`
+  },`,
     )
     .join("\n  ")}
 ];

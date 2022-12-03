@@ -71,7 +71,7 @@ export class ReCaptchaV3Service {
     @Inject(PLATFORM_ID) platformId: Object,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
-    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string
+    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
   ) {
     this.zone = zone;
     this.isBrowser = isPlatformBrowser(platformId);

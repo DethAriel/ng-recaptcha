@@ -30,7 +30,7 @@ export class RecaptchaLoaderService {
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
-    @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string
+    @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string,
   ) {
     this.language = language;
     this.baseUrl = baseUrl;

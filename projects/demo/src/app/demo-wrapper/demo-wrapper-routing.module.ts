@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () =>
       import(`../examples/${e.name}/${e.name}-demo.module`).then(
         // eslint-disable-next-line
-        (m) => m.DemoModule
+        (m) => m.DemoModule,
       ),
   })),
   {

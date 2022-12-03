@@ -58,7 +58,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
     private titleService: Title,
     media: MediaMatcher,
     changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
   ) {
     this.mobileQuery = media.matchMedia("(max-width: 600px)");
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -72,7 +72,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
       if (data instanceof ResolveEnd) {
         const unifiedRouteData = (function gatherRecursively(
           children: ActivatedRouteSnapshot[],
-          value: Data = {}
+          value: Data = {},
         ): Data {
           if (!children || children.length === 0) {
             return value;
@@ -84,7 +84,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
               ...snapshot.data,
               ...gatherRecursively(snapshot.children),
             }),
-            value
+            value,
           );
         })(data.state.root.children);
 

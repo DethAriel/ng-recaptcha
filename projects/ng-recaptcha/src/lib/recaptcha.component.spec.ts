@@ -240,7 +240,7 @@ describe("RecaptchaComponent initialization", () => {
       },
       // @ts-expect-error this is an expected type mismatch
       new MockRecaptchaLoaderService(),
-      new NgZone({})
+      new NgZone({}),
     );
 
     // Act + Assert

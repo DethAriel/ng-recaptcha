@@ -39,16 +39,16 @@ export class RecaptchaV3DemoComponent implements OnInit, OnDestroy {
         this.recentToken = "";
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         this.recentError = { error };
-      }
+      },
     );
   }
 
   public ngOnInit(): void {
     this.allExecutionsSubscription = this.recaptchaV3Service.onExecute.subscribe((data) =>
-      this.executionLog.push(data)
+      this.executionLog.push(data),
     );
     this.allExecutionErrorsSubscription = this.recaptchaV3Service.onExecuteError.subscribe((data) =>
-      this.executionLog.push(data)
+      this.executionLog.push(data),
     );
   }
 
