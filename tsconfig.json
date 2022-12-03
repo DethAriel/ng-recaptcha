@@ -20,9 +20,5 @@
     },
     "useDefineForClassFields": false
   },
-  "angularCompilerOptions": {
-    // "strictInjectionParameters": true,
-    // "strictInputAccessModifiers": true,
-    // "strictTemplates": true
-  }
+  "exclude": ["projects/demo/cypress/**/*.ts"]
 }

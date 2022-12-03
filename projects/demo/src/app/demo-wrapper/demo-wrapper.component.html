@@ -5,7 +5,12 @@
       <span>{{ site.title }}</span>
       <span class="filler"></span>
 
-      <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Language settings">
+      <button
+        mat-icon-button
+        data-cy="language-settings-menu"
+        [matMenuTriggerFor]="langMenu"
+        aria-label="Language settings"
+      >
         <mat-icon>language</mat-icon>
       </button>
       <mat-menu #langMenu="matMenu">
@@ -77,7 +82,7 @@
           >
             <mat-icon>menu</mat-icon>
           </button>
-          <span data-testid="page-title" *ngIf="page">{{ page.title }}</span>
+          <span data-cy="page-title" *ngIf="page">{{ page.title }}</span>
         </mat-toolbar>
         <main>
           <div class="example-container">

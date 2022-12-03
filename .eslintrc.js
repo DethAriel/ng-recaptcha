@@ -10,7 +10,15 @@ module.exports = {
     {
       files: ["*.ts"],
       parserOptions: {
-        project: ["tsconfig.json"],
+        project: [
+          "./projects/ng-recaptcha/tsconfig.spec.json",
+          "./projects/ng-recaptcha/tsconfig.lib.json",
+          "./projects/ng-recaptcha/tsconfig.lib.prod.json",
+          "./projects/demo/cypress/tsconfig.json",
+          "./projects/demo/tsconfig.app.json",
+          "./tsconfig.node.json",
+          "./tsconfig.json",
+        ],
         createDefaultProgram: true,
       },
       extends: [
@@ -29,9 +37,12 @@ module.exports = {
         //   { type: "attribute", prefix: "re", style: "camelCase" },
         // ],
         "@angular-eslint/directive-selector": 0,
-        "@angular-eslint/component-selector": [
+        "@angular-eslint/component-selector": ["error", { type: "element", prefix: "re", style: "kebab-case" }],
+        "@typescript-eslint/no-namespace": [
           "error",
-          { type: "element", prefix: "re", style: "kebab-case" },
+          {
+            allowDeclarations: true,
+          },
         ],
       },
     },

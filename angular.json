@@ -104,16 +104,24 @@
             "browserTarget": "demo:build"
           }
         },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
           "options": {
-            "protractorConfig": "projects/demo/e2e/protractor.conf.js",
-            "devServerTarget": "demo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "demo:serve:production"
-            }
+            "devServerTarget": "demo:serve",
+            "watch": false,
+            "headless": true,
+            "browser": "electron",
+            "configFile": "projects/demo/cypress/cypress.config.ts"
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "demo:serve",
+            "watch": true,
+            "headless": false,
+            "browser": "electron",
+            "configFile": "projects/demo/cypress/cypress.config.ts"
           }
         }
       }

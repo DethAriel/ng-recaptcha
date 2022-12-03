@@ -1,0 +1,3 @@
+# ignore artifacts from failed Cypress runs
+videos/
+screenshots/
