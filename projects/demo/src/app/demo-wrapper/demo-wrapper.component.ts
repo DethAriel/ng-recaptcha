@@ -4,8 +4,6 @@ import { Title, DomSanitizer } from "@angular/platform-browser";
 import { Router, ResolveEnd, ActivatedRouteSnapshot, Data } from "@angular/router";
 import { MatIconRegistry } from "@angular/material/icon";
 
-import { parse, stringify } from "query-string";
-
 import { parseLangFromHref } from "../parse-lang-from-href";
 
 export interface PageSettings {
@@ -108,20 +106,15 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   }
 
   public onLangChange(newLang: string): void {
-    const { pathname, search } = window.location;
-
-    const currentSearch = parse(search);
+    const url = new URL(window.location.toString());
 
     if (newLang === "") {
-      delete currentSearch.lang;
+      url.searchParams.delete("lang");
     } else {
-      currentSearch.lang = newLang;
+      url.searchParams.set("lang", newLang);
     }
 
-    const newSearch = stringify(currentSearch);
-    const newLocation = pathname + (newSearch.length === 0 ? "" : `?${newSearch}`);
-
     // TODO: issue a preload hint to the browser and issue next URL redirect based on Material animation duration
-    setTimeout(() => window.location.assign(newLocation), 500);
+    setTimeout(() => window.location.assign(url), 500);
   }
 }

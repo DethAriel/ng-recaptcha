@@ -1,7 +1,6 @@
-import { parse } from "query-string";
-
 export function parseLangFromHref(): "fr" | "de" | "" {
-  const { lang } = parse(window.location.search);
+  const [lang] = new URLSearchParams(window.location.search).getAll("lang");
+
   if (lang === "fr" || lang === "de") {
     return lang;
   }
