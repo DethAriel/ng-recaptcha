@@ -112,6 +112,11 @@
             "headless": true,
             "browser": "electron",
             "configFile": "projects/demo/cypress/cypress.config.ts"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "demo:serve:production"
+            }
           }
         },
         "cypress-open": {
@@ -122,6 +127,21 @@
             "headless": false,
             "browser": "electron",
             "configFile": "projects/demo/cypress/cypress.config.ts"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "demo:serve",
+            "watch": false,
+            "headless": true,
+            "browser": "electron",
+            "configFile": "projects/demo/cypress/cypress.config.ts"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "demo:serve:production"
+            }
           }
         }
       }

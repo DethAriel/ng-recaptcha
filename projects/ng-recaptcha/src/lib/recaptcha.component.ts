@@ -101,7 +101,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
     }
 
     if (this.widget != null) {
-      this.grecaptcha.execute(this.widget);
+      void this.grecaptcha.execute(this.widget);
     } else {
       // delay execution of recaptcha until it actually renders
       this.executeRequested = true;

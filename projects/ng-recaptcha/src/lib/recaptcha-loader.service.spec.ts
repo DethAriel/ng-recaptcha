@@ -120,7 +120,7 @@ describe("RecaptchaLoaderService", () => {
     const mockGrecaptchaValue = new MockGrecaptcha();
 
     // Act
-    const callArgs = loadScriptStub.calls.mostRecent().args as Parameters<typeof loader["loadScript"]>;
+    const callArgs = loadScriptStub.calls.mostRecent().args as Parameters<(typeof loader)["loadScript"]>;
     callArgs[1](mockGrecaptchaValue);
 
     // Assert
