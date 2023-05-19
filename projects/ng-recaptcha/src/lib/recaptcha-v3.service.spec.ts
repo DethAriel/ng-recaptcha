@@ -29,7 +29,7 @@ describe("ReCaptchaV3Service", () => {
 
   function onGrecaptchaLoad(grecaptcha: MockGrecaptcha) {
     expect(loadScriptStub).toHaveBeenCalled();
-    const loadArgs = loadScriptStub.calls.mostRecent().args as Parameters<typeof loader["loadScript"]>;
+    const loadArgs = loadScriptStub.calls.mostRecent().args as Parameters<(typeof loader)["loadScript"]>;
     loadArgs[1](grecaptcha);
   }
 
