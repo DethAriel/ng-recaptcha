@@ -1,7 +1,7 @@
 {
   "name": "ng-recaptcha-base",
   "private": true,
-  "version": "12.0.0",
+  "version": "12.0.1",
   "scripts": {
     "demo:file-gen": "ts-node --project ./tsconfig.node.json ./projects/demo/bin/file-gen.ts",
     "demo:serve": "yarn demo:file-gen && ng serve demo",

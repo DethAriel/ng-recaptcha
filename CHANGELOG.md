@@ -1,3 +1,11 @@
+<a name="12.0.1"></a>
+
+## [12.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v12.0.0...v12.0.1) (2023-05-24)
+
+### Bug Fixes
+
+- **package:** convert the `README.md` file back to a proper symlink ([e0c5c99](https://github.com/DethAriel/ng-recaptcha/commit/e0c5c99))
+
 <a name="12.0.0"></a>
 
 # [12.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v11.0.0...v12.0.0) (2023-05-24)
