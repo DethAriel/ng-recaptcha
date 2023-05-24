@@ -62,6 +62,23 @@ After you did that, follow the below process:
 - Update the [StackBlitz example](https://stackblitz.com/edit/ng-recaptcha-example) to the latest version
   - if it complains about `core-js`, try `core-js@2` as per [this comment](https://github.com/stackblitz/core/issues/930#issuecomment-482606881)
 
+# List of commands that need to succeed
+
+Generally CI runs those, but since I've run out of TravisCI credits, you can find the commands below. Hopefully I (or someone else) can migrate to Github Actions soon.
+
+```sh
+nvm use
+yarn install
+yarn cypress install
+yarn demo:file-gen
+yarn lib:build
+yarn lint
+yarn prettier --check --ignore-unknown "*"
+yarn demo:build
+yarn ng test ng-recaptcha --code-coverage
+yarn ng run demo:cypress-run
+```
+
 ### Back-porting fixes to older versions
 
 - First, fix the issue in `master` for the current version.
