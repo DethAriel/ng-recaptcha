@@ -1,3 +1,15 @@
+<a name="12.0.0"></a>
+
+# [12.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v11.0.0...v12.0.0) (2023-05-24)
+
+### Features
+
+- **package:** add Angular 16 support ([77a7d1f](https://github.com/DethAriel/ng-recaptcha/commit/77a7d1f)), closes [#288](https://github.com/DethAriel/ng-recaptcha/issues/288)
+
+### BREAKING CHANGES
+
+- **package:** - Angular v15 is no longer supported with this version. Pin `ng-recaptcha` to `v11.x.x` to retain support for a previous Angular version
+
 <a name="11.0.0"></a>
 
 # [11.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v10.0.0...v11.0.0) (2022-11-30)
