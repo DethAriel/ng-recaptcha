@@ -41,7 +41,7 @@ The easiest way is to install through [yarn](https://yarnpkg.com/package/ng-reca
 
 ```sh
 yarn add ng-recaptcha
-npm i ng-recaptcha --save
+npm i ng-recaptcha
 ```
 
 ## <a name="example-basic"></a>Basic Usage [(see in action)](https://dethariel.github.io/ng-recaptcha/)
