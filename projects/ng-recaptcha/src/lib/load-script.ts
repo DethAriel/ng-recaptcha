@@ -20,7 +20,7 @@ function loadScript(
 
   script.src = `${baseUrl}?render=${renderMode}&onload=ng2recaptchaloaded${urlParams}`;
   if (nonce) {
-    script.nonce = nonce;
+    script.setAttribute('nonce', nonce);
   }
   script.async = true;
   script.defer = true;
