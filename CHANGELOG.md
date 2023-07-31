@@ -1,3 +1,11 @@
+<a name="12.0.2"></a>
+
+## [12.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v12.0.1...v12.0.2) (2023-07-31)
+
+### Bug Fixes
+
+- **component:** set CSP nonce as attribute ([abcb9a6](https://github.com/DethAriel/ng-recaptcha/commit/abcb9a6))
+
 <a name="12.0.1"></a>
 
 ## [12.0.1](https://github.com/DethAriel/ng-recaptcha/compare/v12.0.0...v12.0.1) (2023-05-24)
