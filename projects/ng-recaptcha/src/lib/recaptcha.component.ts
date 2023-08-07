@@ -109,14 +109,11 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   }
 
   public reset(): void {
-    if (this.widget != null) {
-      if (this.grecaptcha.getResponse(this.widget)) {
-        // Only emit an event in case if something would actually change.
-        // That way we do not trigger "touching" of the control if someone does a "reset"
-        // on a non-resolved captcha.
-        this.resolved.emit(null);
-      }
-
+    if (this.canResetRecaptcha()) {
+      // Only emit an event in case if something would actually change.
+      // That way we do not trigger "touching" of the control if someone does a "reset"
+      // on a non-resolved captcha.
+      this.resolved.emit(null);
       this.grecaptchaReset();
     }
   }
@@ -151,9 +148,13 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   /** @internal */
   private grecaptchaReset() {
-    if (this.widget != null) {
+    if (this.canResetRecaptcha()) {
       this.zone.runOutsideAngular(() => this.grecaptcha.reset(this.widget));
     }
+  }
+
+  private canResetRecaptcha() {
+    return this.widget != null && this.grecaptcha.getResponse(this.widget);
   }
 
   /** @internal */
