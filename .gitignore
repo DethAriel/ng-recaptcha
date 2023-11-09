@@ -1,6 +1,7 @@
 /.angular/cache
 # Editor settings
 .vscode/
+.idea/
 
 # OS files
 .DS_Store
