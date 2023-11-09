@@ -201,6 +201,7 @@ Besides specifying these options on the component itself, you can provide a glob
 
 | `ng-recaptcha` version                                                           | Supported Angular versions                           |
 | -------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `13.x.x`                                                                         | `17.x.x`                                             |
 | `12.x.x`                                                                         | `16.x.x`                                             |
 | `11.x.x`                                                                         | `15.x.x`                                             |
 | `10.x.x`                                                                         | `14.x.x`                                             |
