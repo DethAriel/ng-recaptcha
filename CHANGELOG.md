@@ -1,3 +1,11 @@
+<a name="13.0.0"></a>
+
+## [13.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v12.0.2...v13.0.0) (2023-11-09)
+
+### Features
+
+- **package:** add Angular 17 support
+
 <a name="12.0.2"></a>
 
 ## [12.0.2](https://github.com/DethAriel/ng-recaptcha/compare/v12.0.1...v12.0.2) (2023-07-31)
