@@ -555,6 +555,65 @@ There are a couple things to keep in mind:
 - `onExecute` observable will provide you with all the events emitted **after** you have subscribed to it - it doesn't keep references to the previously emitted actions. So make sure you add such a subscription as early in your code as you feel is necessary.
 - `onExecute` does not emit anything for when a `grecaptcha` error occurs. Use `onExecuteError` Observable for that.
 
+### <a name="async-config-load"></a>Loading reCAPTCHA keys asynchronously
+
+If your use-case needs to load the reCAPTCHA v2/v3 key from the backend (as opposed to specifying it in-code during build time), the Angular-idiomatic way to do that is by relying on [`APP_INITIALIZER`](https://angular.io/api/core/APP_INITIALIZER). You can find an example of how this could look like below, and you can also consult the source code for the demo site.
+
+```ts
+// config.service.ts
+import { Injectable } from "@angular/core";
+
+@Injectable({
+  providedIn: "root",
+})
+export class ConfigService {
+  public recaptchaSiteKeyV2: string | null = null;
+  public recaptchaSiteKeyV3: string | null = null;
+
+  public async loadConfig(): Promise<void> {
+    const { siteKeyV2, siteKeyV3 } = await fetchConfig(/* some API call */);
+    this.recaptchaSiteKeyV2 = siteKeyV2;
+    this.recaptchaSiteKeyV3 = siteKeyV3;
+  }
+}
+
+// app.module.ts
+import { APP_INITIALIZER, NgModule } from "@angular/core";
+import { RECAPTCHA_SETTINGS, RecaptchaSettings, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
+
+import { ConfigService } from "./config.service";
+
+function appLoadFactory(config: ConfigService) {
+  return () => config.loadConfig().then(() => console.log(`config resolved`, config));
+}
+
+@NgModule({
+  providers: [
+    {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useFactory: (config: ConfigService) => {
+        return config.recaptchaSiteKeyV3;
+      },
+      deps: [ConfigService],
+    },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useFactory: (config: ConfigService): RecaptchaSettings => {
+        return { siteKey: config.recaptchaSiteKeyV2 };
+      },
+      deps: [ConfigService],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appLoadFactory,
+      deps: [ConfigService],
+      multi: true,
+    },
+  ],
+})
+export class AppModule {}
+```
+
 ### <a name="hide-recaptcha-badge"></a>Hiding reCAPTCHA badge
 
 To start with, this is not strictly under `ng-recaptcha` library control.

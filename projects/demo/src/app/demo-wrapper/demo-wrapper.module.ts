@@ -1,5 +1,5 @@
 import { LayoutModule } from "@angular/cdk/layout";
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 
@@ -16,9 +16,15 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+import { ConfigService } from "../examples/config.service";
+
 import { DemoWrapperComponent, NAV_LINKS } from "./demo-wrapper.component";
 import { navLinks } from "./demo-wrapper.data.auto-gen";
 import { DemoWrapperRoutingModule } from "./demo-wrapper-routing.module";
+
+function appLoadFactory(config: ConfigService) {
+  return () => config.loadConfig();
+}
 
 @NgModule({
   bootstrap: [DemoWrapperComponent],
@@ -42,6 +48,14 @@ import { DemoWrapperRoutingModule } from "./demo-wrapper-routing.module";
     HttpClientModule,
   ],
   exports: [DemoWrapperComponent],
-  providers: [{ provide: NAV_LINKS, useValue: navLinks }],
+  providers: [
+    { provide: NAV_LINKS, useValue: navLinks },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appLoadFactory,
+      deps: [ConfigService],
+      multi: true,
+    },
+  ],
 })
 export class DemoWrapperModule {}

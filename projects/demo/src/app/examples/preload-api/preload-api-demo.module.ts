@@ -14,9 +14,9 @@ import {
 } from "ng-recaptcha";
 
 import { parseLangFromHref } from "../../parse-lang-from-href";
-import { VAL_RECAPTCHA_SITE_KEY_V3, VAL_RECAPTCHA_SITE_KEY_V2 } from "../site-key";
 import { PreloadApiDemoComponent } from "./preload-api-demo.component";
 import { settings } from "./preload-api-demo.data";
+import { ConfigService } from "../config.service";
 
 @Injectable()
 export class PreloadedRecaptchaAPIService {
@@ -63,11 +63,17 @@ const routes: Routes = [
     },
     {
       provide: RECAPTCHA_V3_SITE_KEY,
-      useValue: VAL_RECAPTCHA_SITE_KEY_V3,
+      useFactory: (config: ConfigService) => {
+        return config.recaptchaSiteKeyV3;
+      },
+      deps: [ConfigService],
     },
     {
       provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: VAL_RECAPTCHA_SITE_KEY_V2 } as RecaptchaSettings,
+      useFactory: (config: ConfigService): RecaptchaSettings => {
+        return { siteKey: config.recaptchaSiteKeyV2 };
+      },
+      deps: [ConfigService],
     },
     { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
   ],

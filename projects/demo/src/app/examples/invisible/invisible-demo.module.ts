@@ -11,9 +11,9 @@ import {
 } from "ng-recaptcha";
 
 import { parseLangFromHref } from "../../parse-lang-from-href";
-import { VAL_RECAPTCHA_SITE_KEY_V3, VAL_RECAPTCHA_SITE_KEY_V2_INVISIBLE } from "../site-key";
 import { InvisibleDemoComponent } from "./invisible-demo.component";
 import { settings } from "./invisible-demo.data";
+import { ConfigService } from "../config.service";
 
 const routes: Routes = [
   {
@@ -29,11 +29,17 @@ const routes: Routes = [
   providers: [
     {
       provide: RECAPTCHA_V3_SITE_KEY,
-      useValue: VAL_RECAPTCHA_SITE_KEY_V3,
+      useFactory: (config: ConfigService) => {
+        return config.recaptchaSiteKeyV3;
+      },
+      deps: [ConfigService],
     },
     {
       provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: VAL_RECAPTCHA_SITE_KEY_V2_INVISIBLE } as RecaptchaSettings,
+      useFactory: (config: ConfigService): RecaptchaSettings => {
+        return { siteKey: config.recaptchaSiteKeyV2Invisible };
+      },
+      deps: [ConfigService],
     },
     { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
   ],
