@@ -167,7 +167,7 @@ export class ReCaptchaV3Service {
         this.grecaptcha = grecaptcha;
       } else {
         const langParam = this.language ? "&hl=" + this.language : "";
-        loader.loadScript(this.siteKey, this.onLoadComplete, langParam, this.baseUrl, this.nonce);
+        loader.loadScript({ key: this.siteKey }, this.onLoadComplete, langParam, this.baseUrl, this.nonce);
       }
     }
   }
