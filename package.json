@@ -14,7 +14,7 @@
     "lib:build": "ng build ng-recaptcha --configuration production",
     "version:lib": "cd projects/ng-recaptcha && npm version $NGR_VERSION --no-git-tag-version && git add package.json",
     "preversion": "yarn version:lib && yarn lib:build",
-    "version": "yarn changelog && git add CHANGELOG.md",
+    "version": "yarn changelog && git add CHANGELOG.md && cp CHANGELOG.md dist/ng-recaptcha/CHANGELOG.md",
     "lint": "eslint projects --ext .js,.ts,.html",
     "prepare": "husky install",
     "e2e": "ng e2e"
