@@ -9,20 +9,23 @@ export type RenderMode = "explicit" | { key: string };
 function loadScript(
   renderMode: RenderMode,
   onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
-  urlParams: string,
-  url?: string,
-  nonce?: string,
+  { url, lang, nonce }: { url?: string; lang?: string; nonce?: string } = {},
 ): void {
   window.ng2recaptchaloaded = () => {
     onLoaded(grecaptcha);
   };
   const script = document.createElement("script");
   script.innerHTML = "";
-  const baseUrl = url || "https://www.google.com/recaptcha/api.js";
 
-  script.src = `${baseUrl}?render=${
-    renderMode === "explicit" ? renderMode : renderMode.key
-  }&onload=ng2recaptchaloaded${urlParams}`;
+  const baseUrl = new URL(url || "https://www.google.com/recaptcha/api.js");
+  baseUrl.searchParams.set("render", renderMode === "explicit" ? renderMode : renderMode.key);
+  baseUrl.searchParams.set("onload", "ng2recaptchaloaded");
+  baseUrl.searchParams.set("trustedtypes", "true");
+  if (lang) {
+    baseUrl.searchParams.set("hl", lang);
+  }
+
+  script.src = baseUrl.href;
   if (nonce) {
     script.setAttribute("nonce", nonce);
   }

@@ -48,10 +48,13 @@ export class RecaptchaLoaderService {
     if (isPlatformBrowser(this.platformId)) {
       const subject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
       RecaptchaLoaderService.ready = subject;
-      const langParam = this.language ? "&hl=" + this.language : "";
 
       const renderMode: RenderMode = this.v3SiteKey ? { key: this.v3SiteKey } : "explicit";
-      loader.loadScript(renderMode, (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
+      loader.loadScript(renderMode, (grecaptcha) => subject.next(grecaptcha), {
+        lang: this.language,
+        url: this.baseUrl,
+        nonce: this.nonce,
+      });
     }
   }
 }

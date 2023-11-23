@@ -76,9 +76,7 @@ describe("RecaptchaLoaderService", () => {
     expect(loader.loadScript).toHaveBeenCalledWith(
       "explicit",
       jasmine.any(Function),
-      "&hl=testLang",
-      "testUrl",
-      "testNonce",
+      jasmine.objectContaining({ lang: "testLang", url: "testUrl", nonce: "testNonce" }),
     );
   });
 
@@ -97,9 +95,7 @@ describe("RecaptchaLoaderService", () => {
     expect(loader.loadScript).toHaveBeenCalledWith(
       jasmine.objectContaining({ key: "testSiteKeyV3" }),
       jasmine.any(Function),
-      "",
-      null,
-      null,
+      jasmine.objectContaining({ lang: null, url: null, nonce: null }),
     );
   });
 

@@ -166,8 +166,11 @@ export class ReCaptchaV3Service {
       if ("grecaptcha" in window) {
         this.grecaptcha = grecaptcha;
       } else {
-        const langParam = this.language ? "&hl=" + this.language : "";
-        loader.loadScript({ key: this.siteKey }, this.onLoadComplete, langParam, this.baseUrl, this.nonce);
+        loader.loadScript({ key: this.siteKey }, this.onLoadComplete, {
+          lang: this.language,
+          url: this.baseUrl,
+          nonce: this.nonce,
+        });
       }
     }
   }

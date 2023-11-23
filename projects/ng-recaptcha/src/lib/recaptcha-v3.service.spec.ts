@@ -79,9 +79,7 @@ describe("ReCaptchaV3Service", () => {
     expect(loadScriptStub).toHaveBeenCalledWith(
       jasmine.objectContaining({ key: "testSikeKeyV3" }),
       jasmine.any(Function),
-      "&hl=testLang",
-      "testUrl",
-      "testNonce",
+      jasmine.objectContaining({ lang: "testLang", url: "testUrl", nonce: "testNonce" }),
     );
   });
 
