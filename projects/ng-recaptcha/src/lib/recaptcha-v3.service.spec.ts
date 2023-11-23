@@ -77,7 +77,7 @@ describe("ReCaptchaV3Service", () => {
 
     // Assert
     expect(loadScriptStub).toHaveBeenCalledWith(
-      "testSikeKeyV3",
+      jasmine.objectContaining({ key: "testSikeKeyV3" }),
       jasmine.any(Function),
       "&hl=testLang",
       "testUrl",

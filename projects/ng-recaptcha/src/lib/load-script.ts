@@ -4,8 +4,10 @@ declare global {
   }
 }
 
+export type RenderMode = "explicit" | { key: string };
+
 function loadScript(
-  renderMode: "explicit" | string,
+  renderMode: RenderMode,
   onLoaded: (grecaptcha: ReCaptchaV2.ReCaptcha) => void,
   urlParams: string,
   url?: string,
@@ -18,9 +20,11 @@ function loadScript(
   script.innerHTML = "";
   const baseUrl = url || "https://www.google.com/recaptcha/api.js";
 
-  script.src = `${baseUrl}?render=${renderMode}&onload=ng2recaptchaloaded${urlParams}`;
+  script.src = `${baseUrl}?render=${
+    renderMode === "explicit" ? renderMode : renderMode.key
+  }&onload=ng2recaptchaloaded${urlParams}`;
   if (nonce) {
-    script.setAttribute('nonce', nonce);
+    script.setAttribute("nonce", nonce);
   }
   script.async = true;
   script.defer = true;

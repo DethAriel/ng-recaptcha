@@ -2,7 +2,7 @@ import { isPlatformBrowser } from "@angular/common";
 import { Inject, Injectable, Optional, PLATFORM_ID } from "@angular/core";
 import { BehaviorSubject, Observable, of } from "rxjs";
 
-import { loader } from "./load-script";
+import { type RenderMode, loader } from "./load-script";
 import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from "./tokens";
 
 @Injectable()
@@ -50,7 +50,7 @@ export class RecaptchaLoaderService {
       RecaptchaLoaderService.ready = subject;
       const langParam = this.language ? "&hl=" + this.language : "";
 
-      const renderMode = this.v3SiteKey || "explicit";
+      const renderMode: RenderMode = this.v3SiteKey ? { key: this.v3SiteKey } : "explicit";
       loader.loadScript(renderMode, (grecaptcha) => subject.next(grecaptcha), langParam, this.baseUrl, this.nonce);
     }
   }
