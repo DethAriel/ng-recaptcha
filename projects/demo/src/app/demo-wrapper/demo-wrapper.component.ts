@@ -12,11 +12,7 @@ export interface PageSettings {
   content: {
     html: string;
     component: string;
-    module: {
-      "": string;
-      fr: string;
-      de: string;
-    };
+    module: string;
   };
 }
 export interface NavLink {

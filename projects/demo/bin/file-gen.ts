@@ -27,6 +27,7 @@ function highlightRequire(file: string, lang: string) {
 
 function generateData(example: Example) {
   const featureName = example.name;
+
   const contents = `import { PageSettings } from '../../demo-wrapper/demo-wrapper.component';
 
 export const settings: PageSettings = {
@@ -35,11 +36,7 @@ export const settings: PageSettings = {
   content: {
     component: ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.ts`, "ts")},
     html: ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.component.html`, "html")},
-    module: {
-      '': ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-default`, "ts")},
-      'fr': ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-fr`, "ts")},
-      'de': ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.module-de`, "ts")},
-    },
+    module: ${highlightRequire(`${sourceDir}/app/examples/${featureName}/${featureName}-demo.module.ts`, "ts")},
   },
 };
 `;
