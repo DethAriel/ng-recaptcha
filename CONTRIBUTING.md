@@ -77,6 +77,7 @@ yarn prettier --check --ignore-unknown "*"
 yarn demo:build
 yarn ng test ng-recaptcha --code-coverage
 yarn ng run demo:cypress-run
+yarn demo:publish-gh-pages
 ```
 
 ### Back-porting fixes to older versions
