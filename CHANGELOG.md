@@ -1,3 +1,11 @@
+<a name="13.1.0"></a>
+
+# [13.1.0](https://github.com/DethAriel/ng-recaptcha/compare/v13.0.0...v13.1.0) (2023-11-24)
+
+### Features
+
+- **component:** load recaptcha script using code compatible with trusted types ([88d257b](https://github.com/DethAriel/ng-recaptcha/commit/88d257b)), closes [#304](https://github.com/DethAriel/ng-recaptcha/issues/304)
+
 <a name="13.0.0"></a>
 
 # [13.0.0](https://github.com/DethAriel/ng-recaptcha/compare/v12.0.2...v13.0.0) (2023-11-23)
