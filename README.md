@@ -33,6 +33,7 @@ A simple, configurable, easy-to-start component for handling reCAPTCHA v2 and v3
    - [Loading from a different location](#example-different-url)
    - [Specifying nonce for Content-Security-Policy](#example-csp-nonce)
    - [Listening for all actions with reCAPTCHA v3](#example-v3-all-actions)
+   - [Loading reCAPTCHA keys asynchronously](#async-config-load)
    - [Hiding reCAPTCHA badge](#hide-recaptcha-badge)
 
 ## <a name="installation"></a>Installation
