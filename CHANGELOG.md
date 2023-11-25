@@ -1,3 +1,11 @@
+<a name="13.2.0"></a>
+
+# [13.2.0](https://github.com/DethAriel/ng-recaptcha/compare/v13.1.0...v13.2.0) (2023-11-25)
+
+### Features
+
+- **component:** add a new `RECAPTCHA_LOADER_OPTIONS` injection token as a way of manipulating script load parameters (such as base URL, language, trusted types, WAF, etc) ([b3c7213](https://github.com/DethAriel/ng-recaptcha/commit/b3c7213))
+
 <a name="13.1.0"></a>
 
 # [13.1.0](https://github.com/DethAriel/ng-recaptcha/compare/v13.0.0...v13.1.0) (2023-11-24)
