@@ -10,8 +10,11 @@ export { RecaptchaFormsModule } from "./lib/recaptcha-forms.module";
 export { RecaptchaValueAccessorDirective } from "./lib/recaptcha-value-accessor.directive";
 
 export {
+  // eslint-disable-next-line deprecation/deprecation
   RECAPTCHA_LANGUAGE,
+  // eslint-disable-next-line deprecation/deprecation
   RECAPTCHA_BASE_URL,
+  // eslint-disable-next-line deprecation/deprecation
   RECAPTCHA_NONCE,
   RECAPTCHA_SETTINGS,
   RECAPTCHA_V3_SITE_KEY,

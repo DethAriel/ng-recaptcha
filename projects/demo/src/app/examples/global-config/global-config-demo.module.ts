@@ -6,7 +6,8 @@ import {
   RECAPTCHA_SETTINGS,
   RecaptchaModule,
   RecaptchaSettings,
-  RECAPTCHA_LANGUAGE,
+  RecaptchaLoaderOptions,
+  RECAPTCHA_LOADER_OPTIONS,
   RECAPTCHA_V3_SITE_KEY,
 } from "ng-recaptcha";
 
@@ -41,7 +42,17 @@ const routes: Routes = [
       },
       deps: [ConfigService],
     },
-    { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
+    {
+      provide: RECAPTCHA_LOADER_OPTIONS,
+      useValue: {
+        onBeforeLoad(url) {
+          const langOverride = parseLangFromHref();
+          if (langOverride) url.searchParams.set("hl", langOverride);
+
+          return { url };
+        },
+      } as RecaptchaLoaderOptions,
+    },
   ],
 })
 export class DemoModule {}

@@ -69,6 +69,6 @@ export class RecaptchaV3DemoComponent implements OnInit, OnDestroy {
       return "(empty)";
     }
 
-    return `${token.substr(0, 7)}...${token.substr(-7)}`;
+    return `${token.substring(0, 7)}...${token.substring(token.length - 7)}`;
   }
 }

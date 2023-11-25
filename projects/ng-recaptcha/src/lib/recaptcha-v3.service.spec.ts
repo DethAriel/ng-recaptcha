@@ -80,14 +80,17 @@ describe("ReCaptchaV3Service", () => {
     // Arrange
     initService([
       {
+        // eslint-disable-next-line deprecation/deprecation
         provide: RECAPTCHA_LANGUAGE,
         useValue: "testLang",
       },
       {
+        // eslint-disable-next-line deprecation/deprecation
         provide: RECAPTCHA_BASE_URL,
         useValue: "https://test-url/test-api.js",
       },
       {
+        // eslint-disable-next-line deprecation/deprecation
         provide: RECAPTCHA_NONCE,
         useValue: "testNonce",
       },

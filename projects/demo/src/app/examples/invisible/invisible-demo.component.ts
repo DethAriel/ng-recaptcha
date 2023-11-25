@@ -10,7 +10,7 @@ export class InvisibleDemoComponent {
   public captchaResponse = "";
   public resolved(captchaResponse: string): void {
     const newResponse = captchaResponse
-      ? `${captchaResponse.substr(0, 7)}...${captchaResponse.substr(-7)}`
+      ? `${captchaResponse.substring(0, 7)}...${captchaResponse.substring(captchaResponse.length - 7)}`
       : captchaResponse;
     this.captchaResponse += `${JSON.stringify(newResponse)}\n`;
   }

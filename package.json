@@ -59,6 +59,7 @@
     "cypress": "^11.2.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-deprecation": "^2.0.0",
     "eslint-plugin-jest": "^27.6.0",
     "eslint-utils": "^3.0.0",
     "gh-pages": "^6.1.0",

@@ -41,8 +41,11 @@ export class RecaptchaLoaderService {
   constructor(
     // eslint-disable-next-line @typescript-eslint/ban-types
     @Inject(PLATFORM_ID) private readonly platformId: Object,
+    // eslint-disable-next-line deprecation/deprecation
     @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
+    // eslint-disable-next-line deprecation/deprecation
     @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
+    // eslint-disable-next-line deprecation/deprecation
     @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
     @Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string,
     @Optional() @Inject(RECAPTCHA_LOADER_OPTIONS) options?: RecaptchaLoaderOptions,

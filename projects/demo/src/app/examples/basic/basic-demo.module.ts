@@ -4,10 +4,11 @@ import { Routes, RouterModule } from "@angular/router";
 
 import {
   RecaptchaModule,
-  RECAPTCHA_LANGUAGE,
   RECAPTCHA_SETTINGS,
   RecaptchaSettings,
   RECAPTCHA_V3_SITE_KEY,
+  RECAPTCHA_LOADER_OPTIONS,
+  RecaptchaLoaderOptions,
 } from "ng-recaptcha";
 
 import { parseLangFromHref } from "../../parse-lang-from-href";
@@ -41,7 +42,17 @@ const routes: Routes = [
       },
       deps: [ConfigService],
     },
-    { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
+    {
+      provide: RECAPTCHA_LOADER_OPTIONS,
+      useValue: {
+        onBeforeLoad(url) {
+          const langOverride = parseLangFromHref();
+          if (langOverride) url.searchParams.set("hl", langOverride);
+
+          return { url };
+        },
+      } as RecaptchaLoaderOptions,
+    },
   ],
 })
 export class DemoModule {}

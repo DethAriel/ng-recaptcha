@@ -9,7 +9,6 @@ import {
   RecaptchaLoaderService,
   RecaptchaModule,
   RecaptchaSettings,
-  RECAPTCHA_LANGUAGE,
   RECAPTCHA_SETTINGS,
   RECAPTCHA_V3_SITE_KEY,
 } from "ng-recaptcha";
@@ -29,7 +28,10 @@ export class PreloadedRecaptchaAPIService {
 
     if (typeof grecaptcha === "undefined") {
       const recaptchaScript = document.createElement("script");
-      recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${v3SiteKey}`;
+
+      const langParam = parseLangFromHref() ? `&hl=${parseLangFromHref()}` : "";
+
+      recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${v3SiteKey}${langParam}`;
       document.head.appendChild(recaptchaScript);
     }
 
@@ -76,7 +78,6 @@ const routes: Routes = [
       },
       deps: [ConfigService],
     },
-    { provide: RECAPTCHA_LANGUAGE, useValue: parseLangFromHref() },
   ],
 })
 export class DemoModule {}

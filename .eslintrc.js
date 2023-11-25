@@ -29,6 +29,7 @@ module.exports = {
         // This is required if you use inline templates in Components
         "plugin:@angular-eslint/template/process-inline-templates",
         "prettier",
+        "plugin:deprecation/recommended",
       ],
       rules: {
         // this produces false-positives on `RecaptchaValueAccessorDirective.selector` (complains about absence of prefix in re-captcha[**formControlName])

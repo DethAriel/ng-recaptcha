@@ -89,14 +89,17 @@ describe("RecaptchaLoaderService", () => {
     // Arrange
     initService([
       {
+        // eslint-disable-next-line deprecation/deprecation
         provide: RECAPTCHA_LANGUAGE,
         useValue: "testLang",
       },
       {
+        // eslint-disable-next-line deprecation/deprecation
         provide: RECAPTCHA_BASE_URL,
         useValue: "https://test-url/test-api.js",
       },
       {
+        // eslint-disable-next-line deprecation/deprecation
         provide: RECAPTCHA_NONCE,
         useValue: "testNonce",
       },
@@ -236,6 +239,7 @@ describe("RecaptchaLoaderService", () => {
           } as RecaptchaLoaderOptions,
         },
         {
+          // eslint-disable-next-line deprecation/deprecation
           provide: RECAPTCHA_NONCE,
           useValue: "old-test-nonce",
         },
@@ -292,6 +296,7 @@ describe("RecaptchaLoaderService", () => {
           } as RecaptchaLoaderOptions,
         },
         {
+          // eslint-disable-next-line deprecation/deprecation
           provide: RECAPTCHA_BASE_URL,
           useValue: "https://test-url-old/test-api-old.js",
         },
@@ -326,6 +331,7 @@ describe("RecaptchaLoaderService", () => {
           } as RecaptchaLoaderOptions,
         },
         {
+          // eslint-disable-next-line deprecation/deprecation
           provide: RECAPTCHA_LANGUAGE,
           useValue: "test-lang-old",
         },

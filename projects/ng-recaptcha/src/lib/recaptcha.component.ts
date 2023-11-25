@@ -140,6 +140,7 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
 
   /** @internal */
   private onError(args: RecaptchaErrorParameters) {
+    // eslint-disable-next-line deprecation/deprecation
     this.error.emit(args);
     this.errored.emit(args);
   }

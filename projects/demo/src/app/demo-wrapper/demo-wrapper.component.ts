@@ -60,7 +60,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   ) {
     this.mobileQuery = media.matchMedia("(max-width: 600px)");
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this.mobileQueryListener);
+    this.mobileQuery.addEventListener("change", this.mobileQueryListener);
     this.matIconRegistry.addSvgIcon(`octocat`, this.domSanitizer.bypassSecurityTrustResourceUrl(`images/octocat.svg`));
   }
 
@@ -98,7 +98,7 @@ export class DemoWrapperComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this.mobileQueryListener);
+    this.mobileQuery.removeEventListener("change", this.mobileQueryListener);
   }
 
   public onLangChange(newLang: string): void {
