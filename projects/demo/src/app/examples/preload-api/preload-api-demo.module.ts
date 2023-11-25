@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 
 import { BehaviorSubject, Observable } from "rxjs";
+import { filter } from "rxjs/operators";
 
 import {
   RecaptchaLoaderService,
@@ -23,8 +24,8 @@ export class PreloadedRecaptchaAPIService {
   public ready: Observable<ReCaptchaV2.ReCaptcha>;
 
   constructor(@Optional() @Inject(RECAPTCHA_V3_SITE_KEY) v3SiteKey?: string) {
-    const readySubject = new BehaviorSubject<ReCaptchaV2.ReCaptcha>(null);
-    this.ready = readySubject.asObservable();
+    const readySubject = new BehaviorSubject<ReCaptchaV2.ReCaptcha | null>(null);
+    this.ready = readySubject.asObservable().pipe(filter<ReCaptchaV2.ReCaptcha>((v) => v != null));
 
     if (typeof grecaptcha === "undefined") {
       const recaptchaScript = document.createElement("script");

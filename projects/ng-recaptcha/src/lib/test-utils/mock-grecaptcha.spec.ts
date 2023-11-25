@@ -3,7 +3,7 @@ export type MockGrecaptchaType = GrecaptchaMockedMethods & {
   enterprise: GrecaptchaMockedMethods;
 };
 
-export class MockGrecaptcha implements MockGrecaptchaType {
+export class MockGrecaptcha implements MockGrecaptchaType, ReCaptchaV2.ReCaptcha {
   private mockWidgetId = 0;
   private latestResponse: string | null = null;
   private executionMap = new Map<string, { resolve(value: string): void; reject(reason: unknown): void }>();
@@ -28,29 +28,52 @@ export class MockGrecaptcha implements MockGrecaptchaType {
 
   public emitGrecaptchaResponse(response: string): void {
     this.latestResponse = response;
-    this.mostRecentRenderParams[1].callback(response);
+    const callback = this.mostRecentRenderParams["callback"];
+    if (typeof callback !== "function") {
+      throw new Error(`Expected 'callback' to be a function, but got "${typeof callback}" instead`);
+    }
+    callback(response);
   }
 
   public expireGrecaptchaResponse(): void {
     this.latestResponse = null;
-    this.mostRecentRenderParams[1]["expired-callback"]();
+
+    const expiredCallback = this.mostRecentRenderParams["expired-callback"];
+    if (typeof expiredCallback !== "function") {
+      throw new Error(`Expected 'expiredCallback' to be a function, but got "${typeof expiredCallback}" instead`);
+    }
+    expiredCallback();
   }
 
   public emitGrecaptchaError(): void {
-    this.mostRecentRenderParams[1]["error-callback"]();
+    const errorCallback = this.mostRecentRenderParams["error-callback"];
+    if (typeof errorCallback !== "function") {
+      throw new Error(`Expected 'errorCallback' to be a function, but got "${typeof errorCallback}" instead`);
+    }
+
+    errorCallback();
   }
 
   public expectNoErrorCallback(): void {
-    expect(this.mostRecentRenderParams[1]["error-callback"]).toBeUndefined();
+    const errorCallback = this.mostRecentRenderParams["error-callback"];
+    expect(errorCallback).toBeUndefined();
   }
 
   public executionFulfil(action: string, value: string): void {
-    this.executionMap.get(action).resolve(value);
+    const actionPromiseCallbacks = this.executionMap.get(action);
+    if (actionPromiseCallbacks == null) {
+      throw new Error(`Expected "${action}" to be present, but it can't be found`);
+    }
+    actionPromiseCallbacks.resolve(value);
     this.executionMap.delete(action);
   }
 
   public executionReject(action: string, reason: unknown): void {
-    this.executionMap.get(action).reject(reason);
+    const actionPromiseCallbacks = this.executionMap.get(action);
+    if (actionPromiseCallbacks == null) {
+      throw new Error(`Expected "${action}" to be present, but it can't be found`);
+    }
+    actionPromiseCallbacks.reject(reason);
     this.executionMap.delete(action);
   }
 
@@ -62,16 +85,17 @@ export class MockGrecaptcha implements MockGrecaptchaType {
       reject = rej;
     });
 
+    // @ts-expect-error Typescript thinks that the variable is used before being assigned, but this isn't how promise construction works. `Promise.withResolvers()` should address this issue - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/withResolvers
     this.executionMap.set(action, { resolve, reject });
 
     return promise;
   }
 
-  private get mostRecentRenderParams(): Parameters<ReCaptchaV2.ReCaptcha["render"]> {
+  private get mostRecentRenderParams(): ReCaptchaV2.Parameters {
     expect(this.render).toHaveBeenCalledTimes(1);
     const callArgs = this.render.calls.mostRecent().args as Parameters<ReCaptchaV2.ReCaptcha["render"]>;
     expect(callArgs.length).toEqual(2);
 
-    return callArgs;
+    return callArgs[1]!;
   }
 }

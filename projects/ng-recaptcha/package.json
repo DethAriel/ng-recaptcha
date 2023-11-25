@@ -19,7 +19,7 @@
     "@angular/core": "^17.0.0"
   },
   "dependencies": {
-    "@types/grecaptcha": "^3.0.3",
+    "@types/grecaptcha": "^3.0.7",
     "tslib": "^2.2.0"
   }
 }

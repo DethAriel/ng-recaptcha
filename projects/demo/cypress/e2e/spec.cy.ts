@@ -2,13 +2,16 @@ const pageObject = {
   navigateHome() {
     cy.visit("/");
   },
+  navigateToInvisible() {
+    cy.visit("/invisible");
+  },
   selectLanguage(language: "" | "fr" | "de") {
     cy.waitForPageReloadAfter(() => {
       cy.get(`[data-cy="language-settings-menu"]`).click();
       cy.get(`input[type=radio][value="${language}"]`).click();
     });
   },
-  get recaptchaCheckboxLabel() {
+  get recaptchaIframeBody() {
     return cy.getRecaptchaIframeBody();
   },
   get demoExampleTitle() {
@@ -24,12 +27,17 @@ describe("Demo app", () => {
 
   it("should load reCAPTCHA checkbox", () => {
     pageObject.navigateHome();
-    pageObject.recaptchaCheckboxLabel.should("contain.text", "I'm not a robot");
+    pageObject.recaptchaIframeBody.should("contain.text", "I'm not a robot");
   });
 
   it("should be able to change reCAPTCHA language on the website to French", () => {
     pageObject.navigateHome();
     pageObject.selectLanguage("fr");
-    pageObject.recaptchaCheckboxLabel.should("contain.text", "Je ne suis pas un robot");
+    pageObject.recaptchaIframeBody.should("contain.text", "Je ne suis pas un robot");
+  });
+
+  it("should be able to load invisible reCAPTCHA", () => {
+    pageObject.navigateToInvisible();
+    pageObject.recaptchaIframeBody.should("contain.text", "protected by reCAPTCHA");
   });
 });

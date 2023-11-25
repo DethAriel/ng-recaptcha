@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { BehaviorSubject } from "rxjs";
 
 import { RecaptchaComponent, RecaptchaLoaderService, RecaptchaValueAccessorDirective } from "..";
-import { MockRecaptchaLoaderService } from "./test-utils/mock-recaptcha-loader.service";
+import { MockRecaptchaLoaderService } from "./test-utils/mock-recaptcha-loader.service.spec";
 
 describe("RecaptchaValueAccessorDirective -> [(ngModel)]", () => {
   @Component({
@@ -121,7 +121,7 @@ describe("RecaptchaValueAccessorDirective -> formGroup", () => {
   class TestComponent {
     public loading$ = new BehaviorSubject<boolean>(false);
     public formGroup = new UntypedFormGroup({
-      // eslint-disable-next-line @typescript-eslint/unbound-method
+      // eslint-disable-next-line jest/unbound-method
       captcha: new UntypedFormControl(null, [Validators.required]),
     });
 

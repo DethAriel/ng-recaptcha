@@ -40,7 +40,7 @@ After you did that, follow the below process:
 
 - Pushed the latest changes to upstream: `git push`
 
-  - use the following commit message convension when updating Angular to a newer version:
+  - use the following commit message convention when updating Angular to a newer version:
     > feat(package): add Angular N support
     >
     > BREAKING CHANGE:

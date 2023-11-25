@@ -14,7 +14,7 @@ const routes: Routes = [
   })),
   {
     path: "",
-    redirectTo: `/${examples.find((e) => e.index).name}`,
+    redirectTo: `/${examples.find((e) => e.index)!.name}`,
     pathMatch: "full",
   },
 ];

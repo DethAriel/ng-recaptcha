@@ -4,5 +4,6 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "module": "CommonJS"
-  }
+  },
+  "include": ["projects/demo/bin"]
 }

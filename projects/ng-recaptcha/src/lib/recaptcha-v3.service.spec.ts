@@ -9,9 +9,11 @@ import {
   RECAPTCHA_LANGUAGE,
   RECAPTCHA_NONCE,
   RECAPTCHA_V3_SITE_KEY,
+  RecaptchaLoaderService,
 } from "..";
 import { loader } from "./load-script";
-import { MockGrecaptcha } from "./test-utils/mock-grecaptcha";
+import { MockGrecaptcha } from "./test-utils/mock-grecaptcha.spec";
+import { BehaviorSubject } from "rxjs";
 
 async function nextTick() {
   await new Promise((resolve) => setTimeout(resolve, 0));
@@ -19,23 +21,41 @@ async function nextTick() {
 
 describe("ReCaptchaV3Service", () => {
   let loadScriptStub: jasmine.Spy;
+  let scriptAppendSpy: jasmine.Spy;
   beforeEach(() => {
-    loadScriptStub = spyOn(loader, "loadScript").and.stub();
+    loadScriptStub = spyOn(loader, "loadScript").and.callThrough();
+    scriptAppendSpy = spyOn(document.head, "appendChild").and.stub();
   });
 
   afterEach(() => {
-    delete window.grecaptcha;
+    // @ts-expect-error we need to reset the class after each test
+    delete RecaptchaLoaderService.ready;
   });
 
+  function getMockLoadScriptParams() {
+    expect(scriptAppendSpy).toHaveBeenCalledTimes(1);
+
+    const scriptTag = scriptAppendSpy.calls.mostRecent().args[0] as HTMLScriptElement;
+    const scriptUrl = new URL(scriptTag.src);
+    const scriptUrlSearchParams = new URLSearchParams(scriptUrl.searchParams);
+
+    return {
+      scriptTag,
+      scriptUrl,
+      scriptUrlSearchParams,
+    };
+  }
+
   function onGrecaptchaLoad(grecaptcha: MockGrecaptcha) {
-    expect(loadScriptStub).toHaveBeenCalled();
+    expect(loadScriptStub).toHaveBeenCalledTimes(1);
     const loadArgs = loadScriptStub.calls.mostRecent().args as Parameters<(typeof loader)["loadScript"]>;
-    loadArgs[1](grecaptcha);
+    loadArgs[2](grecaptcha);
   }
 
   function initService(additionalProviders: Provider[] = []) {
     TestBed.configureTestingModule({
       providers: [
+        { provide: RecaptchaLoaderService, useClass: RecaptchaLoaderService } as Provider,
         ReCaptchaV3Service,
         { provide: RECAPTCHA_V3_SITE_KEY, useValue: "testSikeKeyV3" },
         ...additionalProviders,
@@ -65,7 +85,7 @@ describe("ReCaptchaV3Service", () => {
       },
       {
         provide: RECAPTCHA_BASE_URL,
-        useValue: "testUrl",
+        useValue: "https://test-url/test-api.js",
       },
       {
         provide: RECAPTCHA_NONCE,
@@ -74,19 +94,22 @@ describe("ReCaptchaV3Service", () => {
     ]);
 
     // Act
+    const { scriptTag, scriptUrl, scriptUrlSearchParams } = getMockLoadScriptParams();
 
     // Assert
-    expect(loadScriptStub).toHaveBeenCalledWith(
-      jasmine.objectContaining({ key: "testSikeKeyV3" }),
-      jasmine.any(Function),
-      jasmine.objectContaining({ lang: "testLang", url: "testUrl", nonce: "testNonce" }),
-    );
+    expect(scriptTag.nonce).toEqual("testNonce");
+    expect(scriptUrl.protocol).toEqual("https:");
+    expect(scriptUrl.hostname).toEqual("test-url");
+    expect(scriptUrl.pathname).toEqual("/test-api.js");
+    expect(scriptUrlSearchParams.get("render")).toEqual("testSikeKeyV3");
+    expect(scriptUrlSearchParams.get("hl")).toEqual("testLang");
   });
 
   it("should not load grecaptcha upon initialization if it is already present", () => {
     // Arrange
     const mockGrecaptchaValue = new MockGrecaptcha();
-    window.grecaptcha = mockGrecaptchaValue;
+    // @ts-expect-error This is simulating an already loaded `grecaptcha`, but messing with component internals
+    RecaptchaLoaderService.ready = new BehaviorSubject(mockGrecaptchaValue);
     initService();
 
     // Act
@@ -153,7 +176,7 @@ describe("ReCaptchaV3Service", () => {
     await nextTick();
 
     // Assert
-    expect(executionResult).toEqual("test value");
+    expect(executionResult!).toEqual("test value");
   });
 
   it("should complete observable upon execution success", async () => {
@@ -190,7 +213,7 @@ describe("ReCaptchaV3Service", () => {
     await nextTick();
 
     // Assert
-    expect(executionResult).toEqual({
+    expect(executionResult!).toEqual({
       action: "test action",
       token: "test value",
     });
@@ -224,7 +247,7 @@ describe("ReCaptchaV3Service", () => {
     await nextTick();
 
     // Assert
-    expect(executionError).toEqual("test error");
+    expect(executionError!).toEqual("test error");
   });
 
   it("should return error reason upon grecaptcha.execute failure", async () => {
@@ -243,8 +266,8 @@ describe("ReCaptchaV3Service", () => {
     await nextTick();
 
     // Assert
-    expect(executionError).toBeTruthy();
-    expect(executionError.message).toEqual("test error");
+    expect(executionError!).toBeTruthy();
+    expect(executionError!.message).toEqual("test error");
   });
 
   it("should return execution error reason via onExecuteError observable", async () => {
@@ -261,7 +284,7 @@ describe("ReCaptchaV3Service", () => {
     await nextTick();
 
     // Assert
-    expect(executionResult).toEqual({
+    expect(executionResult!).toEqual({
       action: "test action",
       error: "test rejection value",
     });
@@ -295,7 +318,7 @@ describe("ReCaptchaV3Service", () => {
     await nextTick();
 
     // Assert
-    expect(executionResult1).toEqual("test value 1");
-    expect(executionResult2).toEqual("test value 2");
+    expect(executionResult1!).toEqual("test value 1");
+    expect(executionResult2!).toEqual("test value 2");
   });
 });

@@ -33,15 +33,15 @@ export class RecaptchaComponent implements AfterViewInit, OnDestroy {
   @HostBinding("attr.id")
   public id = `ngrecaptcha-${nextId++}`;
 
-  @Input() public siteKey: string;
-  @Input() public theme: ReCaptchaV2.Theme;
-  @Input() public type: ReCaptchaV2.Type;
-  @Input() public size: ReCaptchaV2.Size;
-  @Input() public tabIndex: number;
-  @Input() public badge: ReCaptchaV2.Badge;
+  @Input() public siteKey?: string;
+  @Input() public theme?: ReCaptchaV2.Theme;
+  @Input() public type?: ReCaptchaV2.Type;
+  @Input() public size?: ReCaptchaV2.Size;
+  @Input() public tabIndex?: number;
+  @Input() public badge?: ReCaptchaV2.Badge;
   @Input() public errorMode: "handled" | "default" = "default";
 
-  @Output() public resolved = new EventEmitter<string>();
+  @Output() public resolved = new EventEmitter<string | null>();
   /**
    * @deprecated `(error) output will be removed in the next major version. Use (errored) instead
    */

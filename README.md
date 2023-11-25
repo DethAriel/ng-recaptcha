@@ -243,20 +243,26 @@ Global properties can be overridden on a case-by-case basis - the values on the 
 
 `<re-captcha>` supports various languages. By default recaptcha will guess the user's language itself
 (which is beyond the scope of this lib).
-But you can override this behavior and provide a specific language to use.
+But you can override this behavior and provide a specific language to use by setting the `"hl"` search param in the `onBeforeLoad` hook.
 Note, that the language setting is **global**, and cannot be set on a per-captcha basis.
 
 A good way to synchronize reCAPTCHA language with the rest of your application is relying on `LOCALE_ID` value like so:
 
 ```typescript
 import { LOCALE_ID } from "@angular/core";
-import { RECAPTCHA_LANGUAGE } from "ng-recaptcha";
+import { RECAPTCHA_LOADER_OPTIONS } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
-      provide: RECAPTCHA_LANGUAGE,
-      useFactory: (locale: string) => locale,
+      provide: RECAPTCHA_LOADER_OPTIONS,
+      useFactory: (locale: string) => ({
+        onBeforeLoad(url) {
+          url.searchParams.set("hl", locale);
+
+          return { url };
+        },
+      }),
       deps: [LOCALE_ID],
     },
   ],
@@ -267,13 +273,19 @@ export class MyModule {}
 Alternatively, a specific language can be provided like so:
 
 ```typescript
-import { RECAPTCHA_LANGUAGE } from "ng-recaptcha";
+import { RECAPTCHA_LOADER_OPTIONS } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
-      provide: RECAPTCHA_LANGUAGE,
-      useValue: "fr", // use French language
+      provide: RECAPTCHA_LOADER_OPTIONS,
+      useValue: {
+        onBeforeLoad(url) {
+          url.searchParams.set("hl", "fr"); // use French language
+
+          return { url };
+        },
+      },
     },
   ],
 })
@@ -473,16 +485,22 @@ To configure the package to work with SystemJS, you would configure it approxima
 
 ### <a name="example-different-url"></a>Loading from a different location
 
-Since `"google.com"` domain might be unavailable in some countries, reCAPTCHA core team has a solution for that - using `"recaptcha.net"` domain. You can configure the component to use that by providing the `RECAPTCHA_BASE_URL` token, for example:
+Since `"google.com"` domain might be unavailable in some countries, reCAPTCHA core team has a solution for that - using `"recaptcha.net"` domain. You can configure the component to use that by using the `onBeforeLoad` hook of `RECAPTCHA_LOADER_OPTIONS`, for example:
 
 ```javascript
-import { RECAPTCHA_BASE_URL } from "ng-recaptcha";
+import { RECAPTCHA_LOADER_OPTIONS } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
-      provide: RECAPTCHA_BASE_URL,
-      useValue: "https://recaptcha.net/recaptcha/api.js", // use recaptcha.net script source for some of our users
+      provide: RECAPTCHA_LOADER_OPTIONS,
+      useValue: {
+        onBeforeLoad(_url) {
+          return {
+            url: new URL("https://www.recaptcha.net/recaptcha/api.js"), // use recaptcha.net script source for some of our users
+          };
+        },
+      },
     },
   ],
 })
@@ -491,16 +509,23 @@ export class MyModule {}
 
 ### <a name="example-csp-nonce"></a>Specifying nonce for Content-Security-Policy
 
-Per [reCAPTCHA FAQ on CSP](https://developers.google.com/recaptcha/docs/faq#im-using-content-security-policy-csp-on-my-website-how-can-i-configure-it-to-work-with-recaptcha), the recommended approach for that is to supply nonce to the script tag. This is possible by providing the `RECAPTCHA_NONCE` token, for example:
+Per [reCAPTCHA FAQ on CSP](https://developers.google.com/recaptcha/docs/faq#im-using-content-security-policy-csp-on-my-website-how-can-i-configure-it-to-work-with-recaptcha), the recommended approach for that is to supply nonce to the script tag. This is possible by providing the nonce as part of the `onBeforeLoad` hook of `RECAPTCHA_LOADER_OPTIONS`, for example
 
 ```javascript
-import { RECAPTCHA_NONCE } from "ng-recaptcha";
+import { RECAPTCHA_LOADER_OPTIONS } from "ng-recaptcha";
 
 @NgModule({
   providers: [
     {
-      provide: RECAPTCHA_NONCE,
-      useValue: "<YOUR_NONCE_VALUE>",
+      provide: RECAPTCHA_LOADER_OPTIONS,
+      useValue: {
+        onBeforeLoad(_url) {
+          return {
+            url,
+            nonce: "<YOUR_NONCE_VALUE>",
+          };
+        },
+      },
     },
   ],
 })

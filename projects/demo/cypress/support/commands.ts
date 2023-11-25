@@ -10,7 +10,7 @@ Cypress.Commands.add("getRecaptchaIframeBody", () => {
 
   return (
     cy
-      .get("iframe", { log: false })
+      .get("iframe[title=reCAPTCHA]", { log: false })
       .its("0.contentDocument.body", { log: false })
       .should("not.be.empty", { log: false })
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument

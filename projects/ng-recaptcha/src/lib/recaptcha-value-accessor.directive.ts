@@ -15,7 +15,7 @@ import { RecaptchaComponent } from "./recaptcha.component";
 })
 export class RecaptchaValueAccessorDirective implements ControlValueAccessor {
   /** @internal */
-  private onChange: (value: string) => void;
+  private onChange: (value: string | null) => void;
 
   /** @internal */
   private onTouched: () => void;

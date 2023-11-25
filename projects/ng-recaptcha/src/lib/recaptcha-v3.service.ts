@@ -1,9 +1,8 @@
-import { isPlatformBrowser } from "@angular/common";
-import { Inject, Injectable, NgZone, Optional, PLATFORM_ID } from "@angular/core";
+import { Inject, Injectable, NgZone } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 
-import { loader } from "./load-script";
-import { RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE, RECAPTCHA_NONCE, RECAPTCHA_V3_SITE_KEY } from "./tokens";
+import { RECAPTCHA_V3_SITE_KEY } from "./tokens";
+import { RecaptchaLoaderService } from "./recaptcha-loader.service";
 
 export interface OnExecuteData {
   /**
@@ -39,19 +38,11 @@ type ActionBacklogEntry = [string, Subject<string>];
 @Injectable()
 export class ReCaptchaV3Service {
   /** @internal */
-  private readonly isBrowser: boolean;
-  /** @internal */
   private readonly siteKey: string;
   /** @internal */
   private readonly zone: NgZone;
   /** @internal */
   private actionBacklog: ActionBacklogEntry[] | undefined;
-  /** @internal */
-  private nonce: string;
-  /** @internal */
-  private language?: string;
-  /** @internal */
-  private baseUrl: string;
   /** @internal */
   private grecaptcha: ReCaptchaV2.ReCaptcha;
 
@@ -66,19 +57,11 @@ export class ReCaptchaV3Service {
 
   constructor(
     zone: NgZone,
+    public recaptchaLoader: RecaptchaLoaderService,
     @Inject(RECAPTCHA_V3_SITE_KEY) siteKey: string,
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    @Inject(PLATFORM_ID) platformId: Object,
-    @Optional() @Inject(RECAPTCHA_BASE_URL) baseUrl?: string,
-    @Optional() @Inject(RECAPTCHA_NONCE) nonce?: string,
-    @Optional() @Inject(RECAPTCHA_LANGUAGE) language?: string,
   ) {
     this.zone = zone;
-    this.isBrowser = isPlatformBrowser(platformId);
     this.siteKey = siteKey;
-    this.nonce = nonce;
-    this.language = language;
-    this.baseUrl = baseUrl;
 
     this.init();
   }
@@ -114,16 +97,14 @@ export class ReCaptchaV3Service {
    */
   public execute(action: string): Observable<string> {
     const subject = new Subject<string>();
-    if (this.isBrowser) {
-      if (!this.grecaptcha) {
-        if (!this.actionBacklog) {
-          this.actionBacklog = [];
-        }
-
-        this.actionBacklog.push([action, subject]);
-      } else {
-        this.executeActionWithSubject(action, subject);
+    if (!this.grecaptcha) {
+      if (!this.actionBacklog) {
+        this.actionBacklog = [];
       }
+
+      this.actionBacklog.push([action, subject]);
+    } else {
+      this.executeActionWithSubject(action, subject);
     }
 
     return subject.asObservable();
@@ -162,25 +143,12 @@ export class ReCaptchaV3Service {
 
   /** @internal */
   private init() {
-    if (this.isBrowser) {
-      if ("grecaptcha" in window) {
-        this.grecaptcha = grecaptcha;
-      } else {
-        loader.loadScript({ key: this.siteKey }, this.onLoadComplete, {
-          lang: this.language,
-          url: this.baseUrl,
-          nonce: this.nonce,
-        });
+    this.recaptchaLoader.ready.subscribe((value) => {
+      this.grecaptcha = value;
+      if (this.actionBacklog && this.actionBacklog.length > 0) {
+        this.actionBacklog.forEach(([action, subject]) => this.executeActionWithSubject(action, subject));
+        this.actionBacklog = undefined;
       }
-    }
+    });
   }
-
-  /** @internal */
-  private onLoadComplete = (grecaptcha: ReCaptchaV2.ReCaptcha) => {
-    this.grecaptcha = grecaptcha;
-    if (this.actionBacklog && this.actionBacklog.length > 0) {
-      this.actionBacklog.forEach(([action, subject]) => this.executeActionWithSubject(action, subject));
-      this.actionBacklog = undefined;
-    }
-  };
 }

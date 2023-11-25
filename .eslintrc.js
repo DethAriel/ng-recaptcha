@@ -47,6 +47,14 @@ module.exports = {
       },
     },
     {
+      files: ["**/**.spec.ts", "**/test-utils/*.ts"],
+      plugins: ["jest"],
+      rules: {
+        "@typescript-eslint/unbound-method": "off",
+        "jest/unbound-method": "error",
+      },
+    },
+    {
       files: ["*.html"],
       extends: ["plugin:@angular-eslint/template/recommended"],
       rules: {

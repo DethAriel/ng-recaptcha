@@ -15,4 +15,6 @@ export {
   RECAPTCHA_NONCE,
   RECAPTCHA_SETTINGS,
   RECAPTCHA_V3_SITE_KEY,
+  RECAPTCHA_LOADER_OPTIONS,
+  RecaptchaLoaderOptions,
 } from "./lib/tokens";

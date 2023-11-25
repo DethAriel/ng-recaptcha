@@ -8,7 +8,7 @@ import {
   RecaptchaSettings,
   RECAPTCHA_SETTINGS,
 } from "..";
-import { MockRecaptchaLoaderService } from "./test-utils/mock-recaptcha-loader.service";
+import { MockRecaptchaLoaderService } from "./test-utils/mock-recaptcha-loader.service.spec";
 
 describe("RecaptchaComponent", () => {
   let component: RecaptchaComponent;
