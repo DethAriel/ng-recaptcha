@@ -9,6 +9,7 @@ import {
   RECAPTCHA_LOADER_OPTIONS,
   RecaptchaSettings,
   RECAPTCHA_SETTINGS,
+  RecaptchaLoaderService,
 } from "ng-recaptcha";
 
 import { parseLangFromHref } from "../../parse-lang-from-href";
