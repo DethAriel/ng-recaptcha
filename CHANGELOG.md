@@ -1,3 +1,11 @@
+<a name="13.2.1"></a>
+
+## [13.2.1](https://github.com/DethAriel/ng-recaptcha/compare/v13.2.0...v13.2.1) (2023-11-25)
+
+### Bug Fixes
+
+- **component:** fix the injection error when using slandalone `RecaptchaV3Module` ([c93b99c](https://github.com/DethAriel/ng-recaptcha/commit/c93b99c))
+
 <a name="13.2.0"></a>
 
 # [13.2.0](https://github.com/DethAriel/ng-recaptcha/compare/v13.1.0...v13.2.0) (2023-11-25)
