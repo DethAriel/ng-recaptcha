@@ -5,6 +5,9 @@ const pageObject = {
   navigateToInvisible() {
     cy.visit("/invisible");
   },
+  navigateToV3() {
+    cy.visit("/v3");
+  },
   selectLanguage(language: "" | "fr" | "de") {
     cy.waitForPageReloadAfter(() => {
       cy.get(`[data-cy="language-settings-menu"]`).click();
@@ -39,5 +42,10 @@ describe("Demo app", () => {
   it("should be able to load invisible reCAPTCHA", () => {
     pageObject.navigateToInvisible();
     pageObject.recaptchaIframeBody.should("contain.text", "protected by reCAPTCHA");
+  });
+
+  it("should be able to load v3 reCAPTCHA successfully", () => {
+    pageObject.navigateToV3();
+    pageObject.demoExampleTitle.should("have.text", "reCAPTCHA v3 Example");
   });
 });
